@@ -1,0 +1,11 @@
+{
+  "name": "Test",
+  "full_name": "Test Character",
+  "age": "24",
+  "role": "Explorer",
+
+  "headshot": "../assets/test-headshot.png",
+  "fullbody": "../assets/test-full.png",
+
+  "bio": "This is a test character used for development."
+}
