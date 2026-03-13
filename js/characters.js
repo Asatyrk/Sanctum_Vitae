@@ -307,7 +307,7 @@ async function loadCharacters(){
   allCharacters = await Promise.all(index.map(async (entry) => {
     const charResponse = await fetch(entry.path)
     const charData = await charResponse.json()
-    return { ...entry, ...charData }
+    return { ...charData, ...entry }
   }))
 
   buildTagFilterUI()
