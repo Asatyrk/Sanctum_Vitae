@@ -1,0 +1,23 @@
+To add new character (/other):
+- Create new .json in characters (/other) folder with profile info
+- Add to index.json so it shows up in layout
+
+To do:
+- Tags, Sorting, Etc.
+- CSS, Html, Style, Etc.
+
+
+
+Tags:
+ Species (Class, Specific)
+ Genders
+ Sexualities (Romantic, Sexual)
+ Other Identities
+ Relationship Status
+ Age
+ Family
+ Location (Basic, General, Specific)
+ Element
+ Godhood
+ Stories
+ Special

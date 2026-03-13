@@ -1,11 +1,31 @@
 {
   "name": "Test",
   "full_name": "Test Character",
-  "age": "69",
-  "role": "Silly",
+  "age": "Unknown",
+  "role": "Prototype",
 
   "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
   "fullbody": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
 
-  "bio": "This is a test character used for development."
+  "bio": "This is a test character used for development.",
+
+  "tags": {
+    "Species": ["Human", "Warrior"],
+    "Gender": ["Nonbinary"],
+    "Romantic Orientation": ["Aromantic"],
+    "Sexual Orientation": ["Asexual"],
+    "Other Identities": ["Mage", "Amnesiac"],
+    "Relationship Status": ["Single"],
+    "Age": ["Adult"],
+    "Family": ["Orphan"],
+    "Location (Basic)": ["World"],
+    "Location (General)": ["Kingdom"],
+    "Location (Specific)": ["City"],
+    "Element": ["Void"],
+    "Godhood": ["Mortal"],
+    "Stories": ["Test Story"],
+    "Special": ["Prototype"],
+    "Affiliation": ["None"],
+    "Role": ["Support"]
+  }
 }

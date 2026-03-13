@@ -26,17 +26,20 @@ displayCharacter(data)
 }
 
 function displayCharacter(char){
+  document.getElementById("name").textContent = char.name
 
-document.getElementById("name").textContent = char.name
+  document.getElementById("full_name").textContent = char.full_name
+  document.getElementById("age").textContent = char.age
+  document.getElementById("role").textContent = char.role
 
-document.getElementById("full_name").textContent = char.full_name
-document.getElementById("age").textContent = char.age
-document.getElementById("role").textContent = char.role
+  document.getElementById("bio").textContent = char.bio
+  document.getElementById("fullbody").src = char.fullbody
 
-document.getElementById("bio").textContent = char.bio
+  const tags = Object.entries(char.tags || {})
+    .flatMap(([category, values]) => values.map(v => `<span class="tag" title="${category}">${v}</span>`))
+    .join("")
 
-document.getElementById("fullbody").src = char.fullbody
-
+  document.getElementById("tags").innerHTML = tags
 }
 
 loadCharacter()

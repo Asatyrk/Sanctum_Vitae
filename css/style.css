@@ -85,3 +85,96 @@ flex-wrap:wrap;
 gap:20px;
 
 }
+
+.list-controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  align-items:center;
+  margin-bottom:1rem;
+}
+
+.list-controls label{
+  margin-right:0.25rem;
+  font-size:0.9rem;
+}
+
+.list-controls input,
+.list-controls select{
+  padding:0.3rem 0.5rem;
+  border-radius:4px;
+  border:1px solid #444;
+  background:#111;
+  color:white;
+}
+
+.list-controls button{
+  padding:0.3rem 0.6rem;
+  border-radius:4px;
+  border:1px solid #444;
+  background:#111;
+  color:white;
+  cursor:pointer;
+}
+
+.list-controls button:hover{
+  background:#1a1a1a;
+}
+
+.tag-filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1rem;
+  margin-bottom:1rem;
+}
+
+.tag-category{
+  border:1px solid #444;
+  border-radius:6px;
+  padding:0.5rem;
+  max-width:220px;
+  background:#141414;
+}
+
+.tag-category summary{
+  cursor:pointer;
+  font-weight:600;
+  margin-bottom:0.5rem;
+}
+
+.tag-list{
+  display:flex;
+  flex-direction:column;
+  gap:0.25rem;
+  margin-top:0.5rem;
+}
+
+.tag-option{
+  font-size:0.85rem;
+  display:flex;
+  align-items:center;
+  gap:0.25rem;
+  cursor:pointer;
+  user-select:none;
+}
+
+.card-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+  justify-content:center;
+  margin-top:0.25rem;
+}
+
+.tag{
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:999px;
+  padding:2px 6px;
+  font-size:0.7rem;
+}
+
+.no-results{
+  color:#ddd;
+  font-style:italic;
+}

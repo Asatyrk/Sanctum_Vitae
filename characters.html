@@ -14,7 +14,26 @@
 
 <h1>Characters</h1>
 
-<div id="character-grid"></div>
+<div class="list-controls">
+  <div class="list-search">
+    <label for="search-input">Search:</label>
+    <input id="search-input" type="search" placeholder="Search characters…" />
+  </div>
+
+  <div class="list-sort">
+    <label for="sort-select">Sort:</label>
+    <select id="sort-select">
+      <option value="name-asc" selected>Name A→Z</option>
+      <option value="name-desc">Name Z→A</option>
+    </select>
+  </div>
+
+  <button id="clear-filters" type="button">Clear filters</button>
+</div>
+
+<div id="tag-filters" class="tag-filters"></div>
+
+<div id="character-grid" class="card-grid"></div>
 
 </body>
 
