@@ -185,8 +185,8 @@ color:white;
 #characters-list{
 
 display:grid;
-grid-template-columns:repeat(auto-fill,160px);
-gap:40px;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:32px;
 padding-top:10px;
 
 }
@@ -199,11 +199,11 @@ padding-top:10px;
 .faction-card,
 .story-card {
 
-width:130px;
+width:180px;
 
 background:white;
 
-padding:10px 10px 20px 10px;
+padding:14px 14px 28px 14px;
 
 text-align:center;
 
@@ -246,8 +246,8 @@ z-index:10;
 
 content:"";
 
-width:12px;
-height:12px;
+width:18px;
+height:18px;
 
 background:#b33a33;
 
@@ -255,7 +255,7 @@ border-radius:50%;
 
 position:absolute;
 
-top:-7px;
+top:-9px;
 left:50%;
 
 transform:translateX(-50%);
@@ -274,9 +274,9 @@ transform:rotate(0deg) scale(1.04);
 .faction-card img,
 .story-card img{
 
-width:120px;
+width:100%;
 
-height:120px;
+height:156px;
 
 object-fit:cover;
 
