@@ -6,7 +6,7 @@ body{
 margin:0;
 font-family:"Courier New", Courier, monospace;
 
-background:#e6d3be;
+background:#ebe7e1;
 color:#2b2b2b;
 }
 
@@ -15,7 +15,7 @@ color:#2b2b2b;
 ===================================================== */
 
 .page-characters{
-background:#e6d3be;
+background:#ebe7e1;
 
 background-image:
 radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
@@ -35,7 +35,7 @@ background:#f4efe6;
 
 .site-header{
 width:100%;
-background:#97806D;
+background:#cfab91;
 }
 
 .site-banner{
@@ -60,7 +60,7 @@ color:#f4efe6;
 
 padding:18px 28px;
 
-background:#97806D;
+background:#cfab91;
 
 color:#f4efe6;
 
@@ -145,7 +145,7 @@ margin:auto;
 
 width:260px;
 
-background:#97806D;
+background:#cfab91;
 
 padding:20px;
 
@@ -393,7 +393,7 @@ padding:0.3rem 0.5rem;
 
 border-radius:4px;
 
-border:1px solid #97806D;
+border:1px solid #cfab91;
 
 background:#f4efe6;
 
