@@ -1,0 +1,7 @@
+[
+  {
+    "name": "Test",
+    "headshot": "../assets/test-headshot.png",
+    "path": "characters/test.json"
+  }
+]

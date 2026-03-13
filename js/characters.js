@@ -1,29 +1,13 @@
-const characters = [
-
-"characters/test.json"
-
-]
-
 async function loadCharacters(){
 
-const loadedCharacters = []
+const response = await fetch("characters/index.json")
+const characters = await response.json()
 
-for(const path of characters){
-
-const response = await fetch(path)
-const data = await response.json()
-
-data.path = path
-
-loadedCharacters.push(data)
-
-}
-
-loadedCharacters.sort((a,b)=>
+characters.sort((a,b)=>
 a.name.localeCompare(b.name)
 )
 
-displayCharacters(loadedCharacters)
+displayCharacters(characters)
 
 }
 
