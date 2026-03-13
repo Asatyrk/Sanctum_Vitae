@@ -298,6 +298,7 @@ const tagCategories = {
 
 let allCharacters = []
 let selectedTags = {}
+let matchMode = 'and'
 
 async function loadCharacters(){
   const response = await fetch("characters/index.json")
@@ -317,6 +318,7 @@ function getUrlState(){
 
   const search = params.get("search") || ""
   const sort = params.get("sort") || "name-asc"
+  const mode = params.get("mode") || "and"
 
   const tags = []
   const tagsParam = params.get("tags") || ""
@@ -327,7 +329,7 @@ function getUrlState(){
     }
   }
 
-  return { search, sort, tags }
+  return { search, sort, mode, tags }
 }
 
 function updateUrlStateInHistory(replace = false){
@@ -340,6 +342,7 @@ function updateUrlStateInHistory(replace = false){
 
   if (search) params.set("search", search)
   if (sort && sort !== "name-asc") params.set("sort", sort)
+  if (matchMode && matchMode !== "and") params.set("mode", matchMode)
 
   const tags = []
   const checked = document.querySelectorAll("#tag-filters input[type=checkbox]:checked")
@@ -362,10 +365,12 @@ function updateUrlStateInHistory(replace = false){
 }
 
 function applyUrlStateToUI(){
-  const { search, sort, tags } = getUrlState()
+  const { search, sort, mode, tags } = getUrlState()
 
   document.getElementById("search-input").value = search
   document.getElementById("sort-select").value = sort
+  document.getElementById("match-mode").value = mode
+  matchMode = mode
 
   if (tags.length) {
     tags.forEach(({ category, value }) => {
@@ -381,6 +386,8 @@ function applyUrlStateToUI(){
 function resetFilters(){
   document.getElementById("search-input").value = ""
   document.getElementById("sort-select").value = "name-asc"
+  document.getElementById("match-mode").value = "and"
+  matchMode = 'and'
 
   document.querySelectorAll("#tag-filters input[type=checkbox]").forEach(cb => {
     cb.checked = false
@@ -393,6 +400,7 @@ function setupControls(){
   const searchInput = document.getElementById("search-input")
   const sortSelect = document.getElementById("sort-select")
   const clearButton = document.getElementById("clear-filters")
+  const matchModeSelect = document.getElementById("match-mode")
 
   const onControlChange = () => {
     renderCharacters()
@@ -401,6 +409,10 @@ function setupControls(){
 
   searchInput.addEventListener("input", onControlChange)
   sortSelect.addEventListener("change", onControlChange)
+  matchModeSelect.addEventListener("change", () => {
+    matchMode = matchModeSelect.value
+    onControlChange()
+  })
 
   clearButton.addEventListener("click", () => {
     resetFilters()
@@ -466,10 +478,19 @@ function updateSelectedTags(){
 function matchesTags(character){
   if (!Object.keys(selectedTags).length) return true
 
-  return Object.entries(selectedTags).every(([category, tags]) => {
-    const charTags = character.tags?.[category] || []
-    return charTags.some(t => tags.has(t))
-  })
+  if (matchMode === "or") {
+    // OR: character matches if it has at least one selected tag in any category
+    return Object.entries(selectedTags).some(([category, tags]) => {
+      const charTags = character.tags?.[category] || []
+      return charTags.some(t => tags.has(t))
+    })
+  } else {
+    // AND: character matches if it has at least one selected tag in EVERY category that has selections
+    return Object.entries(selectedTags).every(([category, tags]) => {
+      const charTags = character.tags?.[category] || []
+      return charTags.some(t => tags.has(t))
+    })
+  }
 }
 
 function matchesSearch(character){
