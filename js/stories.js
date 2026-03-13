@@ -19,7 +19,7 @@ stories.forEach(story=>{
 
 const card = document.createElement("a")
 
-card.href = `story-detail.html?story=${story.path}`
+card.href = `story-profile.html?story=${story.path}`
 
 card.className = "story-card"
 

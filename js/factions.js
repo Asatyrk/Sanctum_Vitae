@@ -19,7 +19,7 @@ factions.forEach(faction=>{
 
 const card = document.createElement("a")
 
-card.href = `faction-detail.html?faction=${faction.path}`
+card.href = `faction-profile.html?faction=${faction.path}`
 
 card.className = "faction-card"
 

@@ -1,18 +1,18 @@
-function getStory(){
+function getFaction(){
 
 const params = new URLSearchParams(window.location.search)
 
-return params.get("story")
+return params.get("faction")
 
 }
 
-async function loadStory(){
+async function loadFaction(){
 
-const path = getStory()
+const path = getFaction()
 
 if(!path){
 
-document.body.innerHTML = "No story selected"
+document.body.innerHTML = "No faction selected"
 return
 
 }
@@ -21,21 +21,21 @@ const response = await fetch(path)
 
 const data = await response.json()
 
-displayStory(data)
+displayFaction(data)
 
 }
 
-async function displayStory(story){
+async function displayFaction(faction){
 
-document.getElementById("name").textContent = story.name
+document.getElementById("name").textContent = faction.name
 
-document.getElementById("logo").src = story.logo
+document.getElementById("logo").src = faction.logo
 
-document.getElementById("summary").textContent = story.summary
+document.getElementById("description").textContent = faction.description
 
 const charactersList = document.getElementById("characters-list")
 
-for(const charPath of story.characters){
+for(const charPath of faction.characters){
 
 const charResponse = await fetch(charPath)
 
@@ -43,7 +43,7 @@ const charData = await charResponse.json()
 
 const charCard = document.createElement("a")
 
-charCard.href = `character-detail.html?char=${charPath}`
+charCard.href = `character-profile.html?char=${charPath}`
 
 charCard.className = "char-card"
 
@@ -61,4 +61,4 @@ charactersList.appendChild(charCard)
 
 }
 
-loadStory()
+loadFaction()
