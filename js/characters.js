@@ -481,18 +481,23 @@ function updateSelectedTags(){
 function matchesTags(character){
   if (!Object.keys(selectedTags).length) return true
 
+  const categoryMatcher = (category, tags) => {
+    const charTags = character.tags?.[category] || []
+    if (matchMode === "and") {
+      // AND: character must have ALL selected tags in this category
+      return Array.from(tags).every(tag => charTags.includes(tag))
+    } else {
+      // OR: character must have ANY selected tag in this category
+      return charTags.some(t => tags.has(t))
+    }
+  }
+
   if (matchMode === "or") {
-    // OR: character matches if it has at least one selected tag in any category
-    return Object.entries(selectedTags).some(([category, tags]) => {
-      const charTags = character.tags?.[category] || []
-      return charTags.some(t => tags.has(t))
-    })
+    // OR between categories: match if any category matches
+    return Object.entries(selectedTags).some(([category, tags]) => categoryMatcher(category, tags))
   } else {
-    // AND: character matches if it has at least one selected tag in EVERY category that has selections
-    return Object.entries(selectedTags).every(([category, tags]) => {
-      const charTags = character.tags?.[category] || []
-      return charTags.some(t => tags.has(t))
-    })
+    // AND between categories: match if all categories match
+    return Object.entries(selectedTags).every(([category, tags]) => categoryMatcher(category, tags))
   }
 }
 
