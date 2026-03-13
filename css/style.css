@@ -186,7 +186,7 @@ color:white;
 
 display:grid;
 grid-template-columns:repeat(5, 1fr);
-gap:26px;
+gap:40px;
 padding-top:10px;
 
 }
