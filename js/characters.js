@@ -466,6 +466,18 @@ function buildTagFilterUI(){
     section.appendChild(list)
     container.appendChild(section)
   })
+
+  // Make it accordion: close other details when one opens
+  const details = container.querySelectorAll("details")
+  details.forEach(detail => {
+    detail.addEventListener("toggle", () => {
+      if (detail.open) {
+        details.forEach(other => {
+          if (other !== detail) other.open = false
+        })
+      }
+    })
+  })
 }
 
 function updateSelectedTags(){

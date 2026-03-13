@@ -6,7 +6,7 @@ body{
 margin:0;
 font-family:"Courier New", Courier, monospace;
 
-background:#ebe7e1;
+background:#f5f2e8;
 color:#2b2b2b;
 }
 
@@ -15,7 +15,7 @@ color:#2b2b2b;
 ===================================================== */
 
 .page-characters{
-background:#ebe7e1;
+background:#f5f2e8;
 
 background-image:
 radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
@@ -35,7 +35,7 @@ background:#f4efe6;
 
 .site-header{
 width:100%;
-background:#a5856a;
+background:#c4a484;
 }
 
 .site-banner{
@@ -60,7 +60,7 @@ color:#f4efe6;
 
 padding:18px 28px;
 
-background:#a5856a;
+background:#c4a484;
 
 color:#f4efe6;
 
@@ -87,12 +87,12 @@ font-size:14px;
 
 padding:6px 10px;
 
-background:#725f50;
+background:#a08560;
 border-radius:3px;
 }
 
 .site-nav a:hover{
-background:#5a432e;
+background:#8a6a4a;
 transform:translateY(1px);
 box-shadow:0 1px 0 rgba(0,0,0,0.25);
 }
@@ -145,7 +145,7 @@ margin:auto;
 
 width:260px;
 
-background:#a5856a;
+background:#c4a484;
 
 padding:20px;
 
@@ -201,7 +201,7 @@ padding-top:10px;
 width:100%;
 max-width:140px;
 
-background:white;
+background:#faf8f2;
 
 padding:10px 10px 10px 10px;
 
@@ -344,7 +344,7 @@ padding:10px;
 
 border:none;
 
-background:#7f5f42;
+background:#a08560;
 
 color:white;
 
@@ -358,13 +358,13 @@ border-radius:4px;
 
 .sidebar-button:hover{
 
-background:#6e4f34;
+background:#8a6a4a;
 
 }
 
 .list-controls button:hover{
 
-background:#725f50;
+background:#8a6a4a;
 
 }
 
@@ -393,7 +393,7 @@ padding:0.3rem 0.5rem;
 
 border-radius:4px;
 
-border:1px solid #a5856a;
+border:1px solid #c4a484;
 
 background:#f4efe6;
 
@@ -418,13 +418,15 @@ margin-bottom:1rem;
 
 .tag-category{
 
-background:#8b6a4d;
+background:#b89a6a;
 
 border-radius:4px;
 
-padding:6px 8px;
+padding:0;
 
 color:white;
+
+margin-bottom:8px;
 
 }
 
@@ -433,7 +435,29 @@ color:white;
 cursor:pointer;
 font-weight:600;
 
-margin-bottom:0.5rem;
+padding:8px 12px;
+
+background:#b89a6a;
+
+border-radius:4px;
+
+list-style:none;
+
+}
+
+.tag-category summary:hover{
+
+background:#a08560;
+
+}
+
+.tag-category[open] summary{
+
+background:#a08560;
+
+border-bottom-left-radius:0;
+
+border-bottom-right-radius:0;
 
 }
 
@@ -442,7 +466,14 @@ margin-bottom:0.5rem;
 display:flex;
 flex-direction:column;
 gap:0.25rem;
-margin-top:0.5rem;
+margin:0;
+padding:8px 12px;
+
+background:#ede3c8;
+
+border-bottom-left-radius:4px;
+
+border-bottom-right-radius:4px;
 
 }
 
@@ -451,12 +482,14 @@ margin-top:0.5rem;
 font-size:0.85rem;
 
 display:flex;
-align-items:center;
+align-items:flex-start;
 gap:0.25rem;
 
 cursor:pointer;
 
 user-select:none;
+
+text-align:left;
 
 }
 
@@ -478,9 +511,9 @@ margin-top:0.25rem;
 
 .tag{
 
-background:#e6d5bb;
+background:#ede3c8;
 
-border:1px solid #a88458;
+border:1px solid #c4a484;
 
 border-radius:999px;
 
