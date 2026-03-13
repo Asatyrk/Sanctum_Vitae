@@ -1,6 +1,6 @@
 {
   "name": "Test Story",
-  "logo": "../assets/test-story-logo.png",
+  "logo": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
   "summary": "This is a test story used for development.",
   "characters": [
     "characters/test.json"

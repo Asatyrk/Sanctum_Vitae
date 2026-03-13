@@ -1,6 +1,6 @@
 {
   "name": "Test Faction",
-  "logo": "../assets/test-faction-logo.png",
+  "logo": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
   "description": "This is a test faction used for development.",
   "characters": [
     "characters/test.json"
