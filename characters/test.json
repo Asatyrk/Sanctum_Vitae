@@ -10,22 +10,21 @@
   "bio": "This is a test character used for development.",
 
   "tags": {
-    "Species": ["Human"],
+    "Species (Class)": ["Humanoid"],
+    "Species (Specific)": ["Human"],
     "Gender": ["Nonbinary"],
     "Romantic Orientation": ["Aromantic"],
     "Sexual Orientation": ["Asexual"],
-    "Other Identities": ["Mage"],
+    "Other Identities": ["CrossDresser"],
     "Relationship Status": ["Single"],
-    "Age": ["Adult"],
-    "Family": ["Orphan"],
-    "Location (Basic)": ["World"],
-    "Location (General)": ["Kingdom"],
-    "Location (Specific)": ["City"],
-    "Element": ["Void"],
-    "Godhood": ["Mortal"],
-    "Stories": ["Test Story"],
-    "Special": ["Prototype"],
-    "Affiliation": ["None"],
-    "Role": ["Support"]
+    "Age": ["Adult (18+)"],
+    "Family": [],
+    "Location (Basic)": ["Main World"],
+    "Location (General)": ["Crowler"],
+    "Location (Specific)": [],
+    "Element": ["Mortalis (Normal)"],
+    "Godhood": ["Semigod"],
+    "Stories": [],
+    "Special": []
   }
 }
