@@ -199,7 +199,7 @@ padding-top:10px;
 .faction-card,
 .story-card {
 
-width:120px;
+width:130px;
 
 background:white;
 
@@ -255,7 +255,7 @@ border-radius:50%;
 
 position:absolute;
 
-top:-9px;
+top:-12px;
 left:50%;
 
 transform:translateX(-50%);
