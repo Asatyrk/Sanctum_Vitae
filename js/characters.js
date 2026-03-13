@@ -1,21 +1,21 @@
 const tagCategories = {
-  "Species": ["Human", "Elf", "Demon", "Beast", "Construct", "Spirit"],
-  "Gender": ["Male", "Female", "Nonbinary", "Agender", "Genderfluid"],
-  "Romantic Orientation": ["Aromantic", "Heteroromantic", "Homoromantic", "Biromantic"],
-  "Sexual Orientation": ["Asexual", "Heterosexual", "Homosexual", "Bisexual"],
-  "Other Identities": ["Mage", "Soldier", "Noble", "Commoner", "Neurodivergent"],
-  "Relationship Status": ["Single", "Dating", "Engaged", "Married", "Widowed"],
-  "Age": ["Youth", "Adult", "Elder"],
-  "Family": ["Orphan", "Royal", "Noble", "Commoner"],
-  "Location (Basic)": ["World", "Realm"],
-  "Location (General)": ["Kingdom", "Empire", "Province"],
-  "Location (Specific)": ["City", "Village", "Stronghold"],
-  "Element": ["Fire", "Water", "Earth", "Air", "Void"],
-  "Godhood": ["Mortal", "Demigod", "God", "Ascended"],
-  "Stories": ["Test Story"],
-  "Special": ["Legendary", "Cursed", "Prototype"],
-  "Affiliation": ["None", "Guild", "Order", "Faction"],
-  "Role": ["Protagonist", "Antagonist", "Support", "NPC"]
+  "Species": [],
+  "Gender": [],
+  "Romantic Orientation": [],
+  "Sexual Orientation": [],
+  "Other Identities": [],
+  "Relationship Status": [],
+  "Age": [],
+  "Family": [],
+  "Location (Basic)": [],
+  "Location (General)": [],
+  "Location (Specific)": [],
+  "Element": [],
+  "Godhood": [],
+  "Stories": [],
+  "Special": [],
+  "Affiliation": [],
+  "Role": []
 }
 
 let allCharacters = []
@@ -135,6 +135,15 @@ function buildTagFilterUI(){
   const container = document.getElementById("tag-filters")
   container.innerHTML = ""
 
+  const hasTags = Object.values(tagCategories).some(list => list.length)
+  if (!hasTags) {
+    const placeholder = document.createElement("div")
+    placeholder.className = "tag-placeholder"
+    placeholder.textContent = "Tag filters will appear once tags are added to characters."
+    container.appendChild(placeholder)
+    return
+  }
+
   Object.entries(tagCategories).forEach(([category, tagList]) => {
     const section = document.createElement("details")
     section.className = "tag-category"
@@ -239,14 +248,9 @@ function renderCharacters(){
     card.href = `character-profile.html?char=${char.path}`
     card.className = "char-card"
 
-    const tagHtml = Object.entries(char.tags || {})
-      .flatMap(([category, values]) => values.map(v => `<span class="tag" title="${category}">${v}</span>`))
-      .join("")
-
     card.innerHTML = `
       <img src="${char.headshot}">
       <p class="card-name">${char.name}</p>
-      <div class="card-tags">${tagHtml}</div>
     `
 
     grid.appendChild(card)
