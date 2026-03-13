@@ -7,5 +7,11 @@
   "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
   "fullbody": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
 
-  "bio": "This is a test character used for development."
+  "bio": "This is a test character used for development.",
+
+  "tags": {
+    "Gender": ["Nonbinary"],
+    "Sexual Orientation": ["Asexual"],
+    "Species": ["Human"]
+  }
 }

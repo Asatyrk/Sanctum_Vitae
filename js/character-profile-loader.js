@@ -36,10 +36,22 @@ function displayCharacter(char){
   document.getElementById("fullbody").src = char.fullbody
 
   const tags = Object.entries(char.tags || {})
-    .flatMap(([category, values]) => values.map(v => `<span class="tag" title="${category}">${v}</span>`))
+    .map(([category, values]) => {
+      if (!values || !values.length) return ""
+      const tagsHtml = values
+        .map(v => `<span class="tag" title="${category}">${v}</span>`)
+        .join("")
+
+      return `
+        <div class="tag-group">
+          <div class="tag-group-title">${category}</div>
+          <div class="tag-group-list">${tagsHtml}</div>
+        </div>
+      `
+    })
     .join("")
 
-  document.getElementById("tags").innerHTML = tags
+  document.getElementById("tags").innerHTML = tags || "<em>No tags set</em>"
 }
 
 loadCharacter()
