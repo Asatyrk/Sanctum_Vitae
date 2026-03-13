@@ -10,8 +10,22 @@
   "bio": "This is a test character used for development.",
 
   "tags": {
+    "Species": ["Human"],
     "Gender": ["Nonbinary"],
+    "Romantic Orientation": ["Aromantic"],
     "Sexual Orientation": ["Asexual"],
-    "Species": ["Human"]
+    "Other Identities": ["Mage"],
+    "Relationship Status": ["Single"],
+    "Age": ["Adult"],
+    "Family": ["Orphan"],
+    "Location (Basic)": ["World"],
+    "Location (General)": ["Kingdom"],
+    "Location (Specific)": ["City"],
+    "Element": ["Void"],
+    "Godhood": ["Mortal"],
+    "Stories": ["Test Story"],
+    "Special": ["Prototype"],
+    "Affiliation": ["None"],
+    "Role": ["Support"]
   }
 }

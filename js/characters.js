@@ -1,21 +1,21 @@
 const tagCategories = {
-  "Species": [],
-  "Gender": [],
-  "Romantic Orientation": [],
-  "Sexual Orientation": [],
-  "Other Identities": [],
-  "Relationship Status": [],
-  "Age": [],
-  "Family": [],
-  "Location (Basic)": [],
-  "Location (General)": [],
-  "Location (Specific)": [],
-  "Element": [],
-  "Godhood": [],
-  "Stories": [],
-  "Special": [],
-  "Affiliation": [],
-  "Role": []
+  "Species": ["Human", "Elf", "Demon", "Beast", "Construct", "Spirit"],
+  "Gender": ["Male", "Female", "Nonbinary", "Agender", "Genderfluid"],
+  "Romantic Orientation": ["Aromantic", "Heteroromantic", "Homoromantic", "Biromantic"],
+  "Sexual Orientation": ["Asexual", "Heterosexual", "Homosexual", "Bisexual"],
+  "Other Identities": ["Mage", "Soldier", "Noble", "Commoner", "Neurodivergent"],
+  "Relationship Status": ["Single", "Dating", "Engaged", "Married", "Widowed"],
+  "Age": ["Youth", "Adult", "Elder"],
+  "Family": ["Orphan", "Royal", "Noble", "Commoner"],
+  "Location (Basic)": ["World", "Realm"],
+  "Location (General)": ["Kingdom", "Empire", "Province"],
+  "Location (Specific)": ["City", "Village", "Stronghold"],
+  "Element": ["Fire", "Water", "Earth", "Air", "Void"],
+  "Godhood": ["Mortal", "Demigod", "God", "Ascended"],
+  "Stories": ["Test Story"],
+  "Special": ["Legendary", "Cursed", "Prototype"],
+  "Affiliation": ["None", "Guild", "Order", "Faction"],
+  "Role": ["Protagonist", "Antagonist", "Support", "NPC"]
 }
 
 let allCharacters = []
