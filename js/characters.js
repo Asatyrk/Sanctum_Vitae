@@ -19,7 +19,7 @@ characters.forEach(char=>{
 
 const card = document.createElement("a")
 
-card.href = `oc.html?char=${char.path}`
+card.href = `character-detail.html?char=${char.path}`
 
 card.className = "char-card"
 

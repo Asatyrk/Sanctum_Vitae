@@ -1,0 +1,7 @@
+[
+  {
+    "name": "Test Faction",
+    "logo": "../assets/test-faction-logo.png",
+    "path": "factions/test.json"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "name": "Test Story",
+  "logo": "../assets/test-story-logo.png",
+  "summary": "This is a test story used for development.",
+  "characters": [
+    "characters/test.json"
+  ]
+}

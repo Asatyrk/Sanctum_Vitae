@@ -1,0 +1,7 @@
+[
+  {
+    "name": "Test Story",
+    "logo": "../assets/test-story-logo.png",
+    "path": "stories/test.json"
+  }
+]
