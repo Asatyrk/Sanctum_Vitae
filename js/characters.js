@@ -302,10 +302,13 @@ let matchMode = 'and'
 
 async function loadCharacters(){
   const response = await fetch("characters/index.json")
-  allCharacters = await response.json()
+  const index = await response.json()
 
-  // Ensure every character has a tags object, even if empty.
-  allCharacters = allCharacters.map(c => ({ ...c, tags: c.tags || {} }))
+  allCharacters = await Promise.all(index.map(async (entry) => {
+    const charResponse = await fetch(entry.path)
+    const charData = await charResponse.json()
+    return { ...entry, ...charData }
+  }))
 
   buildTagFilterUI()
   setupControls()
