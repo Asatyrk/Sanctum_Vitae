@@ -203,7 +203,7 @@ padding-top:10px;
 
 .char-card,
 .faction-card,
-.story-card{.char-card{
+.story-card {
 
 width:150px;
 
@@ -296,22 +296,6 @@ margin-top:8px;
 
 font-size:15px;
 
-}
-.char-card:nth-child(3n){
-transform:rotate(1deg);
-}
-
-.char-card:nth-child(4n){
-transform:rotate(-3deg);
-}
-
-.char-card:nth-child(5n){
-transform:rotate(2deg);
-}
-
-.char-card:hover{
-transform:rotate(0deg) scale(1.06);
-z-index:5;
 }
 
 /* =====================================================
