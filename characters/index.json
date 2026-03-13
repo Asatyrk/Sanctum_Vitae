@@ -1,12 +1,52 @@
 [
   {
     "name": "Test",
-    "full_name": "Test Character",
-    "age": "Unknown",
-    "role": "Prototype",
-    "bio": "This is a test character used for development.",
     "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
-    "fullbody": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
+    "path": "characters/test.json"
+  }
+  {
+    "name": "Test",
+    "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
+    "path": "characters/test.json"
+  }
+  {
+    "name": "Test",
+    "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
+    "path": "characters/test.json"
+  }
+  {
+    "name": "Test",
+    "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
+    "path": "characters/test.json"
+  }
+  {
+    "name": "Test",
+    "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
+    "path": "characters/test.json"
+  }
+  {
+    "name": "Test",
+    "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
+    "path": "characters/test.json"
+  }
+  {
+    "name": "Test",
+    "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
+    "path": "characters/test.json"
+  }
+  {
+    "name": "Test",
+    "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
+    "path": "characters/test.json"
+  }
+  {
+    "name": "Test",
+    "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
+    "path": "characters/test.json"
+  }
+  {
+    "name": "Test",
+    "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
     "path": "characters/test.json"
   }
 ]
