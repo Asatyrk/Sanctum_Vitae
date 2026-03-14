@@ -1,17 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
   const pageName = document.body.dataset.page?.trim() || "Untitled";
 
-  const logoEl = document.querySelector(".site-logo");
-  if (!logoEl) return;
+  // Helper: wait until an element exists in the DOM
+  function waitForElement(selector, timeout = 3000) {
+    return new Promise((resolve, reject) => {
+      const el = document.querySelector(selector);
+      if (el) return resolve(el);
 
-  // Home page: show logo only
-  if (pageName.toLowerCase() === "home") {
-    logoEl.textContent = "Sanctum Vitae";
-  } else {
-    // Other pages: append page name
-    logoEl.textContent = `Sanctum Vitae | ${pageName}`;
+      const observer = new MutationObserver(() => {
+        const el = document.querySelector(selector);
+        if (el) {
+          observer.disconnect();
+          resolve(el);
+        }
+      });
+
+      observer.observe(document.body, { childList: true, subtree: true });
+
+      setTimeout(() => {
+        observer.disconnect();
+        reject(new Error(`Element ${selector} not found within ${timeout}ms`));
+      }, timeout);
+    });
   }
 
-  // Optional: also update browser tab
-  document.title = `Sanctum Vitae | ${pageName}`;
+  waitForElement(".site-logo")
+    .then(logoEl => {
+      if (pageName.toLowerCase() === "home") {
+        logoEl.textContent = "Sanctum Vitae";
+      } else {
+        logoEl.textContent = `Sanctum Vitae | ${pageName}`;
+      }
+
+      // Also update browser tab
+      document.title = `Sanctum Vitae | ${pageName}`;
+    })
+    .catch(err => console.warn(err));
 });
