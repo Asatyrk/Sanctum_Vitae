@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const pageName = document.body.dataset.page?.trim() || "Untitled";
 
-  function waitForElement(selector, timeout = 3000) {
+  // Wait for the header to be injected and .site-logo-text to exist
+  function waitForElement(selector, timeout = 5000) {
     return new Promise((resolve, reject) => {
       const el = document.querySelector(selector);
       if (el) return resolve(el);
@@ -23,13 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  waitForElement(".site-logo")
-    .then(logoEl => {
+  waitForElement(".site-logo-text")
+    .then(logoTextEl => {
       if (pageName.toLowerCase() === "home") {
-        logoEl.childNodes[1].textContent = "Sanctum Vitae";
+        logoTextEl.textContent = "Sanctum Vitae";
       } else {
-        logoEl.childNodes[1].textContent = `Sanctum Vitae | ${pageName}`;
+        logoTextEl.textContent = `Sanctum Vitae | ${pageName}`;
       }
+
+      // Also update the browser tab
       document.title = `Sanctum Vitae | ${pageName}`;
     })
     .catch(err => console.warn(err));
