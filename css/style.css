@@ -66,8 +66,9 @@ color:#f4efe6;
 #header-page-title {
   font-size: 22px;
   font-weight: bold;
-  margin-left: 20px;
-  color: #f4efe6; /* matches your logo */
+  margin-left: 12px;
+  color: #f4efe6; 
+  display: inline-block; 
 }
 
 /* =====================================================
