@@ -5,6 +5,4 @@ To add new character (/other):
 
 To do:
 - Fix logo (any temporary image until I fix it)
-- Change font - 
-- Do the header text for each page, currently broken
 - Add animations to the tag boxes (pulling down, closing up)

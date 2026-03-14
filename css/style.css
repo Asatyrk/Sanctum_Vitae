@@ -56,11 +56,19 @@ align-items:center;
 padding:14px 24px;
 }
 
-.site-logo{
-font-size:22px;
-font-weight:bold;
-font-family: "Castoro Titling", serif;
-color:#f4efe6;
+.site-logo {
+  display: flex;
+  align-items: center;  
+  font-family: "Castoro Titling", serif;
+  font-weight: bold;
+  color: #f4efe6;
+  font-size: 22px;
+  gap: 8px;   
+}
+
+.site-logo-img {
+  height: 32px;   
+  width: auto;
 }
 
 #header-page-title {

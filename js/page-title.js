@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const pageName = document.body.dataset.page?.trim() || "Untitled";
 
-  // Helper: wait until an element exists in the DOM
   function waitForElement(selector, timeout = 3000) {
     return new Promise((resolve, reject) => {
       const el = document.querySelector(selector);
@@ -27,12 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
   waitForElement(".site-logo")
     .then(logoEl => {
       if (pageName.toLowerCase() === "home") {
-        logoEl.textContent = "Sanctum Vitae";
+        logoEl.childNodes[1].textContent = "Sanctum Vitae";
       } else {
-        logoEl.textContent = `Sanctum Vitae | ${pageName}`;
+        logoEl.childNodes[1].textContent = `Sanctum Vitae | ${pageName}`;
       }
-
-      // Also update browser tab
       document.title = `Sanctum Vitae | ${pageName}`;
     })
     .catch(err => console.warn(err));
