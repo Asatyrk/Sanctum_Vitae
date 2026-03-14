@@ -35,7 +35,7 @@ background:#f4efe6;
 
 .site-header{
 width:100%;
-background:#7a5d3c;
+background:#b99b78;
 }
 
 .site-banner{
@@ -48,7 +48,8 @@ padding:14px 24px;
 .site-logo{
 font-size:22px;
 font-weight:bold;
-letter-spacing:1px;
+letter-spacing:normal;
+font-family:inherit;
 color:#f4efe6;
 }
 
@@ -60,7 +61,7 @@ color:#f4efe6;
 
 padding:18px 28px;
 
-background:#7a5d3c;
+background:#b99b78;
 
 color:#f4efe6;
 
@@ -87,12 +88,12 @@ font-size:14px;
 
 padding:6px 10px;
 
-background:#8b6a4d;
+background:#b99b78;
 border-radius:3px;
 }
 
 .site-nav a:hover{
-background:#7a5d3c;
+background:#b79a72;
 transform:translateY(1px);
 box-shadow:0 1px 0 rgba(0,0,0,0.25);
 }
@@ -115,10 +116,8 @@ box-shadow:none;
 font-size:34px;
 margin-bottom:24px;
 
-letter-spacing:0.15em;
-font-family:"Segoe UI", "Helvetica Neue", Arial, sans-serif;
 font-weight:700;
-color:#3a2e25;
+color:#2b2b2b;
 
 }
 
@@ -148,7 +147,7 @@ margin:auto;
 
 width:260px;
 
-background:#7a5d3c;
+background:#b99b78;
 
 padding:20px;
 
@@ -442,19 +441,19 @@ font-weight:600;
 
 padding:10px 12px;
 
-background:#8b6a4d;
+background:#a27d5f;
 
 border:none;
 
 list-style:none;
 
-font-family:"Segoe UI", "Helvetica Neue", Arial, sans-serif;
+font-family:inherit;
 
 }
 
 .tag-category summary:hover{
 
-background:#7a5d3c;
+background:#9a7b5b;
 
 }
 
@@ -486,9 +485,11 @@ display:flex;
 flex-direction:column;
 gap:0.25rem;
 margin:0;
-padding:10px 12px;
+padding:8px 12px 8px 0;
 
 background:#ffffff;
+width:100%;
+box-sizing:border-box;
 
 }
 
@@ -500,7 +501,7 @@ display:flex;
 align-items:center;
 gap:0.5rem;
 
-padding:6px 8px;
+padding:6px 8px 6px 0;
 
 border:1px solid #e1d5b9;
 
@@ -513,6 +514,9 @@ cursor:pointer;
 user-select:none;
 
 text-align:left;
+
+width:100%;
+box-sizing:border-box;
 
 }
 
