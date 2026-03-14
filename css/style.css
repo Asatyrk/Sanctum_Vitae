@@ -143,7 +143,7 @@ width:240px;
 
 background:#b99b78;
 
-padding:30px;
+padding:20px;
 
 border-radius:6px;
 
@@ -236,7 +236,7 @@ flex:1;
 #character-grid{
 display:grid;
 grid-template-columns:repeat(auto-fill, 140px);
-gap:30px;
+gap:32px;
 width:100%;
 }
 
