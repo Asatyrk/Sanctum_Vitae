@@ -369,46 +369,43 @@ transition:transform 0.2s;
 transform:rotate(-180deg);
 }
 
-/* tag list */
+/* tag list container */
 
 .tag-list{
 
-display:flex;
-flex-direction:column;
+padding:8px 12px;
+margin:0;
 
 background:#ffffff;
 
-padding:6px 10px;
-
 }
 
-/* tag option */
+/* tag row */
 
 .tag-option{
 
 display:flex;
 align-items:center;
+
 gap:8px;
 
-font-size:0.85rem;
+padding:4px 0;
 
-padding:4px 10px;
+font-size:0.9rem;
 
 cursor:pointer;
-user-select:none;
-
-text-align:left;
-justify-content:flex-start;
 
 }
 
+/* checkbox */
+
 .tag-option input{
+
 margin:0;
-flex-shrink:0;
-}
+padding:0;
 
-.tag-option input{
-accent-color:#7a5d3c;
+flex:0 0 auto;
+
 }
 
 /* =====================================================
