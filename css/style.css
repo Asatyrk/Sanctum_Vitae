@@ -463,7 +463,132 @@ opacity:1;
 
 
 /* =====================================================
-   TAG OPTIONS
+   TAG FILTERS
+===================================================== */
+
+.tag-filters{
+margin-top:10px;
+font-size:14px;
+}
+
+
+
+/* =====================================================
+   CATEGORY ACCORDION
+===================================================== */
+
+.tag-category{
+
+background:#f7f3e8;
+border-radius:6px;
+
+margin-bottom:8px;
+
+overflow:hidden;
+
+transition:
+box-shadow 0.25s ease,
+transform 0.15s ease;
+}
+
+.tag-category:hover{
+box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+
+
+/* =====================================================
+   CATEGORY HEADER
+===================================================== */
+
+.tag-category-header{
+
+width:100%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:10px 12px;
+
+font-weight:600;
+font-size:14px;
+
+background:#a27d5f;
+color:white;
+
+border:none;
+cursor:pointer;
+
+transition:
+background 0.25s ease,
+transform 0.05s ease;
+}
+
+.tag-category-header:hover{
+background:#8f6c51;
+}
+
+.tag-category-header:active{
+transform:scale(0.98);
+}
+
+
+
+/* =====================================================
+   ARROW
+===================================================== */
+
+.arrow{
+
+font-size:0.8rem;
+
+transition:
+transform 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+.tag-category.open .arrow{
+transform:rotate(180deg);
+}
+
+
+
+/* =====================================================
+   TAG LIST (ACCORDION CONTENT)
+===================================================== */
+
+.tag-list{
+
+height:0;
+overflow:hidden;
+
+background:#ffffff;
+
+display:flex;
+flex-direction:column;
+gap:4px;
+
+padding:0 12px;
+
+transition:
+height 0.35s cubic-bezier(.4,0,.2,1),
+padding 0.25s ease,
+opacity 0.25s ease;
+
+opacity:0;
+}
+
+.tag-category.open .tag-list{
+
+padding:8px 12px;
+opacity:1;
+
+}
+
+
+
+/* =====================================================
+   TAG OPTION ROW
 ===================================================== */
 
 .tag-option{
@@ -475,17 +600,178 @@ justify-content:flex-start;
 gap:8px;
 
 font-size:14px;
+
 cursor:pointer;
 
-text-align:left;
+padding:2px 4px;
+
+border-radius:4px;
+
+transition:
+background 0.15s ease,
+transform 0.1s ease;
+}
+
+.tag-option:hover{
+background:rgba(0,0,0,0.05);
+}
+
+.tag-option:active{
+transform:translateY(1px);
+}
+
+
+
+/* =====================================================
+   CHECKBOX
+===================================================== */
+
+.tag-option input[type="checkbox"]{
+
+margin:0;
+flex:0 0 auto;
+
+accent-color:#7a5d3c;
+
+cursor:pointer;
+
+}
+
+/* =====================================================
+   TAG FILTERS
+===================================================== */
+
+.tag-filters{
+margin-top:10px;
+font-size:14px;
+}
+
+
+
+/* =====================================================
+   CATEGORY ACCORDION
+===================================================== */
+
+.tag-category{
+
+background:#f7f3e8;
+border-radius:6px;
+
+margin-bottom:8px;
+
+overflow:hidden;
+
+transition:box-shadow 0.2s ease;
+}
+
+.tag-category:hover{
+box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.tag-category-header{
+
+width:100%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:10px 12px;
+
+background:#a27d5f;
+color:white;
+
+font-weight:600;
+font-size:14px;
+
+border:none;
+cursor:pointer;
+
+transition:background 0.2s ease;
+}
+
+.tag-category-header:hover{
+background:#8f6c51;
+}
+
+
+
+/* =====================================================
+   ARROW
+===================================================== */
+
+.arrow{
+
+font-size:0.8rem;
+
+transition:transform 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+.tag-category.open .arrow{
+transform:rotate(180deg);
+}
+
+
+
+/* =====================================================
+   TAG LIST (ANIMATED)
+===================================================== */
+
+.tag-list{
+
+height:0;
+overflow:hidden;
+
+background:white;
+
+display:flex;
+flex-direction:column;
+gap:4px;
+
+padding:0 12px;
+
+transition:
+height 0.35s cubic-bezier(.4,0,.2,1),
+padding 0.2s ease;
+
+}
+
+.tag-category.open .tag-list{
+padding:8px 12px;
+}
+
+
+
+/* =====================================================
+   TAG ROW
+===================================================== */
+
+.tag-option{
+
+display:flex;
+align-items:center;
+gap:8px;
+
+font-size:14px;
+
+cursor:pointer;
+
+border-radius:4px;
+padding:2px 4px;
 
 transition:background 0.15s ease;
 }
 
 .tag-option:hover{
-background:rgba(0,0,0,0.04);
-border-radius:4px;
+background:rgba(0,0,0,0.05);
 }
+
 
 
 /* checkbox */
@@ -496,99 +782,9 @@ margin:0;
 flex:0 0 auto;
 
 accent-color:#7a5d3c;
-
-outline:none;
-
 cursor:pointer;
-}
-
-
-
-/* =====================================================
-   TAG DISPLAY
-===================================================== */
-
-.card-tags{
-
-display:flex;
-flex-wrap:wrap;
-
-gap:4px;
-
-justify-content:center;
-
-margin-top:4px;
 
 }
-
-.tag{
-
-background:#fdfcf6;
-
-border:1px solid #8b6a4d;
-
-border-radius:999px;
-
-padding:2px 6px;
-
-font-size:11px;
-
-transition:
-transform 0.15s ease,
-background 0.2s ease;
-}
-
-.tag:hover{
-transform:translateY(-1px);
-background:#f6f2e6;
-}
-
-
-
-/* =====================================================
-   PROFILE TAG GROUPS
-===================================================== */
-
-.profile-tags{
-
-display:flex;
-flex-direction:column;
-
-gap:6px;
-
-}
-
-.tag-group{
-
-display:flex;
-flex-wrap:wrap;
-
-align-items:center;
-
-gap:6px;
-
-margin-top:4px;
-
-}
-
-.tag-group-title{
-
-font-weight:600;
-font-size:13px;
-
-color:#5a432e;
-
-}
-
-.tag-group-list{
-
-display:flex;
-flex-wrap:wrap;
-
-gap:4px;
-
-}
-
 
 /* =====================================================
    MISC
