@@ -127,6 +127,8 @@ flex-direction:column;
 
 gap:16px;
 
+flex-shrink:0;
+
 }
 
 
@@ -385,7 +387,7 @@ transform:rotate(180deg);
   display: flex;
   flex-direction: column;
   gap: 4px;
-  text-align: left; 
+  text-align: left; /* ensures everything aligns left */
 }
 
 /* individual tag row */
