@@ -1,19 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const titleContainer = document.getElementById("page-title");
-  if (!titleContainer) return;
+  // Get the page name from <body data-page>
+  const pageName = document.body.dataset.page?.trim() || "Untitled Page";
 
-  // fallback in case data-page is missing
-  const pageName = document.body.dataset.page || "Untitled";
+  // Update the header page title
+  const headerTitleEl = document.getElementById("header-page-title");
+  if (headerTitleEl) headerTitleEl.textContent = pageName;
 
-  // update <h1>
-  titleContainer.textContent = pageName;
-
-  // update browser tab title
+  // Optional: update the document title (browser tab)
   document.title = `Sanctum Vitae | ${pageName}`;
 
-  // update header logo
-  const logo = document.querySelector(".site-logo");
-  if (logo) {
-    logo.textContent = `Sanctum Vitae | ${pageName}`;
-  }
+  // Optional: also update logo text if you want
+  const logoEl = document.querySelector(".site-logo");
+  if (logoEl) logoEl.textContent = `Sanctum Vitae | ${pageName}`;
 });
