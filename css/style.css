@@ -315,7 +315,7 @@ margin-bottom:1rem;
 
 background:#f7f3e8;
 
-border:1px solid #c5b39b;
+border:none;
 
 border-radius:6px;
 
@@ -342,6 +342,8 @@ padding:10px 12px;
 background:#a27d5f;
 
 list-style:none;
+
+color:white;
 
 }
 
@@ -384,23 +386,29 @@ padding:6px 10px;
 
 .tag-option{
 
-font-size:0.85rem;
-
 display:flex;
 align-items:center;
+gap:8px;
 
-gap:0.5rem;
+font-size:0.85rem;
 
-padding:4px 0;
+padding:4px 10px;
 
 cursor:pointer;
-
 user-select:none;
+
+text-align:left;
+justify-content:flex-start;
 
 }
 
 .tag-option input{
 margin:0;
+flex-shrink:0;
+}
+
+.tag-option input{
+accent-color:#7a5d3c;
 }
 
 /* =====================================================
