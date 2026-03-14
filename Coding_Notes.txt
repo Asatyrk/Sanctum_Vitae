@@ -4,5 +4,10 @@ To add new character (/other):
 - Add to index.json so it shows up in layout
 
 To do:
-- Fix logo (any temporary image until I fix it)
 - Add animations to the tag boxes (pulling down, closing up)
+- Edit visual tweaks, font sizes, box sizes, etc
+- Character page, details, etc
+- Mockup and code factions 
+- Mockup and code stories
+- Ensure page base is setup correctly
+- Other pages, but maybe just that for now
