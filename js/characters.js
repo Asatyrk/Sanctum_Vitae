@@ -300,14 +300,7 @@ let allCharacters = []
 let selectedTags = {}
 let matchMode = 'and'
 
-
-
-/* =====================================================
-   LOAD CHARACTERS
-===================================================== */
-
 async function loadCharacters(){
-
   const response = await fetch("characters/index.json")
   const index = await response.json()
 
@@ -321,17 +314,9 @@ async function loadCharacters(){
   setupControls()
   applyUrlStateToUI()
   renderCharacters()
-
 }
 
-
-
-/* =====================================================
-   URL STATE
-===================================================== */
-
 function getUrlState(){
-
   const params = new URLSearchParams(window.location.search)
 
   const search = params.get("search") || ""
@@ -340,351 +325,205 @@ function getUrlState(){
 
   const tags = []
   const tagsParam = params.get("tags") || ""
-
-  if(tagsParam.trim()){
-    for(const part of tagsParam.split(",")){
+  if (tagsParam.trim()) {
+    for (const part of tagsParam.split(",")) {
       const [category, value] = part.split("|")
-      if(category && value) tags.push({category,value})
+      if (category && value) tags.push({ category, value })
     }
   }
 
-  return {search, sort, mode, tags}
-
+  return { search, sort, mode, tags }
 }
 
-
-
-function updateUrlStateInHistory(replace=false){
-
+function updateUrlStateInHistory(replace = false){
   const params = new URLSearchParams()
-
   const searchInput = document.getElementById("search-input")
   const sortSelect = document.getElementById("sort-select")
 
   const search = searchInput.value.trim()
   const sort = sortSelect.value
 
-  if(search) params.set("search", search)
-  if(sort !== "name-asc") params.set("sort", sort)
-  if(matchMode !== "and") params.set("mode", matchMode)
+  if (search) params.set("search", search)
+  if (sort && sort !== "name-asc") params.set("sort", sort)
+  if (matchMode && matchMode !== "and") params.set("mode", matchMode)
 
   const tags = []
-
   const checked = document.querySelectorAll("#tag-filters input[type=checkbox]:checked")
-
   checked.forEach(input => {
     const category = input.dataset.category
     const value = input.value
     tags.push(`${category}|${value}`)
   })
 
-  if(tags.length) params.set("tags", tags.join(","))
+  if (tags.length) params.set("tags", tags.join(","))
 
   const query = params.toString()
   const newUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname
 
-  if(replace){
+  if (replace) {
     window.history.replaceState({}, "", newUrl)
-  }else{
+  } else {
     window.history.pushState({}, "", newUrl)
   }
-
 }
 
-
-
-/* =====================================================
-   APPLY URL STATE
-===================================================== */
-
 function applyUrlStateToUI(){
-
-  const {search, sort, mode, tags} = getUrlState()
+  const { search, sort, mode, tags } = getUrlState()
 
   document.getElementById("search-input").value = search
   document.getElementById("sort-select").value = sort
   document.getElementById("match-mode").value = mode
-
   matchMode = mode
 
-  if(tags.length){
-
-    tags.forEach(({category,value}) => {
-
+  if (tags.length) {
+    tags.forEach(({ category, value }) => {
       const selector = `#tag-filters input[data-category="${category}"][value="${value}"]`
       const checkbox = document.querySelector(selector)
-
-      if(checkbox) checkbox.checked = true
-
+      if (checkbox) checkbox.checked = true
     })
-
   }
 
   updateSelectedTags()
-
 }
 
-
-
-/* =====================================================
-   RESET FILTERS
-===================================================== */
-
 function resetFilters(){
-
   document.getElementById("search-input").value = ""
   document.getElementById("sort-select").value = "name-asc"
   document.getElementById("match-mode").value = "and"
+  matchMode = 'and'
 
-  matchMode = "and"
-
-  document.querySelectorAll("#tag-filters input[type=checkbox]").forEach(cb=>{
+  document.querySelectorAll("#tag-filters input[type=checkbox]").forEach(cb => {
     cb.checked = false
   })
 
   selectedTags = {}
-
 }
 
-
-
-/* =====================================================
-   CONTROLS
-===================================================== */
-
 function setupControls(){
-
   const searchInput = document.getElementById("search-input")
   const sortSelect = document.getElementById("sort-select")
   const clearButton = document.getElementById("clear-filters")
   const matchModeSelect = document.getElementById("match-mode")
 
   const onControlChange = () => {
-
     renderCharacters()
     updateUrlStateInHistory(true)
-
   }
 
   searchInput.addEventListener("input", onControlChange)
   sortSelect.addEventListener("change", onControlChange)
-
-  matchModeSelect.addEventListener("change", ()=>{
+  matchModeSelect.addEventListener("change", () => {
     matchMode = matchModeSelect.value
     onControlChange()
   })
 
-  clearButton.addEventListener("click", ()=>{
+  clearButton.addEventListener("click", () => {
     resetFilters()
     renderCharacters()
     updateUrlStateInHistory(true)
   })
-
 }
 
-
-
-/* =====================================================
-   BUILD TAG FILTER UI
-===================================================== */
-
 function buildTagFilterUI(){
-
   const container = document.getElementById("tag-filters")
   container.innerHTML = ""
 
   const hasTags = Object.values(tagCategories).some(list => list.length)
-
-  if(!hasTags){
-
+  if (!hasTags) {
     const placeholder = document.createElement("div")
     placeholder.className = "tag-placeholder"
     placeholder.textContent = "Tag filters will appear once tags are added to characters."
-
     container.appendChild(placeholder)
     return
-
   }
 
-  Object.entries(tagCategories).forEach(([category,tagList])=>{
-
+  Object.entries(tagCategories).forEach(([category, tagList]) => {
     const section = document.createElement("div")
     section.className = "tag-category"
 
-
-
-    /* HEADER */
-
     const header = document.createElement("button")
     header.className = "tag-category-header"
-
     header.innerHTML = `
       ${category}
       <span class="arrow">▾</span>
-    `
+`
 
-    section.appendChild(header)
-
-
-
-    /* TAG LIST */
+section.appendChild(header)
 
     const list = document.createElement("div")
     list.className = "tag-list"
 
-
-
-    tagList.forEach(tag=>{
-
-      const id = `tag-${category.replace(/\s+/g,"-")}-${tag.replace(/\s+/g,"-")}`
-
+    tagList.forEach(tag => {
+      const id = `tag-${category.replace(/\s+/g, "-")}-${tag.replace(/\s+/g, "-")}`
       const wrapper = document.createElement("label")
       wrapper.className = "tag-option"
-
       wrapper.innerHTML = `
-        <input type="checkbox" data-category="${category}" value="${tag}" id="${id}">
+        <input type="checkbox" data-category="${category}" value="${tag}" id="${id}" />
         ${tag}
       `
 
-      wrapper.querySelector("input").addEventListener("change",()=>{
-
+      wrapper.querySelector("input").addEventListener("change", () => {
         updateSelectedTags()
         renderCharacters()
         updateUrlStateInHistory(true)
-
       })
 
       list.appendChild(wrapper)
-
     })
-
-
 
     section.appendChild(list)
     container.appendChild(section)
-
-
-
-    /* ACCORDION BEHAVIOUR */
-
-    header.addEventListener("click",()=>{
-
-      const isOpen = section.classList.contains("open")
-      const content = list
-
-
-
-      /* close others */
-
-      container.querySelectorAll(".tag-category").forEach(cat=>{
-
-        if(cat!==section){
-
-          const c = cat.querySelector(".tag-list")
-          cat.classList.remove("open")
-          c.style.height = "0px"
-
-        }
-
-      })
-
-
-
-      if(isOpen){
-
-        content.style.height = content.scrollHeight + "px"
-
-        requestAnimationFrame(()=>{
-          content.style.height = "0px"
-        })
-
-        section.classList.remove("open")
-
-      }else{
-
-        section.classList.add("open")
-
-        content.style.height = content.scrollHeight + "px"
-
-        content.addEventListener("transitionend",()=>{
-
-          if(section.classList.contains("open")){
-            content.style.height = "auto"
-          }
-
-        },{once:true})
-
-      }
-
-    })
-
   })
 
+  // Make it accordion: close other details when one opens
+  const details = container.querySelectorAll("details")
+  details.forEach(detail => {
+    detail.addEventListener("toggle", () => {
+      if (detail.open) {
+        details.forEach(other => {
+          if (other !== detail) other.open = false
+        })
+      }
+    })
+  })
 }
-
-
-
-/* =====================================================
-   TAG STATE
-===================================================== */
 
 function updateSelectedTags(){
-
   selectedTags = {}
-
   const checked = document.querySelectorAll("#tag-filters input[type=checkbox]:checked")
-
-  checked.forEach(input=>{
-
+  checked.forEach(input => {
     const category = input.dataset.category
-
     selectedTags[category] = selectedTags[category] || new Set()
     selectedTags[category].add(input.value)
-
   })
-
 }
-
-
-
-/* =====================================================
-   TAG MATCHING
-===================================================== */
 
 function matchesTags(character){
+  if (!Object.keys(selectedTags).length) return true
 
-  if(!Object.keys(selectedTags).length) return true
-
-  const categoryMatcher = (category,tags)=>{
-
+  const categoryMatcher = (category, tags) => {
     const charTags = character.tags?.[category] || []
-
-    if(matchMode==="and"){
+    if (matchMode === "and") {
+      // AND: character must have ALL selected tags in this category
       return Array.from(tags).every(tag => charTags.includes(tag))
-    }else{
+    } else {
+      // OR: character must have ANY selected tag in this category
       return charTags.some(t => tags.has(t))
     }
-
   }
 
-  if(matchMode==="or"){
-    return Object.entries(selectedTags).some(([category,tags]) => categoryMatcher(category,tags))
-  }else{
-    return Object.entries(selectedTags).every(([category,tags]) => categoryMatcher(category,tags))
+  if (matchMode === "or") {
+    // OR between categories: match if any category matches
+    return Object.entries(selectedTags).some(([category, tags]) => categoryMatcher(category, tags))
+  } else {
+    // AND between categories: match if all categories match
+    return Object.entries(selectedTags).every(([category, tags]) => categoryMatcher(category, tags))
   }
-
 }
 
-
-
-/* =====================================================
-   SEARCH
-===================================================== */
-
 function matchesSearch(character){
-
   const query = document.getElementById("search-input").value.trim().toLowerCase()
-  if(!query) return true
+  if (!query) return true
 
   const haystack = [
     character.name,
@@ -693,43 +532,27 @@ function matchesSearch(character){
     character.bio,
     ...(Object.values(character.tags || {}).flat())
   ]
-  .filter(Boolean)
-  .join(" ")
-  .toLowerCase()
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase()
 
   return haystack.includes(query)
-
 }
 
-
-
-/* =====================================================
-   SORTING
-===================================================== */
-
 function sortCharacters(characters){
-
   const sortKey = document.getElementById("sort-select").value
   const sorted = [...characters]
 
-  if(sortKey==="name-desc"){
-    sorted.sort((a,b)=>b.name.localeCompare(a.name))
-  }else{
-    sorted.sort((a,b)=>a.name.localeCompare(b.name))
+  if (sortKey === "name-desc") {
+    sorted.sort((a, b) => b.name.localeCompare(a.name))
+  } else {
+    sorted.sort((a, b) => a.name.localeCompare(b.name))
   }
 
   return sorted
-
 }
 
-
-
-/* =====================================================
-   RENDER
-===================================================== */
-
 function renderCharacters(){
-
   const grid = document.getElementById("character-grid")
   grid.innerHTML = ""
 
@@ -739,21 +562,16 @@ function renderCharacters(){
 
   const sorted = sortCharacters(filtered)
 
-  if(!sorted.length){
-
+  if (!sorted.length) {
     const empty = document.createElement("p")
     empty.className = "no-results"
     empty.textContent = "No characters match your filters."
-
     grid.appendChild(empty)
     return
-
   }
 
-  sorted.forEach(char=>{
-
+  sorted.forEach(char => {
     const card = document.createElement("a")
-
     card.href = `character-profile.html?char=${char.path}`
     card.className = "char-card"
 
@@ -763,11 +581,7 @@ function renderCharacters(){
     `
 
     grid.appendChild(card)
-
   })
-
 }
-
-
 
 loadCharacters()
