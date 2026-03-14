@@ -88,14 +88,14 @@ font-size:14px;
 
 padding:6px 10px;
 
-background:#b99b78;
+background:#7a5d3c;
 border-radius:3px;
 }
 
 .site-nav a:hover{
-background:#b79a72;
-transform:translateY(1px);
-box-shadow:0 1px 0 rgba(0,0,0,0.25);
+background:#7a5d3c;
+transform:translateY(0);
+box-shadow:none;
 }
 
 /* =====================================================
@@ -346,7 +346,7 @@ padding:10px;
 
 border:none;
 
-background:#b99b78;
+background:#7a5d3c;
 
 color:white;
 
@@ -360,14 +360,14 @@ border-radius:4px;
 
 .sidebar-button:hover{
 
-background:#b79a72;
+background:#7a5d3c;
 
 }
 
 .list-controls button,
 .list-controls button:hover{
 
-background:#b99b78;
+background:#7a5d3c;
 
 color:white;
 
@@ -490,7 +490,7 @@ display:flex;
 flex-direction:column;
 gap:0.25rem;
 margin:0;
-padding:8px 12px 8px 0;
+padding:0;
 
 background:#ffffff;
 width:100%;
@@ -503,7 +503,7 @@ box-sizing:border-box;
 font-size:0.85rem;
 
 display:flex;
-justify-content:flex-start;
+justify-content:flex-start !important;
 align-items:center;
 gap:0.5rem;
 
@@ -517,7 +517,7 @@ cursor:pointer;
 
 user-select:none;
 
-text-align:left;
+text-align:left !important;
 
 width:100%;
 box-sizing:border-box;
