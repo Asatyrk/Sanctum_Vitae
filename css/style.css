@@ -121,7 +121,7 @@ font-weight:700;
 .characters-layout{
 
 display:flex;
-align-items:flex-start;
+align-items:flex-center;
 
 gap:60px;
 
