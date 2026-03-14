@@ -1,21 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const pageName = document.body.dataset.page?.trim() || "Untitled Page";
+  const pageName = document.body.dataset.page?.trim() || "Untitled";
 
-  const headerTitleEl = document.getElementById("header-page-title");
   const logoEl = document.querySelector(".site-logo");
+  if (!logoEl) return;
 
-  // Home page: hide header page title
+  // Home page: show logo only
   if (pageName.toLowerCase() === "home") {
-    if (headerTitleEl) headerTitleEl.style.display = "none";
+    logoEl.textContent = "Sanctum Vitae";
   } else {
-    // Other pages: show header page title next to logo
-    if (headerTitleEl) {
-      headerTitleEl.textContent = pageName;
-      headerTitleEl.style.display = "inline-block";
-    }
+    // Other pages: append page name
+    logoEl.textContent = `Sanctum Vitae | ${pageName}`;
   }
 
+  // Optional: also update browser tab
   document.title = `Sanctum Vitae | ${pageName}`;
-
-  if (logoEl) logoEl.textContent = "Sanctum Vitae";
 });
