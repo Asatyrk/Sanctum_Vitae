@@ -348,7 +348,7 @@ font-size:15px;
 
 .tag-filters{
 margin-top:10px;
-font-size:14px;
+font-size: 14px;
 }
 
 
@@ -357,15 +357,13 @@ font-size:14px;
 .tag-category{
 
 background:#f7f3e8;
+
 border-radius:6px;
+
 overflow:hidden;
+
 margin-bottom:8px;
 
-transition:box-shadow 0.25s ease;
-}
-
-.tag-category:hover{
-box-shadow:0 2px 6px rgba(0,0,0,0.08);
 }
 
 
@@ -380,18 +378,15 @@ align-items:center;
 cursor:pointer;
 
 font-weight:600;
+
 padding:10px 12px;
 
 background:#a27d5f;
+
 color:white;
 
 list-style:none;
 
-transition:background 0.25s ease;
-}
-
-.tag-category summary:hover{
-background:#8f6c51;
 }
 
 
@@ -407,10 +402,11 @@ display:none;
 .tag-category summary::after{
 
 content:"▾";
+
 font-size:0.8rem;
 
-transition:
-transform 0.35s cubic-bezier(.4,0,.2,1);
+transition:transform 0.2s;
+
 }
 
 .tag-category[open] summary::after{
@@ -419,80 +415,33 @@ transform:rotate(180deg);
 
 
 /* tag list container */
-
-.tag-list{
-
-background:#ffffff;
-
-padding:0 12px;
-
-display:flex;
-flex-direction:column;
-gap:4px;
-
-text-align:left;
-
-max-height:0;
-opacity:0;
-
-overflow:hidden;
-
-transition:
-max-height 0.45s cubic-bezier(.4,0,.2,1),
-opacity 0.25s ease,
-padding 0.25s ease;
+.tag-list {
+  background: #ffffff;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left; 
 }
-
-
-/* open accordion animation */
-
-.tag-category[open] .tag-list{
-
-max-height:400px;
-opacity:1;
-
-padding:8px 12px;
-}
-
 
 /* individual tag row */
-
-.tag-option{
-
-display:flex;
-align-items:center;
-justify-content:flex-start;
-
-gap:8px;
-
-font-size:14px;
-cursor:pointer;
-
-text-align:left;
-
-transition:background 0.15s ease;
+.tag-option {
+  display: flex;
+  align-items: center; 
+  justify-content: flex-start; 
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
 }
-
-.tag-option:hover{
-background:rgba(0,0,0,0.03);
-border-radius:4px;
-}
-
 
 /* checkbox */
-
-.tag-option input[type="checkbox"]{
-
-margin:0;
-flex:0 0 auto;
-
-accent-color:#7a5d3c;
-
-outline:none;
-
-cursor:pointer;
+.tag-option input[type="checkbox"] {
+  margin: 0;
+  flex: 0 0 auto;       
+  accent-color: #7a5d3c; 
+  outline: none;        
 }
-
 
 
 /* =====================================================
@@ -524,30 +473,12 @@ padding:2px 6px;
 
 font-size:11px;
 
-transition:
-transform 0.15s ease,
-background 0.2s ease;
 }
-
-.tag:hover{
-transform:translateY(-1px);
-background:#f6f2e6;
-}
-
 
 
 /* =====================================================
    PROFILE TAG GROUPS
 ===================================================== */
-
-.profile-tags{
-
-display:flex;
-flex-direction:column;
-
-gap:6px;
-
-}
 
 .tag-group{
 
@@ -565,6 +496,7 @@ margin-top:4px;
 .tag-group-title{
 
 font-weight:600;
+
 font-size:13px;
 
 color:#5a432e;
@@ -577,6 +509,15 @@ display:flex;
 flex-wrap:wrap;
 
 gap:4px;
+
+}
+
+.profile-tags{
+
+display:flex;
+flex-direction:column;
+
+gap:6px;
 
 }
 

@@ -438,17 +438,9 @@ function buildTagFilterUI(){
   }
 
   Object.entries(tagCategories).forEach(([category, tagList]) => {
-    const section = document.createElement("div")
+    const section = document.createElement("details")
     section.className = "tag-category"
-
-    const header = document.createElement("button")
-    header.className = "tag-category-header"
-    header.innerHTML = `
-      ${category}
-      <span class="arrow">▾</span>
-`
-
-section.appendChild(header)
+    section.innerHTML = `<summary>${category}</summary>`
 
     const list = document.createElement("div")
     list.className = "tag-list"
