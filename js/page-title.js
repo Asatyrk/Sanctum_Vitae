@@ -1,20 +1,19 @@
-document.addEventListener("DOMContentLoaded", ()=>{
+document.addEventListener("DOMContentLoaded", () => {
+  const titleContainer = document.getElementById("page-title");
+  if (!titleContainer) return;
 
-const titleContainer = document.getElementById("page-title");
+  // fallback in case data-page is missing
+  const pageName = document.body.dataset.page || "Untitled";
 
-if(!titleContainer) return;
+  // update <h1>
+  titleContainer.textContent = pageName;
 
-const pageName = document.body.dataset.page;
+  // update browser tab title
+  document.title = `Sanctum Vitae | ${pageName}`;
 
-if(!pageName) return;
-
-titleContainer.textContent = pageName;
-
-document.title = `Sanctum Vitae | ${pageName}`;
-
-const logo = document.querySelector(".site-logo");
-if (logo) {
-  logo.textContent = `Sanctum Vitae | ${pageName}`;
-}
-
+  // update header logo
+  const logo = document.querySelector(".site-logo");
+  if (logo) {
+    logo.textContent = `Sanctum Vitae | ${pageName}`;
+  }
 });
