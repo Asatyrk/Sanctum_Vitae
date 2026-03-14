@@ -5,7 +5,6 @@
 body{
 margin:0;
 font-family:"Courier New", Courier, monospace;
-
 background:#f3f1ec;
 color:#2b2b2b;
 }
@@ -15,6 +14,7 @@ color:#2b2b2b;
 ===================================================== */
 
 .page-characters{
+
 background:#f3f1ec;
 
 background-image:
@@ -23,6 +23,7 @@ radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
 
 background-size:8px 8px;
 background-position:0 0,4px 4px;
+
 }
 
 .page-paper{
@@ -48,28 +49,7 @@ padding:14px 24px;
 .site-logo{
 font-size:22px;
 font-weight:bold;
-letter-spacing:normal;
-font-family:inherit;
 color:#f4efe6;
-}
-
-/* =====================================================
-   PAGE HEADER
-===================================================== */
-
-.page-header{
-
-padding:18px 28px;
-
-background:#b99b78;
-
-color:#f4efe6;
-
-}
-
-.page-header h1{
-margin:0;
-font-size:28px;
 }
 
 /* =====================================================
@@ -82,6 +62,7 @@ gap:14px;
 }
 
 .site-nav a{
+
 color:#f4efe6;
 text-decoration:none;
 font-size:14px;
@@ -90,26 +71,16 @@ padding:6px 10px;
 
 background:#7a5d3c;
 border-radius:3px;
+
 }
 
 .site-nav a:hover{
 background:#7a5d3c;
-transform:translateY(0);
-box-shadow:none;
 }
 
 /* =====================================================
-   PAGE WRAPPER
+   PAGE TITLE
 ===================================================== */
-
-.page-container{
-max-width:none;
-margin:0;
-padding:0;
-background:none;
-border:none;
-box-shadow:none;
-}
 
 #page-title{
 
@@ -117,7 +88,6 @@ font-size:34px;
 margin-bottom:24px;
 
 font-weight:700;
-color:#2b2b2b;
 
 }
 
@@ -128,7 +98,6 @@ color:#2b2b2b;
 .characters-layout{
 
 display:flex;
-
 align-items:flex-start;
 
 gap:80px;
@@ -136,12 +105,13 @@ gap:80px;
 padding:40px 80px;
 
 max-width:1600px;
-
 margin:auto;
 
 }
 
-/* sidebar */
+/* =====================================================
+   SIDEBAR
+===================================================== */
 
 .characters-sidebar{
 
@@ -155,17 +125,15 @@ border-radius:6px;
 
 display:flex;
 flex-direction:column;
+
 gap:14px;
 
 }
 
 .sidebar-section{
-
 display:flex;
 flex-direction:column;
-
 gap:6px;
-
 }
 
 .sidebar-label{
@@ -177,8 +145,52 @@ color:white;
 
 }
 
+/* sidebar inputs */
+
+.characters-sidebar input,
+.characters-sidebar select{
+
+width:100%;
+
+padding:8px 10px;
+
+border:none;
+
+background:#e8e2d7;
+
+border-radius:4px;
+
+font-family:inherit;
+font-size:14px;
+
+}
+
+/* sidebar button */
+
+.sidebar-button{
+
+padding:10px;
+
+border:none;
+
+background:#7a5d3c;
+
+color:white;
+
+font-family:inherit;
+
+cursor:pointer;
+
+border-radius:4px;
+
+}
+
+.sidebar-button:hover{
+background:#6b5032;
+}
+
 /* =====================================================
-   GRID LAYOUTS
+   CHARACTER GRID
 ===================================================== */
 
 #character-grid,
@@ -187,25 +199,29 @@ color:white;
 #characters-list{
 
 display:grid;
+
 grid-template-columns:repeat(5, 1fr);
+
 gap:30px;
+
 padding-top:10px;
 
 }
+
 /* =====================================================
    POLAROID CARDS
 ===================================================== */
 
 .char-card,
 .faction-card,
-.story-card {
+.story-card{
 
 width:100%;
 max-width:140px;
 
 background:#ffffff;
 
-padding:10px 10px 10px 10px;
+padding:10px;
 
 text-align:center;
 
@@ -221,25 +237,20 @@ transition:transform 0.2s;
 
 }
 
-.char-card:nth-child(odd){
-transform:rotate(-3deg);
-}
+/* random corkboard tilt */
 
-.char-card:nth-child(even){
-transform:rotate(2deg);
-}
+.char-card:nth-child(odd){ transform:rotate(-3deg); }
+.char-card:nth-child(even){ transform:rotate(2deg); }
+.char-card:nth-child(5n){ transform:rotate(-1deg); }
+.char-card:nth-child(7n){ transform:rotate(4deg); }
 
-.char-card:nth-child(5n){
-transform:rotate(-1deg);
-}
-
-.char-card:nth-child(7n){
-transform:rotate(4deg);
-}
+/* hover straighten */
 
 .char-card:hover{
+
 transform:rotate(0deg) scale(1.08);
 z-index:10;
+
 }
 
 /* push pin */
@@ -264,13 +275,7 @@ transform:translateX(-50%);
 
 }
 
-.char-card:hover,
-.faction-card:hover,
-.story-card:hover{
-
-transform:rotate(0deg) scale(1.04);
-
-}
+/* card image */
 
 .char-card img,
 .faction-card img,
@@ -286,6 +291,8 @@ background:black;
 
 }
 
+/* name */
+
 .card-name{
 
 margin-top:8px;
@@ -295,131 +302,14 @@ font-size:15px;
 }
 
 /* =====================================================
-   LIST CONTROLS
-===================================================== */
-
-.list-controls{
-
-display:flex;
-flex-wrap:wrap;
-gap:12px;
-
-align-items:center;
-
-margin-bottom:1rem;
-
-}
-
-.list-controls label{
-
-margin-right:0.25rem;
-font-size:0.9rem;
-
-}
-
-/* inputs */
-
-.characters-sidebar input,
-.characters-sidebar select{
-
-width:100%;
-
-padding:8px 10px;
-
-border:none;
-
-background:#e8e2d7;
-
-border-radius:4px;
-
-font-family:"Courier New", monospace;
-
-font-size:14px;
-
-}
-
-/* buttons */
-
-.sidebar-button{
-
-padding:10px;
-
-border:none;
-
-background:#7a5d3c;
-
-color:white;
-
-font-family:"Courier New", monospace;
-
-cursor:pointer;
-
-border-radius:4px;
-
-}
-
-.sidebar-button:hover{
-
-background:#7a5d3c;
-
-}
-
-.list-controls button,
-.list-controls button:hover{
-
-background:#7a5d3c;
-
-color:white;
-
-border:none;
-
-}
-
-/* =====================================================
-   MATCH MODE
-===================================================== */
-
-.match-mode{
-
-display:flex;
-align-items:center;
-gap:0.25rem;
-margin-bottom:1rem;
-
-}
-
-.match-mode label{
-
-font-size:0.9rem;
-
-}
-
-.match-mode select{
-
-padding:0.3rem 0.5rem;
-
-border-radius:4px;
-
-border:1px solid #8b6a4d;
-
-background:#ffffff;
-
-color:#2b2b2b;
-
-font-family:"Courier New", Courier, monospace;
-
-}
-
-/* =====================================================
    TAG FILTERS
 ===================================================== */
 
 .tag-filters{
-
-display:block;
 margin-bottom:1rem;
-
 }
+
+/* accordion category */
 
 .tag-category{
 
@@ -435,6 +325,8 @@ margin-bottom:0.75rem;
 
 }
 
+/* category header */
+
 .tag-category summary{
 
 display:flex;
@@ -442,31 +334,24 @@ justify-content:space-between;
 align-items:center;
 
 cursor:pointer;
+
 font-weight:600;
 
 padding:10px 12px;
 
 background:#a27d5f;
 
-border:none;
-
 list-style:none;
 
-font-family:inherit;
-
 }
 
-.tag-category summary:hover{
-
-background:#9a7b5b;
-
-}
+/* remove default marker */
 
 .tag-category summary::-webkit-details-marker{
-
 display:none;
-
 }
+
+/* dropdown arrow */
 
 .tag-category summary::after{
 
@@ -479,53 +364,43 @@ transition:transform 0.2s;
 }
 
 .tag-category[open] summary::after{
-
 transform:rotate(-180deg);
-
 }
+
+/* tag list */
 
 .tag-list{
 
 display:flex;
 flex-direction:column;
-gap:0.25rem;
-margin:0;
-padding:0;
 
 background:#ffffff;
-width:100%;
-box-sizing:border-box;
+
+padding:6px 10px;
 
 }
+
+/* tag option */
 
 .tag-option{
 
 font-size:0.85rem;
 
 display:flex;
-justify-content:flex-start !important;
 align-items:center;
+
 gap:0.5rem;
 
 padding:4px 0;
-
-border:none;
-
-background:transparent;
 
 cursor:pointer;
 
 user-select:none;
 
-text-align:left !important;
-
-width:100%;
-box-sizing:border-box;
-
 }
 
-.tag-option input[type="checkbox"]{
-  margin:0;
+.tag-option input{
+margin:0;
 }
 
 /* =====================================================
@@ -536,6 +411,7 @@ box-sizing:border-box;
 
 display:flex;
 flex-wrap:wrap;
+
 gap:4px;
 
 justify-content:center;
@@ -558,11 +434,17 @@ font-size:0.7rem;
 
 }
 
+/* =====================================================
+   PROFILE TAG GROUPS
+===================================================== */
+
 .tag-group{
 
 display:flex;
 flex-wrap:wrap;
+
 align-items:center;
+
 gap:0.5rem;
 
 margin-top:0.3rem;
@@ -572,6 +454,7 @@ margin-top:0.3rem;
 .tag-group-title{
 
 font-weight:600;
+
 font-size:0.85rem;
 
 color:#5a432e;
@@ -582,6 +465,7 @@ color:#5a432e;
 
 display:flex;
 flex-wrap:wrap;
+
 gap:0.25rem;
 
 }
@@ -590,6 +474,7 @@ gap:0.25rem;
 
 display:flex;
 flex-direction:column;
+
 gap:0.5rem;
 
 }
@@ -601,6 +486,7 @@ gap:0.5rem;
 .no-results{
 
 color:#5a432e;
+
 font-style:italic;
 
 }
