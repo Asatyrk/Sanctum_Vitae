@@ -10,4 +10,11 @@ if(!pageName) return;
 
 titleContainer.textContent = pageName;
 
+document.title = `Sanctum Vitae | ${pageName}`;
+
+const logo = document.querySelector(".site-logo");
+if (logo) {
+  logo.textContent = `Sanctum Vitae | ${pageName}`;
+}
+
 });
