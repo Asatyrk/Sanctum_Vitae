@@ -9,6 +9,7 @@ background:#f3f1ec;
 color:#2b2b2b;
 }
 
+
 /* =====================================================
    PAGE BACKGROUNDS
 ===================================================== */
@@ -29,6 +30,7 @@ background-position:0 0,4px 4px;
 .page-paper{
 background:#f4efe6;
 }
+
 
 /* =====================================================
    SITE HEADER
@@ -52,6 +54,7 @@ font-weight:bold;
 color:#f4efe6;
 }
 
+
 /* =====================================================
    NAVIGATION
 ===================================================== */
@@ -62,34 +65,29 @@ gap:14px;
 }
 
 .site-nav a{
-
 color:#f4efe6;
 text-decoration:none;
 font-size:14px;
-
 padding:6px 10px;
-
 background:#7a5d3c;
 border-radius:3px;
-
 }
 
 .site-nav a:hover{
-background:#7a5d3c;
+background:#6b5032;
 }
+
 
 /* =====================================================
    PAGE TITLE
 ===================================================== */
 
 #page-title{
-
 font-size:34px;
 margin-bottom:24px;
-
 font-weight:700;
-
 }
+
 
 /* =====================================================
    CHARACTER PAGE LAYOUT
@@ -100,7 +98,7 @@ font-weight:700;
 display:flex;
 align-items:flex-start;
 
-gap:80px;
+gap:60px;
 
 padding:40px 80px;
 
@@ -108,6 +106,7 @@ max-width:1600px;
 margin:auto;
 
 }
+
 
 /* =====================================================
    SIDEBAR
@@ -126,9 +125,12 @@ border-radius:6px;
 display:flex;
 flex-direction:column;
 
-gap:14px;
+gap:16px;
 
 }
+
+
+/* sidebar sections */
 
 .sidebar-section{
 display:flex;
@@ -136,14 +138,15 @@ flex-direction:column;
 gap:6px;
 }
 
-.sidebar-label{
 
+/* sidebar labels */
+
+.sidebar-label{
 font-size:14px;
 font-weight:bold;
-
 color:white;
-
 }
+
 
 /* sidebar inputs */
 
@@ -163,7 +166,10 @@ border-radius:4px;
 font-family:inherit;
 font-size:14px;
 
+box-sizing:border-box;
+
 }
+
 
 /* sidebar button */
 
@@ -189,37 +195,31 @@ border-radius:4px;
 background:#6b5032;
 }
 
+
 /* =====================================================
    CHARACTER GRID
 ===================================================== */
 
-#character-grid,
-#faction-grid,
-#story-grid,
-#characters-list{
+#character-grid{
 
 display:grid;
 
-grid-template-columns:repeat(5, 1fr);
+grid-template-columns:repeat(5, 140px);
 
 gap:30px;
 
-padding-top:10px;
-
 }
+
 
 /* =====================================================
    POLAROID CARDS
 ===================================================== */
 
-.char-card,
-.faction-card,
-.story-card{
+.char-card{
 
-width:100%;
-max-width:140px;
+width:140px;
 
-background:#ffffff;
+background:white;
 
 padding:10px;
 
@@ -237,14 +237,16 @@ transition:transform 0.2s;
 
 }
 
+
 /* random corkboard tilt */
 
-.char-card:nth-child(odd){ transform:rotate(-3deg); }
-.char-card:nth-child(even){ transform:rotate(2deg); }
-.char-card:nth-child(5n){ transform:rotate(-1deg); }
-.char-card:nth-child(7n){ transform:rotate(4deg); }
+.char-card:nth-child(odd){transform:rotate(-3deg);}
+.char-card:nth-child(even){transform:rotate(2deg);}
+.char-card:nth-child(5n){transform:rotate(-1deg);}
+.char-card:nth-child(7n){transform:rotate(4deg);}
 
-/* hover straighten */
+
+/* hover */
 
 .char-card:hover{
 
@@ -253,14 +255,15 @@ z-index:10;
 
 }
 
+
 /* push pin */
 
 .char-card::before{
 
 content:"";
 
-width:18px;
-height:18px;
+width:16px;
+height:16px;
 
 background:#b33a33;
 
@@ -268,28 +271,30 @@ border-radius:50%;
 
 position:absolute;
 
-top:-9px;
+top:-8px;
 left:50%;
 
 transform:translateX(-50%);
 
+box-shadow:0 2px 4px rgba(0,0,0,0.35);
+
 }
+
 
 /* card image */
 
-.char-card img,
-.faction-card img,
-.story-card img{
+.char-card img{
 
 width:100%;
 
-aspect-ratio:1 / 1;
+aspect-ratio:1/1;
 
 object-fit:cover;
 
 background:black;
 
 }
+
 
 /* name */
 
@@ -301,29 +306,30 @@ font-size:15px;
 
 }
 
+
 /* =====================================================
    TAG FILTERS
 ===================================================== */
 
 .tag-filters{
-margin-bottom:1rem;
+margin-top:10px;
 }
 
-/* accordion category */
+
+/* category accordion */
 
 .tag-category{
 
 background:#f7f3e8;
 
-border:none;
-
 border-radius:6px;
 
 overflow:hidden;
 
-margin-bottom:0.75rem;
+margin-bottom:8px;
 
 }
+
 
 /* category header */
 
@@ -341,44 +347,52 @@ padding:10px 12px;
 
 background:#a27d5f;
 
-list-style:none;
-
 color:white;
+
+list-style:none;
 
 }
 
-/* remove default marker */
+
+/* remove browser arrow */
 
 .tag-category summary::-webkit-details-marker{
 display:none;
 }
 
-/* dropdown arrow */
+
+/* arrow */
 
 .tag-category summary::after{
 
 content:"▾";
 
-font-size:0.85rem;
+font-size:0.8rem;
 
 transition:transform 0.2s;
 
 }
 
 .tag-category[open] summary::after{
-transform:rotate(-180deg);
+transform:rotate(180deg);
 }
 
-/* tag list container */
+
+/* tag list */
 
 .tag-list{
 
-padding:8px 12px;
-margin:0;
+background:white;
 
-background:#ffffff;
+padding:8px 12px;
+
+display:flex;
+flex-direction:column;
+
+gap:4px;
 
 }
+
 
 /* tag row */
 
@@ -389,24 +403,23 @@ align-items:center;
 
 gap:8px;
 
-padding:4px 0;
-
-font-size:0.9rem;
+font-size:14px;
 
 cursor:pointer;
 
 }
+
 
 /* checkbox */
 
 .tag-option input{
 
 margin:0;
-padding:0;
 
-flex:0 0 auto;
+accent-color:#7a5d3c;
 
 }
+
 
 /* =====================================================
    TAG DISPLAY
@@ -421,7 +434,7 @@ gap:4px;
 
 justify-content:center;
 
-margin-top:0.25rem;
+margin-top:4px;
 
 }
 
@@ -435,9 +448,10 @@ border-radius:999px;
 
 padding:2px 6px;
 
-font-size:0.7rem;
+font-size:11px;
 
 }
+
 
 /* =====================================================
    PROFILE TAG GROUPS
@@ -450,9 +464,9 @@ flex-wrap:wrap;
 
 align-items:center;
 
-gap:0.5rem;
+gap:6px;
 
-margin-top:0.3rem;
+margin-top:4px;
 
 }
 
@@ -460,7 +474,7 @@ margin-top:0.3rem;
 
 font-weight:600;
 
-font-size:0.85rem;
+font-size:13px;
 
 color:#5a432e;
 
@@ -471,7 +485,7 @@ color:#5a432e;
 display:flex;
 flex-wrap:wrap;
 
-gap:0.25rem;
+gap:4px;
 
 }
 
@@ -480,9 +494,10 @@ gap:0.25rem;
 display:flex;
 flex-direction:column;
 
-gap:0.5rem;
+gap:6px;
 
 }
+
 
 /* =====================================================
    MISC
@@ -502,8 +517,8 @@ color:#7a664e;
 
 font-style:italic;
 
-font-size:0.85rem;
+font-size:13px;
 
-padding:0.25rem 0.5rem;
+padding:4px;
 
 }
