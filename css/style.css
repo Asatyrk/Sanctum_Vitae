@@ -152,7 +152,7 @@ color:white;
 
 /* sidebar inputs */
 
-.characters-sidebar input,
+.characters-sidebar input:not([type="checkbox"]),
 .characters-sidebar select{
 
 width:100%;
