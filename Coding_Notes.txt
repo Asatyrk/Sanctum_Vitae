@@ -7,7 +7,14 @@ To do:
 - Add animations to the tag boxes (pulling down, closing up)
 - Edit visual tweaks, font sizes, box sizes, etc
 - Character page, details, etc 
-  - Partner, Relationships, backstory, trivia, aesthetics, pet, story, alt forms too?
+  - Partner
+  - Relationships
+  - Backstory
+  - Trivia
+  - Aesthetics
+  - Pet
+  - Story
+  - Alt forms too? 
 - Mockup and code factions 
 - Mockup and code stories
 - Ensure page base is setup correctly
