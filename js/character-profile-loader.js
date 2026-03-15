@@ -85,7 +85,7 @@ const title = name || "Unknown Character"
 const pageTitle = document.getElementById("page-title")
 if(pageTitle) pageTitle.textContent = title
 
-document.title = " Sanctum Vitae |" + title
+document.title = " Sanctum Vitae | " + title
 
 }
 
