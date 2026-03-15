@@ -307,7 +307,8 @@ async function loadCharacters(){
   allCharacters = await Promise.all(index.map(async (entry) => {
     const charResponse = await fetch(entry.path)
     const charData = await charResponse.json()
-    return { ...charData, ...entry }
+    const slug = entry.path.replace(".json","").split("/").pop()
+    return { ...charData, ...entry, slug }
   }))
 
   buildTagFilterUI()
@@ -563,17 +564,21 @@ function renderCharacters(){
   }
 
   sorted.forEach(char => {
-    const card = document.createElement("a")
-    card.href = `character-profile.html?char=${char.path}`
-    card.className = "char-card"
 
-    card.innerHTML = `
-      <img src="${char.headshot}">
-      <p class="card-name">${char.name}</p>
-    `
+  const slug = char.path.replace(".json","").split("/").pop()
 
-    grid.appendChild(card)
-  })
+  const card = document.createElement("a")
+  card.href = `character.html?char=${slug}`
+  card.className = "char-card"
+
+  card.innerHTML = `
+    <img src="${char.headshot}">
+    <p class="card-name">${char.name}</p>
+  `
+
+  grid.appendChild(card)
+
+})
 }
 
 loadCharacters()
