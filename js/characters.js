@@ -568,7 +568,7 @@ function renderCharacters(){
   const slug = char.path.replace(".json","").split("/").pop()
 
   const card = document.createElement("a")
-  card.href = `character.html?char=${slug}`
+  card.href = `character-profile.html?char=${slug}`
   card.className = "char-card"
 
   card.innerHTML = `
