@@ -7,17 +7,33 @@ return params.get("char")
 
 async function loadCharacter(){
 
-const path = getCharacter()
+const slug = getCharacter()
 
-if(!path){
+if(!slug){
 document.body.innerHTML = "No character selected"
 return
 }
 
+const path = `data/characters/${slug}.json`
+
+try{
+
 const response = await fetch(path)
+
+if(!response.ok){
+throw new Error("Character not found")
+}
+
 const char = await response.json()
 
 displayCharacter(char)
+
+}catch(err){
+
+document.querySelector(".page-container").innerHTML =
+"<h1>Character Not Found</h1><p>The requested character does not exist.</p>"
+
+}
 
 }
 
@@ -39,6 +55,8 @@ function listLinks(list,id){
 
 const el = document.getElementById(id)
 
+if(!el) return
+
 if(!list || list.length === 0){
 el.innerHTML = "<li>N/A</li>"
 return
@@ -48,7 +66,9 @@ el.innerHTML = list.map(item => {
 
 if(item.file){
 
-return `<li><a href="character.html?char=${item.file}">${item.name || item.title}</a></li>`
+const slug = item.file.replace(".json","").split("/").pop()
+
+return `<li><a href="character.html?char=${slug}">${item.name || item.title}</a></li>`
 
 }
 
@@ -58,39 +78,74 @@ return `<li>${item.name || item.title}</li>`
 
 }
 
+function setPageTitle(name){
+
+const title = name || "Unknown Character"
+
+const pageTitle = document.getElementById("page-title")
+if(pageTitle) pageTitle.textContent = title
+
+document.title = title + " | Sanctum Vitae"
+
+}
+
 function displayCharacter(char){
 
-document.getElementById("name").textContent = text(char.name)
+const name = text(char.name)
 
-document.getElementById("full_name").textContent = text(char.full_name)
-document.getElementById("aliases").textContent = list(char.aliases)
-document.getElementById("age").textContent = text(char.age)
-document.getElementById("species").textContent = text(char.species)
-document.getElementById("occupation").textContent = list(char.occupation)
+setPageTitle(name)
 
-document.getElementById("gender_identity").textContent = text(char.identity?.gender_identity)
-document.getElementById("pronouns").textContent = list(char.identity?.pronouns)
-document.getElementById("orientation").textContent = text(char.identity?.orientation)
+const nameEl = document.getElementById("name")
+if(nameEl) nameEl.textContent = name
 
-document.getElementById("height").textContent = text(char.appearance?.height)
-document.getElementById("build").textContent = text(char.appearance?.build)
-document.getElementById("eye_colour").textContent = text(char.appearance?.eye_colour)
-document.getElementById("hair_colour").textContent = text(char.appearance?.hair_colour)
+const fullbody = document.getElementById("fullbody")
+if(fullbody && char.fullbody){
+fullbody.src = char.fullbody
+}else if(fullbody){
+fullbody.style.display = "none"
+}
 
-document.getElementById("likes").textContent = list(char.personality?.likes)
-document.getElementById("dislikes").textContent = list(char.personality?.dislikes)
-document.getElementById("strengths").textContent = list(char.personality?.strengths)
-document.getElementById("weaknesses").textContent = list(char.personality?.weaknesses)
-document.getElementById("hobbies").textContent = list(char.personality?.hobbies)
+const map = {
+full_name: char.full_name,
+aliases: list(char.aliases),
+age: char.age,
+species: char.species,
+occupation: list(char.occupation),
+
+gender_identity: char.identity?.gender_identity,
+pronouns: list(char.identity?.pronouns),
+orientation: char.identity?.orientation,
+
+height: char.appearance?.height,
+build: char.appearance?.build,
+eye_colour: char.appearance?.eye_colour,
+hair_colour: char.appearance?.hair_colour,
+
+likes: list(char.personality?.likes),
+dislikes: list(char.personality?.dislikes),
+strengths: list(char.personality?.strengths),
+weaknesses: list(char.personality?.weaknesses),
+hobbies: list(char.personality?.hobbies)
+}
+
+Object.entries(map).forEach(([id,value]) => {
+
+const el = document.getElementById(id)
+if(el) el.textContent = text(value)
+
+})
 
 listLinks(char.relationships,"relationships")
 listLinks(char.partners,"partners")
 listLinks(char.pets,"pets")
 listLinks(char.stories,"stories")
 
-document.getElementById("backstory").textContent = text(char.backstory)
+const backstory = document.getElementById("backstory")
+if(backstory) backstory.textContent = text(char.backstory)
 
 const trivia = document.getElementById("trivia")
+
+if(trivia){
 
 if(!char.trivia || char.trivia.length === 0){
 trivia.innerHTML = "<li>N/A</li>"
@@ -98,7 +153,11 @@ trivia.innerHTML = "<li>N/A</li>"
 trivia.innerHTML = char.trivia.map(t => `<li>${t}</li>`).join("")
 }
 
+}
+
 const palette = document.getElementById("palette")
+
+if(palette){
 
 if(!char.palette){
 palette.innerHTML = "N/A"
@@ -111,7 +170,11 @@ palette.innerHTML = Object.values(char.palette)
 
 }
 
+}
+
 const links = document.getElementById("links")
+
+if(links){
 
 if(!char.links){
 links.innerHTML = "<li>N/A</li>"
@@ -133,10 +196,6 @@ links.innerHTML = html || "<li>N/A</li>"
 
 }
 
-if(char.fullbody){
-document.getElementById("fullbody").src = char.fullbody
-}else{
-document.getElementById("fullbody").style.display = "none"
 }
 
 }
