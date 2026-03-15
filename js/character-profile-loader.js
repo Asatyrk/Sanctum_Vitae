@@ -14,7 +14,7 @@ document.body.innerHTML = "No character selected"
 return
 }
 
-const path = `data/characters/${slug}.json`
+const path = `characters/${slug}.json`
 
 try{
 
@@ -68,7 +68,7 @@ if(item.file){
 
 const slug = item.file.replace(".json","").split("/").pop()
 
-return `<li><a href="character.html?char=${slug}">${item.name || item.title}</a></li>`
+return `<li><a href="character-profile.html?char=${slug}">${item.name || item.title}</a></li>`
 
 }
 
