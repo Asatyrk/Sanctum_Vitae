@@ -6,31 +6,84 @@
 <title>Character</title>
 
 <link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap" rel="stylesheet">
+
+<script defer src="js/layout.js"></script>
+<script defer src="js/page-title.js"></script>
 <script defer src="js/character-profile-loader.js"></script>
 
 </head>
 
-<body>
+<body data-page="Character">
+
+<div id="site-header"></div>
+
+<div class="page-container">
 
 <a href="characters.html">← Back to Characters</a>
 
 <h1 id="name"></h1>
 
-<img id="fullbody">
+<img id="fullbody" alt="Character Image">
 
-<h2>Info</h2>
+<h2>Basic Info</h2>
 
 <p><strong>Full Name:</strong> <span id="full_name"></span></p>
+<p><strong>Aliases:</strong> <span id="aliases"></span></p>
 <p><strong>Age:</strong> <span id="age"></span></p>
-<p><strong>Role:</strong> <span id="role"></span></p>
+<p><strong>Species:</strong> <span id="species"></span></p>
+<p><strong>Occupation:</strong> <span id="occupation"></span></p>
 
-<h2>Bio</h2>
+<h2>Identity</h2>
 
-<p id="bio"></p>
+<p><strong>Gender Identity:</strong> <span id="gender_identity"></span></p>
+<p><strong>Pronouns:</strong> <span id="pronouns"></span></p>
+<p><strong>Orientation:</strong> <span id="orientation"></span></p>
 
-<h2>Tags</h2>
+<h2>Appearance</h2>
 
-<div id="tags" class="profile-tags"></div>
+<p><strong>Height:</strong> <span id="height"></span></p>
+<p><strong>Build:</strong> <span id="build"></span></p>
+<p><strong>Eye Colour:</strong> <span id="eye_colour"></span></p>
+<p><strong>Hair Colour:</strong> <span id="hair_colour"></span></p>
+
+<h2>Personality</h2>
+
+<p><strong>Likes:</strong> <span id="likes"></span></p>
+<p><strong>Dislikes:</strong> <span id="dislikes"></span></p>
+<p><strong>Strengths:</strong> <span id="strengths"></span></p>
+<p><strong>Weaknesses:</strong> <span id="weaknesses"></span></p>
+<p><strong>Hobbies:</strong> <span id="hobbies"></span></p>
+
+<h2>Relationships</h2>
+<ul id="relationships"></ul>
+
+<h2>Partners</h2>
+<ul id="partners"></ul>
+
+<h2>Pets</h2>
+<ul id="pets"></ul>
+
+<h2>Stories</h2>
+<ul id="stories"></ul>
+
+<h2>Backstory</h2>
+
+<p id="backstory"></p>
+
+<h2>Trivia</h2>
+
+<ul id="trivia"></ul>
+
+<h2>Colour Palette</h2>
+
+<div id="palette"></div>
+
+<h2>External Links</h2>
+
+<ul id="links"></ul>
+
+</div>
 
 </body>
 

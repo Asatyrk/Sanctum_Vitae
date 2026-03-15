@@ -1,93 +1,179 @@
 {
   "name": "Test",
   "full_name": "Test Character",
-  "nickname[s]": "Unknown",
+
+  "nicknames": ["Unknown"],
   "age": "Unknown",
   "species": "Unknown",
-  "element[s]": "Unknown",
+  "elements": ["Unknown"],
   "ethnicity": "Unknown",
-  "gender identity": "Unknown",
-  "pronouns": "Unknown",
-  "orientation": "Unknown",
-  "occupation": "Unknown",
 
-  "bio": "This is a test character used for development.",
+  "identity": {
+    "gender_identity": "Unknown",
+    "pronouns": ["Unknown"],
+    "orientation": "Unknown"
+  },
 
-  "height": "Unknown",
-  "build": "Unknown",
-  "eye colour": "Unknown",
-  "hair colour": "Unknown",
-  "design notes": "Unknown",
+  "occupation": ["Unknown"],
 
-  "relationship status": "Unknown",
-  "life status": "Unknown",
-  "birthday": "DD/MM",
-  "zodiac": "Unknown",
-  "mbti": "Unknown",
+  "status": {
+    "relationship_status": "Unknown",
+    "life_status": "Unknown"
+  },
+
+  "dates": {
+    "birthday": "DD/MM",
+    "zodiac": "Unknown"
+  },
+
+  "psychology": {
+    "mbti": "Unknown",
+    "temperament": "Unknown",
+    "confidence": "Unknown",
+    "self_worth": "Unknown",
+    "philosophy": "Unknown",
+    "sense_of_humor": "Unknown"
+  },
+
   "voice": "Unknown",
-  "temperament": "Unknown",
 
-  "Likes": "Unknown",
-  "Dislikes": "Unknown",
+  "appearance": {
+    "height": "Unknown",
+    "build": "Unknown",
+    "eye_colour": "Unknown",
+    "hair_colour": "Unknown",
+    "design_notes": "Unknown"
+  },
 
-  "strengths": "Unknown",
-  "weaknesses": "Unknown",
-  "interests": "Unknown",
-  "hobbies": "Unknown",
-  "values": "Unknown",
-  "goal[s]": "Unknown",
-  "personality notes": "Unknown",
+  "fashion": {
+    "style": "Unknown",
+    "gender_style": "Unknown",
+    "colour_profile": "Unknown",
+    "modesty": "Unknown",
+    "accessories": ["Unknown"],
+    "makeup": "Unknown",
+    "cultural_wear": ["Unknown"],
+    "notes": "Unknown"
+  },
 
-  "religion": "Unknown",
-  "education": "Unknown",
-  "languages spoken": "Unknown",
-  "family background": "Unknown",
-  "birthplace": "Unknown",
-  "homeland": "Unknown",
-  "current location": "Unknown",
+  "personality": {
+    "likes": ["Unknown"],
+    "dislikes": ["Unknown"],
+    "strengths": ["Unknown"],
+    "weaknesses": ["Unknown"],
+    "interests": ["Unknown"],
+    "hobbies": ["Unknown"],
+    "values": ["Unknown"],
+    "goals": ["Unknown"],
+    "notes": "Unknown"
+  },
 
-  "favourite colour": "Unknown",
-  "favourite movie": "Unknown",
-  "favourite show": "Unknown",
-  "favourite song": "Unknown",
-  "favourite food": "Unknown",
-  "favourite book": "Unknown",
-  "favourite animal": "Unknown",
-  "favourite item": "Unknown",
+  "combat": {
+    "main_weapon": "Unknown",
+    "other_weapons": ["Unknown"],
+    "magical_artifacts": ["Unknown"],
+    "combat_style": "Unknown",
+    "armoury_notes": "Unknown"
+  },
 
-  "clothing style": "Unknown",
-  "clothing gender style": "Unknown",
-  "clothing colour profile": "Unknown",
-  "clothing modesty": "Unknown",
-  "accessories": "Unknown",
-  "makeup": "Unknown",
-  "cultural wear": "Unknown",
-  "fashion notes": "Unknown",
-  
-  "main weapon": "Unknown",
-  "other weapon[s]": "Unknown",
-  "magical artifact[s]": "Unknown",
-  "combat style": "Unknown",
-  "armoury notes": "Unknown",
+  "lifestyle": {
+    "social_status": "Unknown",
+    "financial_status": "Unknown",
+    "communication_style": "Unknown",
+    "sleep_style": "Unknown",
+    "work_ethic": "Unknown",
+    "conflict_resolution": "Unknown"
+  },
 
-  "social status": "Unknown",
-  "financial status": "Unknown",
-  "philosophy": "Unknown",
-  "communication style": "Unknown",
-  "sleep style": "Unknown",
-  "sense of humor": "Unknown",
+  "health": {
+    "mental_health": "Unknown",
+    "physical_health": "Unknown",
+    "activity_level": "Unknown",
+    "hygiene": "Unknown",
+    "crisis_reaction": "Unknown",
+    "notes": "Unknown"
+  },
 
-  "personal hygiene": "Unknown",
-  "crisis reaction": "Unknown",
-  "work ethic": "Unknown",
-  "conflict resolution style": "Unknown",
-  "confidence": "Unknown",
-  "self-worth": "Unknown",
+  "background": {
+    "religion": "Unknown",
+    "education": "Unknown",
+    "languages_spoken": ["Unknown"],
+    "family_background": "Unknown",
+    "birthplace": "Unknown",
+    "homeland": "Unknown",
+    "current_location": "Unknown"
+  },
 
-  "mental health": "Unknown",
-  "physical health": "Unknown",
-  "activity level": "Unknown",
-  "health notes": "Unknown",
+  "favourites": {
+    "colours": ["Unknown"],
+    "movies": ["Unknown"],
+    "shows": ["Unknown"],
+    "songs": ["Unknown"],
+    "foods": ["Unknown"],
+    "books": ["Unknown"],
+    "animals": ["Unknown"],
+    "items": ["Unknown"]
+  },
+
+  "relationships": [
+    {
+      "name": "Character Name",
+      "type": "friend",
+      "file": "characters/test.json",
+      "notes": "Optional notes"
+    }
+  ],
+
+  "partners": [
+    {
+      "name": "Partner Name",
+      "file": "characters/test.json",
+      "notes": "Optional notes"
+    }
+  ],
+
+  "pets": [
+    {
+      "name": "Pet Name",
+      "species": "Unknown",
+      "file": "pets/pet-name.json",
+      "notes": "Optional notes"
+    }
+  ],
+
+  "stories": [
+    {
+      "title": "Story Name",
+      "file": "stories/story-name.json"
+    }
+  ],
+
+  "palette": {
+    "skin": ["#000000"],
+    "hair": ["#ffffff"],
+    "eyes": ["#ff0000"],
+    "extra": []
+  },
+
+  "backstory": "Large detailed backstory text goes here.",
+
+  "trivia": [
+    "Trivia fact 1",
+    "Trivia fact 2"
+  ],
+
+  "links": {
+    "toyhouse": "",
+    "pinterest": "",
+    "spotify": "",
+    "alt forms": ["characters/test.json"],
+    "other": [
+      {
+        "label": "Example Link",
+        "url": "characters/test.json"
+      }
+    ]
+  },
 
   "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
   "fullbody": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
