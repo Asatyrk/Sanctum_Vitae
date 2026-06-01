@@ -10,23 +10,5 @@
   },
   "compatibility_flags": [
     "nodejs_compat"
-  ],
-  "routes": [
-    {
-      "pattern": "*.html",
-      "custom_domain": true
-    },
-    {
-      "pattern": "*.css",
-      "custom_domain": true
-    },
-    {
-      "pattern": "*.js",
-      "custom_domain": true
-    },
-    {
-      "pattern": "*.json",
-      "custom_domain": true
-    }
   ]
 }
