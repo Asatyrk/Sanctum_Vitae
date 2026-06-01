@@ -1,35 +1,35 @@
 /* =====================================================
-   CSS VARIABLES (Design Tokens)
+   CSS VARIABLES
 ===================================================== */
 
 :root {
-  /* Colors */
-  --color-primary: #b99b78;
-  --color-primary-dark: #7a5d3c;
-  --color-primary-darker: #6b5032;
-  --color-accent: #a27d5f;
-  --color-accent-light: #f7f3e8;
-  --color-light: #f4efe6;
-  --color-bg-light: #f3f1ec;
-  --color-text-dark: #2b2b2b;
-  --color-text-muted: #5a432e;
-  --color-text-muted-light: #7a664e;
-  --color-pin: #b33a33;
-  --color-border: #8b6a4d;
-  --color-input-bg: #e8e2d7;
-  --color-white: #ffffff;
+  /* Colours */
+  --colour-primary: #b99b78;
+  --colour-primary-dark: #7a5d3c;
+  --colour-primary-darker: #6b5032;
+  --colour-accent: #a27d5f;
+  --colour-accent-light: #f7f3e8;
+  --colour-light: #f4efe6;
+  --colour-bg-light: #f3f1ec;
+  --colour-text-dark: #2b2b2b;
+  --colour-text-muted: #5a432e;
+  --colour-text-muted-light: #7a664e;
+  --colour-pin: #b33a33;
+  --colour-border: #8b6a4d;
+  --colour-input-bg: #e8e2d7;
+  --colour-white: #ffffff;
 
   /* Typography */
   --font-display: "Castoro Titling", serif;
   --font-body: "Courier New", Courier, monospace;
-  --font-size-xs: 11px;
-  --font-size-sm: 13px;
+  --font-size-xs: 10px;
+  --font-size-sm: 12px;
   --font-size-base: 14px;
-  --font-size-md: 15px;
+  --font-size-md: 16px;
   --font-size-lg: 22px;
   --font-size-xl: 34px;
 
-  /* Spacing (4px base unit) */
+  /* Spacing */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -56,7 +56,7 @@
   --dot-size: 1px;
   --dot-gap: 8px;
   --dot-offset: 4px;
-  --dot-color: rgba(0, 0, 0, 0.03);
+  --dot-colour: rgba(0, 0, 0, 0.03);
 }
 
 /* =====================================================
@@ -70,8 +70,8 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
-  background: var(--color-bg-light);
-  color: var(--color-text-dark);
+  background: var(--colour-bg-light);
+  colour: var(--colour-text-dark);
   min-height: 100vh;
 }
 
@@ -89,13 +89,13 @@ h6 {
 ===================================================== */
 
 .page-characters {
-  background: var(--color-bg-light);
+  background: var(--colour-bg-light);
   background-image: radial-gradient(
-      var(--dot-color) var(--dot-size),
+      var(--dot-colour) var(--dot-size),
       transparent var(--dot-size)
     ),
     radial-gradient(
-      var(--dot-color) var(--dot-size),
+      var(--dot-colour) var(--dot-size),
       transparent var(--dot-size)
     );
   background-size: var(--dot-gap) var(--dot-gap);
@@ -103,7 +103,7 @@ h6 {
 }
 
 .page-paper {
-  background: var(--color-light);
+  background: var(--colour-light);
 }
 
 /* =====================================================
@@ -112,7 +112,7 @@ h6 {
 
 .site-header {
   width: 100%;
-  background: var(--color-primary);
+  background: var(--colour-primary);
 }
 
 .site-banner {
@@ -127,7 +127,7 @@ h6 {
   align-items: center;
   font-family: var(--font-display);
   font-weight: bold;
-  color: var(--color-light);
+  colour: var(--colour-light);
   font-size: var(--font-size-lg);
   gap: var(--space-2);
 }
@@ -141,7 +141,7 @@ h6 {
   font-size: var(--font-size-lg);
   font-weight: bold;
   margin-left: var(--space-3);
-  color: var(--color-light);
+  colour: var(--colour-light);
   display: inline-block;
 }
 
@@ -155,11 +155,11 @@ h6 {
 }
 
 .site-nav a {
-  color: var(--color-light);
+  colour: var(--colour-light);
   text-decoration: none;
   font-size: var(--font-size-base);
   padding: var(--space-1) var(--space-3);
-  background: var(--color-primary-dark);
+  background: var(--colour-primary-dark);
   border-radius: var(--border-radius-sm);
   border: none;
   cursor: pointer;
@@ -168,11 +168,11 @@ h6 {
 }
 
 .site-nav a:hover {
-  background: var(--color-primary-darker);
+  background: var(--colour-primary-darker);
 }
 
 .site-nav a:focus-visible {
-  outline: 2px solid var(--color-light);
+  outline: 2px solid var(--colour-light);
   outline-offset: 2px;
 }
 
@@ -206,7 +206,7 @@ h6 {
 
 .characters-sidebar {
   width: var(--sidebar-width);
-  background: var(--color-primary);
+  background: var(--colour-primary);
   padding: var(--space-3);
   border-radius: var(--border-radius-lg);
   display: flex;
@@ -226,7 +226,7 @@ h6 {
 .sidebar-label {
   font-size: var(--font-size-base);
   font-weight: bold;
-  color: var(--color-white);
+  colour: var(--colour-white);
 }
 
 /* sidebar inputs */
@@ -235,7 +235,7 @@ h6 {
   width: 100%;
   padding: var(--space-2) var(--space-3);
   border: none;
-  background: var(--color-input-bg);
+  background: var(--colour-input-bg);
   border-radius: var(--border-radius-md);
   font-family: inherit;
   font-size: var(--font-size-base);
@@ -245,7 +245,7 @@ h6 {
 
 .characters-sidebar input:focus-visible,
 .characters-sidebar select:focus-visible {
-  outline: 2px solid var(--color-primary-dark);
+  outline: 2px solid var(--colour-primary-dark);
   outline-offset: 2px;
 }
 
@@ -253,8 +253,8 @@ h6 {
 .sidebar-button {
   padding: var(--space-2);
   border: none;
-  background: var(--color-primary-dark);
-  color: var(--color-white);
+  background: var(--colour-primary-dark);
+  colour: var(--colour-white);
   font-family: inherit;
   font-size: var(--font-size-base);
   cursor: pointer;
@@ -263,11 +263,11 @@ h6 {
 }
 
 .sidebar-button:hover {
-  background: var(--color-primary-darker);
+  background: var(--colour-primary-darker);
 }
 
 .sidebar-button:focus-visible {
-  outline: 2px solid var(--color-light);
+  outline: 2px solid var(--colour-light);
   outline-offset: 2px;
 }
 
@@ -293,11 +293,11 @@ h6 {
 .char-card {
   width: var(--card-width);
   box-sizing: border-box;
-  background: var(--color-white);
+  background: var(--colour-white);
   padding: var(--space-2);
   text-align: center;
   text-decoration: none;
-  color: var(--color-text-dark);
+  colour: var(--colour-text-dark);
   position: relative;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
   transition: transform var(--transition-fast);
@@ -342,7 +342,7 @@ h6 {
 }
 
 .char-card:focus-visible {
-  outline: 2px solid var(--color-primary-dark);
+  outline: 2px solid var(--colour-primary-dark);
   outline-offset: 2px;
 }
 
@@ -351,7 +351,7 @@ h6 {
   content: "";
   width: 16px;
   height: 16px;
-  background: var(--color-pin);
+  background: var(--colour-pin);
   border-radius: 50%;
   position: absolute;
   top: -8px;
@@ -385,7 +385,7 @@ h6 {
 
 /* category accordion */
 .tag-category {
-  background: var(--color-accent-light);
+  background: var(--colour-accent-light);
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   margin-bottom: var(--space-2);
@@ -399,18 +399,18 @@ h6 {
   cursor: pointer;
   font-weight: 600;
   padding: var(--space-2) var(--space-3);
-  background: var(--color-accent);
-  color: var(--color-white);
+  background: var(--colour-accent);
+  colour: var(--colour-white);
   list-style: none;
   transition: background var(--transition-fast);
 }
 
 .tag-category summary:hover {
-  background: linear-gradient(135deg, var(--color-accent), var(--color-primary-dark));
+  background: linear-gradient(135deg, var(--colour-accent), var(--colour-primary-dark));
 }
 
 .tag-category summary:focus-visible {
-  outline: 2px solid var(--color-primary-dark);
+  outline: 2px solid var(--colour-primary-dark);
   outline-offset: -2px;
 }
 
@@ -432,7 +432,7 @@ h6 {
 
 /* tag list container */
 .tag-list {
-  background: var(--color-white);
+  background: var(--colour-white);
   padding: var(--space-2) var(--space-3);
   display: flex;
   flex-direction: column;
@@ -455,18 +455,18 @@ h6 {
 }
 
 .tag-option:hover {
-  background: var(--color-accent-light);
+  background: var(--colour-accent-light);
 }
 
 .tag-option:focus-within {
-  background: var(--color-accent-light);
+  background: var(--colour-accent-light);
 }
 
 /* checkbox */
 .tag-option input[type="checkbox"] {
   margin: 0;
   flex: 0 0 auto;
-  accent-color: var(--color-primary-dark);
+  accent-colour: var(--colour-primary-dark);
   cursor: pointer;
 }
 
@@ -484,7 +484,7 @@ h6 {
 
 .tag {
   background: #fdfcf6;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--colour-border);
   border-radius: var(--border-radius-full);
   padding: var(--space-1) var(--space-1);
   font-size: var(--font-size-xs);
@@ -505,7 +505,7 @@ h6 {
 .tag-group-title {
   font-weight: 600;
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  colour: var(--colour-text-muted);
 }
 
 .tag-group-list {
@@ -525,12 +525,12 @@ h6 {
 ===================================================== */
 
 .no-results {
-  color: var(--color-text-muted);
+  colour: var(--colour-text-muted);
   font-style: italic;
 }
 
 .tag-placeholder {
-  color: var(--color-text-muted-light);
+  colour: var(--colour-text-muted-light);
   font-style: italic;
   font-size: var(--font-size-sm);
   padding: var(--space-1);
