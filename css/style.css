@@ -21,7 +21,7 @@
 
   /* Typography */
   --font-display: "Castoro Titling", serif;
-  --font-body: "Courier New", Courier, monospace;
+  --font-body: "Spectral SC", serif; font-weight: 200;
   --font-size-xs: 10px;
   --font-size-sm: 12px;
   --font-size-base: 14px;
