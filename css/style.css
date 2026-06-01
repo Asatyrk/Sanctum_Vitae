@@ -163,6 +163,16 @@ h6 {
   cursor: pointer;
   font-family: inherit;
   transition: background var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.site-nav a .nav-icon {
+  width: 1.1em;
+  height: 1.1em;
+  fill: currentColor;
+  display: inline-block;
 }
 
 .site-nav a:hover {
@@ -182,16 +192,6 @@ h6 {
   font-family: var(--font-display);
   font-size: var(--font-size-xl);
   margin-bottom: var(--space-6);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
-.page-title-icon {
-  width: 1.3em;
-  height: 1.3em;
-  fill: currentColor;
-  display: inline-block;
 }
 
 /* =====================================================
