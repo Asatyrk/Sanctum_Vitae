@@ -156,7 +156,7 @@ h6 {
   color: var(--color-light);
   text-decoration: none;
   font-size: var(--font-size-base);
-  padding: var(--space-2);
+  padding: var(--space-1);
   background: var(--color-primary-dark);
   border-radius: var(--border-radius-sm);
   border: none;
@@ -290,7 +290,7 @@ h6 {
   width: var(--card-width);
   box-sizing: border-box;
   background: var(--color-white);
-  padding: var(--space-2);
+  padding: var(--space-1);
   text-align: center;
   text-decoration: none;
   color: var(--color-text-dark);
