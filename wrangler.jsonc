@@ -10,24 +10,5 @@
   },
   "compatibility_flags": [
     "nodejs_compat"
-  ],
-  "routes": [
-    {
-      "pattern": "*.html",
-      "custom_domain": true
-    }
-  ],
-  "env": {
-    "production": {
-      "routes": [
-        {
-          "pattern": "*",
-          "custom_domain": true
-        }
-      ]
-    }
-  },
-  "site": {
-    "bucket": "."
-  }
+  ]
 }
