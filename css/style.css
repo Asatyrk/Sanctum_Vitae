@@ -366,9 +366,9 @@ h6 {
 
 /* name */
 .card-name {
-  margin-top: var(--space-2);
+  margin: 0;
+  padding: var(--space-2);
   font-size: var(--font-size-md);
-  padding-top: var(--space-1);
 }
 
 /* =====================================================
