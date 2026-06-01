@@ -549,10 +549,6 @@ h6 {
   max-width: 980px;
   margin: 0 auto;
   padding: clamp(var(--space-10), 5vw, var(--space-12));
-  background: var(--color-light);
-  border: 1px solid rgba(139, 106, 77, 0.15);
-  border-radius: var(--border-radius-lg);
-  box-shadow: 0 24px 60px rgba(43, 43, 43, 0.08);
 }
 
 .page-container > a {
