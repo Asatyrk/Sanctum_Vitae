@@ -421,11 +421,10 @@ h6 {
   background: var(--color-accent);
   color: var(--color-white);
   list-style: none;
-  transition: background var(--transition-fast);
 }
 
 .tag-category summary:hover {
-  background: linear-gradient(135deg, var(--color-accent), var(--color-primary-dark));
+  background: var(--color-primary-dark);
 }
 
 .tag-category summary:focus-visible {
@@ -470,7 +469,14 @@ h6 {
   text-align: left;
   padding: var(--space-1) var(--space-2);
   border-radius: var(--border-radius-md);
-  transition: background var(--transition-fast);
+}
+
+.tag-option:hover {
+  background: var(--color-accent-light);
+}
+
+.tag-option:focus-within {
+  background: var(--color-accent-light);
 }
 
 /* checkbox */
