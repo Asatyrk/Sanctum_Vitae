@@ -473,14 +473,6 @@ h6 {
   transition: background var(--transition-fast);
 }
 
-.tag-option:hover {
-  background: var(--color-accent-light);
-}
-
-.tag-option:focus-within {
-  background: var(--color-accent-light);
-}
-
 /* checkbox */
 .tag-option input[type="checkbox"] {
   margin: 0;
