@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <script defer src="js/layout.js"></script>
 <script defer src="js/page-title.js"></script>
@@ -25,66 +26,123 @@
 
 <a href="characters.html">← Back to Characters</a>
 
-<h1 id="name"></h1>
+<!-- Character Profile Card -->
+<div class="character-profile-card">
+  
+  <!-- Left Column: Avatar & Basic Info -->
+  <div class="profile-card-left">
+    <div class="profile-avatar" id="avatar-image"></div>
+    <h1 id="name" class="profile-name"></h1>
+    
+    <div class="profile-info-section">
+      <div class="info-row">
+        <span class="info-label">AGE</span>
+        <span class="info-value" id="age"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">SPECIES</span>
+        <span class="info-value" id="species"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">GENDER</span>
+        <span class="info-value" id="gender_identity"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">PRONOUNS</span>
+        <span class="info-value" id="pronouns"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">ORIENTATION</span>
+        <span class="info-value" id="orientation"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">OCCUPATION</span>
+        <span class="info-value" id="occupation"></span>
+      </div>
+    </div>
+  </div>
 
-<img id="fullbody" alt="Character Image">
+  <!-- Right Column: Full Body Image & Details -->
+  <div class="profile-card-right">
+    <div class="profile-banner" id="banner-image"></div>
+    
+    <div class="profile-content">
+      <div class="info-row">
+        <span class="info-label">FULL NAME</span>
+        <span class="info-value" id="full_name"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">ALIASES</span>
+        <span class="info-value" id="aliases"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <ul class="profile-traits" id="profile-traits-list">
+        <li>Lorem ipsum dolor sit amet. Et animi commodi ea debitis vero est suscipit omnis est veritati.</li>
+        <li>Sit consectetur harum et maxime totam in quam iure qui explicabo similique sed ullam velit excepturi.</li>
+      </ul>
+      
+      <div class="profile-external-link">
+        <i class="fa-solid fa-code"></i>
+      </div>
+    </div>
+  </div>
+  
+</div>
 
-<h2>Basic Info</h2>
+<!-- Extended Character Details -->
+<div class="character-details">
+  
+  <h2>Appearance</h2>
+  <p><strong>Height:</strong> <span id="height"></span></p>
+  <p><strong>Build:</strong> <span id="build"></span></p>
+  <p><strong>Eye Colour:</strong> <span id="eye_colour"></span></p>
+  <p><strong>Hair Colour:</strong> <span id="hair_colour"></span></p>
+  
+  <h2>Personality</h2>
+  <p><strong>Likes:</strong> <span id="likes"></span></p>
+  <p><strong>Dislikes:</strong> <span id="dislikes"></span></p>
+  <p><strong>Strengths:</strong> <span id="strengths"></span></p>
+  <p><strong>Weaknesses:</strong> <span id="weaknesses"></span></p>
+  <p><strong>Hobbies:</strong> <span id="hobbies"></span></p>
 
-<p><strong>Full Name:</strong> <span id="full_name"></span></p>
-<p><strong>Aliases:</strong> <span id="aliases"></span></p>
-<p><strong>Age:</strong> <span id="age"></span></p>
-<p><strong>Species:</strong> <span id="species"></span></p>
-<p><strong>Occupation:</strong> <span id="occupation"></span></p>
+  <h2>Relationships</h2>
+  <ul id="relationships"></ul>
 
-<h2>Identity</h2>
+  <h2>Partners</h2>
+  <ul id="partners"></ul>
 
-<p><strong>Gender Identity:</strong> <span id="gender_identity"></span></p>
-<p><strong>Pronouns:</strong> <span id="pronouns"></span></p>
-<p><strong>Orientation:</strong> <span id="orientation"></span></p>
+  <h2>Pets</h2>
+  <ul id="pets"></ul>
 
-<h2>Appearance</h2>
+  <h2>Stories</h2>
+  <ul id="stories"></ul>
 
-<p><strong>Height:</strong> <span id="height"></span></p>
-<p><strong>Build:</strong> <span id="build"></span></p>
-<p><strong>Eye Colour:</strong> <span id="eye_colour"></span></p>
-<p><strong>Hair Colour:</strong> <span id="hair_colour"></span></p>
+  <h2>Backstory</h2>
+  <p id="backstory"></p>
 
-<h2>Personality</h2>
+  <h2>Trivia</h2>
+  <ul id="trivia"></ul>
 
-<p><strong>Likes:</strong> <span id="likes"></span></p>
-<p><strong>Dislikes:</strong> <span id="dislikes"></span></p>
-<p><strong>Strengths:</strong> <span id="strengths"></span></p>
-<p><strong>Weaknesses:</strong> <span id="weaknesses"></span></p>
-<p><strong>Hobbies:</strong> <span id="hobbies"></span></p>
+  <h2>Colour Palette</h2>
+  <div id="palette"></div>
 
-<h2>Relationships</h2>
-<ul id="relationships"></ul>
+  <h2>External Links</h2>
+  <ul id="links"></ul>
 
-<h2>Partners</h2>
-<ul id="partners"></ul>
-
-<h2>Pets</h2>
-<ul id="pets"></ul>
-
-<h2>Stories</h2>
-<ul id="stories"></ul>
-
-<h2>Backstory</h2>
-
-<p id="backstory"></p>
-
-<h2>Trivia</h2>
-
-<ul id="trivia"></ul>
-
-<h2>Colour Palette</h2>
-
-<div id="palette"></div>
-
-<h2>External Links</h2>
-
-<ul id="links"></ul>
+</div>
 
 </div>
 
