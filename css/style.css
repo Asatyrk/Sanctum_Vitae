@@ -566,26 +566,146 @@ h6 {
   text-decoration: underline;
 }
 
-#name {
-  margin-top: 0;
-  margin-bottom: var(--space-5);
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  line-height: 1.05;
-  color: var(--color-primary-dark);
-}
+/* =====================================================
+   CHARACTER PROFILE CARD
+===================================================== */
 
-#fullbody {
-  width: 100%;
-  max-height: 520px;
-  object-fit: cover;
+.character-profile-card {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0;
   border-radius: var(--border-radius-lg);
-  margin: 0 auto var(--space-6);
-  display: block;
-  box-shadow: 0 20px 55px rgba(43, 43, 43, 0.14);
-  background: #000;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  margin-bottom: var(--space-12);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.page-container h2 {
+.profile-card-left {
+  background: var(--color-primary);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-right: 1px solid var(--color-border);
+  color: var(--color-white);
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--color-border);
+  margin-bottom: var(--space-5);
+}
+
+.profile-name {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin: 0 0 var(--space-5) 0;
+  color: var(--color-white);
+}
+
+.profile-info-section {
+  width: 100%;
+  font-size: var(--font-size-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-2) 0;
+  text-align: left;
+}
+
+.info-label {
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.info-value {
+  color: var(--color-accent-light);
+  text-align: right;
+  word-break: break-word;
+  max-width: 50%;
+}
+
+.info-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 0;
+  padding: 0;
+}
+
+.profile-card-right {
+  background: var(--color-bg-light);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.profile-banner {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.profile-content {
+  padding: var(--space-6);
+  font-size: var(--font-size-sm);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile-traits {
+  list-style: disc;
+  padding-left: var(--space-5);
+  margin: var(--space-5) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+.profile-traits li {
+  color: var(--color-text-dark);
+}
+
+.profile-external-link {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--space-5);
+}
+
+.profile-external-link i {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-darker);
+}
+
+/* =====================================================
+   CHARACTER DETAILS
+===================================================== */
+
+.character-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.character-details h2 {
   margin-top: var(--space-8);
   margin-bottom: var(--space-3);
   font-size: var(--font-size-lg);
@@ -593,30 +713,54 @@ h6 {
   letter-spacing: 0.02em;
 }
 
-.page-container p,
-.page-container ul {
-  margin: 0 0 var(--space-3);
+.character-details p,
+.character-details ul {
+  margin: 0 0 var(--space-3) 0;
 }
 
-.page-container p {
+.character-details p {
   line-height: 1.8;
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
   gap: var(--space-4);
 }
 
-.page-container p strong {
+.character-details p strong {
   color: var(--color-text-muted);
   font-weight: 500;
 }
 
-.page-container ul {
+.character-details ul {
   padding-left: var(--space-6);
   list-style: disc;
 }
 
-.page-container ul li {
+.character-details ul li {
   margin-bottom: var(--space-2);
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+@media (max-width: 768px) {
+  .character-profile-card {
+    grid-template-columns: 1fr;
+    border-right: none;
+  }
+
+  .profile-card-left {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .profile-name {
+    font-size: var(--font-size-md);
+  }
+
+  .profile-info-section {
+    width: 100%;
+  }
 }
 
 @media (max-width: 720px) {
@@ -624,7 +768,23 @@ h6 {
     padding: var(--space-5);
   }
 
-  .page-container p {
+  .character-profile-card {
+    padding: 0;
+  }
+
+  .profile-card-left {
+    padding: var(--space-4);
+  }
+
+  .profile-content {
+    padding: var(--space-4);
+  }
+
+  .character-details p {
     grid-template-columns: 1fr;
+  }
+
+  .character-details h2 {
+    margin-top: var(--space-6);
   }
 }
