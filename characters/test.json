@@ -176,10 +176,16 @@
   },
 
   "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
-  "fullbody": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
+  "avatar": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
   "banner": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
 
-  [add page colours here,]
+  "colors": {
+    "primary": "#b99b78",
+    "secondary": "#a27d5f",
+    "accent": "#8b6a4d",
+    "bg_1": "#f4efe6",
+    "bg_2": "#f3f1ec"
+  },
 
   "tags": {
     "Species (Class)": ["Humanoid"],
