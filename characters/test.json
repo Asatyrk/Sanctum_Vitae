@@ -180,11 +180,11 @@
   "banner": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
 
   "colors": {
-    "primary": "#b99b78",
-    "secondary": "#a27d5f",
-    "accent": "#8b6a4d",
-    "bg_1": "#f4efe6",
-    "bg_2": "#f3f1ec"
+    "primary": "#FF0000", 
+    "secondary": "#0000FF",
+    "accent": "#00FF00",
+    "bg_1": "000000",
+    "bg_2": "#FFFFFF"
   },
 
   "tags": {
