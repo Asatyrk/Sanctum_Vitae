@@ -631,16 +631,26 @@ h6 {
   text-align: left;
 }
 
-.info-label {
+/* =====================================================
+   LEFT BOX TEXT
+   Primary colour = all text on the left
+===================================================== */
+
+.profile-card-left .info-label,
+.profile-card-left .info-value {
   color: var(--char-primary);
 }
 
-.info-value {
-  color: var(--char-secondary);
+.profile-card-left .info-value {
   text-align: right;
   word-break: break-word;
   max-width: 50%;
 }
+
+
+/* =====================================================
+   DIVIDERS
+===================================================== */
 
 .info-divider {
   border: none;
@@ -649,10 +659,27 @@ h6 {
   padding: 0;
 }
 
+
+/* =====================================================
+   RIGHT BOX
+===================================================== */
+
 .profile-card-right {
   background: var(--char-bg-2);
   display: flex;
   flex-direction: column;
+}
+
+/* All text inside the right box uses secondary */
+.profile-card-right .info-label,
+.profile-card-right .info-value {
+  color: var(--char-secondary);
+}
+
+.profile-card-right .info-value {
+  text-align: right;
+  word-break: break-word;
+  max-width: 50%;
 }
 
 .profile-banner {
@@ -680,8 +707,8 @@ h6 {
   line-height: 1.6;
 }
 
-.profile-traits li {
-  color: var(--char-primary);
+.profile-card-right .profile-traits li {
+  color: var(--char-secondary);
 }
 
 /* =====================================================
