@@ -5,27 +5,6 @@ return params.get("char")
 
 }
 
-async function loadCharacter(){
-
-const slug = getCharacter()
-
-if(!slug){
-document.body.innerHTML = "No character selected"
-return
-}
-
-const path = `characters/${slug}.json`
-
-try{
-
-const response = await fetch(path)
-
-if(!response.ok){
-throw new Error("Character not found")
-}
-
-const char = await response.json()
-
 function applyCharacterColors(char){
 
   const colors = char.colors || {}
@@ -46,6 +25,27 @@ function applyCharacterColors(char){
   root.style.setProperty("--char-bg-2", bg2)
   root.style.setProperty("--char-page-bg", pageBg)
 }
+
+async function loadCharacter(){
+
+const slug = getCharacter()
+
+if(!slug){
+document.body.innerHTML = "No character selected"
+return
+}
+
+const path = `characters/${slug}.json`
+
+try{
+
+const response = await fetch(path)
+
+if(!response.ok){
+throw new Error("Character not found")
+}
+
+const char = await response.json()
 
 displayCharacter(char)
 
