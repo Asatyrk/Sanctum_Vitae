@@ -278,7 +278,6 @@ h6 {
   font-size: var(--font-size-base);
   cursor: pointer;
   border-radius: var(--border-radius-md);
-  transition: background var(--transition-fast);
 }
 
 .sidebar-button:hover {
@@ -421,6 +420,7 @@ h6 {
   background: var(--color-accent);
   color: var(--color-white);
   list-style: none;
+  transition: background var(--transition-fast);
 }
 
 .tag-category summary:hover {
