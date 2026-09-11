@@ -2,7 +2,7 @@
   "name": "Test",
   "full_name": "Test Character",
 
-  "nicknames": ["Unknown"],
+  "aliases": ["Unknown"],
   "age": "Unknown",
   "species": "Unknown",
   "elements": ["Unknown"],
@@ -183,8 +183,9 @@
     "primary": "#FF0000", 
     "secondary": "#0000FF",
     "accent": "#00FF00",
-    "bg_1": "000000",
-    "bg_2": "#FFFFFF"
+    "bg_1": "#000000",
+    "bg_2": "#FFFFFF",
+    "page_bg": "#EDEDED"
   },
 
   "tags": {

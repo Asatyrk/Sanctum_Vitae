@@ -64,6 +64,8 @@
   --char-accent: #8b6a4d;
   --char-bg-1: #f4efe6;
   --char-bg-2: #f3f1ec;
+  --char-page-bg: #f3f1ec;
+
 }
 
 /* =====================================================
@@ -80,6 +82,10 @@ body {
   background: var(--color-bg-light);
   color: var(--color-text-dark);
   min-height: 100vh;
+}
+
+body.character-profile-page {
+  background: var(--char-page-bg);
 }
 
 h1,

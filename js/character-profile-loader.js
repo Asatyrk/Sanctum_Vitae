@@ -26,6 +26,27 @@ throw new Error("Character not found")
 
 const char = await response.json()
 
+function applyCharacterColors(char){
+
+  const colors = char.colors || {}
+
+  const primary = colors.primary || "#b99b78"
+  const secondary = colors.secondary || "#a27d5f"
+  const accent = colors.accent || "#8b6a4d"
+  const bg1 = colors.bg_1 || "#f4efe6"
+  const bg2 = colors.bg_2 || "#f3f1ec"
+  const pageBg = colors.page_bg || "#f3f1ec"
+
+  const root = document.documentElement
+
+  root.style.setProperty("--char-primary", primary)
+  root.style.setProperty("--char-secondary", secondary)
+  root.style.setProperty("--char-accent", accent)
+  root.style.setProperty("--char-bg-1", bg1)
+  root.style.setProperty("--char-bg-2", bg2)
+  root.style.setProperty("--char-page-bg", pageBg)
+}
+
 displayCharacter(char)
 
 }catch(err){
@@ -91,6 +112,8 @@ document.title = " Sanctum Vitae | " + title
 
 function displayCharacter(char){
 
+applyCharacterColors(char)
+
 const name = text(char.name)
 
 const headerLogoText = document.querySelector(".site-logo-text")
@@ -113,8 +136,8 @@ avatarImage.style.backgroundImage = `url('https://placehold.co/120')`
 
 // Set banner image (top of right side)
 const bannerImage = document.getElementById("banner-image")
-if(bannerImage && char.fullbody){
-bannerImage.style.backgroundImage = `url('${char.fullbody}')`
+if(bannerImage && char.banner){
+  bannerImage.style.backgroundImage = `url('${char.banner}')`
 }else if(bannerImage){
 bannerImage.style.backgroundImage = `url('https://placehold.co/600x200')`
 }
