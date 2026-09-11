@@ -108,7 +108,7 @@ const avatarImage = document.getElementById("avatar-image")
 if(avatarImage && char.avatar){
 avatarImage.style.backgroundImage = `url('${char.avatar}')`
 }else if(avatarImage){
-avatarImage.style.backgroundImage = `url('https://via.placeholder.com/120')`
+avatarImage.style.backgroundImage = `url('https://placehold.co/120')`
 }
 
 // Set banner image (top of right side)
@@ -116,7 +116,7 @@ const bannerImage = document.getElementById("banner-image")
 if(bannerImage && char.fullbody){
 bannerImage.style.backgroundImage = `url('${char.fullbody}')`
 }else if(bannerImage){
-bannerImage.style.backgroundImage = `url('https://via.placeholder.com/600x200')`
+bannerImage.style.backgroundImage = `url('https://placehold.co/600x200')`
 }
 
 const map = {
