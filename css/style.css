@@ -754,106 +754,92 @@ h6 {
 }
 
 /* =====================================================
-APPEARANCE / DESIGN GUIDE CARD
+   APPEARANCE / DESIGN GUIDE
 ===================================================== */
 
 .appearance-card {
-display: grid;
-grid-template-columns: 1fr 2fr;
-gap: 0;
-overflow: hidden;
-margin-bottom: var(--space-12);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0;
+  overflow: hidden;
+  margin-bottom: var(--space-12);
 }
 
-/* =====================================================
-LEFT BOX
-===================================================== */
-
 .appearance-card-left {
-background: var(--char-bg-1);
-padding: var(--space-6);
-display: flex;
-flex-direction: column;
-align-items: center;
-text-align: center;
+  background: var(--char-bg-1);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .appearance-title {
-font-size: var(--font-size-lg);
-margin: 0 0 var(--space-5) 0;
-color: var(--char-primary);
+  font-size: var(--font-size-lg);
+  margin: 0 0 var(--space-5) 0;
+  color: var(--char-primary);
 }
-
-/* =====================================================
-APPEARANCE INFORMATION
-===================================================== */
 
 .appearance-info {
-width: 100%;
-font-size: var(--font-size-sm);
-display: flex;
-flex-direction: column;
-gap: 0;
+  width: 100%;
+  font-size: var(--font-size-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
-/* =====================================================
-LEFT BOX TEXT
-===================================================== */
+.appearance-card .info-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-2) 0;
+  text-align: left;
+}
 
 .appearance-card-left .info-label,
 .appearance-card-left .info-value {
-color: var(--char-primary);
+  color: var(--char-primary);
 }
 
 .appearance-card-left .info-value {
-text-align: right;
-word-break: break-word;
-max-width: 50%;
+  text-align: right;
+  word-break: break-word;
+  max-width: 50%;
 }
 
-/* =====================================================
-RIGHT BOX
-===================================================== */
+.appearance-card .info-divider {
+  border: none;
+  border-top: 1px solid var(--char-accent);
+  margin: 0;
+  padding: 0;
+}
 
 .appearance-card-right {
-background: var(--char-bg-2);
-display: flex;
-flex-direction: column;
+  background: var(--char-bg-2);
+  display: flex;
+  flex-direction: column;
 }
-
-/* =====================================================
-RIGHT BOX CONTENT
-===================================================== */
 
 .appearance-content {
-padding: var(--space-6);
-font-size: var(--font-size-sm);
-flex-grow: 1;
-display: flex;
-flex-direction: column;
+  padding: var(--space-6);
+  font-size: var(--font-size-sm);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
-
-/* =====================================================
-DESIGN NOTES HEADING
-===================================================== */
 
 .appearance-heading {
-margin-top: var(--space-8);
-margin-bottom: var(--space-3);
-font-size: var(--font-size-lg);
-color: var(--char-primary);
-letter-spacing: 0.02em;
+  margin: 0 0 var(--space-3) 0;
+  font-size: var(--font-size-base);
+  color: var(--char-primary);
+  letter-spacing: 0.02em;
 }
 
-/* =====================================================
-DESIGN NOTES
-===================================================== */
-
 .appearance-notes {
-margin: 0 0 var(--space-3) 0;
-color: var(--char-secondary);
-line-height: 1.8;
-overflow-wrap: anywhere;
+  margin: 0 0 var(--space-3) 0;
+  color: var(--char-secondary);
+  line-height: 1.8;
+  overflow-wrap: anywhere;
 }
 
 /* =====================================================
@@ -893,17 +879,17 @@ overflow-wrap: anywhere;
 }
 
 @media (max-width: 768px) {
-.appearance-card {
-grid-template-columns: 1fr;
-}
+  .appearance-card {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 720px) {
-.appearance-card-left {
-padding: var(--space-4);
-}
+  .appearance-card-left {
+    padding: var(--space-4);
+  }
 
-.appearance-content {
-padding: var(--space-4);
-}
+  .appearance-content {
+    padding: var(--space-4);
+  }
 }
