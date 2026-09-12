@@ -7,14 +7,16 @@
   "species": "Unknown",
   "elements": ["Unknown"],
   "ethnicity": "Unknown",
+  "occupation": ["Unknown"],
+  "profile_notes": ["Unknown, Unknown"],
+
+
 
   "identity": {
     "gender_identity": "Unknown",
     "pronouns": ["Unknown"],
     "orientation": "Unknown"
   },
-
-  "occupation": ["Unknown"],
 
   "status": {
     "relationship_status": "Unknown",

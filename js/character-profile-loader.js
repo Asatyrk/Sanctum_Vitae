@@ -143,27 +143,64 @@ bannerImage.style.backgroundImage = `url('https://placehold.co/600x200')`
 }
 
 const map = {
-full_name: char.full_name,
-aliases: list(char.aliases),
 age: char.age,
 species: char.species,
-occupation: list(char.occupation),
-
 gender_identity: char.identity?.gender_identity,
 pronouns: list(char.identity?.pronouns),
 orientation: char.identity?.orientation,
+elements: list(char.elements),
+ethnicity: char.ethnicity,
+
+full_name: char.full_name,
+aliases: list(char.aliases),
+occupation: list(char.occupation),
 
 height: char.appearance?.height,
 build: char.appearance?.build,
 eye_colour: char.appearance?.eye_colour,
 hair_colour: char.appearance?.hair_colour,
-design_notes: char.appearance?.design_notes,
 
 likes: list(char.personality?.likes),
 dislikes: list(char.personality?.dislikes),
 strengths: list(char.personality?.strengths),
 weaknesses: list(char.personality?.weaknesses),
 hobbies: list(char.personality?.hobbies)
+}
+
+const profileNotes = document.getElementById("profile-traits-list")
+
+if(profileNotes){
+
+  if(!char.profile_notes || char.profile_notes.length === 0){
+
+    profileNotes.innerHTML = "<li>N/A</li>"
+
+  }else{
+
+    profileNotes.innerHTML = char.profile_notes
+      .map(note => `<li>${note}</li>`)
+      .join("")
+
+  }
+
+}
+
+const designNotes = document.getElementById("profile-traits-list")
+
+if(designNotes){
+
+  if(!char.design_notes || char.design_notes.length === 0){
+
+    designNotes.innerHTML = "<li>N/A</li>"
+
+  }else{
+
+    designNotes.innerHTML = char.design_notes
+      .map(note => `<li>${note}</li>`)
+      .join("")
+
+  }
+
 }
 
 Object.entries(map).forEach(([id,value]) => {

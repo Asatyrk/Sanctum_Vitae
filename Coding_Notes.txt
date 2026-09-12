@@ -5,7 +5,7 @@ To add new character (/other):
 
 To do:
 - Add animations to the tag boxes (pulling down, closing up)
-- Make the character profile read the json's colours (and add a bg colour)
+- Add profile notes to the JSON so they update intuitively
 - Edit visual tweaks, font sizes, box sizes, etc
 - Character page, details, etc 
   - Partner
