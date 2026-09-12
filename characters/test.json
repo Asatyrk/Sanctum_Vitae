@@ -5,10 +5,10 @@
   "aliases": ["Unknown"],
   "age": "Unknown",
   "species": "Unknown",
-  "elements": ["Unknown"],
+  "elements": ["Unknown", "Test"],
   "ethnicity": "Unknown",
   "occupation": ["Unknown"],
-  "profile_notes": ["Unknown, Unknown"],
+  "profile_notes": ["Unknown", "Unknown"],
 
   "identity": {
     "gender_identity": "Unknown",
@@ -42,7 +42,7 @@
     "build": "Unknown",
     "eye_colour": "Unknown",
     "hair_colour": "Unknown",
-    "design_notes": "Unknown"
+    "design_notes": ["Unknown", "Unknown"]
   },
 
   "fashion": {
