@@ -770,6 +770,7 @@ h6 {
   grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
   gap: var(--space-6);
   align-items: stretch;
+  margin-bottom: var(--space-12);
 }
 
 .design-details-left {
