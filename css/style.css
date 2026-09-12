@@ -208,6 +208,27 @@ h6 {
 }
 
 /* =====================================================
+   CHARACTER PAGE HEADER
+===================================================== */
+
+body.character-profile-page .site-header {
+  background: var(--char-primary);
+}
+
+body.character-profile-page .site-nav a {
+  background: var(--char-secondary);
+}
+
+body.character-profile-page .site-nav a:hover {
+  background: var(--char-accent);
+}
+
+body.character-profile-page .site-logo,
+body.character-profile-page #header-page-title {
+  color: var(--char-bg-2);
+}
+
+/* =====================================================
    CHARACTER PAGE LAYOUT
 ===================================================== */
 
@@ -802,8 +823,8 @@ h6 {
 .design-image-box {
   width: 100%;
   aspect-ratio: 2 / 3;
-  background: var(--char-bg-1);
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
   min-height: 0;
 }
