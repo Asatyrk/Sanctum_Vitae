@@ -773,6 +773,7 @@ h6 {
   background: var(--char-bg-1);
   padding: var(--space-6);
   color: var(--char-primary);
+  font-size: var(--font-size-sm);
 }
 
 .detail-split-left .info-label,
