@@ -212,11 +212,11 @@ h6 {
 ===================================================== */
 
 body.character-profile-page .site-header {
-  background: var(--char-primary);
+  background: var(--char-bg-1);
 }
 
 body.character-profile-page .site-nav a {
-  background: var(--char-secondary);
+  background: var(--char-bg-2);
 }
 
 body.character-profile-page .site-nav a:hover {
@@ -225,7 +225,7 @@ body.character-profile-page .site-nav a:hover {
 
 body.character-profile-page .site-logo,
 body.character-profile-page #header-page-title {
-  color: var(--char-bg-2);
+  color: var(--char-primary);
 }
 
 /* =====================================================
