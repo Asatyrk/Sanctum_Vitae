@@ -172,15 +172,11 @@ const profileNotes = document.getElementById("profile-notes")
 if(profileNotes){
 
   if(!char.profile_notes || char.profile_notes.length === 0){
-
     profileNotes.innerHTML = "<li>N/A</li>"
-
   }else{
-
     profileNotes.innerHTML = char.profile_notes
       .map(note => `<li>${note}</li>`)
       .join("")
-
   }
 
 }
@@ -190,19 +186,14 @@ const designNotes = document.getElementById("design-notes")
 if(designNotes){
 
   if(!char.design_notes || char.design_notes.length === 0){
-
     designNotes.innerHTML = "<li>N/A</li>"
-
   }else{
-
     designNotes.innerHTML = char.design_notes
       .map(note => `<li>${note}</li>`)
       .join("")
-
   }
 
 }
-
 
 Object.entries(map).forEach(([id,value]) => {
 
