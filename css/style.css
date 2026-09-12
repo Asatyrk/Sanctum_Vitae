@@ -753,6 +753,93 @@ h6 {
   margin-bottom: var(--space-2);
 }
 
+/* =========================================
+Design Guide Card
+========================================= */
+
+.design-guide-card {
+display: grid;
+grid-template-columns: 1fr 1fr;
+width: 100%;
+margin-top: 3rem;
+border: 1px solid var(--char-accent);
+border-radius: 15px;
+overflow: hidden;
+}
+
+/* Left Column */
+
+.design-guide-left {
+padding: 2rem;
+text-align: center;
+background-color: var(--char-primary);
+border-right: 1px solid var(--char-accent);
+}
+
+.design-guide-title {
+margin: 0;
+font-size: 1.5rem;
+font-weight: 700;
+}
+
+.design-guide-info {
+display: flex;
+flex-direction: column;
+align-items: stretch;
+margin-top: 1.5rem;
+font-size: 0.85rem;
+}
+
+/* Information Rows */
+
+.design-guide-card .info-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100%;
+gap: 1rem;
+}
+
+.design-guide-card .info-label {
+font-weight: 600;
+text-align: left;
+}
+
+.design-guide-card .info-value {
+text-align: right;
+overflow-wrap: anywhere;
+}
+
+.design-guide-card .info-divider {
+width: 100%;
+margin: 0.75rem 0;
+border: 0;
+border-top: 1px solid var(--char-accent);
+}
+
+/* Right Column */
+
+.design-guide-right {
+background-color: var(--char-bg-1);
+}
+
+.design-guide-content {
+padding: 2rem;
+font-size: 0.85rem;
+}
+
+.design-guide-heading {
+margin: 0 0 1rem;
+font-size: 1rem;
+font-weight: 700;
+color: var(--char-primary);
+}
+
+.design-guide-notes {
+line-height: 1.6;
+overflow-wrap: anywhere;
+}
+
 /* =====================================================
    RESPONSIVE DESIGN
 ===================================================== */
@@ -787,4 +874,17 @@ h6 {
   .character-details h2 {
     margin-top: var(--space-6);
   }
+}
+
+@media (max-width: 768px) {
+.design-guide-card {
+grid-template-columns: 1fr;
+}
+
+.design-guide-left {
+    border-right: 0;
+    border-bottom: 1px solid var(--char-accent);
+}
+
+
 }

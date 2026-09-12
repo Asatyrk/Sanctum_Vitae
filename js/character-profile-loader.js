@@ -157,6 +157,7 @@ height: char.appearance?.height,
 build: char.appearance?.build,
 eye_colour: char.appearance?.eye_colour,
 hair_colour: char.appearance?.hair_colour,
+design_notes: char.appearance?.design_notes,
 
 likes: list(char.personality?.likes),
 dislikes: list(char.personality?.dislikes),
