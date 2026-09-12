@@ -747,11 +747,132 @@ h6 {
 }
 
 /* =====================================================
-   INFO BOX (GENERIC)
+   CHARACTER DETAIL BOXES
 ===================================================== */
 
-/*Add this later - trivia/backstory box*/
+.character-detail-card {
+  width: 100%;
+  margin-bottom: var(--space-12);
+  overflow: hidden;
+}
 
+
+/* =====================================================
+   50/50 DETAIL BOX
+===================================================== */
+
+.character-detail-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+
+/* Left side */
+
+.detail-split-left {
+  background: var(--char-bg-1);
+  padding: var(--space-6);
+  color: var(--char-primary);
+}
+
+.detail-split-left .info-label,
+.detail-split-left .info-value {
+  color: var(--char-primary);
+}
+
+.detail-split-left .info-value {
+  text-align: right;
+  word-break: break-word;
+  max-width: 50%;
+}
+
+
+/* Right side */
+
+.detail-split-right {
+  background: var(--char-bg-2);
+  padding: var(--space-6);
+  color: var(--char-secondary);
+}
+
+.detail-split-right .profile-traits {
+  margin: 0;
+}
+
+.detail-split-right .profile-traits li {
+  color: var(--char-secondary);
+}
+
+
+/* =====================================================
+   BANNER DETAIL BOX
+===================================================== */
+
+.character-detail-banner {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Top banner */
+
+.detail-banner-header {
+  background: var(--char-bg-1);
+  color: var(--char-primary);
+  padding: var(--space-5) var(--space-6);
+}
+
+.detail-banner-header h2 {
+  margin: 0;
+  color: var(--char-primary);
+  font-size: var(--font-size-lg);
+}
+
+
+/* Main content */
+
+.detail-banner-content {
+  background: var(--char-bg-2);
+  color: var(--char-secondary);
+  padding: var(--space-6);
+}
+
+.detail-banner-content p {
+  margin: 0 0 var(--space-4) 0;
+  line-height: 1.8;
+}
+
+.detail-banner-content ul {
+  margin: 0;
+  padding-left: var(--space-6);
+}
+
+.detail-banner-content li {
+  margin-bottom: var(--space-2);
+}
+
+
+/* =====================================================
+   RESPONSIVE DETAIL BOXES
+===================================================== */
+
+@media (max-width: 720px) {
+
+  .character-detail-split {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-split-left,
+  .detail-split-right,
+  .detail-banner-content {
+    padding: var(--space-4);
+  }
+
+  .detail-banner-header {
+    padding: var(--space-4);
+  }
+
+}
 
 /* =====================================================
    RESPONSIVE DESIGN

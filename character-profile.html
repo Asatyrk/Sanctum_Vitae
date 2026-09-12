@@ -106,40 +106,66 @@
   
 </div>
 
-<!-- Extended Character Details -->
-<!-- Add design card also -->
-<div class="character-details">
-  
-  <h2>Personality</h2>
-  <p><strong>Likes:</strong> <span id="likes"></span></p>
-  <p><strong>Dislikes:</strong> <span id="dislikes"></span></p>
-  <p><strong>Strengths:</strong> <span id="strengths"></span></p>
-  <p><strong>Weaknesses:</strong> <span id="weaknesses"></span></p>
-  <p><strong>Hobbies:</strong> <span id="hobbies"></span></p>
+<!-- =====================================================
+     OTHER CHARACTER DETAILS
+===================================================== -->
 
-  <h2>Relationships</h2>
-  <ul id="relationships"></ul>
+<!-- 50/50 DETAIL BOX -->
+<div class="character-detail-card character-detail-split">
 
-  <h2>Partners</h2>
-  <ul id="partners"></ul>
+  <div class="detail-split-left">
 
-  <h2>Pets</h2>
-  <ul id="pets"></ul>
+    <div class="info-row">
+      <span class="info-label">HEIGHT</span>
+      <span class="info-value" id="height"></span>
+    </div>
 
-  <h2>Stories</h2>
-  <ul id="stories"></ul>
+    <hr class="info-divider">
 
-  <h2>Backstory</h2>
-  <p id="backstory"></p>
+    <div class="info-row">
+      <span class="info-label">BUILD</span>
+      <span class="info-value" id="build"></span>
+    </div>
 
-  <h2>Trivia</h2>
-  <ul id="trivia"></ul>
+    <hr class="info-divider">
 
-  <h2>Colour Palette</h2>
-  <div id="palette"></div>
+    <div class="info-row">
+      <span class="info-label">EYES</span>
+      <span class="info-value" id="eye_colour"></span>
+    </div>
 
-  <h2>External Links</h2>
-  <ul id="links"></ul>
+    <hr class="info-divider">
+
+    <div class="info-row">
+      <span class="info-label">HAIR</span>
+      <span class="info-value" id="hair_colour"></span>
+    </div>
+
+  </div>
+
+  <div class="detail-split-right">
+
+    <ul class="profile-traits" id="design-notes"></ul>
+
+  </div>
+
+</div>
+
+
+<!-- BANNER DETAIL BOX -->
+<div class="character-detail-card character-detail-banner">
+
+  <div class="detail-banner-header">
+    <h2>Personality</h2>
+  </div>
+
+  <div class="detail-banner-content">
+
+    <p id="backstory"></p>
+
+    <ul id="trivia"></ul>
+
+  </div>
 
 </div>
 
