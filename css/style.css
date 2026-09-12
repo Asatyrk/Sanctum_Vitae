@@ -769,22 +769,33 @@ h6 {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
   gap: var(--space-6);
-  align-items: start;
+  align-items: stretch;
 }
 
 .design-details-left {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
+  min-height: 0;
 }
 
-.design-info-box,
+.design-info-box {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
 .design-notes-box {
   margin-bottom: 0;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.design-info-box .detail-split-left {
-  font-size: var(--font-size-sm);
+.design-notes-box .detail-banner-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .design-image-box {
@@ -793,6 +804,7 @@ h6 {
   background: var(--char-bg-1);
   background-size: cover;
   background-position: center;
+  min-height: 0;
 }
 
 /* Left side */
