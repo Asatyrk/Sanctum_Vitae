@@ -185,10 +185,12 @@ const designNotes = document.getElementById("design-notes")
 
 if(designNotes){
 
-  if(!char.design_notes || char.design_notes.length === 0){
+  const notes = char.appearance?.design_notes
+
+  if(!notes || notes.length === 0){
     designNotes.innerHTML = "<li>N/A</li>"
   }else{
-    designNotes.innerHTML = char.design_notes
+    designNotes.innerHTML = notes
       .map(note => `<li>${note}</li>`)
       .join("")
   }

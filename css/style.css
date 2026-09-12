@@ -835,6 +835,7 @@ h6 {
   background: var(--char-bg-2);
   color: var(--char-secondary);
   padding: var(--space-6);
+  font-size: var(--font-size-sm);
 }
 
 .detail-banner-content p {
