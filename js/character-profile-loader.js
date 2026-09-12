@@ -167,7 +167,7 @@ weaknesses: list(char.personality?.weaknesses),
 hobbies: list(char.personality?.hobbies)
 }
 
-const profileNotes = document.getElementById("profile-traits-list")
+const profileNotes = document.getElementById("profile-notes")
 
 if(profileNotes){
 
@@ -185,7 +185,7 @@ if(profileNotes){
 
 }
 
-const designNotes = document.getElementById("profile-traits-list")
+const designNotes = document.getElementById("design-notes")
 
 if(designNotes){
 
@@ -202,6 +202,7 @@ if(designNotes){
   }
 
 }
+
 
 Object.entries(map).forEach(([id,value]) => {
 
