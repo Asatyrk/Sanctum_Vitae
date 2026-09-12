@@ -52,17 +52,6 @@
     "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
   ]},
 
-  "fashion": {
-    "style": "Unknown",
-    "gender_style": "Unknown",
-    "colour_profile": "Unknown",
-    "modesty": "Unknown",
-    "accessories": ["Unknown"],
-    "makeup": "Unknown",
-    "cultural_wear": ["Unknown"],
-    "notes": "Unknown"
-  },
-
   "personality": {
     "likes": ["Unknown"],
     "dislikes": ["Unknown"],
@@ -72,6 +61,17 @@
     "hobbies": ["Unknown"],
     "values": ["Unknown"],
     "goals": ["Unknown"],
+    "notes": "Unknown"
+  },
+
+  "fashion": {
+    "style": "Unknown",
+    "gender_style": "Unknown",
+    "colour_profile": "Unknown",
+    "modesty": "Unknown",
+    "accessories": ["Unknown"],
+    "makeup": "Unknown",
+    "cultural_wear": ["Unknown"],
     "notes": "Unknown"
   },
 

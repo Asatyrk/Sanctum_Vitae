@@ -2,10 +2,12 @@ To add new character (/other):
 - Create new .json in characters (/other) folder with profile info
 - Tags can be found in characters.js
 - Add to index.json so it shows up in layout
+- Banner is 600x200, Fullbody is 400x600
+
+---
 
 To do:
-- Add animations to the tag boxes (pulling down, closing up)
-- Add profile notes to the JSON so they update intuitively
+- Make the page title update colours intuitively (like the rest of the page)
 - Edit visual tweaks, font sizes, box sizes, etc
 - Character page, details, etc 
   - Partner
@@ -18,5 +20,7 @@ To do:
   - Alt forms too? 
 - Mockup and code factions 
 - Mockup and code stories
+- Add /pets ?
 - Ensure page base is setup correctly
+- Add animations to the tag boxes (pulling down, closing up)?
 - Other pages, but maybe just that for now

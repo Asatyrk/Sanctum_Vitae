@@ -572,11 +572,6 @@ h6 {
   margin-bottom: var(--space-4);
 }
 
-.page-container > a:hover,
-.page-container > a:focus-visible {
-  text-decoration: underline;
-}
-
 /* =====================================================
    CHARACTER PROFILE CARD
 ===================================================== */
@@ -632,7 +627,6 @@ h6 {
 
 /* =====================================================
    LEFT BOX TEXT
-   Primary colour = all text on the left
 ===================================================== */
 
 .profile-card-left .info-label,
@@ -669,7 +663,6 @@ h6 {
   flex-direction: column;
 }
 
-/* All text inside the right box uses secondary */
 .profile-card-right .info-label,
 .profile-card-right .info-value {
   color: var(--char-secondary);
@@ -752,6 +745,13 @@ h6 {
 .character-details ul li {
   margin-bottom: var(--space-2);
 }
+
+/* =====================================================
+   INFO BOX (GENERIC)
+===================================================== */
+
+/*Add this later - trivia/backstory box*/
+
 
 /* =====================================================
    RESPONSIVE DESIGN
