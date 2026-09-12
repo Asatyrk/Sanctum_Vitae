@@ -753,90 +753,96 @@ h6 {
   margin-bottom: var(--space-2);
 }
 
-/* =========================================
-Design Guide Card
-========================================= */
+/* =====================================================
+APPEARANCE / DESIGN GUIDE CARD
+===================================================== */
 
-.design-guide-card {
+.appearance-card {
 display: grid;
-grid-template-columns: 1fr 1fr;
-width: 100%;
-margin-top: 3rem;
-border: 1px solid var(--char-accent);
-border-radius: 15px;
+grid-template-columns: 1fr 2fr;
+gap: 0;
 overflow: hidden;
+margin-bottom: var(--space-12);
 }
 
-/* Left Column */
+/* =====================================================
+LEFT BOX
+===================================================== */
 
-.design-guide-left {
-padding: 2rem;
-text-align: center;
-background-color: var(--char-primary);
-border-right: 1px solid var(--char-accent);
-}
-
-.design-guide-title {
-margin: 0;
-font-size: 1.5rem;
-font-weight: 700;
-}
-
-.design-guide-info {
+.appearance-card-left {
+background: var(--char-bg-1);
+padding: var(--space-6);
 display: flex;
 flex-direction: column;
-align-items: stretch;
-margin-top: 1.5rem;
-font-size: 0.85rem;
-}
-
-/* Information Rows */
-
-.design-guide-card .info-row {
-display: flex;
-justify-content: space-between;
 align-items: center;
-width: 100%;
-gap: 1rem;
+text-align: center;
 }
 
-.design-guide-card .info-label {
-font-weight: 600;
-text-align: left;
-}
-
-.design-guide-card .info-value {
-text-align: right;
-overflow-wrap: anywhere;
-}
-
-.design-guide-card .info-divider {
-width: 100%;
-margin: 0.75rem 0;
-border: 0;
-border-top: 1px solid var(--char-accent);
-}
-
-/* Right Column */
-
-.design-guide-right {
-background-color: var(--char-bg-1);
-}
-
-.design-guide-content {
-padding: 2rem;
-font-size: 0.85rem;
-}
-
-.design-guide-heading {
-margin: 0 0 1rem;
-font-size: 1rem;
-font-weight: 700;
+.appearance-title {
+font-size: var(--font-size-lg);
+margin: 0 0 var(--space-5) 0;
 color: var(--char-primary);
 }
 
-.design-guide-notes {
-line-height: 1.6;
+/* APPEARANCE INFORMATION */
+
+.appearance-info {
+width: 100%;
+font-size: var(--font-size-sm);
+display: flex;
+flex-direction: column;
+gap: 0;
+}
+
+/* TEXT */
+
+.appearance-card-left .info-label,
+.appearance-card-left .info-value {
+color: var(--char-primary);
+}
+
+.appearance-card-left .info-value {
+text-align: right;
+word-break: break-word;
+max-width: 50%;
+}
+
+/* =====================================================
+RIGHT BOX
+===================================================== */
+
+.appearance-card-right {
+background: var(--char-bg-2);
+display: flex;
+flex-direction: column;
+}
+
+/* RIGHT BOX CONTENT */
+
+.appearance-content {
+padding: var(--space-6);
+font-size: var(--font-size-sm);
+flex-grow: 1;
+display: flex;
+flex-direction: column;
+}
+
+/* DESIGN NOTES HEADING */
+
+.appearance-heading {
+margin-top: var(--space-8);
+margin-bottom: var(--space-3);
+font-size: var(--font-size-lg);
+color: var(--char-primary);
+letter-spacing: 0.02em;
+}
+
+/* DESIGN NOTES */
+
+.appearance-notes {
+margin: 0 0 var(--space-3) 0;
+color: var(--char-secondary);
+line-height: 1.8;
 overflow-wrap: anywhere;
 }
 
@@ -850,7 +856,7 @@ overflow-wrap: anywhere;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .page-container {
     padding: var(--space-5);
   }
@@ -881,10 +887,22 @@ overflow-wrap: anywhere;
 grid-template-columns: 1fr;
 }
 
-.design-guide-left {
-    border-right: 0;
-    border-bottom: 1px solid var(--char-accent);
 }
 
+@media (max-width: 768px) {
+.appearance-card {
+grid-template-columns: 1fr;
+}
 
+.appearance-card-left {
+padding: var(--space-4);
+}
+
+.appearance-card-right {
+border-top: 1px solid var(--char-accent);
+}
+
+.appearance-content {
+padding: var(--space-4);
+}
 }
