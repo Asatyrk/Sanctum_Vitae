@@ -784,7 +784,9 @@ margin: 0 0 var(--space-5) 0;
 color: var(--char-primary);
 }
 
-/* APPEARANCE INFORMATION */
+/* =====================================================
+APPEARANCE INFORMATION
+===================================================== */
 
 .appearance-info {
 width: 100%;
@@ -794,7 +796,9 @@ flex-direction: column;
 gap: 0;
 }
 
-/* TEXT */
+/* =====================================================
+LEFT BOX TEXT
+===================================================== */
 
 .appearance-card-left .info-label,
 .appearance-card-left .info-value {
@@ -817,7 +821,9 @@ display: flex;
 flex-direction: column;
 }
 
-/* RIGHT BOX CONTENT */
+/* =====================================================
+RIGHT BOX CONTENT
+===================================================== */
 
 .appearance-content {
 padding: var(--space-6);
@@ -827,7 +833,9 @@ display: flex;
 flex-direction: column;
 }
 
-/* DESIGN NOTES HEADING */
+/* =====================================================
+DESIGN NOTES HEADING
+===================================================== */
 
 .appearance-heading {
 margin-top: var(--space-8);
@@ -837,7 +845,9 @@ color: var(--char-primary);
 letter-spacing: 0.02em;
 }
 
-/* DESIGN NOTES */
+/* =====================================================
+DESIGN NOTES
+===================================================== */
 
 .appearance-notes {
 margin: 0 0 var(--space-3) 0;
@@ -856,7 +866,7 @@ overflow-wrap: anywhere;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .page-container {
     padding: var(--space-5);
   }
@@ -883,23 +893,14 @@ overflow-wrap: anywhere;
 }
 
 @media (max-width: 768px) {
-.design-guide-card {
-grid-template-columns: 1fr;
-}
-
-}
-
-@media (max-width: 768px) {
 .appearance-card {
 grid-template-columns: 1fr;
 }
-
-.appearance-card-left {
-padding: var(--space-4);
 }
 
-.appearance-card-right {
-border-top: 1px solid var(--char-accent);
+@media (max-width: 720px) {
+.appearance-card-left {
+padding: var(--space-4);
 }
 
 .appearance-content {
