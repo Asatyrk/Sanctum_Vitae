@@ -142,6 +142,14 @@ if(bannerImage && char.banner){
 bannerImage.style.backgroundImage = `url('https://placehold.co/600x200')`
 }
 
+// Set fullbody image (right of design box)
+const designImage = document.getElementById("design-image")
+if(designImage && char.fullbody){
+  designImage.style.backgroundImage = `url('${char.fullbody}')`
+}else if(bannerImage){
+bannerImage.style.backgroundImage = `url('https://placehold.co/400x600')`
+}
+
 const map = {
 age: char.age,
 species: char.species,

@@ -756,7 +756,6 @@ h6 {
   overflow: hidden;
 }
 
-
 /* =====================================================
    50/50 DETAIL BOX
 ===================================================== */
@@ -766,6 +765,33 @@ h6 {
   grid-template-columns: 1fr 1fr;
 }
 
+.design-details-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.design-details-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.design-info-box,
+.design-notes-box {
+  margin-bottom: 0;
+}
+
+.design-info-box .detail-split-left {
+  font-size: var(--font-size-sm);
+}
+
+.design-image-box {
+  width: 400px;
+  height: 600px;
+  background: var(--char-bg-1);
+}
 
 /* Left side */
 
@@ -862,6 +888,15 @@ h6 {
 
   .character-detail-split {
     grid-template-columns: 1fr;
+  }
+
+    .design-details-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .design-image-box {
+    width: 100%;
+    height: 400px;
   }
 
   .detail-split-left,
