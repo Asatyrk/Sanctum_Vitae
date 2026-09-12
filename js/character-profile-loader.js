@@ -146,8 +146,8 @@ bannerImage.style.backgroundImage = `url('https://placehold.co/600x200')`
 const designImage = document.getElementById("design-image")
 if(designImage && char.fullbody){
   designImage.style.backgroundImage = `url('${char.fullbody}')`
-}else if(bannerImage){
-bannerImage.style.backgroundImage = `url('https://placehold.co/400x600')`
+}else if(designImage){
+  designImage.style.backgroundImage = `url('https://placehold.co/400x600')`
 }
 
 const map = {
@@ -168,10 +168,18 @@ build: char.appearance?.build,
 eye_colour: char.appearance?.eye_colour,
 hair_colour: char.appearance?.hair_colour,
 
+relationship_status: char.status?.relationship_status,
+life_status: char.status?.life_status,
+birthday: char.dates?.birthday,
+zodiac: char.dates?.zodiac,
+mbti: char.psychology?.mbti,
+voice: char.voice,
+
 likes: list(char.personality?.likes),
 dislikes: list(char.personality?.dislikes),
 strengths: list(char.personality?.strengths),
 weaknesses: list(char.personality?.weaknesses),
+interests: list(char.personality?.interests),
 hobbies: list(char.personality?.hobbies)
 }
 
