@@ -111,8 +111,11 @@
     "languages_spoken": ["Unknown"],
     "family_background": "Unknown",
     "birthplace": "Unknown",
-    "homeland": "Unknown",
-    "current_location": "Unknown"
+    "current_location": "Unknown",
+    "notes": [
+      "Unknown",
+      "Unknown"
+    ]
   },
 
   "favourites": {

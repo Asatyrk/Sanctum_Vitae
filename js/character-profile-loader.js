@@ -214,7 +214,14 @@ mental_health: list(char.health?.mental_health),
 physical_health: list(char.health?.physical_health),
 activity_level: list(char.health?.activity_level),
 hygiene: list(char.health?.hygiene),
-crisis_reaction: list(char.health?.crisis_reaction)
+crisis_reaction: list(char.health?.crisis_reaction),
+
+religion: list(char.background?.religion),
+education: list(char.background?.education),
+languages_spoken: list(char.background?.languages_spoken),
+family_background: list(char.background?.family_background),
+birthplace: list(char.background?.birthplace),
+current_location: list(char.background?.current_location)
 }
 
 const profileNotes = document.getElementById("profile-notes")
@@ -279,6 +286,22 @@ if(likes){
 
 }
 
+const dislikes = document.getElementById("dislikes")
+
+if(dislikes){
+
+  const notes = char.personality?.dislikes
+
+  if(!notes || notes.length === 0){
+    dislikes.innerHTML = "<li>N/A</li>"
+  }else{
+    dislikes.innerHTML = notes
+      .map(note => `<li>${note}</li>`)
+      .join("")
+  }
+
+}
+
 
 const healthNotes = document.getElementById("health-notes");
 
@@ -295,20 +318,18 @@ if (healthNotes) {
 }
 
 
-const dislikes = document.getElementById("dislikes")
+const backgroundhNotes = document.getElementById("background-notes");
 
-if(dislikes){
+if (backgroundNotes) {
+  const notes = char.background?.notes;
 
-  const notes = char.personality?.dislikes
-
-  if(!notes || notes.length === 0){
-    dislikes.innerHTML = "<li>N/A</li>"
-  }else{
-    dislikes.innerHTML = notes
+  if (!notes || notes.length === 0) {
+    backgroundNotes.innerHTML = "<li>N/A</li>";
+  } else {
+    backgroundNotes.innerHTML = notes
       .map(note => `<li>${note}</li>`)
-      .join("")
+      .join("");
   }
-
 }
 
 
