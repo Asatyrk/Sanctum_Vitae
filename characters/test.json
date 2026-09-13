@@ -197,13 +197,14 @@
     "accent": "#00FF00",
     "bg_1": "#000000",
     "bg_2": "#FFFFFF",
-    "page_bg": "#800080"
+    "page_bg": "#800080",
+    "background_gradient": "#000000"
   },
 
-  "background": {
+  "pbackground": {
     "particle_color": "#FF00FF",
-    "particle_shape": "square",
-    "particle_count": 14,
+    "particle_shape": "circle",
+    "particle_count": 40,
     "particle_opacity": 0.18,
     "particle_blur": 0
    },

@@ -65,6 +65,7 @@
   --char-bg-1: #f4efe6;
   --char-bg-2: #f3f1ec;
   --char-page-bg: #f3f1ec;
+  --background-gradient: #FFFFFF;
 
   /* Character Background - Fallback */
   --char-particle-color: #b99b78;
@@ -766,6 +767,23 @@ body.character-profile-page .site-nav a:focus-visible {
   color: var(--char-primary);
   text-decoration: none;
   margin-bottom: var(--space-4);
+}
+
+.character-background-gradient {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 25vh;
+
+  background: linear-gradient(
+    to top,
+    var(--char-background-gradient),
+    transparent
+  );
+
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* =====================================================

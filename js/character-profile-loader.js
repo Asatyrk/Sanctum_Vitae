@@ -16,10 +16,11 @@ function applyCharacterColors(char){
   const bg1 = colors.bg_1 || "#f4efe6"
   const bg2 = colors.bg_2 || "#f3f1ec"
   const pageBg = colors.page_bg || "#f3f1ec"
+  const backgroundGradient = colors.background_gradient || "#FFFFFF"
 
-  const particleColor = background.particle_color || primary
-  const particleOpacity = background.particle_opacity ?? 0.18
-  const particleBlur = background.particle_blur ?? 0
+  const particleColor = pbackground.particle_color || primary
+  const particleOpacity = pbackground.particle_opacity ?? 0.18
+  const particleBlur = pbackground.particle_blur ?? 0
 
   const root = document.documentElement
 
@@ -29,6 +30,8 @@ function applyCharacterColors(char){
   root.style.setProperty("--char-bg-1", bg1)
   root.style.setProperty("--char-bg-2", bg2)
   root.style.setProperty("--char-page-bg", pageBg)
+  root.style.setProperty("--background-gradient", backgroundGradient)
+
 
   root.style.setProperty("--char-particle-color", particleColor)
   root.style.setProperty("--char-particle-opacity", particleOpacity)
@@ -46,12 +49,12 @@ function setupCharacterBackground(char){
   const count = Math.max(
     1,
     Math.min(
-      Number(background.particle_count) || 14,
+      Number(pbackground.particle_count) || 14,
       50
     )
   )
 
-  const shape = background.particle_shape || "square"
+  const shape = pbackground.particle_shape || "square"
 
   container.innerHTML = ""
 
@@ -72,7 +75,7 @@ function setupCharacterBackground(char){
     const startRotation = -50 + Math.random() * 30
     const endRotation = 10 + Math.random() * 20
 
-    const blur = background.particle_blur ?? 0
+    const blur = pbackground.particle_blur ?? 0
 
     particle.style.setProperty(
       "--particle-width",
