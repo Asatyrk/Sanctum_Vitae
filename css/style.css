@@ -891,6 +891,7 @@ body.character-profile-page .site-nav a:focus-visible {
   background: var(--char-bg-2);
   padding: var(--space-6);
   color: var(--char-secondary);
+  font-size: var(--font-size-sm);
 }
 
 .detail-split-right h2 {
