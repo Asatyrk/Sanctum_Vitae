@@ -66,6 +66,11 @@
   --char-bg-2: #f3f1ec;
   --char-page-bg: #f3f1ec;
 
+  /* Character Background - Fallback */
+  --char-particle-color: #b99b78;
+  --char-particle-opacity: 0.18;
+  --char-particle-blur: 0px;
+
 }
 
 /* =====================================================
@@ -118,6 +123,139 @@ h6 {
 .page-paper {
   background: var(--color-light);
 }
+
+/* =====================================================
+   CHARACTER ANIMATED BACKGROUND
+===================================================== */
+
+.character-profile-page {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.character-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--char-page-bg);
+}
+
+.character-particles {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+/* Soft top fade */
+.character-background::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 60vh;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    -180deg,
+    color-mix(in srgb, var(--char-page-bg) 100%, transparent 0%) 0%,
+    color-mix(in srgb, var(--char-page-bg) 0%, transparent 100%) 100%
+  );
+}
+
+/* Soft bottom fade */
+.character-background::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 20vh;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    0deg,
+    color-mix(in srgb, var(--char-page-bg) 100%, transparent 0%) 0%,
+    color-mix(in srgb, var(--char-page-bg) 0%, transparent 100%) 100%
+  );
+}
+
+/* Individual particles */
+
+.character-particle {
+  position: absolute;
+  bottom: 0;
+  left: var(--particle-left);
+  width: var(--particle-width);
+  height: var(--particle-height);
+  background: var(--char-particle-color);
+  opacity: var(--char-particle-opacity);
+  filter: blur(var(--particle-blur, var(--char-particle-blur)));
+  transform: translateY(100%) rotate(var(--particle-start-rotation));
+  animation:
+    character-particle-float
+    var(--particle-duration)
+    linear
+    var(--particle-delay)
+    infinite;
+}
+
+/* Particle shapes */
+
+.character-particle[data-shape="square"] {
+  border-radius: 0;
+}
+
+.character-particle[data-shape="circle"] {
+  border-radius: 50%;
+}
+
+.character-particle[data-shape="rounded"] {
+  border-radius: var(--border-radius-lg);
+}
+
+.character-particle[data-shape="diamond"] {
+  transform:
+    translateY(100%)
+    rotate(45deg)
+    rotate(var(--particle-start-rotation));
+}
+
+.character-particle[data-shape="pill"] {
+  border-radius: var(--border-radius-full);
+}
+
+@keyframes character-particle-float {
+  from {
+    transform:
+      translateY(100%)
+      rotate(var(--particle-start-rotation));
+  }
+
+  to {
+    transform:
+      translateY(calc(-100vh - 100%))
+      rotate(var(--particle-end-rotation));
+  }
+}
+
+/* Keep actual page content above the animation */
+
+.character-profile-page > #site-header,
+.character-profile-page > .page-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .character-particle {
+    animation-play-state: paused;
+  }
+}
+
 
 /* =====================================================
    SITE HEADER

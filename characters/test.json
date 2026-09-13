@@ -200,6 +200,14 @@
     "page_bg": "#800080"
   },
 
+  "background": {
+    "particle_color": "#FF00FF",
+    "particle_shape": "square",
+    "particle_count": 14,
+    "particle_opacity": 0.18,
+    "particle_blur": 0
+   },
+
   "tags": {
     "Species (Class)": ["Humanoid"],
     "Species (Specific)": ["Human"],

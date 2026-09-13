@@ -8,6 +8,7 @@ return params.get("char")
 function applyCharacterColors(char){
 
   const colors = char.colors || {}
+  const background = char.background || {}
 
   const primary = colors.primary || "#b99b78"
   const secondary = colors.secondary || "#a27d5f"
@@ -15,6 +16,10 @@ function applyCharacterColors(char){
   const bg1 = colors.bg_1 || "#f4efe6"
   const bg2 = colors.bg_2 || "#f3f1ec"
   const pageBg = colors.page_bg || "#f3f1ec"
+
+  const particleColor = background.particle_color || primary
+  const particleOpacity = background.particle_opacity ?? 0.18
+  const particleBlur = background.particle_blur ?? 0
 
   const root = document.documentElement
 
@@ -24,6 +29,93 @@ function applyCharacterColors(char){
   root.style.setProperty("--char-bg-1", bg1)
   root.style.setProperty("--char-bg-2", bg2)
   root.style.setProperty("--char-page-bg", pageBg)
+
+  root.style.setProperty("--char-particle-color", particleColor)
+  root.style.setProperty("--char-particle-opacity", particleOpacity)
+  root.style.setProperty("--char-particle-blur", `${particleBlur}px`)
+}
+
+function setupCharacterBackground(char){
+
+  const container = document.getElementById("character-particles")
+
+  if(!container) return
+
+  const background = char.background || {}
+
+  const count = Math.max(
+    1,
+    Math.min(
+      Number(background.particle_count) || 14,
+      50
+    )
+  )
+
+  const shape = background.particle_shape || "square"
+
+  container.innerHTML = ""
+
+  for(let i = 0; i < count; i++){
+
+    const particle = document.createElement("div")
+
+    particle.className = "character-particle"
+    particle.dataset.shape = shape
+
+    const width = 12 + Math.random() * 35
+    const height = 12 + Math.random() * 70
+
+    const left = Math.random() * 100
+    const duration = 8 + Math.random() * 10
+    const delay = -(Math.random() * duration)
+
+    const startRotation = -50 + Math.random() * 30
+    const endRotation = 10 + Math.random() * 20
+
+    const blur = background.particle_blur ?? 0
+
+    particle.style.setProperty(
+      "--particle-width",
+      `${width}px`
+    )
+
+    particle.style.setProperty(
+      "--particle-height",
+      `${height}px`
+    )
+
+    particle.style.setProperty(
+      "--particle-left",
+      `${left}%`
+    )
+
+    particle.style.setProperty(
+      "--particle-duration",
+      `${duration}s`
+    )
+
+    particle.style.setProperty(
+      "--particle-delay",
+      `${delay}s`
+    )
+
+    particle.style.setProperty(
+      "--particle-start-rotation",
+      `${startRotation}deg`
+    )
+
+    particle.style.setProperty(
+      "--particle-end-rotation",
+      `${endRotation}deg`
+    )
+
+    particle.style.setProperty(
+      "--particle-blur",
+      `${blur}px`
+    )
+
+    container.appendChild(particle)
+  }
 }
 
 async function loadCharacter(){
@@ -48,6 +140,7 @@ throw new Error("Character not found")
 const char = await response.json()
 
 displayCharacter(char)
+setupCharacterBackground(char)
 setupDetailTabs()
 
 }catch(err){
