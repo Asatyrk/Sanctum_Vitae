@@ -176,14 +176,33 @@ zodiac: char.dates?.zodiac,
 mbti: char.psychology?.mbti,
 voice: char.voice,
 
-likes: list(char.personality?.likes),
-dislikes: list(char.personality?.dislikes),
 strengths: list(char.personality?.strengths),
 weaknesses: list(char.personality?.weaknesses),
 interests: list(char.personality?.interests),
 hobbies: list(char.personality?.hobbies),
 values: list(char.personality?.values),
-goals: list(char.personality?.goals)
+goals: list(char.personality?.goals),
+
+temperament: list(char.psychology?.temperament),
+confidence: list(char.psychology?.confidence),
+self_worth: list(char.psychology?.self_worth),
+philosophy: list(char.psychology?.philosophy),
+sense_of_humor: list(char.psychology?.sense_of_humor),
+clothing_style: list(char.psychology?.clothing_style),
+
+social_status: list(char.lifestyle?.social_status),
+financial_status: list(char.lifestyle?.financial_status),
+communication_style: list(char.lifestyle?.communication_style),
+sleep_style: list(char.lifestyle?.sleep_style),
+work_ethic: list(char.lifestyle?.work_ethic),
+conflict_resolution: list(char.lifestyle?.conflict_resolution),
+
+colours: list(char.favourites?.colours),
+medias: list(char.favourites?.medias),
+songs: list(char.favourites?.songs),
+foods: list(char.favourites?.foods),
+animals: list(char.favourites?.animals),
+items: list(char.favourites?.items)
 }
 
 const profileNotes = document.getElementById("profile-notes")

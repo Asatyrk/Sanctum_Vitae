@@ -36,7 +36,8 @@
     "confidence": "Unknown",
     "self_worth": "Unknown",
     "philosophy": "Unknown",
-    "sense_of_humor": "Unknown"
+    "sense_of_humor": "Unknown",
+    "clothing_style": "Unknown"
   },
 
   "voice": "Unknown",
@@ -73,17 +74,6 @@
       "Unknown", 
       "Unknown"
     ]
-  },
-
-  "fashion": {
-    "style": "Unknown",
-    "gender_style": "Unknown",
-    "colour_profile": "Unknown",
-    "modesty": "Unknown",
-    "accessories": ["Unknown"],
-    "makeup": "Unknown",
-    "cultural_wear": ["Unknown"],
-    "notes": "Unknown"
   },
 
   "combat": {
@@ -124,11 +114,9 @@
 
   "favourites": {
     "colours": ["Unknown"],
-    "movies": ["Unknown"],
-    "shows": ["Unknown"],
+    "medias": ["Unknown"],
     "songs": ["Unknown"],
     "foods": ["Unknown"],
-    "books": ["Unknown"],
     "animals": ["Unknown"],
     "items": ["Unknown"]
   },
