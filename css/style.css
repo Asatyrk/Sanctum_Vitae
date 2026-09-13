@@ -144,7 +144,7 @@ h6 {
   background: linear-gradient(
     to bottom,
     var(--char-page-bg) 0%,
-    var(--char-page-bg) 65%,
+    var(--char-page-bg) 75%,
     var(--char-background-gradient) 100%
   );
 }

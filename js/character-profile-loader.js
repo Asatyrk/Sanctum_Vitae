@@ -65,8 +65,15 @@ function setupCharacterBackground(char){
     particle.className = "character-particle"
     particle.dataset.shape = shape
 
-    const width = 12 + Math.random() * 35
-    const height = 12 + Math.random() * 70
+    const randomSize = characterBackground.random_size ?? false
+
+    const width = randomSize
+      ? 12 + Math.random() * 35
+      : 24
+
+    const height = randomSize
+      ? 12 + Math.random() * 70
+      : 24
 
     const left = Math.random() * 100
     const duration = 8 + Math.random() * 10
