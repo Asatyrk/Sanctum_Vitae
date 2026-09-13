@@ -140,51 +140,19 @@ h6 {
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+
   background: linear-gradient(
-  to bottom,
-  var(--char-page-bg) 0%,
-  var(--char-page-bg) 65%,
-  var(--background-gradient) 100%
-);
+    to bottom,
+    var(--char-page-bg) 0%,
+    var(--char-page-bg) 70%,
+    var(--background-gradient) 100%
+  );
 }
 
 .character-particles {
   position: absolute;
   inset: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
   overflow: hidden;
-}
-
-/* Soft top fade */
-.character-background::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 60vh;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(
-    -180deg,
-    color-mix(in srgb, var(--char-page-bg) 100%, transparent 0%) 0%,
-    color-mix(in srgb, var(--char-page-bg) 0%, transparent 100%) 100%
-  );
-}
-
-/* Soft bottom fade */
-.character-background::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 20vh;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(
-    0deg,
-    color-mix(in srgb, var(--char-page-bg) 100%, transparent 0%) 0%,
-    color-mix(in srgb, var(--char-page-bg) 0%, transparent 100%) 100%
-  );
 }
 
 /* Individual particles */
@@ -198,7 +166,9 @@ h6 {
   background: var(--char-particle-color);
   opacity: var(--char-particle-opacity);
   filter: blur(var(--particle-blur, var(--char-particle-blur)));
+
   transform: translateY(100%) rotate(var(--particle-start-rotation));
+
   animation:
     character-particle-float
     var(--particle-duration)
@@ -246,7 +216,7 @@ h6 {
   }
 }
 
-/* Keep actual page content above the animation */
+/* Keep actual page content above the background */
 
 .character-profile-page > #site-header,
 .character-profile-page > .page-container {
@@ -261,7 +231,6 @@ h6 {
     animation-play-state: paused;
   }
 }
-
 
 /* =====================================================
    SITE HEADER
