@@ -904,6 +904,25 @@ body.character-profile-page .site-nav a:focus-visible {
   margin: 0;
 }
 
+/* Lists inside the split detail panels */
+.detail-split-left .profile-traits,
+.detail-split-right .profile-traits {
+  display: block;
+  list-style-type: disc;
+  padding-left: var(--space-6);
+  margin: var(--space-4) 0;
+}
+
+.detail-split-left .profile-traits li,
+.detail-split-right .profile-traits li {
+  display: list-item;
+  margin-bottom: var(--space-2);
+}
+
+.detail-split-left .profile-traits li {
+  color: var(--char-primary);
+}
+
 .detail-split-right .profile-traits li {
   color: var(--char-secondary);
 }
