@@ -198,14 +198,14 @@
     "bg_1": "#000000",
     "bg_2": "#FFFFFF",
     "page_bg": "#800080",
-    "background_gradient": "#FFFFFF"
+    "background_gradient": "#FF00FF"
   },
 
   "characterBackground": {
     "particle_color": "#FF00FF",
-    "particle_shape": "square",
+    "particle_shape": "diamond",
     "particle_count": 25,
-    "particle_opacity": 0.18,
+    "particle_opacity": 0.2,
     "particle_blur": 0
    },
 
