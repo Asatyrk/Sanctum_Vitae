@@ -347,6 +347,10 @@ h6 {
    CHARACTER PAGE HEADER
 ===================================================== */
 
+body.character-profile-page .site-header {
+  background: var(--char-bg-1);
+}
+
 body.character-profile-page .site-logo {
   color: var(--char-primary);
 }
