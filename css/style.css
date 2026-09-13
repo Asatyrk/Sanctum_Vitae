@@ -869,7 +869,7 @@ body.character-profile-page .site-nav a:focus-visible {
 .detail-split-left h2 {
   margin-top: 0;
   margin-bottom: var(--space-4);
-  color: var(--char-secondary);
+  color: var(--char-primary);
   font-size: var(--font-size-lg);
 }
 

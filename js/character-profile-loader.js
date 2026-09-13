@@ -176,6 +176,8 @@ zodiac: char.dates?.zodiac,
 mbti: char.psychology?.mbti,
 voice: char.voice,
 
+likes: list(char.personality?.likes),
+dislikes: list(char.personality?.dislikes),
 strengths: list(char.personality?.strengths),
 weaknesses: list(char.personality?.weaknesses),
 interests: list(char.personality?.interests),
