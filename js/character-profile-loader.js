@@ -198,6 +198,7 @@ if(profileNotes){
 
 }
 
+
 const designNotes = document.getElementById("design-notes")
 
 if(designNotes){
@@ -214,6 +215,7 @@ if(designNotes){
 
 }
 
+
 const personalityNotes = document.getElementById("personality-notes");
 
 if (personalityNotes) {
@@ -228,6 +230,7 @@ if (personalityNotes) {
   }
 }
 
+
 const personalityLikes = document.getElementById("personality-likes");
 
 if (personalityLikes) {
@@ -237,10 +240,11 @@ if (personalityLikes) {
     personalityLikes.innerHTML = "<li>N/A</li>";
   } else {
     personalityLikes.innerHTML = likes
-      .map(note => `<li>${note}</li>`)
+      .map(like => `<li>${like}</li>`)
       .join("");
   }
 }
+
 
 const personalityDislikes = document.getElementById("personality-dislikes");
 
@@ -251,7 +255,7 @@ if (personalityDisikes) {
     personalityDislikes.innerHTML = "<li>N/A</li>";
   } else {
     personalityDisikes.innerHTML = dislikes
-      .map(note => `<li>${note}</li>`)
+      .map(dislike => `<li>${dislike}</li>`)
       .join("");
   }
 }
