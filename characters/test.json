@@ -99,7 +99,10 @@
     "activity_level": "Unknown",
     "hygiene": "Unknown",
     "crisis_reaction": "Unknown",
-    "notes": "Unknown"
+    "notes": [
+      "Unknown",
+      "Unknown"
+    ]
   },
 
   "background": {

@@ -208,7 +208,13 @@ medias: list(char.favourites?.medias),
 songs: list(char.favourites?.songs),
 foods: list(char.favourites?.foods),
 animals: list(char.favourites?.animals),
-items: list(char.favourites?.items)
+items: list(char.favourites?.items),
+
+mental_health: list(char.health?.mental_health),
+physical_health: list(char.health?.physical_health),
+activity_level: list(char.health?.activity_level),
+hygiene: list(char.health?.hygiene),
+crisis_reaction: list(char.health?.crisis_reaction)
 }
 
 const profileNotes = document.getElementById("profile-notes")
@@ -274,6 +280,21 @@ if(likes){
 }
 
 
+const healthNotes = document.getElementById("health-notes");
+
+if (healthNotes) {
+  const notes = char.health?.notes;
+
+  if (!notes || notes.length === 0) {
+    healthNotes.innerHTML = "<li>N/A</li>";
+  } else {
+    healthNotes.innerHTML = notes
+      .map(note => `<li>${note}</li>`)
+      .join("");
+  }
+}
+
+
 const dislikes = document.getElementById("dislikes")
 
 if(dislikes){
@@ -289,6 +310,8 @@ if(dislikes){
   }
 
 }
+
+
 
 Object.entries(map).forEach(([id,value]) => {
 
