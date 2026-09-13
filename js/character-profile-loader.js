@@ -237,6 +237,7 @@ if (personalityNotes) {
 const likes = document.getElementById("likes")
 
 if(likes){
+  const notes = char.personality?.likes;
 
   if(!char.likes || char.likes.length === 0){
     likes.innerHTML = "<li>N/A</li>"
@@ -253,6 +254,7 @@ if(likes){
 const dislikes = document.getElementById("dislikes")
 
 if(dislikes){
+  const notes = char.personality?.dislikes;
 
   if(!char.dislikes || char.dislikes.length === 0){
     dislikes.innerHTML = "<li>N/A</li>"
