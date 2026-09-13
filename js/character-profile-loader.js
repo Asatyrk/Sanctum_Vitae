@@ -176,8 +176,6 @@ zodiac: char.dates?.zodiac,
 mbti: char.psychology?.mbti,
 voice: char.voice,
 
-likes: list(char.personality?.likes),
-dislikes: list(char.personality?.dislikes),
 strengths: list(char.personality?.strengths),
 weaknesses: list(char.personality?.weaknesses),
 interests: list(char.personality?.interests),
@@ -229,6 +227,36 @@ if (personalityNotes) {
       .join("");
   }
 }
+
+const personalityLikes = document.getElementById("personality-likes");
+
+if (personalityLikes) {
+  const likes = char.personality?.likes;
+
+  if (!likes || likes.length === 0) {
+    personalityLikes.innerHTML = "<li>N/A</li>";
+  } else {
+    personalityLikes.innerHTML = likes
+      .map(note => `<li>${note}</li>`)
+      .join("");
+  }
+}
+
+const personalityDislikes = document.getElementById("personality-dislikes");
+
+if (personalityDisikes) {
+  const dislikes = char.personality?.dislikes;
+
+  if (!dislikes || dislikes.length === 0) {
+    personalityDislikes.innerHTML = "<li>N/A</li>";
+  } else {
+    personalityDisikes.innerHTML = dislikes
+      .map(note => `<li>${note}</li>`)
+      .join("");
+  }
+}
+
+// NOTE TO SELF: check if `<li>${note}</li>` is right
 
 Object.entries(map).forEach(([id,value]) => {
 

@@ -53,15 +53,25 @@
   ]},
 
   "personality": {
-    "likes": ["Unknown"],
-    "dislikes": ["Unknown"],
+    "likes": [
+      "Unknown",
+      "Something",
+      "Whatever"
+    ],
+    "dislikes": [
+      "Unknown",
+      "Something",
+      "Whatever"],
     "strengths": ["Unknown"],
     "weaknesses": ["Unknown"],
     "interests": ["Unknown"],
     "hobbies": ["Unknown"],
     "values": ["Unknown"],
     "goals": ["Unknown"],
-    "notes": ["Unknown", "Unknown"]
+    "notes": [
+      "Unknown", 
+      "Unknown"
+    ]
   },
 
   "fashion": {
