@@ -232,6 +232,38 @@ if (personalityNotes) {
   }
 }
 
+
+
+const likes = document.getElementById("likes")
+
+if(likes){
+
+  if(!char.likes || char.likes.length === 0){
+    likes.innerHTML = "<li>N/A</li>"
+  }else{
+    likes.innerHTML = char.likes
+      .map(note => `<li>${note}</li>`)
+      .join("")
+  }
+
+}
+
+
+
+const dislikes = document.getElementById("dislikes")
+
+if(dislikes){
+
+  if(!char.dislikes || char.dislikes.length === 0){
+    dislikes.innerHTML = "<li>N/A</li>"
+  }else{
+    dislikes.innerHTML = char.dislikes
+      .map(note => `<li>${note}</li>`)
+      .join("")
+  }
+
+}
+
 Object.entries(map).forEach(([id,value]) => {
 
 const el = document.getElementById(id)
