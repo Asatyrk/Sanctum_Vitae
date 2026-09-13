@@ -318,7 +318,7 @@ if (healthNotes) {
 }
 
 
-const backgroundhNotes = document.getElementById("background-notes");
+const backgroundNotes = document.getElementById("background-notes");
 
 if (backgroundNotes) {
   const notes = char.background?.notes;
@@ -331,7 +331,6 @@ if (backgroundNotes) {
       .join("");
   }
 }
-
 
 
 Object.entries(map).forEach(([id,value]) => {
