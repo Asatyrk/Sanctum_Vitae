@@ -140,7 +140,12 @@ h6 {
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  background: var(--char-page-bg);
+  background: linear-gradient(
+  to bottom,
+  var(--char-page-bg) 0%,
+  var(--char-page-bg) 65%,
+  var(--background-gradient) 100%
+);
 }
 
 .character-particles {
@@ -767,23 +772,6 @@ body.character-profile-page .site-nav a:focus-visible {
   color: var(--char-primary);
   text-decoration: none;
   margin-bottom: var(--space-4);
-}
-
-.character-background-gradient {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 25vh;
-
-  background: linear-gradient(
-    to top,
-    var(--char-background-gradient),
-    transparent
-  );
-
-  pointer-events: none;
-  z-index: 1;
 }
 
 /* =====================================================
