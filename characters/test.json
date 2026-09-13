@@ -54,14 +54,15 @@
 
   "personality": {
     "likes": [
-      "Unknown",
-      "Something",
-      "Whatever"
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
     ],
     "dislikes": [
-      "Unknown",
-      "Something",
-      "Whatever"],
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
+    ],
     "strengths": ["Unknown"],
     "weaknesses": ["Unknown"],
     "interests": ["Unknown"],
