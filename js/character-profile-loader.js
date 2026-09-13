@@ -180,7 +180,9 @@ dislikes: list(char.personality?.dislikes),
 strengths: list(char.personality?.strengths),
 weaknesses: list(char.personality?.weaknesses),
 interests: list(char.personality?.interests),
-hobbies: list(char.personality?.hobbies)
+hobbies: list(char.personality?.hobbies),
+values: list(char.personality?.values),
+goals: list(char.personality?.goals)
 }
 
 const profileNotes = document.getElementById("profile-notes")
@@ -211,6 +213,20 @@ if(designNotes){
       .join("")
   }
 
+}
+
+const personalityNotes = document.getElementById("personality-notes");
+
+if (personalityNotes) {
+  const notes = char.personality?.notes;
+
+  if (!notes || notes.length === 0) {
+    personalityNotes.innerHTML = "<li>N/A</li>";
+  } else {
+    personalityNotes.innerHTML = notes
+      .map(note => `<li>${note}</li>`)
+      .join("");
+  }
 }
 
 Object.entries(map).forEach(([id,value]) => {
