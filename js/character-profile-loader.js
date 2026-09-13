@@ -230,38 +230,6 @@ if (personalityNotes) {
   }
 }
 
-
-const personalityLikes = document.getElementById("personality-likes");
-
-if (personalityLikes) {
-  const likes = char.personality?.likes;
-
-  if (!likes || likes.length === 0) {
-    personalityLikes.innerHTML = "<li>N/A</li>";
-  } else {
-    personalityLikes.innerHTML = likes
-      .map(like => `<li>${like}</li>`)
-      .join("");
-  }
-}
-
-
-const personalityDislikes = document.getElementById("personality-dislikes");
-
-if (personalityDisikes) {
-  const dislikes = char.personality?.dislikes;
-
-  if (!dislikes || dislikes.length === 0) {
-    personalityDislikes.innerHTML = "<li>N/A</li>";
-  } else {
-    personalityDisikes.innerHTML = dislikes
-      .map(dislike => `<li>${dislike}</li>`)
-      .join("");
-  }
-}
-
-// NOTE TO SELF: check if `<li>${note}</li>` is right
-
 Object.entries(map).forEach(([id,value]) => {
 
 const el = document.getElementById(id)
