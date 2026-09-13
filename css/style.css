@@ -228,16 +228,32 @@ h6 {
 
 body.character-profile-page .site-header {
   background: var(--char-bg-1);
-  color: var(--primary);
+}
+
+body.character-profile-page .site-logo {
+  color: var(--char-primary);
+}
+
+body.character-profile-page .site-logo-text {
+  color: var(--char-primary);
 }
 
 body.character-profile-page .site-nav a {
   background: var(--char-bg-2);
-  color: var(--secondary);
+  color: var(--char-secondary);
 }
 
 body.character-profile-page .site-nav a:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background-color: color-mix(
+    in srgb,
+    var(--char-secondary) 80%,
+    black 20%
+  );
+  color: var(--char-bg-2);
+}
+
+body.character-profile-page .site-nav a:focus-visible {
+  outline-color: var(--char-secondary);
 }
 
 /* =====================================================
