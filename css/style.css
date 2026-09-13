@@ -246,10 +246,10 @@ body.character-profile-page .site-nav a {
 body.character-profile-page .site-nav a:hover {
   background-color: color-mix(
     in srgb,
-    var(--char-secondary) 80%,
+    var(--char-bg-2) 80%,
     black 20%
   );
-  color: var(--char-bg-2);
+  color: var(--char-secondary);
 }
 
 body.character-profile-page .site-nav a:focus-visible {
