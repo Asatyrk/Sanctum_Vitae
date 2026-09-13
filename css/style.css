@@ -866,6 +866,13 @@ body.character-profile-page .site-nav a:focus-visible {
   font-size: var(--font-size-sm);
 }
 
+.detail-split-left h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+  color: var(--char-secondary);
+  font-size: var(--font-size-lg);
+}
+
 .detail-split-left .info-label,
 .detail-split-left .info-value {
   color: var(--char-primary);
