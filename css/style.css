@@ -140,13 +140,7 @@ h6 {
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-
-  background: linear-gradient(
-    to bottom,
-    var(--char-page-bg) 0%,
-    var(--char-page-bg) 70%,
-    var(--background-gradient) 100%
-  );
+  background: transparent;
 }
 
 .character-particles {
@@ -348,8 +342,14 @@ h6 {
    CHARACTER PAGE HEADER
 ===================================================== */
 
-body.character-profile-page .site-header {
-  background: var(--char-bg-1);
+body.character-profile-page {
+  background: linear-gradient(
+    to bottom,
+    var(--char-page-bg) 0%,
+    var(--char-page-bg) 70%,
+    var(--background-gradient) 100%
+  );
+  background-attachment: fixed;
 }
 
 body.character-profile-page .site-logo {
