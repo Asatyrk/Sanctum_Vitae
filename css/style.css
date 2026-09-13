@@ -18,6 +18,7 @@
   --color-border: #8b6a4d;
   --color-input-bg: #e8e2d7;
   --color-white: #ffffff;
+  --color-hover-dark: #0000004d;
 
   /* Typography */
   --font-display: "Castoro Titling", serif;
@@ -220,12 +221,16 @@ body.character-profile-page .site-nav a {
 }
 
 body.character-profile-page .site-nav a:hover {
-  background: var(--char-accent);
+  background: var(--color-hover-dark);
 }
 
 body.character-profile-page .site-logo,
 body.character-profile-page #header-page-title {
   color: var(--char-primary);
+}
+
+.site-nav {
+  background: var(--char-secondary);
 }
 
 /* =====================================================
