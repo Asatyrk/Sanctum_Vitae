@@ -48,6 +48,7 @@ throw new Error("Character not found")
 const char = await response.json()
 
 displayCharacter(char)
+setupDetailTabs()
 
 }catch(err){
 
@@ -298,6 +299,51 @@ links.innerHTML = html || "<li>N/A</li>"
 }
 
 }
+
+}
+
+function setupDetailTabs() {
+
+  const detailTabs = document.querySelectorAll(".detail-tab");
+  const detailPanels = document.querySelectorAll(".detail-panel");
+
+  if (!detailTabs.length || !detailPanels.length) return;
+
+  detailTabs.forEach(tab => {
+
+    tab.addEventListener("click", () => {
+
+      const targetId = tab.dataset.section;
+      const targetPanel = document.getElementById(targetId);
+
+      if (!targetPanel) return;
+
+      // Remove active state from all buttons
+      detailTabs.forEach(button => {
+        button.classList.remove("active");
+      });
+
+      // Hide all panels
+      detailPanels.forEach(panel => {
+        panel.hidden = true;
+      });
+
+      // Activate selected button
+      tab.classList.add("active");
+
+      // Show selected panel
+      targetPanel.hidden = false;
+
+    });
+
+  });
+
+  // Show first section by default
+  detailTabs[0].classList.add("active");
+
+  detailPanels.forEach((panel, index) => {
+    panel.hidden = index !== 0;
+  });
 
 }
 

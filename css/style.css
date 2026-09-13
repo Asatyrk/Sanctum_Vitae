@@ -886,6 +886,13 @@ body.character-profile-page .site-nav a:focus-visible {
   color: var(--char-secondary);
 }
 
+.detail-split-right h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+  color: var(--char-secondary);
+  font-size: var(--font-size-lg);
+}
+
 .detail-split-right .profile-traits {
   margin: 0;
 }
@@ -943,6 +950,67 @@ body.character-profile-page .site-nav a:focus-visible {
   margin-bottom: var(--space-2);
 }
 
+/* =====================================================
+   DETAIL SWITCHER
+===================================================== */
+
+.character-detail-switcher {
+  width: 100%;
+}
+
+
+/* =====================================================
+   SWITCHER TABS
+===================================================== */
+
+.detail-switcher-tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.detail-switcher-tab {
+  border: none;
+  padding: var(--space-2) var(--space-4);
+  background: var(--char-bg-1);
+  color: var(--char-primary);
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  border-radius: var(--border-radius-md);
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.detail-switcher-tab:hover {
+  background: var(--char-bg-2);
+}
+
+.detail-switcher-tab:focus-visible {
+  outline: 2px solid var(--char-primary);
+  outline-offset: 2px;
+}
+
+.detail-switcher-tab.active {
+  background: var(--char-primary);
+  color: var(--char-bg-1);
+}
+
+
+/* =====================================================
+   SWITCHER PANELS
+===================================================== */
+
+.detail-switcher-panel {
+  margin-bottom: var(--space-12);
+}
+
+.detail-switcher-panel[hidden] {
+  display: none;
+}
+
 
 /* =====================================================
    RESPONSIVE DETAIL BOXES
@@ -996,5 +1064,14 @@ body.character-profile-page .site-nav a:focus-visible {
 
   .character-details h2 {
     margin-top: var(--space-6);
+  }
+
+  .detail-switcher-tabs {
+    gap: var(--space-1);
+  }
+
+  .detail-switcher-tab {
+    flex: 1 1 auto;
+    text-align: center;
   }
 }
