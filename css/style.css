@@ -1008,7 +1008,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
 .detail-switcher-tab {
   border: none;
-  padding: var(--space-2) var(--space-4);
+  padding: var(--space-2) var(--space-3);
   background: var(--char-bg-1);
   color: var(--char-primary);
   font-family: inherit;
