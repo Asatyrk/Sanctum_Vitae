@@ -201,7 +201,7 @@
     "background_gradient": "#000000"
   },
 
-  "pbackground": {
+  "characterBackground": {
     "particle_color": "#FF00FF",
     "particle_shape": "circle",
     "particle_count": 40,

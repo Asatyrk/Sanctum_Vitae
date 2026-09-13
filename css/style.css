@@ -65,7 +65,7 @@
   --char-bg-1: #f4efe6;
   --char-bg-2: #f3f1ec;
   --char-page-bg: #f3f1ec;
-  --background-gradient: #FFFFFF;
+  --char-background-gradient: #FFFFFF;
 
   /* Character Background - Fallback */
   --char-particle-color: #b99b78;

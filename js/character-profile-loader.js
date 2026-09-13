@@ -8,7 +8,7 @@ return params.get("char")
 function applyCharacterColors(char){
 
   const colors = char.colors || {}
-  const background = char.background || {}
+  const characterBackground = char.characterBackground || {}
 
   const primary = colors.primary || "#b99b78"
   const secondary = colors.secondary || "#a27d5f"
@@ -18,9 +18,9 @@ function applyCharacterColors(char){
   const pageBg = colors.page_bg || "#f3f1ec"
   const backgroundGradient = colors.background_gradient || "#FFFFFF"
 
-  const particleColor = pbackground.particle_color || primary
-  const particleOpacity = pbackground.particle_opacity ?? 0.18
-  const particleBlur = pbackground.particle_blur ?? 0
+  const particleColor = characterBackground.particle_color || primary
+  const particleOpacity = characterBackground.particle_opacity ?? 0.18
+  const particleBlur = characterBackground.particle_blur ?? 0
 
   const root = document.documentElement
 
@@ -30,7 +30,7 @@ function applyCharacterColors(char){
   root.style.setProperty("--char-bg-1", bg1)
   root.style.setProperty("--char-bg-2", bg2)
   root.style.setProperty("--char-page-bg", pageBg)
-  root.style.setProperty("--background-gradient", backgroundGradient)
+  root.style.setProperty("--char-background-gradient", backgroundGradient)
 
 
   root.style.setProperty("--char-particle-color", particleColor)
@@ -44,17 +44,17 @@ function setupCharacterBackground(char){
 
   if(!container) return
 
-  const background = char.background || {}
+  const characterBackground = char.characterBackground || {}
 
   const count = Math.max(
     1,
     Math.min(
-      Number(pbackground.particle_count) || 14,
+      Number(characterBackground.particle_count) || 14,
       50
     )
   )
 
-  const shape = pbackground.particle_shape || "square"
+  const shape = characterBackground.particle_shape || "square"
 
   container.innerHTML = ""
 
@@ -75,7 +75,7 @@ function setupCharacterBackground(char){
     const startRotation = -50 + Math.random() * 30
     const endRotation = 10 + Math.random() * 20
 
-    const blur = pbackground.particle_blur ?? 0
+    const blur = characterBackground.particle_blur ?? 0
 
     particle.style.setProperty(
       "--particle-width",
