@@ -232,17 +232,16 @@ if (personalityNotes) {
   }
 }
 
-
-
 const likes = document.getElementById("likes")
 
 if(likes){
-  const notes = char.personality?.likes;
 
-  if(!char.likes || char.likes.length === 0){
+  const notes = char.personality?.likes
+
+  if(!notes || notes.length === 0){
     likes.innerHTML = "<li>N/A</li>"
   }else{
-    likes.innerHTML = char.likes
+    likes.innerHTML = notes
       .map(note => `<li>${note}</li>`)
       .join("")
   }
@@ -250,16 +249,16 @@ if(likes){
 }
 
 
-
 const dislikes = document.getElementById("dislikes")
 
 if(dislikes){
-  const notes = char.personality?.dislikes;
 
-  if(!char.dislikes || char.dislikes.length === 0){
+  const notes = char.personality?.dislikes
+
+  if(!notes || notes.length === 0){
     dislikes.innerHTML = "<li>N/A</li>"
   }else{
-    dislikes.innerHTML = char.dislikes
+    dislikes.innerHTML = notes
       .map(note => `<li>${note}</li>`)
       .join("")
   }
