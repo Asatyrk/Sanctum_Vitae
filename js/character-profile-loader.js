@@ -68,8 +68,14 @@ return value
 
 function list(value){
 
-if(!value || value.length === 0) return "N/A"
-return value.join(", ")
+  if(!value) return "N/A"
+
+  if(Array.isArray(value)){
+    if(value.length === 0) return "N/A"
+    return value.join(", ")
+  }
+
+  return value
 
 }
 
