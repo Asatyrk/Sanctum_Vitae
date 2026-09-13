@@ -227,17 +227,17 @@ h6 {
 ===================================================== */
 
 body.character-profile-page .site-header {
-  background: var(--char-primary);
+  background: var(--char-bg-1);
+  color: var(--primary);
 }
 
 body.character-profile-page .site-nav a {
-  background: var(--char-secondary);
-  color: var(--char-bg-2);
+  background: var(--char-bg-2);
+  color: var(--secondary);
 }
 
 body.character-profile-page .site-nav a:hover {
-  background: var(--char-accent);
-  border-color: var(--char-bg-2);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 /* =====================================================
