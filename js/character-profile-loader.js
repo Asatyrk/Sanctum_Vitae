@@ -304,8 +304,8 @@ links.innerHTML = html || "<li>N/A</li>"
 
 function setupDetailTabs() {
 
-  const detailTabs = document.querySelectorAll(".detail-tab");
-  const detailPanels = document.querySelectorAll(".detail-panel");
+  const detailTabs = document.querySelectorAll(".detail-switcher-tab");
+  const detailPanels = document.querySelectorAll(".detail-switcher-panel");
 
   if (!detailTabs.length || !detailPanels.length) return;
 
@@ -313,36 +313,31 @@ function setupDetailTabs() {
 
     tab.addEventListener("click", () => {
 
-      const targetId = tab.dataset.section;
+      const targetId = tab.getAttribute("aria-controls");
       const targetPanel = document.getElementById(targetId);
 
       if (!targetPanel) return;
 
-      // Remove active state from all buttons
+      // Update buttons
       detailTabs.forEach(button => {
         button.classList.remove("active");
+        button.setAttribute("aria-selected", "false");
       });
 
-      // Hide all panels
+      // Hide panels
       detailPanels.forEach(panel => {
         panel.hidden = true;
       });
 
-      // Activate selected button
+      // Activate selected tab
       tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
 
       // Show selected panel
       targetPanel.hidden = false;
 
     });
 
-  });
-
-  // Show first section by default
-  detailTabs[0].classList.add("active");
-
-  detailPanels.forEach((panel, index) => {
-    panel.hidden = index !== 0;
   });
 
 }
