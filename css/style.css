@@ -140,7 +140,13 @@ h6 {
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  background: transparent;
+
+  background: linear-gradient(
+    to bottom,
+    var(--char-page-bg) 0%,
+    var(--char-page-bg) 65%,
+    var(--char-background-gradient) 100%
+  );
 }
 
 .character-particles {
@@ -157,11 +163,14 @@ h6 {
   left: var(--particle-left);
   width: var(--particle-width);
   height: var(--particle-height);
+
   background: var(--char-particle-color);
   opacity: var(--char-particle-opacity);
   filter: blur(var(--particle-blur, var(--char-particle-blur)));
 
-  transform: translateY(100%) rotate(var(--particle-start-rotation));
+  transform:
+    translateY(100%)
+    rotate(var(--particle-start-rotation));
 
   animation:
     character-particle-float
@@ -170,8 +179,6 @@ h6 {
     var(--particle-delay)
     infinite;
 }
-
-/* Particle shapes */
 
 .character-particle[data-shape="square"] {
   border-radius: 0;
@@ -210,15 +217,13 @@ h6 {
   }
 }
 
-/* Keep actual page content above the background */
+/* Page content stays above background + particles */
 
 .character-profile-page > #site-header,
 .character-profile-page > .page-container {
   position: relative;
   z-index: 1;
 }
-
-/* Respect reduced-motion preferences */
 
 @media (prefers-reduced-motion: reduce) {
   .character-particle {
@@ -341,16 +346,6 @@ h6 {
 /* =====================================================
    CHARACTER PAGE HEADER
 ===================================================== */
-
-body.character-profile-page {
-  background: linear-gradient(
-    to bottom,
-    var(--char-page-bg) 0%,
-    var(--char-page-bg) 70%,
-    var(--background-gradient) 100%
-  );
-  background-attachment: fixed;
-}
 
 body.character-profile-page .site-logo {
   color: var(--char-primary);
