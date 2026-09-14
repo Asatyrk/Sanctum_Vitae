@@ -194,17 +194,17 @@
   "decorImage": "",
 
   "colors": {
-    "primary": "#", 
-    "secondary": "#",
-    "accent": "#",
-    "bg_1": "#",
-    "bg_2": "#",
-    "page_bg": "#",
-    "background_gradient": "#"
+    "primary": "", 
+    "secondary": "",
+    "accent": "",
+    "bg_1": "",
+    "bg_2": "",
+    "page_bg": "",
+    "background_gradient": ""
   },
 
   "characterBackground": {
-    "particle_color": "#",
+    "particle_color": "",
     "particle_shape": "square",
     "particle_count": 30,
     "particle_opacity": 0.2,
