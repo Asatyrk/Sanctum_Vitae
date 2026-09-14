@@ -50,7 +50,7 @@ const count = Math.max(
 1,
 Math.min(
 Number(characterBackground.particle_count) || 14,
-500
+100
 )
 )
 
