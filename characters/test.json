@@ -76,14 +76,6 @@
     ]
   },
 
-  "combat": {
-    "main_weapon": "Unknown",
-    "other_weapons": ["Unknown"],
-    "magical_artifacts": ["Unknown"],
-    "combat_style": "Unknown",
-    "armoury_notes": "Unknown"
-  },
-
   "lifestyle": {
     "social_status": "Unknown",
     "financial_status": "Unknown",
@@ -131,16 +123,18 @@
     {
       "name": "Character Name",
       "type": "friend",
-      "file": "characters/test.json",
+      "file": "characters/test_friend.json",
       "notes": "Optional notes"
     }
   ],
 
   "partners": [
     {
-      "name": "Partner Name",
-      "file": "characters/test.json",
-      "notes": "Optional notes"
+      "file": "characters/test_friend.json",
+      "relationship": "Romantic Partner",
+      "status": "Dating",
+      "since": "2024",
+      "notes": "They met through mutual friends and have been together since."
     }
   ],
 
@@ -178,11 +172,11 @@
     "toyhouse": "",
     "pinterest": "",
     "spotify": "",
-    "alt forms": ["characters/test.json"],
+    "alt forms": ["characters/test_friend.json"],
     "other": [
       {
         "label": "Example Link",
-        "url": "characters/test.json"
+        "url": "characters/test_friend.json"
       }
     ]
   },

@@ -213,6 +213,191 @@ return `<li>${item.name || item.title}</li>`
 
 }
 
+async function setupPartners(char) {
+
+  const section = document.getElementById("partners-section")
+  const container = document.getElementById("partners-container")
+  const template = document.getElementById("partner-template")
+
+  if (!section || !container || !template) return
+
+  // No partners = keep the entire section hidden
+  if (!Array.isArray(char.partners) || char.partners.length === 0) {
+    section.hidden = true
+    return
+  }
+
+  container.innerHTML = ""
+
+  let loadedPartners = 0
+
+  for (const partner of char.partners) {
+
+    if (!partner || !partner.file) continue
+
+    try {
+
+      const response = await fetch(partner.file)
+
+      if (!response.ok) {
+        throw new Error(`Partner character not found: ${partner.file}`)
+      }
+
+      const partnerChar = await response.json()
+
+      const partnerCard = template.content.cloneNode(true)
+
+      // -------------------------
+      // Partner images
+      // -------------------------
+
+      const avatar = partnerCard.querySelector(".partner-avatar")
+
+      if (avatar) {
+        avatar.style.backgroundImage =
+          partnerChar.avatar
+            ? `url("${partnerChar.avatar}")`
+            : `url("https://placehold.co/120")`
+      }
+
+
+      // -------------------------
+      // Partner name
+      // -------------------------
+
+      const name = partnerCard.querySelector(".partner-name")
+
+      if (name) {
+        name.textContent = text(partnerChar.name)
+      }
+
+
+      // -------------------------
+      // Relationship information
+      // Comes from JSON 1
+      // -------------------------
+
+      const relationship =
+        partnerCard.querySelector(".partner-relationship")
+
+      if (relationship) {
+        relationship.textContent = text(partner.relationship)
+      }
+
+
+      const status =
+        partnerCard.querySelector(".partner-status")
+
+      if (status) {
+        status.textContent = text(partner.status)
+      }
+
+
+      const since =
+        partnerCard.querySelector(".partner-since")
+
+      if (since) {
+        since.textContent = text(partner.since)
+      }
+
+
+      // -------------------------
+      // Partner information
+      // Comes from JSON 2
+      // -------------------------
+
+      const fullName =
+        partnerCard.querySelector(".partner-full-name")
+
+      if (fullName) {
+        fullName.textContent = text(partnerChar.full_name)
+      }
+
+
+      const age =
+        partnerCard.querySelector(".partner-age")
+
+      if (age) {
+        age.textContent = text(partnerChar.age)
+      }
+
+
+      const species =
+        partnerCard.querySelector(".partner-species")
+
+      if (species) {
+        species.textContent = text(partnerChar.species)
+      }
+
+
+      const gender =
+        partnerCard.querySelector(".partner-gender")
+
+      if (gender) {
+        gender.textContent =
+          text(partnerChar.identity?.gender_identity)
+      }
+
+
+      const pronouns =
+        partnerCard.querySelector(".partner-pronouns")
+
+      if (pronouns) {
+        pronouns.textContent =
+          list(partnerChar.identity?.pronouns)
+      }
+
+
+      // -------------------------
+      // Relationship notes
+      // Comes from JSON 1
+      // -------------------------
+
+      const notes =
+        partnerCard.querySelector(".partner-notes")
+
+      if (notes) {
+
+        if (partner.notes) {
+
+          const partnerNotes = Array.isArray(partner.notes)
+            ? partner.notes
+            : [partner.notes]
+
+          notes.innerHTML = partnerNotes
+            .map(note => `<li>${note}</li>`)
+            .join("")
+
+        } else {
+
+          notes.innerHTML = "<li>N/A</li>"
+
+        }
+
+      }
+
+
+      // Add completed card to page
+      container.appendChild(partnerCard)
+
+      loadedPartners++
+
+    } catch (err) {
+
+      console.error(
+        `Could not load partner: ${partner.file}`,
+        err
+      )
+
+    }
+
+  }
+
+  // Only show the section if at least one partner loaded
+  section.hidden = loadedPartners === 0
+
+}
+
 function setPageTitle(name){
 
 const title = name || "Unknown Character"
@@ -469,6 +654,8 @@ listLinks(char.relationships,"relationships")
 listLinks(char.partners,"partners")
 listLinks(char.pets,"pets")
 listLinks(char.stories,"stories")
+
+setupPartners(char)
 
 const backstory = document.getElementById("backstory")
 if(backstory) backstory.textContent = text(char.backstory)
