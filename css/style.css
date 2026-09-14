@@ -299,6 +299,23 @@ h6 {
   );
 }
 
+.character-particle[data-shape="leaf"] {
+  border-radius: 0;
+  clip-path: polygon(
+    50% 4%, 
+    71% 38%, 
+    76% 61%, 
+    68% 75%, 
+    52% 82%, 
+    53% 96%, 
+    47% 96%, 
+    48% 82%, 
+    32% 75%, 
+    24% 61%, 
+    30% 38%
+  );
+}
+
 .character-particle[data-shape="bird"] {
   border-radius: 0;
   clip-path: polygon(

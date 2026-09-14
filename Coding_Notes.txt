@@ -17,6 +17,7 @@ Particle shapes:
 - cross
 - heart
 - frame
+- leaf
 - bird
 
 ---
