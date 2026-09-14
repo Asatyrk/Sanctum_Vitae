@@ -278,7 +278,9 @@ if (box2) {
   box2.style.backgroundImage = `url("${decorImage}")`;
 }
 
-
+else if(decorImage){
+  decorImage.style.backgroundImage = `url('https://placehold.co/1000x100')`
+}
 
 // map
 
