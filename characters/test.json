@@ -203,9 +203,9 @@
 
   "characterBackground": {
     "particle_color": "#FF00FF",
-    "particle_shape": "triangle",
-    "particle_count": 25,
-    "particle_opacity": 0.2,
+    "particle_shape": "circle",
+    "particle_count": 500,
+    "particle_opacity": 1,
     "particle_blur": 0,
     "particle_random_size": false
    },
