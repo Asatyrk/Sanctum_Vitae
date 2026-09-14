@@ -265,10 +265,17 @@ if(designImage && char.fullbody){
 }
 
 // Set decor image (in-between box)
-const decorImage = document.getElementById("decor-image");
+const decorImage = char.decorImage;
 
-if (decorImage) {
-  decorImage.style.backgroundImage = `url('${char.decorImage}')`;
+const box1 = document.getElementById("decor-image");
+const box2 = document.getElementById("decor-image-2");
+
+if (box1) {
+  box1.style.backgroundImage = `url("${decorImage}")`;
+}
+
+if (box2) {
+  box2.style.backgroundImage = `url("${decorImage}")`;
 }
 
 const map = {
