@@ -270,16 +270,14 @@ const decorImage = char.decorImage;
 const box1 = document.getElementById("decor-image");
 const box2 = document.getElementById("decor-image-2");
 
+const finalImageUrl = decorImage ? decorImage : 'https://placehold.co/1000x100';
+
 if (box1) {
-  box1.style.backgroundImage = `url("${decorImage}")`;
+  box1.style.backgroundImage = `url("${finalImageUrl}")`;
 }
 
 if (box2) {
-  box2.style.backgroundImage = `url("${decorImage}")`;
-}
-
-else if(decorImage){
-  decorImage.style.backgroundImage = `url('https://placehold.co/1000x100')`
+  box2.style.backgroundImage = `url("${finalImageUrl}")`;
 }
 
 // map
