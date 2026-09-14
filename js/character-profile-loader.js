@@ -264,6 +264,14 @@ if(designImage && char.fullbody){
   designImage.style.backgroundImage = `url('https://placehold.co/400x600')`
 }
 
+// Set decor image (in-between box)
+const decorImage = document.getElementById("decor-image")
+if(decorImage && char.decorImage){
+  decorImage.style.backgroundImage = `url('${char.decorImage}')`
+}else if(decorImage){
+  decorImage.style.backgroundImage = `url('https://placehold.co/1000x100')`
+}
+
 const map = {
 age: char.age,
 species: char.species,

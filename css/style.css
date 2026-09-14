@@ -1294,6 +1294,19 @@ body.character-profile-page .site-nav a:focus-visible {
   display: none;
 }
 
+/* =====================================================
+   DECOR IMAGE
+===================================================== */
+
+.decor-image-box {
+  width: 100%;
+  aspect-ratio: 10 / 1;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  min-height: 0;
+}
 
 /* =====================================================
    RESPONSIVE DETAIL BOXES
