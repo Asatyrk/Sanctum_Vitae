@@ -3,6 +3,7 @@ To add new character (/other):
 - Tags can be found in characters.js
 - Add to index.json so it shows up in layout
 - Banner is 600x200, Fullbody is 400x600
+- Headshot = polaroid, avatar + circle image, banner = splash image, fullbody = body ref.
 
 Particle shapes:
 - square
@@ -23,6 +24,7 @@ Particle shapes:
 ---
 
 To do:
+- Make headshots read from the json maybe? rather than from the index.
 - Check that my sizing rules aren't ruining the pills and diamonds + add more sizing options
 - Edit visual tweaks, font sizes, box sizes, etc
 - Character page, details, etc 
