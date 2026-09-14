@@ -301,7 +301,6 @@ async function setupPartners(char) {
 
       // =========================================
       // RELATIONSHIP INFORMATION
-      // Comes from JSON 1
       // =========================================
 
       const relationship =
@@ -320,6 +319,14 @@ async function setupPartners(char) {
       }
 
 
+      const dynamic =
+        partnerCard.querySelector(".partner-dynamic")
+
+      if (dynamic) {
+        dynamic.textContent = text(partner.dynamic)
+      }
+
+
       const since =
         partnerCard.querySelector(".partner-since")
 
@@ -330,7 +337,6 @@ async function setupPartners(char) {
 
       // =========================================
       // PARTNER INFORMATION
-      // Comes from JSON 2
       // =========================================
 
       const age =
@@ -369,7 +375,6 @@ async function setupPartners(char) {
 
       // =========================================
       // RELATIONSHIP NOTES
-      // Comes from JSON 1
       // =========================================
 
       const notes =

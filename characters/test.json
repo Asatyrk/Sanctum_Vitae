@@ -133,6 +133,7 @@
       "file": "characters/test_friend.json",
       "relationship": "Romantic Partner",
       "status": "Dating",
+      "dynamic": "Healthy",
       "since": "20XX",
       "notes": [
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
