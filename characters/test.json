@@ -203,8 +203,8 @@
 
   "characterBackground": {
     "particle_color": "#FF00FF",
-    "particle_shape": "bird",
-    "particle_count": 25,
+    "particle_shape": "rectangle",
+    "particle_count": 30,
     "particle_opacity": 0.2,
     "particle_blur": 0,
     "particle_random_size": true
