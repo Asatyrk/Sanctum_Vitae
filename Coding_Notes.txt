@@ -25,7 +25,6 @@ Particle shapes:
 
 To do:
 - Make headshots read from the json maybe? rather than from the index.
-- Check that my sizing rules aren't ruining the pills and diamonds + add more sizing options
 - Edit visual tweaks, font sizes, box sizes, etc
 - Character page, details, etc 
   - Partner

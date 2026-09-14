@@ -278,6 +278,10 @@ if (box2) {
   box2.style.backgroundImage = `url("${decorImage}")`;
 }
 
+
+
+// map
+
 const map = {
 age: char.age,
 species: char.species,
