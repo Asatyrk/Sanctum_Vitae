@@ -40,100 +40,95 @@ function applyCharacterColors(char){
 
 function setupCharacterBackground(char){
 
-  const container = document.getElementById("character-particles")
+const container = document.getElementById("character-particles")
 
-  if(!container) return
+if(!container) return
 
-  const characterBackground = char.characterBackground || {}
+const characterBackground = char.characterBackground || {}
 
-  const count = Math.max(
-    1,
-    Math.min(
-      Number(characterBackground.particle_count) || 14,
-      50
-    )
-  )
+const count = Math.max(
+1,
+Math.min(
+Number(characterBackground.particle_count) || 14,
+50
+)
+)
 
-  const shape = characterBackground.particle_shape || "square"
-  const randomSize = characterBackground.particle_random_size ?? false
+const shape = characterBackground.particle_shape || "square"
+const randomSize = characterBackground.particle_random_size ?? false
 
-  container.innerHTML = ""
+container.innerHTML = ""
 
-  for(let i = 0; i < count; i++){
+for(let i = 0; i < count; i++){
 
-    const particle = document.createElement("div")
+const particle = document.createElement("div")
 
-    particle.className = "character-particle"
-    particle.dataset.shape = shape
+particle.className = "character-particle"
+particle.dataset.shape = shape
 
-    let width
-    let height
+// Size
+let size
 
-    if(randomSize){
+if(randomSize){
+  size = 16 + Math.random() * 35
+}else{
+  size = 24
+}
 
-      const size = 16 + Math.random() * 35
+// Position and animation
+const left = Math.random() * 100
+const duration = 8 + Math.random() * 10
+const delay = -(Math.random() * duration)
 
-      width = size
-      height = size
+const startRotation = Math.random() * 360
+const endRotation = Math.random() * 360
 
-    }else{
+const blur = characterBackground.particle_blur ?? 0
 
-      width = 24
-      height = 24
+particle.style.setProperty(
+  "--particle-width",
+  `${size}px`
+)
 
-    }
+particle.style.setProperty(
+  "--particle-height",
+  `${size}px`
+)
 
-    const left = Math.random() * 100
-    const duration = 8 + Math.random() * 10
-    const delay = -(Math.random() * duration)
+particle.style.setProperty(
+  "--particle-left",
+  `${left}%`
+)
 
-    const startRotation = Math.random() * 360
-    const endRotation = Math.random() * 360
+particle.style.setProperty(
+  "--particle-duration",
+  `${duration}s`
+)
 
-    const blur = characterBackground.particle_blur ?? 0
+particle.style.setProperty(
+  "--particle-delay",
+  `${delay}s`
+)
 
-    particle.style.setProperty(
-      "--particle-width",
-      `${width}px`
-    )
+particle.style.setProperty(
+  "--particle-start-rotation",
+  `${startRotation}deg`
+)
 
-    particle.style.setProperty(
-      "--particle-height",
-      `${height}px`
-    )
+particle.style.setProperty(
+  "--particle-end-rotation",
+  `${endRotation}deg`
+)
 
-    particle.style.setProperty(
-      "--particle-left",
-      `${left}%`
-    )
+particle.style.setProperty(
+  "--particle-blur",
+  `${blur}px`
+)
 
-    particle.style.setProperty(
-      "--particle-duration",
-      `${duration}s`
-    )
+container.appendChild(particle)
 
-    particle.style.setProperty(
-      "--particle-delay",
-      `${delay}s`
-    )
 
-    particle.style.setProperty(
-      "--particle-start-rotation",
-      `${startRotation}deg`
-    )
-
-    particle.style.setProperty(
-      "--particle-end-rotation",
-      `${endRotation}deg`
-    )
-
-    particle.style.setProperty(
-      "--particle-blur",
-      `${blur}px`
-    )
-
-    container.appendChild(particle)
-  }
+}
 
 }
 

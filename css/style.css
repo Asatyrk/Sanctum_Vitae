@@ -193,7 +193,8 @@ h6 {
 }
 
 .character-particle[data-shape="pill"] {
-  border-radius: var(--border-radius-full);
+  width: calc(var(--particle-width) * 2);
+  border-radius: 999px;
 }
 
 @keyframes character-particle-float {
