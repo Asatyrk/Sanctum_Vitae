@@ -54,24 +54,34 @@ function setupCharacterBackground(char){
     )
   )
 
+  const shape = characterBackground.particle_shape || "square"
   const randomSize = characterBackground.particle_random_size ?? false
 
-let width
-let height
+  container.innerHTML = ""
 
-if (randomSize) {
+  for(let i = 0; i < count; i++){
 
-  const size = 16 + Math.random() * 35
+    const particle = document.createElement("div")
 
-  width = size
-  height = size
+    particle.className = "character-particle"
+    particle.dataset.shape = shape
 
-} else {
+    let width
+    let height
 
-  width = 24
-  height = 24
+    if(randomSize){
 
-}
+      const size = 16 + Math.random() * 35
+
+      width = size
+      height = size
+
+    }else{
+
+      width = 24
+      height = 24
+
+    }
 
     const left = Math.random() * 100
     const duration = 8 + Math.random() * 10
@@ -79,7 +89,6 @@ if (randomSize) {
 
     const startRotation = Math.random() * 360
     const endRotation = Math.random() * 360
-
 
     const blur = characterBackground.particle_blur ?? 0
 
@@ -124,6 +133,8 @@ if (randomSize) {
     )
 
     container.appendChild(particle)
+  }
+
 }
 
 async function loadCharacter(){
