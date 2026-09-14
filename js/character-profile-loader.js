@@ -54,64 +54,22 @@ function setupCharacterBackground(char){
     )
   )
 
-  const shape = characterBackground.particle_shape || "square"
-
-  container.innerHTML = ""
-
-  for(let i = 0; i < count; i++){
-
-    const particle = document.createElement("div")
-
-    particle.className = "character-particle"
-    particle.dataset.shape = shape
-
-    const randomSize = characterBackground.random_size ?? false
+  const randomSize = characterBackground.particle_random_size ?? false
 
 let width
 let height
 
 if (randomSize) {
 
-  if (shape === "circle" || shape === "diamond") {
+  const size = 16 + Math.random() * 35
 
-    // These shapes need to stay square
-    const size = 16 + Math.random() * 35
-
-    width = size
-    height = size
-
-  } else if (shape === "pill") {
-
-    // Pills need to stay long and thin
-    width = 30 + Math.random() * 45
-    height = 10 + Math.random() * 8
-
-  } else {
-
-    // Square / rounded / future rectangular shapes
-    width = 12 + Math.random() * 35
-    height = 12 + Math.random() * 35
-
-  }
+  width = size
+  height = size
 
 } else {
 
-  if (shape === "circle" || shape === "diamond") {
-
-    width = 24
-    height = 24
-
-  } else if (shape === "pill") {
-
-    width = 40
-    height = 14
-
-  } else {
-
-    width = 24
-    height = 24
-
-  }
+  width = 24
+  height = 24
 
 }
 
@@ -119,8 +77,9 @@ if (randomSize) {
     const duration = 8 + Math.random() * 10
     const delay = -(Math.random() * duration)
 
-    const startRotation = -50 + Math.random() * 30
-    const endRotation = 10 + Math.random() * 20
+    const startRotation = Math.random() * 360
+    const endRotation = Math.random() * 360
+
 
     const blur = characterBackground.particle_blur ?? 0
 
@@ -165,7 +124,6 @@ if (randomSize) {
     )
 
     container.appendChild(particle)
-  }
 }
 
 async function loadCharacter(){
