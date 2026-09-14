@@ -1301,7 +1301,7 @@ body.character-profile-page .site-nav a:focus-visible {
 .decor-image-box {
   width: 100%;
   aspect-ratio: 10 / 1;
-  background-size: auto;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   overflow: hidden;
