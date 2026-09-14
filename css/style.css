@@ -1301,11 +1301,11 @@ body.character-profile-page .site-nav a:focus-visible {
 .decor-image-box {
   width: 100%;
   aspect-ratio: 10 / 1;
-  background-size: contain;
+  background-size: auto;
   background-repeat: no-repeat;
   background-position: center;
   overflow: hidden;
-  min-height: 0;
+  min-height: 75px;
 }
 
 /* =====================================================
