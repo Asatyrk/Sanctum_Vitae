@@ -265,11 +265,10 @@ if(designImage && char.fullbody){
 }
 
 // Set decor image (in-between box)
-const decorImage = document.getElementById("decor-image")
-if(decorImage && char.decorImage){
-  decorImage.style.backgroundImage = `url('${char.decorImage}')`
-}else if(decorImage){
-  decorImage.style.backgroundImage = `url('https://placehold.co/1000x100')`
+const decorImage = document.getElementById("decor-image");
+
+if (decorImage) {
+  decorImage.style.backgroundImage = `url('${char.decorImage}')`;
 }
 
 const map = {
