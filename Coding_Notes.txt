@@ -7,7 +7,7 @@ To add new character (/other):
 ---
 
 To do:
-- Make the page title update colours intuitively (like the rest of the page)
+- Check that my sizing rules aren't ruining the pills and diamonds + add more sizing options
 - Edit visual tweaks, font sizes, box sizes, etc
 - Character page, details, etc 
   - Partner

@@ -67,13 +67,53 @@ function setupCharacterBackground(char){
 
     const randomSize = characterBackground.random_size ?? false
 
-    const width = randomSize
-      ? 12 + Math.random() * 35
-      : 24
+let width
+let height
 
-    const height = randomSize
-      ? 12 + Math.random() * 70
-      : 24
+if (randomSize) {
+
+  if (shape === "circle" || shape === "diamond") {
+
+    // These shapes need to stay square
+    const size = 16 + Math.random() * 35
+
+    width = size
+    height = size
+
+  } else if (shape === "pill") {
+
+    // Pills need to stay long and thin
+    width = 30 + Math.random() * 45
+    height = 10 + Math.random() * 8
+
+  } else {
+
+    // Square / rounded / future rectangular shapes
+    width = 12 + Math.random() * 35
+    height = 12 + Math.random() * 35
+
+  }
+
+} else {
+
+  if (shape === "circle" || shape === "diamond") {
+
+    width = 24
+    height = 24
+
+  } else if (shape === "pill") {
+
+    width = 40
+    height = 14
+
+  } else {
+
+    width = 24
+    height = 24
+
+  }
+
+}
 
     const left = Math.random() * 100
     const duration = 8 + Math.random() * 10
