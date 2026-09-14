@@ -237,6 +237,7 @@ async function setupPartners(char) {
 
     try {
 
+      // Fetch the partner's own character JSON
       const response = await fetch(partner.file)
 
       if (!response.ok) {
@@ -245,37 +246,63 @@ async function setupPartners(char) {
 
       const partnerChar = await response.json()
 
+      // Clone the HTML template
       const partnerCard = template.content.cloneNode(true)
 
-      // -------------------------
-      // Partner images
-      // -------------------------
+
+      // =========================================
+      // PARTNER AVATAR
+      // =========================================
 
       const avatar = partnerCard.querySelector(".partner-avatar")
 
       if (avatar) {
+
         avatar.style.backgroundImage =
           partnerChar.avatar
             ? `url("${partnerChar.avatar}")`
             : `url("https://placehold.co/120")`
+
       }
 
 
-      // -------------------------
-      // Partner name
-      // -------------------------
+      // =========================================
+      // PARTNER PROFILE LINK
+      // =========================================
 
-      const name = partnerCard.querySelector(".partner-name")
+      const avatarLink =
+        partnerCard.querySelector(".partner-avatar-link")
+
+      if (avatarLink) {
+
+        const partnerSlug =
+          partner.file
+            .replace(".json", "")
+            .split("/")
+            .pop()
+
+        avatarLink.href =
+          `character-profile.html?char=${partnerSlug}`
+
+      }
+
+
+      // =========================================
+      // PARTNER NAME
+      // =========================================
+
+      const name =
+        partnerCard.querySelector(".partner-name")
 
       if (name) {
         name.textContent = text(partnerChar.name)
       }
 
 
-      // -------------------------
-      // Relationship information
+      // =========================================
+      // RELATIONSHIP INFORMATION
       // Comes from JSON 1
-      // -------------------------
+      // =========================================
 
       const relationship =
         partnerCard.querySelector(".partner-relationship")
@@ -301,18 +328,10 @@ async function setupPartners(char) {
       }
 
 
-      // -------------------------
-      // Partner information
+      // =========================================
+      // PARTNER INFORMATION
       // Comes from JSON 2
-      // -------------------------
-
-      const fullName =
-        partnerCard.querySelector(".partner-full-name")
-
-      if (fullName) {
-        fullName.textContent = text(partnerChar.full_name)
-      }
-
+      // =========================================
 
       const age =
         partnerCard.querySelector(".partner-age")
@@ -348,25 +367,26 @@ async function setupPartners(char) {
       }
 
 
-      // -------------------------
-      // Relationship notes
+      // =========================================
+      // RELATIONSHIP NOTES
       // Comes from JSON 1
-      // -------------------------
+      // =========================================
 
       const notes =
         partnerCard.querySelector(".partner-notes")
 
       if (notes) {
 
-        if (partner.notes) {
+        if (Array.isArray(partner.notes) && partner.notes.length > 0) {
 
-          const partnerNotes = Array.isArray(partner.notes)
-            ? partner.notes
-            : [partner.notes]
-
-          notes.innerHTML = partnerNotes
+          notes.innerHTML = partner.notes
             .map(note => `<li>${note}</li>`)
             .join("")
+
+        } else if (partner.notes) {
+
+          notes.innerHTML =
+            `<li>${partner.notes}</li>`
 
         } else {
 
@@ -377,7 +397,10 @@ async function setupPartners(char) {
       }
 
 
-      // Add completed card to page
+      // =========================================
+      // ADD CARD TO PAGE
+      // =========================================
+
       container.appendChild(partnerCard)
 
       loadedPartners++
@@ -393,7 +416,11 @@ async function setupPartners(char) {
 
   }
 
-  // Only show the section if at least one partner loaded
+
+  // =========================================
+  // SHOW SECTION ONLY IF A PARTNER LOADED
+  // =========================================
+
   section.hidden = loadedPartners === 0
 
 }

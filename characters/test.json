@@ -133,9 +133,12 @@
       "file": "characters/test_friend.json",
       "relationship": "Romantic Partner",
       "status": "Dating",
-      "since": "2024",
-      "notes": "They met through mutual friends and have been together since."
-    }
+      "since": "20XX",
+      "notes": [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
+  ]}
   ],
 
   "pets": [

@@ -756,88 +756,91 @@
 
   <template id="partner-template">
 
-    <div class="character-profile-card partner-card">
+  <div class="character-profile-card partner-card">
 
-      <!-- Left Column: Partner Avatar & Basic Info -->
-      <div class="profile-card-left">
+    <!-- Partner heading -->
+    <div class="partner-card-header">
+      <h2>PARTNER</h2>
+    </div>
 
-        <div class="profile-avatar partner-avatar"></div>
 
-        <h2 class="profile-name partner-name"></h2>
+    <!-- Left Column: Relationship Information -->
+    <div class="profile-card-right">
 
-        <div class="profile-info-section">
+      <div class="profile-content">
 
-          <div class="info-row">
-            <span class="info-label">RELATIONSHIP</span>
-            <span class="info-value partner-relationship"></span>
-          </div>
+        <h2>PARTNER</h2>
 
-          <hr class="info-divider">
-
-          <div class="info-row">
-            <span class="info-label">STATUS</span>
-            <span class="info-value partner-status"></span>
-          </div>
-
-          <hr class="info-divider">
-
-          <div class="info-row">
-            <span class="info-label">SINCE</span>
-            <span class="info-value partner-since"></span>
-          </div>
-
+        <div class="info-row">
+          <span class="info-label">RELATIONSHIP</span>
+          <span class="info-value partner-relationship"></span>
         </div>
+
+        <hr class="info-divider">
+
+        <div class="info-row">
+          <span class="info-label">STATUS</span>
+          <span class="info-value partner-status"></span>
+        </div>
+
+        <hr class="info-divider">
+
+        <div class="info-row">
+          <span class="info-label">SINCE</span>
+          <span class="info-value partner-since"></span>
+        </div>
+
+        <ul class="profile-traits partner-notes"></ul>
 
       </div>
 
+    </div>
 
-      <!-- Right Column: Partner Information -->
-      <div class="profile-card-right">
 
-        <div class="profile-content">
+    <!-- Right Column: Partner Information -->
+    <div class="profile-card-left">
 
-          <div class="info-row">
-            <span class="info-label">FULL NAME</span>
-            <span class="info-value partner-full-name"></span>
-          </div>
+      <a class="partner-avatar-link" target="_self">
+        <div class="profile-avatar partner-avatar"></div>
+      </a>
 
-          <hr class="info-divider">
+      <h2 class="profile-name partner-name"></h2>
 
-          <div class="info-row">
-            <span class="info-label">AGE</span>
-            <span class="info-value partner-age"></span>
-          </div>
+      <div class="profile-info-section">
 
-          <hr class="info-divider">
+        <div class="info-row">
+          <span class="info-label">AGE</span>
+          <span class="info-value partner-age"></span>
+        </div>
 
-          <div class="info-row">
-            <span class="info-label">SPECIES</span>
-            <span class="info-value partner-species"></span>
-          </div>
+        <hr class="info-divider">
 
-          <hr class="info-divider">
+        <div class="info-row">
+          <span class="info-label">SPECIES</span>
+          <span class="info-value partner-species"></span>
+        </div>
 
-          <div class="info-row">
-            <span class="info-label">GENDER</span>
-            <span class="info-value partner-gender"></span>
-          </div>
+        <hr class="info-divider">
 
-          <hr class="info-divider">
+        <div class="info-row">
+          <span class="info-label">GENDER</span>
+          <span class="info-value partner-gender"></span>
+        </div>
 
-          <div class="info-row">
-            <span class="info-label">PRONOUNS</span>
-            <span class="info-value partner-pronouns"></span>
-          </div>
+        <hr class="info-divider">
 
-          <ul class="profile-traits partner-notes"></ul>
-
+        <div class="info-row">
+          <span class="info-label">PRONOUNS</span>
+          <span class="info-value partner-pronouns"></span>
         </div>
 
       </div>
 
     </div>
 
-  </template>
+  </div>
+
+</template>
 
 </div>
 <!-- END PARTNERS BOX -->
