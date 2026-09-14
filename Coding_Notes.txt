@@ -3,7 +3,13 @@ To add new character (/other):
 - Tags can be found in characters.js
 - Add to index.json so it shows up in layout
 - Banner is 600x200, Fullbody is 400x600
-- Headshot = polaroid, avatar + circle image, banner = splash image, fullbody = body ref.
+
+Image key:
+Headshot = polaroid 
+Avatar = circle image 
+Banner = splash image 
+Fullbody = body ref 
+Decor = other splash images
 
 Particle shapes:
 - square
@@ -29,8 +35,6 @@ To do:
 - Character page, details, etc 
   - Partner
   - Relationships
-  - Backstory
-  - Trivia
   - Aesthetics
   - Pet
   - Story
