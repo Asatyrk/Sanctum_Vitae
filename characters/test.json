@@ -207,7 +207,7 @@
     "particle_count": 25,
     "particle_opacity": 0.2,
     "particle_blur": 0,
-    "particle_random_size": false
+    "particle_random_size": true
    },
 
   "tags": {
