@@ -4,6 +4,21 @@ To add new character (/other):
 - Add to index.json so it shows up in layout
 - Banner is 600x200, Fullbody is 400x600
 
+Particle shapes:
+- square
+- circle
+- rounded
+- pill
+- rectangle
+- triangle
+- sparkle
+- hexagon
+- star
+- cross
+- heart
+- frame
+- bird
+
 ---
 
 To do:

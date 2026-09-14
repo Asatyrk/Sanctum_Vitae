@@ -197,6 +197,42 @@ h6 {
   border-radius: 999px;
 }
 
+.character-particle[data-shape="rectangle"] {
+  width: calc(var(--particle-width) * 2);
+  border-radius: 0;
+}
+
+.character-particle[data-shape="triangle"] {
+  border-radius: 0;
+  clip-path: polygon(
+    50% 0%, 
+    0% 100%, 
+    100% 100%
+  );
+}
+
+.character-particle[data-shape="sparkle"] {
+  border-radius: 0;
+  clip-path: polygon(
+    50% 0%, 
+    84% 50%, 
+    50% 100%, 
+    16% 50%
+  );
+}
+
+.character-particle[data-shape="hexagon"] {
+  border-radius: 0;
+  clip-path: polygon(
+    50% 0%, 
+    96% 25%, 
+    96% 75%, 
+    50% 100%, 
+    4% 75%, 
+    4% 25%
+  );
+}
+
 .character-particle[data-shape="star"] {
   border-radius: 0;
   clip-path: polygon(
@@ -212,6 +248,73 @@ h6 {
     39% 35%
   );
 }
+
+.character-particle[data-shape="cross"] {
+  border-radius: 0;
+  clip-path: polygon(
+    20% 0%, 
+    0% 20%, 
+    30% 50%, 
+    0% 80%, 
+    20% 100%, 
+    50% 70%, 
+    80% 100%, 
+    100% 80%, 
+    70% 50%, 
+    100% 20%, 
+    80% 0%, 
+    50% 30%
+  );
+}
+
+.character-particle[data-shape="heart"] {
+  border-radius: 0;
+  clip-path: polygon(
+    50% 28%, 
+    70% 5%, 
+    96% 18%, 
+    100% 49%, 
+    80% 71%, 
+    50% 95%, 
+    20% 71%, 
+    0% 49%, 
+    4% 18%, 
+    30% 5%
+  );
+}
+
+.character-particle[data-shape="frame"] {
+  border-radius: 0;
+  clip-path: polygon(
+    0% 0%, 
+    0% 100%, 
+    25% 100%, 
+    25% 25%, 
+    75% 25%, 
+    75% 75%, 
+    25% 75%, 
+    25% 100%, 
+    100% 100%, 
+    100% 0%
+  );
+}
+
+.character-particle[data-shape="bird"] {
+  border-radius: 0;
+  clip-path: polygon(
+    39% 11%, 
+    41% 38%, 
+    96% 95%, 
+    56% 87%, 
+    47% 96%, 
+    21% 78%, 
+    13% 51%, 
+    24% 18%, 
+    5% 18%, 
+    24% 6%
+  );
+}
+
 
 
 @keyframes character-particle-float {
