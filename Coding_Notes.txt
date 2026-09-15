@@ -29,7 +29,7 @@ Particle shapes:
 ---
 
 To do:
-- Change favicon/icon (easy though, just replace files in assests folder)
+- Change favicon/icon (easy though, just replace files in assets folder)
 - ID section on char profile
 - Last/Next (per the index) on char page
 - Index for OOC and Pets
