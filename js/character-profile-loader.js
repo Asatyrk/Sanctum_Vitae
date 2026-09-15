@@ -166,23 +166,58 @@ document.querySelector(".page-container").innerHTML =
 
 }
 
-function text(value){
+function text(value) {
 
-if(!value || value.length === 0) return "N/A"
-return value
+  if (
+    value === undefined ||
+    value === null ||
+    value === ""
+  ) {
+    return "N/A"
+  }
+
+  return value
 
 }
 
 function list(value){
 
-  if(!value) return "N/A"
+  if(!value) return ""
 
   if(Array.isArray(value)){
-    if(value.length === 0) return "N/A"
+    if(value.length === 0) return ""
     return value.join(", ")
   }
 
   return value
+}
+
+function setOptionalField(id, value){
+
+  const el = document.getElementById(id)
+
+  if(!el) return
+
+  const field = el.closest(".info-field")
+
+  if(!value || value === "N/A"){
+
+    if(field){
+      field.hidden = true
+    }else{
+      el.hidden = true
+    }
+
+    return
+  }
+
+  el.textContent = value
+
+  if(field){
+    field.hidden = false
+  }else{
+    el.hidden = false
+  }
 
 }
 
@@ -986,10 +1021,9 @@ if (backgroundNotes) {
 }
 
 
-Object.entries(map).forEach(([id,value]) => {
+Object.entries(map).forEach(([id, value]) => {
 
-const el = document.getElementById(id)
-if(el) el.textContent = text(value)
+  setOptionalField(id, value)
 
 })
 
