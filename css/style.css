@@ -570,7 +570,7 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 /* sidebar button */
-.sidebar-button .sidebar-button-alink {
+.sidebar-button {
   padding: var(--space-2);
   border: none;
   background: var(--color-primary-dark);
@@ -581,11 +581,11 @@ body.character-profile-page .site-nav a:focus-visible {
   border-radius: var(--border-radius-md);
 }
 
-.sidebar-button:hover .sidebar-button-alink:hover {
+.sidebar-button:hover {
   background: var(--color-primary-darker);
 }
 
-.sidebar-button:focus-visible .sidebar-button-alink:focus-visible {
+.sidebar-button:focus-visible {
   outline: 2px solid var(--color-light);
   outline-offset: 2px;
 }
