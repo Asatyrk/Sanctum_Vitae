@@ -1415,7 +1415,7 @@ body.character-profile-page .site-nav a:focus-visible {
   display: block;
   width: 120px;
   height: 120px;
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-3);
 }
 
 .relationship-avatar {
