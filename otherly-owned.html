@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Otherly-Owned Characters</title>
+<link rel="icon" type="image/x-icon" href="assests/Logo/favicon.ico">
+
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  
+<script defer src="js/layout.js"></script>
+<script defer src="js/page-title.js"></script>
+<script defer src="js/otherly-owned.js"></script>
+
+</head>
+
+<body data-page="Otherly-Owned Characters" class="otherly-owned-page-characters">
+
+<div id="site-header"></div>
+
+<div class="characters-layout">
+
+<!-- LEFT SIDEBAR -->
+<aside class="characters-sidebar">
+
+<div class="sidebar-section">
+    <label class="sidebar-label">Welcome to the Otherly-Owned Index. This is the storage space for characters owned by other people who canonically appear in Sanctum Vitae.</label> 
+</div>
+
+<div class="sidebar-section">
+
+    <label class="sidebar-label">Other Indexes</label>
+
+    <!-- Code these buttons later to go to the index rather than test profiles -->
+
+    <button onclick="window.location.href='pet-profile.html?char=test_pet';" class="sidebar-button">View Pet Index</button>
+    
+    <button onclick="window.location.href='characters.html';" class="sidebar-button">View Main Index</button>
+
+</div>
+
+<div class="sidebar-section">
+
+<label class="sidebar-label">Search</label>
+<input id="search-input" type="search" placeholder="Search characters…" />
+
+</div>
+
+<div class="sidebar-section">
+
+<label class="sidebar-label">Sort</label>
+
+<select id="sort-select">
+<option value="name-asc" selected>Name A→Z</option>
+<option value="name-desc">Name Z→A</option>
+</select>
+
+</div>
+
+</aside>
+
+<!-- CORKBOARD GRID -->
+<main class="characters-board">
+
+<div id="character-grid"></div>
+
+</main>
+
+</div>
+
+</body>
+
+</html>

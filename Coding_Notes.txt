@@ -29,17 +29,13 @@ Particle shapes:
 ---
 
 To do:
-- Add a subindex for Flynn/other ocs
-  - So my char can read them for relationship boxes
-  - Setup could also work for pets
-  - Link on index page
-- Id section on char profile
+- Change favicon/icon (easy though, just replace files in assests folder)
+- ID section on char profile
 - Last/Next (per the index) on char page
-- Edit visual tweaks, font sizes, box sizes, etc
+- Index for OOC and Pets
 - Character page, details, etc
-  - Aesthetics
-  - Pet
   - Story
+  - Links
   - Alt forms too? 
 - Mockup and code factions 
 - Mockup and code stories
