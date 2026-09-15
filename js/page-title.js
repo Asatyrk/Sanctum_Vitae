@@ -1,3 +1,5 @@
+  // this might be redundant now? Check later
+
 document.addEventListener("DOMContentLoaded", () => {
   const pageName = document.body.dataset.page?.trim() || "Untitled";
 

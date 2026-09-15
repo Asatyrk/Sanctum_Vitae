@@ -8,7 +8,7 @@ Headshot [1:1] = polaroid
 Avatar [1:1] = circle image 
 Banner [3:1] = splash image 
 Fullbody [2:1] = body ref 
-Decor [10:1] = other splash images
+Decor [~10:1] = other splash images
 
 Particle shapes:
 - square
@@ -33,9 +33,10 @@ To do:
   - So my char can read them for relationship boxes
   - Setup could also work for pets
   - Link on index page
+- Id section on char profile
+- Last/Next (per the index) on char page
 - Edit visual tweaks, font sizes, box sizes, etc
 - Character page, details, etc
-  - Relationships
   - Aesthetics
   - Pet
   - Story

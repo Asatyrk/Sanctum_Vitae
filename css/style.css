@@ -1363,7 +1363,7 @@ body.character-profile-page .site-nav a:focus-visible {
   color: var(--char-secondary);
 }
 
- /* =====================================================
+/* =====================================================
     RELATIONSHIPS
  ===================================================== */
 
@@ -1403,23 +1403,10 @@ body.character-profile-page .site-nav a:focus-visible {
   color: var(--char-primary);
   padding: var(--space-4);
   text-align: center;
-  border: 1px solid var(--char-accent);
-  border-radius: var(--border-radius-lg);
 
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  transition:
-    transform var(--transition-fast),
-    background var(--transition-fast);
-}
-
-/* Slight hover effect */
-
-.relationship-card:hover {
-  transform: translateY(-2px);
-  background: var(--char-bg-2);
 }
 
 /* Avatar link */
@@ -1433,13 +1420,12 @@ body.character-profile-page .site-nav a:focus-visible {
 /* Circular avatar */
 
 .relationship-avatar {
-  width: 90px;
-  height: 90px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   overflow: hidden;
 
   background: var(--char-bg-2);
-  border: 1px solid var(--char-accent);
 
   margin-bottom: var(--space-3);
 }
@@ -1450,6 +1436,7 @@ body.character-profile-page .site-nav a:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
@@ -1466,7 +1453,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
 .relationship-type {
   margin: 0;
-  color: var(--char-secondary);
+  color: var(--char-primary);
   font-size: var(--font-size-sm);
   font-style: italic;
 }
