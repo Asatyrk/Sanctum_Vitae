@@ -112,13 +112,13 @@ function setOptionalField(id, value){
 }
 
 
-function applyCharacterColors(character){
+function applyCharacterColors(char){
 
   const colors =
-    character.colors || {}
+    char.colors || {}
 
   const characterBackground =
-    character.characterBackground || {}
+    char.characterBackground || {}
 
   const primary =
     colors.primary || "#b99b78"
@@ -206,6 +206,7 @@ function applyCharacterColors(character){
 
 }
 
+
 function setPageTitle(name){
 
   const title =
@@ -229,14 +230,14 @@ function setPageTitle(name){
 }
 
 
-function displayOtherlyOwned(character){
+function displayOtherlyOwned(char){
 
   applyCharacterColors(
-    character
+    char
   )
 
   const name =
-    text(character.name)
+    text(char.name)
 
 
   // =========================
@@ -289,11 +290,11 @@ function displayOtherlyOwned(character){
 
   if(
     avatarImage &&
-    character.avatar
+    char.avatar
   ){
 
     avatarImage.style.backgroundImage =
-      `url('${character.avatar}')`
+      `url('${char.avatar}')`
 
   }else if(avatarImage){
 
@@ -314,11 +315,11 @@ function displayOtherlyOwned(character){
 
   if(
     bannerImage &&
-    character.banner
+    char.banner
   ){
 
     bannerImage.style.backgroundImage =
-      `url('${character.banner}')`
+      `url('${char.banner}')`
 
   }else if(bannerImage){
 
@@ -335,41 +336,41 @@ function displayOtherlyOwned(character){
   const map = {
 
     age:
-      character.age,
+      char.age,
 
     species:
-      character.species,
+      char.species,
 
     gender_identity:
-      character.identity?.gender_identity,
+      char.identity?.gender_identity,
 
     pronouns:
       list(
-        character.identity?.pronouns
+        char.identity?.pronouns
       ),
 
     orientation:
-      character.identity?.orientation,
+      char.identity?.orientation,
 
     elements:
       list(
-        character.elements
+        char.elements
       ),
 
     ethnicity:
-      character.ethnicity,
+      char.ethnicity,
 
     full_name:
-      character.full_name,
+      char.full_name,
 
     aliases:
       list(
-        character.aliases
+        char.aliases
       ),
 
     occupation:
       list(
-        character.occupation
+        char.occupation
       )
 
   }
@@ -399,8 +400,8 @@ function displayOtherlyOwned(character){
   if(profileNotes){
 
     if(
-      !character.profile_notes ||
-      character.profile_notes.length === 0
+      !char.profile_notes ||
+      char.profile_notes.length === 0
     ){
 
       profileNotes.innerHTML =
@@ -409,7 +410,7 @@ function displayOtherlyOwned(character){
     }else{
 
       profileNotes.innerHTML =
-        character.profile_notes
+        char.profile_notes
           .map(
             note => `<li>${note}</li>`
           )
@@ -420,19 +421,20 @@ function displayOtherlyOwned(character){
   }
 
 
-  setupPartners(character)
+  setupPartners(char)
 
-  setupRelationships(character)
+  setupRelationships(char)
 
-  setupPets(character)
+  setupPets(char)
 
   setupCharacterBackground(
-    character
+    char
   )
 
 }
 
-async function setupPartners(character){
+
+async function setupPartners(char){
 
   const section =
     document.getElementById(
@@ -462,8 +464,8 @@ async function setupPartners(character){
 
 
   if(
-    !Array.isArray(character.partners) ||
-    character.partners.length === 0
+    !Array.isArray(char.partners) ||
+    char.partners.length === 0
   ){
 
     section.hidden =
@@ -482,7 +484,7 @@ async function setupPartners(character){
 
 
   for(
-    const partner of character.partners
+    const partner of char.partners
   ){
 
     if(
@@ -776,7 +778,7 @@ async function setupPartners(character){
 }
 
 
-async function setupRelationships(character){
+async function setupRelationships(char){
 
   const section =
     document.getElementById(
@@ -806,8 +808,8 @@ async function setupRelationships(character){
 
 
   if(
-    !Array.isArray(character.relationships) ||
-    character.relationships.length === 0
+    !Array.isArray(char.relationships) ||
+    char.relationships.length === 0
   ){
 
     section.hidden =
@@ -826,7 +828,7 @@ async function setupRelationships(character){
 
 
   for(
-    const relationship of character.relationships
+    const relationship of char.relationships
   ){
 
     if(
@@ -973,7 +975,7 @@ async function setupRelationships(character){
 }
 
 
-async function setupPets(character){
+async function setupPets(char){
 
   const section =
     document.getElementById(
@@ -1003,8 +1005,8 @@ async function setupPets(character){
 
 
   if(
-    !Array.isArray(character.pets) ||
-    character.pets.length === 0
+    !Array.isArray(char.pets) ||
+    char.pets.length === 0
   ){
 
     section.hidden =
@@ -1023,7 +1025,7 @@ async function setupPets(character){
 
 
   for(
-    const pet of character.pets
+    const pet of char.pets
   ){
 
     if(
