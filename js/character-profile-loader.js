@@ -29,6 +29,10 @@ async function loadCharacter(){
 
     setupDetailTabs()
 
+    setupCharacterNavigation(
+     "characters/index.json"
+    )
+
 
   }catch(err){
 

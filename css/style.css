@@ -873,6 +873,13 @@ body.character-profile-page .site-nav a:focus-visible {
   margin-bottom: var(--space-4);
 }
 
+.profile-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
 /* =====================================================
    CHARACTER PROFILE CARD
 ===================================================== */

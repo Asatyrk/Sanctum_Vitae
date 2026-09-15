@@ -268,6 +268,9 @@ async function loadOtherlyOwned(){
       character
     )
 
+    setupCharacterNavigation(
+     "characters/otherly_owned/index.json"
+    )
 
   }catch(err){
 

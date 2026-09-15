@@ -289,6 +289,9 @@ displayPet(
   pet
 )
 
+setupCharacterNavigation(
+  "characters/pets/index.json"
+)
 
 }catch(err){
 

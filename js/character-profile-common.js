@@ -1301,6 +1301,156 @@ function displayCharacter(character){
 
 }
 
+async function setupCharacterNavigation(
+  indexPath
+){
+
+  const currentSlug =
+    getCharacter()
+
+  if(!currentSlug){
+
+    return
+
+  }
+
+
+  const response =
+    await fetch(
+      indexPath
+    )
+
+  if(!response.ok){
+
+    return
+
+  }
+
+
+  const index =
+    await response.json()
+
+
+  if(
+    !Array.isArray(index) ||
+    index.length === 0
+  ){
+
+    return
+
+  }
+
+
+  const currentIndex =
+    index.findIndex(
+      entry => {
+
+        const slug =
+          entry.path
+            .replace(/\.json$/, "")
+            .split("/")
+            .pop()
+
+        return slug === currentSlug
+
+      }
+    )
+
+
+  if(currentIndex === -1){
+
+    return
+
+  }
+
+
+  const previousIndex =
+    (
+      currentIndex - 1 + index.length
+    ) % index.length
+
+
+  const nextIndex =
+    (
+      currentIndex + 1
+    ) % index.length
+
+
+  const previous =
+    index[previousIndex]
+
+
+  const next =
+    index[nextIndex]
+
+
+  const navigation =
+    document.getElementById(
+      "character-navigation"
+    )
+
+
+  if(!navigation){
+
+    return
+
+  }
+
+
+  navigation.innerHTML = ""
+
+
+  const previousLink =
+    document.createElement(
+      "a"
+    )
+
+
+  previousLink.href =
+    getProfileUrl(
+      previous.path
+    )
+
+
+  previousLink.textContent =
+    "← Previous"
+
+
+  const separator =
+    document.createTextNode(
+      " | "
+    )
+
+
+  const nextLink =
+    document.createElement(
+      "a"
+    )
+
+
+  nextLink.href =
+    getProfileUrl(
+      next.path
+    )
+
+
+  nextLink.textContent =
+    "Next →"
+
+
+  navigation.appendChild(
+    previousLink
+  )
+
+  navigation.appendChild(
+    separator
+  )
+
+  navigation.appendChild(
+    nextLink
+  )
+
+}
 
 async function setupPartners(character){
 
