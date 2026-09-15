@@ -128,25 +128,25 @@ function displayPet(pet){
 
 
   // =========================
-  // FULLBODY
+  // FULLBODY IMAGE
   // =========================
 
-  const fullbodyImage =
+  const designImage =
     document.getElementById(
-      "fullbody-image"
+      "design-image"
     )
 
   if(
-    fullbodyImage &&
-    pet.fullbody
+    designImage &&
+    pet.design
   ){
 
-    fullbodyImage.style.backgroundImage =
-      `url('${pet.fullbody}')`
+    designImage.style.backgroundImage =
+      `url('${pet.design}')`
 
-  }else if(fullbodyImage){
+  }else if(designImage){
 
-    fullbodyImage.style.backgroundImage =
+    designImage.style.backgroundImage =
       `url('https://placehold.co/400x600')`
 
   }

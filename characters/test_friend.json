@@ -138,7 +138,7 @@
 
   "partners": [
     {
-      "file": "characters/test_friend.json",
+      "file": "characters/test.json",
       "relationship": "Romantic Partner",
       "status": "Dating",
       "dynamic": "Healthy",
@@ -149,7 +149,7 @@
     "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
   ]},
     {
-      "file": "characters/test_friend.json",
+      "file": "characters/test.json",
       "relationship": "Romantic Partner",
       "status": "Dating",
       "dynamic": "Healthy",
