@@ -28,6 +28,17 @@
   ]}
   ],
 
+  "relationships": [
+    {
+      "file": "characters/test_friend.json",
+      "type": "friend"
+    },
+    {
+      "file": "characters/test_friend.json",
+      "type": "friend"
+    }
+  ],
+
   "stories": [
     {
       "title": "Story Name",
