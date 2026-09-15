@@ -887,6 +887,10 @@ body.character-profile-page .site-nav a:focus-visible {
   width: 100%;
 }
 
+.profile-navigation #character-navigation {
+  color: var(--char-primary);
+}
+
 /* =====================================================
    CHARACTER PROFILE CARD
 ===================================================== */
