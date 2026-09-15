@@ -1074,6 +1074,14 @@ body.character-profile-page .site-nav a:focus-visible {
   margin-bottom: var(--space-12);
 }
 
+.design-details-layout-pet {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 500px);
+  gap: var(--space-6);
+  align-items: stretch;
+  margin-bottom: var(--space-12);
+}
+
 .design-details-left {
   display: flex;
   flex-direction: column;
