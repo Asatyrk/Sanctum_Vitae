@@ -204,7 +204,6 @@
     ]
   },
 
-  "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
   "avatar": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
   "banner": "",
   "fullbody": "",
@@ -222,7 +221,7 @@
 
   "characterBackground": {
     "particle_color": "",
-    "particle_shape": "square",
+    "particle_shape": "heart",
     "particle_count": 30,
     "particle_opacity": 0.2,
     "particle_blur": 0,

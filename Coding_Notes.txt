@@ -1,15 +1,14 @@
 To add new character (/other):
-- Create new .json in characters (/other) folder with profile info
+- Create new .json in characters (/other) folder with profile info (use base)
 - Tags can be found in characters.js
-- Add to index.json so it shows up in layout
-- Banner is 600x200, Fullbody is 400x600
+- Add to index.json so it shows up in layout (inc. headshot)
 
 Image key:
-Headshot = polaroid 
-Avatar = circle image 
-Banner = splash image 
-Fullbody = body ref 
-Decor = other splash images
+Headshot [1:1] = polaroid 
+Avatar [1:1] = circle image 
+Banner [3:1] = splash image 
+Fullbody [2:1] = body ref 
+Decor [10:1] = other splash images
 
 Particle shapes:
 - square
@@ -30,10 +29,12 @@ Particle shapes:
 ---
 
 To do:
-- Make headshots read from the json maybe? rather than from the index.
+- Add a subgallery for Flynn/other ocs
+  - So my char can read them for relationship boxes
+  - Setup could also work for pets
+  - Link on index page
 - Edit visual tweaks, font sizes, box sizes, etc
-- Character page, details, etc 
-  - Partner
+- Character page, details, etc
   - Relationships
   - Aesthetics
   - Pet
