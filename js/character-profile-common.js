@@ -1388,23 +1388,20 @@ async function setupPartners(character){
 
       // Partner link
 
-      const avatarLink =
-        partnerCard.querySelector(
-          ".partner-avatar-link"
-        )
+const avatarLink =
+  partnerCard.querySelector(
+    ".partner-avatar-link"
+  )
 
-      if(avatarLink){
+if(avatarLink){
 
-        const partnerSlug =
-          partner.file
-            .replace(".json", "")
-            .split("/")
-            .pop()
+  avatarLink.href =
+    getProfileUrl(
+      partner.file
+    )
 
-        avatarLink.href =
-          `character-profile.html?char=${partnerSlug}`
+}
 
-      }
 
 
       // Partner name
@@ -1620,7 +1617,43 @@ async function setupPartners(character){
 
 }
 
+function getProfileUrl(file){
 
+  const slug =
+    file
+      .replace(/\.json$/, "")
+      .split("/")
+      .pop()
+
+  let profilePage =
+    "character-profile.html"
+
+
+  if(
+    file.startsWith(
+      "characters/pets/"
+    )
+  ){
+
+    profilePage =
+      "pet-profile.html"
+
+  }else if(
+    file.startsWith(
+      "characters/otherly_owned/"
+    )
+  ){
+
+    profilePage =
+      "otherly-owned-profile.html"
+
+  }
+
+
+  return `${profilePage}?char=${encodeURIComponent(slug)}`
+
+}
+  
 async function setupRelationships(character){
 
   const section =
@@ -1697,23 +1730,20 @@ async function setupRelationships(character){
 
       // Profile link
 
-      const characterLink =
-        relationshipCard.querySelector(
-          ".relationship-avatar-link"
-        )
+const characterLink =
+  relationshipCard.querySelector(
+    ".relationship-avatar-link"
+  )
 
-      const relationshipSlug =
-        relationship.file
-          .replace(".json", "")
-          .split("/")
-          .pop()
+if(characterLink){
 
-      if(characterLink){
+  characterLink.href =
+    getProfileUrl(
+      relationship.file
+    )
 
-        characterLink.href =
-          `character-profile.html?char=${relationshipSlug}`
+}
 
-      }
 
 
       // Avatar
