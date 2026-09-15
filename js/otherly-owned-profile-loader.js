@@ -24,7 +24,7 @@ async function loadOtherlyOwned(){
 
 
   const path =
-    `characters/otherly-owned/${slug}.json`
+    `characters/otherly_owned/${slug}.json`
 
 
   try{
