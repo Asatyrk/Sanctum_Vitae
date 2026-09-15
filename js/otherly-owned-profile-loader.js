@@ -1343,7 +1343,7 @@ async function setupPets(character){
         fullbody.style.backgroundImage =
           petChar.fullbody
             ? `url("${petChar.fullbody}")`
-            : `url("https://placehold.co/400x600")`
+            : `url("https://placehold.co/300x300")`
 
       }
 
