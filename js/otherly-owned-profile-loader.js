@@ -547,13 +547,853 @@ function displayOtherlyOwned(character){
   }
 
 
-  // =========================
-  // BACKGROUND
-  // =========================
+  setupPartners(character)
+
+  setupRelationships(character)
+
+  setupPets(character)
 
   setupCharacterBackground(
     character
   )
+
+}
+
+async function setupPartners(character){
+
+  const section =
+    document.getElementById(
+      "partners-section"
+    )
+
+  const container =
+    document.getElementById(
+      "partners-container"
+    )
+
+  const template =
+    document.getElementById(
+      "partner-template"
+    )
+
+
+  if(
+    !section ||
+    !container ||
+    !template
+  ){
+
+    return
+
+  }
+
+
+  if(
+    !Array.isArray(character.partners) ||
+    character.partners.length === 0
+  ){
+
+    section.hidden =
+      true
+
+    return
+
+  }
+
+
+  container.innerHTML =
+    ""
+
+  let loadedPartners =
+    0
+
+
+  for(
+    const partner of character.partners
+  ){
+
+    if(
+      !partner ||
+      !partner.file
+    ){
+
+      continue
+
+    }
+
+
+    try{
+
+      const response =
+        await fetch(
+          partner.file
+        )
+
+
+      if(!response.ok){
+
+        throw new Error(
+          `Partner character not found: ${partner.file}`
+        )
+
+      }
+
+
+      const partnerChar =
+        await response.json()
+
+
+      const partnerCard =
+        template.content.cloneNode(
+          true
+        )
+
+
+      // =========================
+      // PARTNER AVATAR
+      // =========================
+
+      const avatar =
+        partnerCard.querySelector(
+          ".partner-avatar"
+        )
+
+      if(avatar){
+
+        avatar.style.backgroundImage =
+          partnerChar.avatar
+            ? `url("${partnerChar.avatar}")`
+            : `url("https://placehold.co/120")`
+
+      }
+
+
+      // =========================
+      // PARTNER LINK
+      // =========================
+
+      const avatarLink =
+        partnerCard.querySelector(
+          ".partner-avatar-link"
+        )
+
+
+      if(avatarLink){
+
+        const partnerSlug =
+          partner.file
+            .replace(".json", "")
+            .split("/")
+            .pop()
+
+
+        avatarLink.href =
+          `character-profile.html?char=${partnerSlug}`
+
+      }
+
+
+      // =========================
+      // PARTNER NAME
+      // =========================
+
+      const name =
+        partnerCard.querySelector(
+          ".partner-name"
+        )
+
+      if(name){
+
+        name.textContent =
+          text(
+            partnerChar.name
+          )
+
+      }
+
+
+      // =========================
+      // PARTNER INFORMATION
+      // =========================
+
+      const age =
+        partnerCard.querySelector(
+          ".partner-age"
+        )
+
+      if(age){
+
+        age.textContent =
+          text(
+            partnerChar.age
+          )
+
+      }
+
+
+      const species =
+        partnerCard.querySelector(
+          ".partner-species"
+        )
+
+      if(species){
+
+        species.textContent =
+          text(
+            partnerChar.species
+          )
+
+      }
+
+
+      const gender =
+        partnerCard.querySelector(
+          ".partner-gender"
+        )
+
+      if(gender){
+
+        gender.textContent =
+          text(
+            partnerChar.identity?.gender_identity
+          )
+
+      }
+
+
+      const pronouns =
+        partnerCard.querySelector(
+          ".partner-pronouns"
+        )
+
+      if(pronouns){
+
+        pronouns.textContent =
+          list(
+            partnerChar.identity?.pronouns
+          )
+
+      }
+
+
+      // =========================
+      // PARTNERSHIP INFORMATION
+      // =========================
+
+      const relationship =
+        partnerCard.querySelector(
+          ".partner-relationship"
+        )
+
+      if(relationship){
+
+        relationship.textContent =
+          text(
+            partner.relationship
+          )
+
+      }
+
+
+      const status =
+        partnerCard.querySelector(
+          ".partner-status"
+        )
+
+      if(status){
+
+        status.textContent =
+          text(
+            partner.status
+          )
+
+      }
+
+
+      const dynamic =
+        partnerCard.querySelector(
+          ".partner-dynamic"
+        )
+
+      if(dynamic){
+
+        dynamic.textContent =
+          text(
+            partner.dynamic
+          )
+
+      }
+
+
+      const since =
+        partnerCard.querySelector(
+          ".partner-since"
+        )
+
+      if(since){
+
+        since.textContent =
+          text(
+            partner.since
+          )
+
+      }
+
+
+      // =========================
+      // PARTNER NOTES
+      // =========================
+
+      const notes =
+        partnerCard.querySelector(
+          ".partner-notes"
+        )
+
+      if(notes){
+
+        if(
+          Array.isArray(partner.notes) &&
+          partner.notes.length > 0
+        ){
+
+          notes.innerHTML =
+            partner.notes
+              .map(
+                note => `<li>${note}</li>`
+              )
+              .join("")
+
+        }else if(partner.notes){
+
+          notes.innerHTML =
+            `<li>${partner.notes}</li>`
+
+        }else{
+
+          notes.innerHTML =
+            "<li>N/A</li>"
+
+        }
+
+      }
+
+
+      container.appendChild(
+        partnerCard
+      )
+
+      loadedPartners++
+
+
+    }catch(err){
+
+      console.error(
+        `Could not load partner: ${partner.file}`,
+        err
+      )
+
+    }
+
+  }
+
+
+  section.hidden =
+    loadedPartners === 0
+
+}
+
+
+async function setupRelationships(character){
+
+  const section =
+    document.getElementById(
+      "relationships-section"
+    )
+
+  const container =
+    document.getElementById(
+      "relationships-container"
+    )
+
+  const template =
+    document.getElementById(
+      "relationship-template"
+    )
+
+
+  if(
+    !section ||
+    !container ||
+    !template
+  ){
+
+    return
+
+  }
+
+
+  if(
+    !Array.isArray(character.relationships) ||
+    character.relationships.length === 0
+  ){
+
+    section.hidden =
+      true
+
+    return
+
+  }
+
+
+  container.innerHTML =
+    ""
+
+  let loadedRelationships =
+    0
+
+
+  for(
+    const relationship of character.relationships
+  ){
+
+    if(
+      !relationship ||
+      !relationship.file
+    ){
+
+      continue
+
+    }
+
+
+    try{
+
+      const response =
+        await fetch(
+          relationship.file
+        )
+
+
+      if(!response.ok){
+
+        throw new Error(
+          `Relationship character not found: ${relationship.file}`
+        )
+
+      }
+
+
+      const relationshipChar =
+        await response.json()
+
+
+      const relationshipCard =
+        template.content.cloneNode(
+          true
+        )
+
+
+      // =========================
+      // PROFILE LINK
+      // =========================
+
+      const characterLink =
+        relationshipCard.querySelector(
+          ".relationship-avatar-link"
+        )
+
+
+      const relationshipSlug =
+        relationship.file
+          .replace(".json", "")
+          .split("/")
+          .pop()
+
+
+      if(characterLink){
+
+        characterLink.href =
+          `character-profile.html?char=${relationshipSlug}`
+
+      }
+
+
+      // =========================
+      // AVATAR
+      // =========================
+
+      const avatar =
+        relationshipCard.querySelector(
+          ".relationship-avatar"
+        )
+
+      if(avatar){
+
+        avatar.style.backgroundImage =
+          relationshipChar.avatar
+            ? `url("${relationshipChar.avatar}")`
+            : `url("https://placehold.co/120")`
+
+      }
+
+
+      // =========================
+      // NAME
+      // =========================
+
+      const name =
+        relationshipCard.querySelector(
+          ".relationship-name"
+        )
+
+      if(name){
+
+        name.textContent =
+          text(
+            relationshipChar.name
+          )
+
+      }
+
+
+      // =========================
+      // RELATIONSHIP TYPE
+      // =========================
+
+      const type =
+        relationshipCard.querySelector(
+          ".relationship-type"
+        )
+
+      if(type){
+
+        type.textContent =
+          text(
+            relationship.type
+          )
+
+      }
+
+
+      container.appendChild(
+        relationshipCard
+      )
+
+      loadedRelationships++
+
+
+    }catch(err){
+
+      console.error(
+        `Could not load relationship: ${relationship.file}`,
+        err
+      )
+
+    }
+
+  }
+
+
+  section.hidden =
+    loadedRelationships === 0
+
+}
+
+
+async function setupPets(character){
+
+  const section =
+    document.getElementById(
+      "pets-section"
+    )
+
+  const container =
+    document.getElementById(
+      "pets-container"
+    )
+
+  const template =
+    document.getElementById(
+      "pet-template"
+    )
+
+
+  if(
+    !section ||
+    !container ||
+    !template
+  ){
+
+    return
+
+  }
+
+
+  if(
+    !Array.isArray(character.pets) ||
+    character.pets.length === 0
+  ){
+
+    section.hidden =
+      true
+
+    return
+
+  }
+
+
+  container.innerHTML =
+    ""
+
+  let loadedPets =
+    0
+
+
+  for(
+    const pet of character.pets
+  ){
+
+    if(
+      !pet ||
+      !pet.file
+    ){
+
+      continue
+
+    }
+
+
+    try{
+
+      const response =
+        await fetch(
+          pet.file
+        )
+
+
+      if(!response.ok){
+
+        throw new Error(
+          `Pet character not found: ${pet.file}`
+        )
+
+      }
+
+
+      const petChar =
+        await response.json()
+
+
+      const petCard =
+        template.content.cloneNode(
+          true
+        )
+
+
+      // =========================
+      // PET AVATAR
+      // =========================
+
+      const avatar =
+        petCard.querySelector(
+          ".pet-avatar"
+        )
+
+      if(avatar){
+
+        avatar.style.backgroundImage =
+          petChar.avatar
+            ? `url("${petChar.avatar}")`
+            : `url("https://placehold.co/120")`
+
+      }
+
+
+      // =========================
+      // PET LINK
+      // =========================
+
+      const avatarLink =
+        petCard.querySelector(
+          ".pet-avatar-link"
+        )
+
+
+      if(avatarLink){
+
+        const petSlug =
+          pet.file
+            .replace(".json", "")
+            .split("/")
+            .pop()
+
+
+        avatarLink.href =
+          `pet-profile.html?char=${petSlug}`
+
+      }
+
+
+      // =========================
+      // PET NAME
+      // =========================
+
+      const name =
+        petCard.querySelector(
+          ".pet-name"
+        )
+
+      if(name){
+
+        name.textContent =
+          text(
+            petChar.name
+          )
+
+      }
+
+
+      // =========================
+      // PET SPECIES
+      // =========================
+
+      const species =
+        petCard.querySelector(
+          ".pet-species"
+        )
+
+      if(species){
+
+        species.textContent =
+          text(
+            petChar.species
+          )
+
+      }
+
+
+      // =========================
+      // PET GENDER
+      // =========================
+
+      const gender =
+        petCard.querySelector(
+          ".pet-gender"
+        )
+
+      if(gender){
+
+        gender.textContent =
+          text(
+            petChar.identity?.gender_identity
+          )
+
+      }
+
+
+      // =========================
+      // PET NOTES
+      // =========================
+
+      const notes =
+        petCard.querySelector(
+          ".pet-notes"
+        )
+
+      if(notes){
+
+        if(
+          Array.isArray(pet.notes) &&
+          pet.notes.length > 0
+        ){
+
+          notes.innerHTML =
+            pet.notes
+              .map(
+                note => `<li>${note}</li>`
+              )
+              .join("")
+
+        }else if(pet.notes){
+
+          notes.innerHTML =
+            `<li>${pet.notes}</li>`
+
+        }else{
+
+          notes.innerHTML =
+            "<li>N/A</li>"
+
+        }
+
+      }
+
+
+      // =========================
+      // PET FULLBODY
+      // =========================
+
+      const fullbody =
+        petCard.querySelector(
+          ".pet-fullbody"
+        )
+
+      if(fullbody){
+
+        fullbody.style.backgroundImage =
+          petChar.fullbody
+            ? `url("${petChar.fullbody}")`
+            : `url("https://placehold.co/400x600")`
+
+      }
+
+
+      // =========================
+      // PET IMAGE LINK
+      // =========================
+
+      const imageLink =
+        petCard.querySelector(
+          ".pet-image-link"
+        )
+
+
+      if(imageLink){
+
+        const petSlug =
+          pet.file
+            .replace(".json", "")
+            .split("/")
+            .pop()
+
+
+        imageLink.href =
+          `pet-profile.html?char=${petSlug}`
+
+      }
+
+
+      container.appendChild(
+        petCard
+      )
+
+      loadedPets++
+
+
+    }catch(err){
+
+      console.error(
+        `Could not load pet: ${pet.file}`,
+        err
+      )
+
+    }
+
+  }
+
+
+  section.hidden =
+    loadedPets === 0
 
 }
 
