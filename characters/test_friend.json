@@ -129,10 +129,16 @@
 
   "relationships": [
     {
-      "name": "Character Name",
-      "type": "friend",
-      "file": "characters/test.json",
-      "notes": "Optional notes"
+      "file": "characters/test_friend.json",
+      "type": "friend"
+    },
+    {
+      "file": "characters/pets/test_pet.json",
+      "type": "friend"
+    },
+    {
+      "file": "characters/otherly_owned/test_otherly_owned.json",
+      "type": "friend"
     }
   ],
 
@@ -149,7 +155,7 @@
     "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
   ]},
     {
-      "file": "characters/test.json",
+      "file": "characters/otherly_owned/test_otherly_owned.json",
       "relationship": "Romantic Partner",
       "status": "Dating",
       "dynamic": "Healthy",

@@ -574,6 +574,11 @@ function displayCharacter(character){
       "decor-image-2"
     )
 
+  const box3 =
+    document.getElementById(
+      "decor-image-3"
+    )
+
   const finalImageUrl =
     decorImage
       ? decorImage
