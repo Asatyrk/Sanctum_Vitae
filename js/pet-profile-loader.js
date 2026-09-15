@@ -373,6 +373,26 @@ function displayPet(pet){
 
   }
 
+  // Design Image
+
+const designImage =
+  document.getElementById("design-image")
+
+if(
+  designImage &&
+  pet.fullbody
+){
+
+  designImage.style.backgroundImage =
+    `url('${pet.fullbody}')`
+
+}else if(designImage){
+
+  designImage.style.backgroundImage =
+    `url('https://placehold.co/400x600')`
+
+}
+
 
   // Basic information
 
