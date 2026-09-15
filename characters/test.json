@@ -119,33 +119,6 @@
     "items": ["Unknown"]
   },
 
-  "relationships": [
-    {
-      "file": "characters/test_friend.json",
-      "type": "friend"
-    },
-    {
-      "file": "characters/test_friend.json",
-      "type": "friend"
-    },
-    {
-      "file": "characters/test_friend.json",
-      "type": "friend"
-    },
-    {
-      "file": "characters/test_friend.json",
-      "type": "friend"
-    },
-    {
-      "file": "characters/test_friend.json",
-      "type": "friend"
-    },
-    {
-      "file": "characters/test_friend.json",
-      "type": "friend"
-    }
-  ],
-
   "partners": [
     {
       "file": "characters/test_friend.json",
@@ -160,13 +133,32 @@
   ]}
   ],
 
+  "relationships": [
+    {
+      "file": "characters/test_friend.json",
+      "type": "friend"
+    },
+    {
+      "file": "characters/test_friend.json",
+      "type": "friend"
+    }
+  ],
+
   "pets": [
     {
-      "name": "Pet Name",
-      "species": "Unknown",
-      "file": "pets/pet-name.json",
-      "notes": "Optional notes"
-    }
+      "file": "characters/pets/pet-name.json",
+      "notes": [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
+    ]},
+    {
+      "file": "characters/pets/pet-name.json",
+      "notes": [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
+    ]}
   ],
 
   "stories": [

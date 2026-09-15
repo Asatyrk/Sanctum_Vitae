@@ -1454,6 +1454,57 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 /* =====================================================
+PET PROFILE
+===================================================== */
+
+.pet-card {
+grid-template-columns: 1fr 2fr;
+}
+
+/* Pet avatar link */
+
+.pet-avatar-link {
+display: block;
+text-decoration: none;
+color: inherit;
+}
+
+/* Pet name */
+
+.pet-card .pet-name {
+margin: 0 0 var(--space-5) 0;
+color: var(--char-primary);
+font-size: var(--font-size-lg);
+}
+
+/* Left side */
+
+.pet-card .profile-card-left .info-label,
+.pet-card .profile-card-left .info-value {
+color: var(--char-primary);
+}
+
+/* Right side heading */
+
+.pet-card .profile-card-right h2 {
+margin-top: 0;
+margin-bottom: var(--space-4);
+color: var(--char-secondary);
+font-size: var(--font-size-lg);
+}
+
+/* Pet notes */
+
+.pet-card .pet-notes {
+margin: var(--space-5) 0 0 0;
+color: var(--char-secondary);
+}
+
+.pet-card .profile-card-right .pet-notes li {
+color: var(--char-secondary);
+}
+
+/* =====================================================
    RESPONSIVE DETAIL BOXES
 ===================================================== */
 

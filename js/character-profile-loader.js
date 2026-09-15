@@ -555,6 +555,142 @@ async function setupRelationships(char) {
 
 }
 
+async function setupPets(char) {
+
+const section = document.getElementById("pets-section")
+const container = document.getElementById("pets-container")
+const template = document.getElementById("pet-template")
+
+if (!section || !container || !template) return
+
+// No pets = keep the entire section hidden
+if (!Array.isArray(char.pets) || char.pets.length === 0) {
+section.hidden = true
+return
+}
+
+container.innerHTML = ""
+
+let loadedPets = 0
+
+for (const pet of char.pets) {
+
+if (!pet || !pet.file) continue
+
+try {
+
+  const response = await fetch(pet.file)
+
+  if (!response.ok) {
+    throw new Error(`Pet character not found: ${pet.file}`)
+  }
+
+  const petChar = await response.json()
+
+  // Clone template
+  const petCard = template.content.cloneNode(true)
+
+
+  // =========================================
+  // PET AVATAR
+  // =========================================
+
+  const avatar = petCard.querySelector(".pet-avatar")
+
+  if (avatar) {
+    avatar.style.backgroundImage =
+      petChar.avatar
+        ? `url("${petChar.avatar}")`
+        : `url("https://placehold.co/120")`
+  }
+
+
+  // =========================================
+  // PET PROFILE LINK
+  // =========================================
+
+  const avatarLink =
+    petCard.querySelector(".pet-avatar-link")
+
+  if (avatarLink) {
+
+    const petSlug =
+      pet.file
+        .replace(".json", "")
+        .split("/")
+        .pop()
+
+    avatarLink.href =
+      `character-profile.html?char=${petSlug}`
+  }
+
+
+  // =========================================
+  // PET NAME
+  // =========================================
+
+  const name =
+    petCard.querySelector(".pet-name")
+
+  if (name) {
+    name.textContent = text(petChar.name)
+  }
+
+
+  // =========================================
+  // PET NOTES
+  // =========================================
+
+  const notes =
+    petCard.querySelector(".pet-notes")
+
+  if (notes) {
+
+    if (Array.isArray(pet.notes) && pet.notes.length > 0) {
+
+      notes.innerHTML = pet.notes
+        .map(note => `<li>${note}</li>`)
+        .join("")
+
+    } else if (pet.notes) {
+
+      notes.innerHTML =
+        `<li>${pet.notes}</li>`
+
+    } else {
+
+      notes.innerHTML = "<li>N/A</li>"
+
+    }
+
+  }
+
+
+  // =========================================
+  // ADD CARD
+  // =========================================
+
+  container.appendChild(petCard)
+
+  loadedPets++
+
+} catch (err) {
+
+  console.error(
+    `Could not load pet: ${pet.file}`,
+    err
+  )
+
+}
+
+
+}
+
+// Only show section if at least one pet loaded
+section.hidden = loadedPets === 0
+
+}
+
 function setPageTitle(name){
 
 const title = name || "Unknown Character"
@@ -807,11 +943,11 @@ if(el) el.textContent = text(value)
 
 })
 
-listLinks(char.pets,"pets")
 listLinks(char.stories,"stories")
 
 setupPartners(char)
 setupRelationships(char)
+setupPets(char)
 
 const backstory = document.getElementById("backstory")
 if(backstory) backstory.textContent = text(char.backstory)

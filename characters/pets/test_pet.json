@@ -1,0 +1,233 @@
+{
+  "name": "Test",
+  "full_name": "Test Character",
+
+  "aliases": ["Unknown", "Unknown"],
+  "age": "Unknown",
+  "species": "Unknown",
+  "elements": ["Unknown"],
+  "ethnicity": "Unknown",
+  "occupation": ["Unknown"],
+  "profile_notes": [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
+  ],
+
+  "identity": {
+    "gender_identity": "Unknown",
+    "pronouns": ["Unknown"],
+    "orientation": "Unknown"
+  },
+
+  "status": {
+    "relationship_status": "Unknown",
+    "life_status": "Unknown"
+  },
+
+  "dates": {
+    "birthday": "DD/MM",
+    "zodiac": "Unknown"
+  },
+
+  "psychology": {
+    "mbti": "Unknown",
+    "temperament": "Unknown",
+    "confidence": "Unknown",
+    "self_worth": "Unknown",
+    "philosophy": "Unknown",
+    "sense_of_humor": "Unknown",
+    "clothing_style": "Unknown"
+  },
+
+  "voice": "Unknown",
+
+  "appearance": {
+    "height": "Unknown",
+    "build": "Unknown",
+    "eye_colour": "Unknown",
+    "hair_colour": "Unknown",
+    "design_notes": [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
+  ]},
+
+  "personality": {
+    "likes": [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
+    ],
+    "dislikes": [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
+    ],
+    "strengths": ["Unknown"],
+    "weaknesses": ["Unknown"],
+    "interests": ["Unknown"],
+    "hobbies": ["Unknown"],
+    "values": ["Unknown"],
+    "goals": ["Unknown"],
+    "notes": [
+      "Unknown", 
+      "Unknown"
+    ]
+  },
+
+  "lifestyle": {
+    "social_status": "Unknown",
+    "financial_status": "Unknown",
+    "communication_style": "Unknown",
+    "sleep_style": "Unknown",
+    "work_ethic": "Unknown",
+    "conflict_resolution": "Unknown"
+  },
+
+  "health": {
+    "mental_health": "Unknown",
+    "physical_health": "Unknown",
+    "activity_level": "Unknown",
+    "hygiene": "Unknown",
+    "crisis_reaction": "Unknown",
+    "notes": [
+      "Unknown",
+      "Unknown"
+    ]
+  },
+
+  "background": {
+    "religion": "Unknown",
+    "education": "Unknown",
+    "languages_spoken": ["Unknown"],
+    "family_background": "Unknown",
+    "birthplace": "Unknown",
+    "current_location": "Unknown",
+    "notes": [
+      "Unknown",
+      "Unknown"
+    ]
+  },
+
+  "favourites": {
+    "colours": ["Unknown"],
+    "medias": ["Unknown"],
+    "songs": ["Unknown"],
+    "foods": ["Unknown"],
+    "animals": ["Unknown"],
+    "items": ["Unknown"]
+  },
+
+  "partners": [
+    {
+      "file": "characters/test_friend.json",
+      "relationship": "Romantic Partner",
+      "status": "Dating",
+      "dynamic": "Healthy",
+      "since": "20XX",
+      "notes": [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
+  ]}
+  ],
+
+  "relationships": [
+    {
+      "file": "characters/test_friend.json",
+      "type": "friend"
+    },
+    {
+      "file": "characters/test_friend.json",
+      "type": "friend"
+    }
+  ],
+
+  "pets": [
+    {
+      "file": "characters/pets/pet-name.json",
+      "notes": [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
+    ]}
+  ],
+
+  "stories": [
+    {
+      "title": "Story Name",
+      "file": "stories/story-name.json"
+    }
+  ],
+
+  "palette": {
+    "skin": ["#000000"],
+    "hair": ["#ffffff"],
+    "eyes": ["#ff0000"],
+    "extra": []
+  },
+
+  "backstory": "Large detailed backstory text goes here.",
+
+  "trivia": [
+    "Trivia fact 1",
+    "Trivia fact 2"
+  ],
+
+  "links": {
+    "toyhouse": "",
+    "pinterest": "",
+    "spotify": "",
+    "alt forms": ["characters/test_friend.json"],
+    "other": [
+      {
+        "label": "Example Link",
+        "url": "characters/test_friend.json"
+      }
+    ]
+  },
+
+  "avatar": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
+  "banner": "",
+  "fullbody": "",
+  "decorImage": "",
+
+  "colors": {
+    "primary": "#FF0000", 
+    "secondary": "#0000FF",
+    "accent": "#00FF00",
+    "bg_1": "#000000",
+    "bg_2": "#FFFFFF",
+    "page_bg": "#800080",
+    "background_gradient": "#FF00FF"
+  },
+
+  "characterBackground": {
+    "particle_color": "#FF00FF",
+    "particle_shape": "square",
+    "particle_count": 30,
+    "particle_opacity": 0.2,
+    "particle_blur": 0,
+    "particle_random_size": true
+   },
+
+  "tags": {
+    "Species (Class)": ["Humanoid"],
+    "Species (Specific)": ["Human"],
+    "Gender": ["Nonbinary"],
+    "Romantic Orientation": ["Aromantic"],
+    "Sexual Orientation": ["Asexual"],
+    "Other Identities": ["Crossdresser"],
+    "Relationship Status": ["Single"],
+    "Age": ["Adult (18+)"],
+    "Family": [],
+    "Location (Basic)": ["Main World"],
+    "Location (General)": ["Crowler"],
+    "Location (Specific)": [],
+    "Element": ["Mortalis (Normal)"],
+    "Godhood": ["Semigod"],
+    "Stories": [],
+    "Special": []
+  }
+}
