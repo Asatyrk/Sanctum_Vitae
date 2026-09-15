@@ -563,7 +563,6 @@ const template = document.getElementById("pet-template")
 
 if (!section || !container || !template) return
 
-// No pets = keep the entire section hidden
 if (!Array.isArray(char.pets) || char.pets.length === 0) {
 section.hidden = true
 return
@@ -587,15 +586,29 @@ try {
 
   const petChar = await response.json()
 
-  // Clone template
   const petCard = template.content.cloneNode(true)
+
+
+  // =========================================
+  // PET SLUG / PROFILE LINK
+  // =========================================
+
+  const petSlug =
+    pet.file
+      .replace(".json", "")
+      .split("/")
+      .pop()
+
+  const petProfileUrl =
+    `character-profile.html?char=${petSlug}`
 
 
   // =========================================
   // PET AVATAR
   // =========================================
 
-  const avatar = petCard.querySelector(".pet-avatar")
+  const avatar =
+    petCard.querySelector(".pet-avatar")
 
   if (avatar) {
     avatar.style.backgroundImage =
@@ -605,23 +618,11 @@ try {
   }
 
 
-  // =========================================
-  // PET PROFILE LINK
-  // =========================================
-
   const avatarLink =
     petCard.querySelector(".pet-avatar-link")
 
   if (avatarLink) {
-
-    const petSlug =
-      pet.file
-        .replace(".json", "")
-        .split("/")
-        .pop()
-
-    avatarLink.href =
-      `character-profile.html?char=${petSlug}`
+    avatarLink.href = petProfileUrl
   }
 
 
@@ -634,6 +635,56 @@ try {
 
   if (name) {
     name.textContent = text(petChar.name)
+  }
+
+
+  // =========================================
+  // PET SPECIES
+  // =========================================
+
+  const species =
+    petCard.querySelector(".pet-species")
+
+  if (species) {
+    species.textContent = text(petChar.species)
+  }
+
+
+  // =========================================
+  // PET GENDER
+  // =========================================
+
+  const gender =
+    petCard.querySelector(".pet-gender")
+
+  if (gender) {
+    gender.textContent =
+      text(petChar.identity?.gender_identity)
+  }
+
+
+  // =========================================
+  // PET FULLBODY
+  // =========================================
+
+  const fullbody =
+    petCard.querySelector(".pet-fullbody")
+
+  if (fullbody) {
+
+    fullbody.style.backgroundImage =
+      petChar.fullbody
+        ? `url("${petChar.fullbody}")`
+        : `url("https://placehold.co/300")`
+
+  }
+
+
+  const imageLink =
+    petCard.querySelector(".pet-image-link")
+
+  if (imageLink) {
+    imageLink.href = petProfileUrl
   }
 
 
@@ -686,7 +737,6 @@ try {
 
 }
 
-// Only show section if at least one pet loaded
 section.hidden = loadedPets === 0
 
 }

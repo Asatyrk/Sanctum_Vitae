@@ -1457,8 +1457,25 @@ body.character-profile-page .site-nav a:focus-visible {
 PET PROFILE
 ===================================================== */
 
+.pets-section {
+width: 100%;
+margin-bottom: var(--space-12);
+}
+
+.pet-layout {
+display: grid;
+grid-template-columns: minmax(0, 1fr) 300px;
+gap: var(--space-6);
+align-items: stretch;
+margin-bottom: var(--space-12);
+}
+
+/* Pet information card */
+
 .pet-card {
 grid-template-columns: 1fr 2fr;
+margin-bottom: 0;
+min-width: 0;
 }
 
 /* Pet avatar link */
@@ -1477,18 +1494,24 @@ color: var(--char-primary);
 font-size: var(--font-size-lg);
 }
 
-/* Left side */
+/* Pet information */
 
 .pet-card .profile-card-left .info-label,
 .pet-card .profile-card-left .info-value {
 color: var(--char-primary);
 }
 
-/* Right side heading */
+.pet-card .profile-card-left .info-value {
+text-align: right;
+word-break: break-word;
+max-width: 50%;
+}
+
+/* Right-side title */
 
 .pet-card .profile-card-right h2 {
 margin-top: 0;
-margin-bottom: var(--space-4);
+margin-bottom: var(--space-2);
 color: var(--char-secondary);
 font-size: var(--font-size-lg);
 }
@@ -1496,12 +1519,37 @@ font-size: var(--font-size-lg);
 /* Pet notes */
 
 .pet-card .pet-notes {
-margin: var(--space-5) 0 0 0;
-color: var(--char-secondary);
+margin: var(--space-2) 0 0 0;
 }
 
 .pet-card .profile-card-right .pet-notes li {
 color: var(--char-secondary);
+}
+
+/* Pet fullbody image */
+
+.pet-image-box {
+width: 300px;
+height: 300px;
+background: var(--char-bg-2);
+overflow: hidden;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.pet-image-link {
+display: block;
+width: 100%;
+height: 100%;
+}
+
+.pet-fullbody {
+width: 100%;
+height: 100%;
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
 }
 
 /* =====================================================
@@ -1566,4 +1614,14 @@ color: var(--char-secondary);
     flex: 1 1 auto;
     text-align: center;
   }
+
+  .pet-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pet-image-box {
+    width: 100%;
+    height: 300px;
+  }
+
 }
