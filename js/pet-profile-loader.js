@@ -1,252 +1,317 @@
 function getPet(){
 
-  return getCharacter()
+return getCharacter()
 
 }
-
 
 function displayPet(pet){
 
-  applyCharacterColors(
-    pet
-  )
+applyCharacterColors(
+pet
+)
 
-  const name =
-    text(pet.name)
+const name =
+text(pet.name)
 
+// =========================
+// HEADER
+// =========================
 
-  // =========================
-  // HEADER
-  // =========================
+const headerLogoText =
+document.querySelector(
+".site-logo-text"
+)
 
-  const headerLogoText =
-    document.querySelector(
-      ".site-logo-text"
-    )
+if(headerLogoText){
 
-  if(headerLogoText){
-
-    headerLogoText.textContent =
-      `Sanctum Vitae | ${name}`
-
-  }
-
-  setPageTitle(
-    name
-  )
+headerLogoText.textContent =
+  `Sanctum Vitae | ${name}`
 
 
-  // =========================
-  // NAME
-  // =========================
+}
 
-  const nameEl =
-    document.getElementById(
-      "name"
-    )
+setPageTitle(
+name
+)
 
-  if(nameEl){
+// =========================
+// NAME
+// =========================
 
-    nameEl.textContent =
-      name
+const nameEl =
+document.getElementById(
+"name"
+)
 
-  }
+if(nameEl){
 
-
-  // =========================
-  // AVATAR
-  // =========================
-
-  const avatarImage =
-    document.getElementById(
-      "avatar-image"
-    )
-
-  if(avatarImage){
-
-    avatarImage.style.backgroundImage =
-      pet.avatar
-        ? `url('${pet.avatar}')`
-        : `url('https://placehold.co/120')`
-
-  }
+nameEl.textContent =
+  name
 
 
-  // =========================
-  // BANNER
-  // =========================
+}
 
-  const bannerImage =
-    document.getElementById(
-      "banner-image"
-    )
+// =========================
+// AVATAR
+// =========================
 
-  if(bannerImage){
+const avatarImage =
+document.getElementById(
+"avatar-image"
+)
 
-    bannerImage.style.backgroundImage =
-      pet.banner
-        ? `url('${pet.banner}')`
-        : `url('https://placehold.co/600x200')`
+if(avatarImage){
 
-  }
+avatarImage.style.backgroundImage =
+  `url('${pet.avatar || "https://placehold.co/120"}')`
 
 
-  // =========================
-  // FULLBODY IMAGE
-  // =========================
+}
 
-  const designImage =
-    document.getElementById(
-      "design-image"
-    )
+// =========================
+// BANNER
+// =========================
 
-  if(designImage){
+const bannerImage =
+document.getElementById(
+"banner-image"
+)
 
-    designImage.style.backgroundImage =
-      pet.fullbody
-        ? `url('${pet.fullbody}')`
-        : `url('https://placehold.co/600x600')`
+if(bannerImage){
 
-  }
+bannerImage.style.backgroundImage =
+  `url('${pet.banner || "https://placehold.co/600x200"}')`
 
 
-  // =========================
-  // BASIC INFORMATION
-  // =========================
+}
 
-  const map = {
+// =========================
+// FULLBODY / DESIGN IMAGE
+// =========================
 
-    age:
-      pet.age,
+const designImage =
+document.getElementById(
+"design-image"
+)
 
-    species:
-      pet.species,
+if(designImage){
 
-    gender_identity:
-      pet.identity?.gender_identity,
-
-    pronouns:
-      list(
-        pet.identity?.pronouns
-      ),
-
-    elements:
-      list(
-        pet.elements
-      )
-
-  }
+designImage.style.backgroundImage =
+  `url('${pet.fullbody || "https://placehold.co/600x600"}')`
 
 
-  Object.entries(map).forEach(
-    ([id, value]) => {
+}
 
-      setOptionalField(
-        id,
-        value
-      )
+// =========================
+// PROFILE INFORMATION
+// =========================
 
-    }
+const map = {
+
+age:
+  pet.age,
+
+species:
+  pet.species,
+
+gender_identity:
+  pet.identity?.gender_identity,
+
+pronouns:
+  list(
+    pet.identity?.pronouns
+  ),
+
+elements:
+  list(
+    pet.elements
+  ),
+
+aliases:
+  list(
+    pet.aliases
+  ),
+
+occupation:
+  list(
+    pet.occupation
   )
 
 
-  // =========================
-  // PROFILE NOTES
-  // =========================
+}
 
-  const profileNotes =
-    document.getElementById(
-      "profile-notes"
-    )
+Object.entries(map).forEach(
+([id, value]) => {
 
-  if(profileNotes){
-
-    if(
-      !pet.profile_notes ||
-      pet.profile_notes.length === 0
-    ){
-
-      profileNotes.innerHTML =
-        "<li>N/A</li>"
-
-    }else{
-
-      profileNotes.innerHTML =
-        pet.profile_notes
-          .map(
-            note => `<li>${note}</li>`
-          )
-          .join("")
-
-    }
-
-  }
-
-
-  // =========================
-  // BACKGROUND
-  // =========================
-
-  setupCharacterBackground(
-    pet
+  setOptionalField(
+    id,
+    value
   )
 
 }
 
+
+)
+
+// =========================
+// DESIGN INFORMATION
+// =========================
+
+const designMap = {
+
+size:
+  pet.appearance?.size,
+
+build:
+  pet.appearance?.build,
+
+eye_colour:
+  pet.appearance?.eye_colour,
+
+body_colour:
+  pet.appearance?.body_colour
+
+
+}
+
+Object.entries(designMap).forEach(
+([id, value]) => {
+
+  setOptionalField(
+    id,
+    value
+  )
+
+}
+
+
+)
+
+// =========================
+// PROFILE NOTES
+// =========================
+
+const profileNotes =
+document.getElementById(
+"profile-notes"
+)
+
+if(profileNotes){
+
+profileNotes.innerHTML =
+  pet.profile_notes?.length
+    ? pet.profile_notes
+        .map(
+          note => `<li>${note}</li>`
+        )
+        .join("")
+    : "<li>N/A</li>"
+
+
+}
+
+// =========================
+// DESIGN NOTES
+// =========================
+
+const designNotes =
+document.getElementById(
+"design-notes"
+)
+
+if(designNotes){
+
+const notes =
+  pet.appearance?.design_notes
+
+designNotes.innerHTML =
+  notes?.length
+    ? notes
+        .map(
+          note => `<li>${note}</li>`
+        )
+        .join("")
+    : "<li>N/A</li>"
+
+
+}
+
+// =========================
+// PARTNERS / OWNERS
+// =========================
+
+setupPartners(
+pet
+)
+
+// =========================
+// RELATIONSHIPS
+// =========================
+
+setupRelationships(
+pet
+)
+
+// =========================
+// BACKGROUND
+// =========================
+
+setupCharacterBackground(
+pet
+)
+
+}
 
 async function loadPet(){
 
-  const slug =
-    getPet()
+const slug =
+getPet()
 
-  if(!slug){
+if(!slug){
 
-    document.body.innerHTML =
-      "No pet selected"
+document.body.innerHTML =
+  "No pet selected"
 
-    return
+return
 
-  }
-
-
-  const path =
-    `characters/pets/${slug}.json`
-
-
-  try{
-
-    const pet =
-      await fetchCharacter(
-        path,
-        "Pet not found"
-      )
-
-
-    displayPet(
-      pet
-    )
-
-
-  }catch(err){
-
-    console.error(err)
-
-    const page =
-      document.querySelector(
-        ".page-container"
-      )
-
-    if(page){
-
-      page.innerHTML =
-        "<h1>Pet Not Found</h1>" +
-        "<p>The requested pet does not exist.</p>"
-
-    }
-
-  }
 
 }
 
+try{
+
+const pet =
+  await fetchCharacter(
+    `characters/pets/${slug}.json`,
+    "Pet not found"
+  )
+
+displayPet(
+  pet
+)
+
+
+}catch(err){
+
+console.error(
+  err
+)
+
+const page =
+  document.querySelector(
+    ".page-container"
+  )
+
+if(page){
+
+  page.innerHTML =
+    "<h1>Pet Not Found</h1>" +
+    "<p>The requested pet does not exist.</p>"
+
+}
+
+
+}
+
+}
 
 loadPet()
