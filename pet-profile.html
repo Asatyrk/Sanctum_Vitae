@@ -1,1 +1,180 @@
-<!-- Similar to char profile -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Character</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+
+<script defer src="js/layout.js"></script>
+<script defer src="js/character-profile-loader.js"></script>
+
+</head>
+
+<body data-page="name" class="character-profile-page">
+
+<div id="character-background" class="character-background" aria-hidden="true">
+  <div id="character-particles" class="character-particles"></div>
+</div>
+
+<div id="site-header"></div>
+
+<div class="page-container">
+
+<!-- Change to pet index when added -->
+<a href="characters.html">← Back to Characters</a>
+
+<!-- CHARACTER PROFILE CARD -->
+<div class="character-profile-card">
+  
+  <!-- Left Column: Avatar & Basic Info -->
+  <div class="profile-card-left">
+    <div class="profile-avatar" id="avatar-image"></div>
+    <h1 id="name" class="profile-name"></h1>
+    
+    <div class="profile-info-section">
+      <div class="info-row">
+        <span class="info-label">AGE</span>
+        <span class="info-value" id="age"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">SPECIES</span>
+        <span class="info-value" id="species"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">GENDER</span>
+        <span class="info-value" id="gender_identity"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">PRONOUNS</span>
+        <span class="info-value" id="pronouns"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">ELEMENTS</span>
+        <span class="info-value" id="elements"></span>
+      </div>
+      <hr class="info-divider">
+    </div>
+  </div>
+
+  <!-- Right Column: Full Body Image & Details -->
+  <div class="profile-card-right">
+    <div class="profile-banner" id="banner-image"></div>
+    
+    <div class="profile-content">
+      <div class="info-row">
+        <span class="info-label">FULL NAME</span>
+        <span class="info-value" id="full_name"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">ALIASES</span>
+        <span class="info-value" id="aliases"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">OCCUPATION</span>
+        <span class="info-value" id="occupation"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <ul class="profile-traits" id="profile-notes"></ul>
+    </div>
+  </div>
+  
+</div>
+<!-- END CHARACTER PROFILE CARD -->
+
+<!-- PARTNERS BOX -->
+<div id="partners-section" class="partners-section" hidden>
+
+  <div id="partners-container"></div>
+
+  <template id="partner-template">
+
+  <div class="character-profile-card partner-card">
+
+    <!-- Left Column: Relationship Information -->
+    <div class="profile-card-right">
+
+      <div class="profile-content">
+
+          <h2>OWNER</h2>
+
+        <ul class="profile-traits partner-notes"></ul>
+
+      </div>
+
+    </div>
+
+
+    <!-- Right Column: Partner Information -->
+    <div class="profile-card-left">
+
+      <a class="partner-avatar-link" target="_self">
+        <div class="profile-avatar partner-avatar"></div>
+      </a>
+
+      <h2 class="profile-name partner-name"></h2>
+
+      <div class="profile-info-section">
+
+        <div class="info-row">
+          <span class="info-label">AGE</span>
+          <span class="info-value partner-age"></span>
+        </div>
+
+        <hr class="info-divider">
+
+        <div class="info-row">
+          <span class="info-label">SPECIES</span>
+          <span class="info-value partner-species"></span>
+        </div>
+
+        <hr class="info-divider">
+
+        <div class="info-row">
+          <span class="info-label">GENDER</span>
+          <span class="info-value partner-gender"></span>
+        </div>
+
+        <hr class="info-divider">
+
+        <div class="info-row">
+          <span class="info-label">PRONOUNS</span>
+          <span class="info-value partner-pronouns"></span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</template>
+
+</div>
+<!-- END PARTNERS BOX -->
+
+<!-- Add story box -->
+
+</div>
+
+</body>
+
+</html>

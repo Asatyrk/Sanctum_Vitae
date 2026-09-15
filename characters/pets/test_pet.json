@@ -6,7 +6,6 @@
   "age": "Unknown",
   "species": "Unknown",
   "elements": ["Unknown"],
-  "ethnicity": "Unknown",
   "occupation": ["Unknown"],
   "profile_notes": [
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
@@ -16,142 +15,17 @@
 
   "identity": {
     "gender_identity": "Unknown",
-    "pronouns": ["Unknown"],
-    "orientation": "Unknown"
-  },
-
-  "status": {
-    "relationship_status": "Unknown",
-    "life_status": "Unknown"
-  },
-
-  "dates": {
-    "birthday": "DD/MM",
-    "zodiac": "Unknown"
-  },
-
-  "psychology": {
-    "mbti": "Unknown",
-    "temperament": "Unknown",
-    "confidence": "Unknown",
-    "self_worth": "Unknown",
-    "philosophy": "Unknown",
-    "sense_of_humor": "Unknown",
-    "clothing_style": "Unknown"
-  },
-
-  "voice": "Unknown",
-
-  "appearance": {
-    "height": "Unknown",
-    "build": "Unknown",
-    "eye_colour": "Unknown",
-    "hair_colour": "Unknown",
-    "design_notes": [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
-    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
-    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
-  ]},
-
-  "personality": {
-    "likes": [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
-    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
-    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
-    ],
-    "dislikes": [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
-    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
-    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
-    ],
-    "strengths": ["Unknown"],
-    "weaknesses": ["Unknown"],
-    "interests": ["Unknown"],
-    "hobbies": ["Unknown"],
-    "values": ["Unknown"],
-    "goals": ["Unknown"],
-    "notes": [
-      "Unknown", 
-      "Unknown"
-    ]
-  },
-
-  "lifestyle": {
-    "social_status": "Unknown",
-    "financial_status": "Unknown",
-    "communication_style": "Unknown",
-    "sleep_style": "Unknown",
-    "work_ethic": "Unknown",
-    "conflict_resolution": "Unknown"
-  },
-
-  "health": {
-    "mental_health": "Unknown",
-    "physical_health": "Unknown",
-    "activity_level": "Unknown",
-    "hygiene": "Unknown",
-    "crisis_reaction": "Unknown",
-    "notes": [
-      "Unknown",
-      "Unknown"
-    ]
-  },
-
-  "background": {
-    "religion": "Unknown",
-    "education": "Unknown",
-    "languages_spoken": ["Unknown"],
-    "family_background": "Unknown",
-    "birthplace": "Unknown",
-    "current_location": "Unknown",
-    "notes": [
-      "Unknown",
-      "Unknown"
-    ]
-  },
-
-  "favourites": {
-    "colours": ["Unknown"],
-    "medias": ["Unknown"],
-    "songs": ["Unknown"],
-    "foods": ["Unknown"],
-    "animals": ["Unknown"],
-    "items": ["Unknown"]
+    "pronouns": ["Unknown"]
   },
 
   "partners": [
     {
       "file": "characters/test_friend.json",
-      "relationship": "Romantic Partner",
-      "status": "Dating",
-      "dynamic": "Healthy",
-      "since": "20XX",
       "notes": [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Use this as an owner box for pets, consectetur adipiscing elit.", 
     "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
     "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
   ]}
-  ],
-
-  "relationships": [
-    {
-      "file": "characters/test_friend.json",
-      "type": "friend"
-    },
-    {
-      "file": "characters/test_friend.json",
-      "type": "friend"
-    }
-  ],
-
-  "pets": [
-    {
-      "file": "characters/pets/pet-name.json",
-      "notes": [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
-    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
-    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
-    ]}
   ],
 
   "stories": [
@@ -159,20 +33,6 @@
       "title": "Story Name",
       "file": "stories/story-name.json"
     }
-  ],
-
-  "palette": {
-    "skin": ["#000000"],
-    "hair": ["#ffffff"],
-    "eyes": ["#ff0000"],
-    "extra": []
-  },
-
-  "backstory": "Large detailed backstory text goes here.",
-
-  "trivia": [
-    "Trivia fact 1",
-    "Trivia fact 2"
   ],
 
   "links": {
@@ -191,7 +51,6 @@
   "avatar": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
   "banner": "",
   "fullbody": "",
-  "decorImage": "",
 
   "colors": {
     "primary": "#FF0000", 
