@@ -378,26 +378,38 @@ function displayPet(pet){
 
   const map = {
 
-    age: pet.age,
+  age: pet.age,
 
-    species: pet.species,
+  species: pet.species,
 
-    gender_identity:
-      pet.identity?.gender_identity,
+  gender_identity:
+    pet.identity?.gender_identity,
 
-    pronouns:
-      list(pet.identity?.pronouns),
+  pronouns:
+    list(pet.identity?.pronouns),
 
-    elements:
-      list(pet.elements),
+  elements:
+    list(pet.elements),
 
-    full_name:
-      pet.full_name,
+  aliases:
+    pet.aliases,
 
-    occupation:
-      list(pet.occupation)
+  occupation:
+    list(pet.occupation),
 
-  }
+  size:
+    pet.appearance?.size,
+
+  build:
+    pet.appearance?.build,
+
+  eye_colour:
+    pet.appearance?.eye_colour,
+
+  body_colour:
+    pet.appearance?.body_colour
+
+}
 
 
   Object.entries(map).forEach(

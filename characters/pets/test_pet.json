@@ -1,6 +1,5 @@
 {
   "name": "Test",
-  "full_name": "Test Character",
 
   "aliases": ["Unknown", "Unknown"],
   "age": "Unknown",
@@ -17,6 +16,17 @@
     "gender_identity": "Unknown",
     "pronouns": ["Unknown"]
   },
+
+  "appearance": {
+    "size": "Unknown",
+    "build": "Unknown",
+    "eye_colour": "Unknown",
+    "body_colour": "Unknown",
+    "design_notes": [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
+  ]},
 
   "partners": [
     {
