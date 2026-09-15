@@ -389,7 +389,7 @@ if(
 }else if(designImage){
 
   designImage.style.backgroundImage =
-    `url('https://placehold.co/450x600')`
+    `url('https://placehold.co/600x450')`
 
 }
 
