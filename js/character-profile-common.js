@@ -598,6 +598,13 @@ function displayCharacter(character){
 
   }
 
+  if(box3){
+
+    box3.style.backgroundImage =
+      `url("${finalImageUrl}")`
+
+  }
+
 
   // =========================
   // BASIC / DETAIL INFORMATION
