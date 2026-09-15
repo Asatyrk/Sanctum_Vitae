@@ -29,7 +29,7 @@ Particle shapes:
 ---
 
 To do:
-- Add a subgallery for Flynn/other ocs
+- Add a subindex for Flynn/other ocs
   - So my char can read them for relationship boxes
   - Setup could also work for pets
   - Link on index page

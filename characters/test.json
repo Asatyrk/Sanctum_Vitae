@@ -121,10 +121,8 @@
 
   "relationships": [
     {
-      "name": "Character Name",
-      "type": "friend",
       "file": "characters/test_friend.json",
-      "notes": "Optional notes"
+      "type": "friend"
     }
   ],
 

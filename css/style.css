@@ -1363,6 +1363,114 @@ body.character-profile-page .site-nav a:focus-visible {
   color: var(--char-secondary);
 }
 
+ /* =====================================================
+    RELATIONSHIPS
+ ===================================================== */
+
+.relationships-section {
+  width: 100%;
+  margin-bottom: var(--space-12);
+}
+
+/* Section heading */
+
+.relationships-header {
+  background: var(--char-bg-1);
+  color: var(--char-primary);
+  padding: var(--space-5) var(--space-6);
+}
+
+.relationships-header h2 {
+  margin: 0;
+  color: var(--char-primary);
+  font-size: var(--font-size-lg);
+}
+
+/* Relationship card grid */
+
+.relationships-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--char-bg-2);
+}
+
+/* Individual relationship card */
+
+.relationship-card {
+  background: var(--char-bg-1);
+  color: var(--char-primary);
+  padding: var(--space-4);
+  text-align: center;
+  border: 1px solid var(--char-accent);
+  border-radius: var(--border-radius-lg);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast);
+}
+
+/* Slight hover effect */
+
+.relationship-card:hover {
+  transform: translateY(-2px);
+  background: var(--char-bg-2);
+}
+
+/* Avatar link */
+
+.relationship-avatar-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Circular avatar */
+
+.relationship-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  background: var(--char-bg-2);
+  border: 1px solid var(--char-accent);
+
+  margin-bottom: var(--space-3);
+}
+
+/* Avatar image */
+
+.relationship-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Character name */
+
+.relationship-name {
+  margin: 0 0 var(--space-1) 0;
+  color: var(--char-primary);
+  font-family: var(--font-display);
+  font-size: var(--font-size-md);
+}
+
+/* Relationship type */
+
+.relationship-type {
+  margin: 0;
+  color: var(--char-secondary);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+}
+
 /* =====================================================
    RESPONSIVE DETAIL BOXES
 ===================================================== */

@@ -12,7 +12,6 @@
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 
 <script defer src="js/layout.js"></script>
-<script defer src="js/page-title.js"></script>
 <script defer src="js/character-profile-loader.js"></script>
 
 </head>
@@ -845,6 +844,36 @@
 
 </div>
 <!-- END PARTNERS BOX -->
+
+<!-- RELATIONSHIPS BOX -->
+<div id="relationships-section" class="relationships-section" hidden>
+
+  <div class="relationships-header">
+    <h2>Relationships</h2>
+  </div>
+
+  <div id="relationships-container" class="relationships-container"></div>
+
+  <template id="relationship-template">
+
+    <div class="relationship-card">
+
+      <a class="relationship-avatar-link" target="_self">
+        <div class="relationship-avatar">
+          <img class="relationship-avatar-image" alt="">
+        </div>
+      </a>
+
+      <h2 class="relationship-name"></h2>
+
+      <p class="relationship-type"></p>
+
+    </div>
+
+  </template>
+
+</div>
+<!-- END RELATIONSHIPS BOX -->
 
 </div>
 
