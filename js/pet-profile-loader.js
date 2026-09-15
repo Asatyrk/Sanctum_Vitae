@@ -467,6 +467,35 @@ if(
 
   }
 
+  // Design Notes
+
+  const designNotes =
+    document.getElementById("design-notes")
+
+  if(designNotes){
+
+    const notes =
+      pet.appearance?.design_notes
+
+    if(
+      !notes ||
+      notes.length === 0
+    ){
+
+      designNotes.innerHTML =
+        "<li>N/A</li>"
+
+    }else{
+
+      designNotes.innerHTML =
+        notes
+          .map(note => `<li>${note}</li>`)
+          .join("")
+
+    }
+
+  }
+
 async function setupPartners(pet){
 
   const section =
