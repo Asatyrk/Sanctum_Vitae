@@ -715,11 +715,206 @@ async function setupPartners(pet){
 
 }
 
+async function setupRelationships(pet){
+
+  const section =
+    document.getElementById("relationships-section")
+
+  const container =
+    document.getElementById("relationships-container")
+
+  const template =
+    document.getElementById("relationship-template")
+
+
+  // If this HTML isn't present, do nothing
+
+  if(
+    !section ||
+    !container ||
+    !template
+  ){
+
+    return
+
+  }
+
+
+  // No relationships = hide the entire section
+
+  if(
+    !Array.isArray(pet.relationships) ||
+    pet.relationships.length === 0
+  ){
+
+    section.hidden = true
+
+    return
+
+  }
+
+
+  container.innerHTML = ""
+
+  let loadedRelationships = 0
+
+
+  for(const relationship of pet.relationships){
+
+    if(
+      !relationship ||
+      !relationship.file
+    ){
+
+      continue
+
+    }
+
+
+    try{
+
+      // Load the referenced character JSON
+
+      const response =
+        await fetch(relationship.file)
+
+
+      if(!response.ok){
+
+        throw new Error(
+          `Relationship character not found: ${relationship.file}`
+        )
+
+      }
+
+
+      const relationshipChar =
+        await response.json()
+
+
+      // Clone the HTML template
+
+      const relationshipCard =
+        template.content.cloneNode(true)
+
+
+      // =========================================
+      // CHARACTER PROFILE LINK
+      // =========================================
+
+      const characterLink =
+        relationshipCard.querySelector(
+          ".relationship-avatar-link"
+        )
+
+
+      const relationshipSlug =
+        relationship.file
+          .replace(".json", "")
+          .split("/")
+          .pop()
+
+
+      if(characterLink){
+
+        characterLink.href =
+          `character-profile.html?char=${relationshipSlug}`
+
+      }
+
+
+      // =========================================
+      // AVATAR
+      // =========================================
+
+      const avatar =
+        relationshipCard.querySelector(
+          ".relationship-avatar"
+        )
+
+
+      if(avatar){
+
+        avatar.style.backgroundImage =
+          relationshipChar.avatar
+            ? `url("${relationshipChar.avatar}")`
+            : `url("https://placehold.co/120")`
+
+      }
+
+
+      // =========================================
+      // NAME
+      // =========================================
+
+      const name =
+        relationshipCard.querySelector(
+          ".relationship-name"
+        )
+
+
+      if(name){
+
+        name.textContent =
+          text(relationshipChar.name)
+
+      }
+
+
+      // =========================================
+      // RELATIONSHIP TYPE
+      // =========================================
+
+      const type =
+        relationshipCard.querySelector(
+          ".relationship-type"
+        )
+
+
+      if(type){
+
+        type.textContent =
+          text(relationship.type)
+
+      }
+
+
+      // =========================================
+      // ADD CARD
+      // =========================================
+
+      container.appendChild(
+        relationshipCard
+      )
+
+      loadedRelationships++
+
+
+    }catch(err){
+
+      console.error(
+        `Could not load relationship: ${relationship.file}`,
+        err
+      )
+
+    }
+
+  }
+
+
+  // Only show the section if at least
+  // one relationship successfully loaded
+
+  section.hidden =
+    loadedRelationships === 0
+
+}
 
   setupPartners(pet)
 
-  setupCharacterBackground(pet)
+  setupRelationships(pet)
 
+  setupCharacterBackground(pet)
 
 }
 
