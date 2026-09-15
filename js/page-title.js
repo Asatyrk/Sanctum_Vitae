@@ -1,6 +1,4 @@
-  // this might be redundant now? Check later
-
-document.addEventListener("DOMContentLoaded", () => {
+ document.addEventListener("DOMContentLoaded", () => {
   const pageName = document.body.dataset.page?.trim() || "Untitled";
 
   // Wait for the header to be injected and .site-logo-text to exist

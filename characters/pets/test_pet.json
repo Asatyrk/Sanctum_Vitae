@@ -210,24 +210,5 @@
     "particle_opacity": 0.2,
     "particle_blur": 0,
     "particle_random_size": true
-   },
-
-  "tags": {
-    "Species (Class)": ["Humanoid"],
-    "Species (Specific)": ["Human"],
-    "Gender": ["Nonbinary"],
-    "Romantic Orientation": ["Aromantic"],
-    "Sexual Orientation": ["Asexual"],
-    "Other Identities": ["Crossdresser"],
-    "Relationship Status": ["Single"],
-    "Age": ["Adult (18+)"],
-    "Family": [],
-    "Location (Basic)": ["Main World"],
-    "Location (General)": ["Crowler"],
-    "Location (Specific)": [],
-    "Element": ["Mortalis (Normal)"],
-    "Godhood": ["Semigod"],
-    "Stories": [],
-    "Special": []
-  }
+   }
 }
