@@ -146,14 +146,14 @@
 
   "pets": [
     {
-      "file": "characters/pets/pet-name.json",
+      "file": "characters/pets/test_pet.json",
       "notes": [
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
     "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
     "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
     ]},
     {
-      "file": "characters/pets/pet-name.json",
+      "file": "characters/pets/test_pet.json",
       "notes": [
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
     "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
