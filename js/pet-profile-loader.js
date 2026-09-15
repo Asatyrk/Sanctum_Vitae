@@ -394,9 +394,6 @@ function displayPet(pet){
     full_name:
       pet.full_name,
 
-    aliases:
-      list(pet.aliases),
-
     occupation:
       list(pet.occupation)
 
@@ -438,10 +435,291 @@ function displayPet(pet){
 
   }
 
+async function setupPartners(pet){
 
-  // Set page background particles
+  const section =
+    document.getElementById("partners-section")
+
+  const container =
+    document.getElementById("partners-container")
+
+  const template =
+    document.getElementById("partner-template")
+
+
+  // If this HTML isn't present, do nothing
+
+  if(
+    !section ||
+    !container ||
+    !template
+  ){
+
+    return
+
+  }
+
+
+  // No partners = hide the entire section
+
+  if(
+    !Array.isArray(pet.partners) ||
+    pet.partners.length === 0
+  ){
+
+    section.hidden = true
+
+    return
+
+  }
+
+
+  container.innerHTML = ""
+
+  let loadedPartners = 0
+
+
+  for(const partner of pet.partners){
+
+    if(
+      !partner ||
+      !partner.file
+    ){
+
+      continue
+
+    }
+
+
+    try{
+
+      // Load the owner's character JSON
+
+      const response =
+        await fetch(partner.file)
+
+
+      if(!response.ok){
+
+        throw new Error(
+          `Partner character not found: ${partner.file}`
+        )
+
+      }
+
+
+      const partnerChar =
+        await response.json()
+
+
+      // Clone the HTML template
+
+      const partnerCard =
+        template.content.cloneNode(true)
+
+
+      // =========================================
+      // OWNER AVATAR
+      // =========================================
+
+      const avatar =
+        partnerCard.querySelector(
+          ".partner-avatar"
+        )
+
+
+      if(avatar){
+
+        avatar.style.backgroundImage =
+          partnerChar.avatar
+            ? `url("${partnerChar.avatar}")`
+            : `url("https://placehold.co/120")`
+
+      }
+
+
+      // =========================================
+      // OWNER PROFILE LINK
+      // =========================================
+
+      const avatarLink =
+        partnerCard.querySelector(
+          ".partner-avatar-link"
+        )
+
+
+      if(avatarLink){
+
+        const partnerSlug =
+          partner.file
+            .replace(".json", "")
+            .split("/")
+            .pop()
+
+
+        avatarLink.href =
+          `character-profile.html?char=${partnerSlug}`
+
+      }
+
+
+      // =========================================
+      // OWNER NAME
+      // =========================================
+
+      const name =
+        partnerCard.querySelector(
+          ".partner-name"
+        )
+
+
+      if(name){
+
+        name.textContent =
+          text(partnerChar.name)
+
+      }
+
+
+      // =========================================
+      // OWNER INFORMATION
+      // =========================================
+
+      const age =
+        partnerCard.querySelector(
+          ".partner-age"
+        )
+
+
+      if(age){
+
+        age.textContent =
+          text(partnerChar.age)
+
+      }
+
+
+      const species =
+        partnerCard.querySelector(
+          ".partner-species"
+        )
+
+
+      if(species){
+
+        species.textContent =
+          text(partnerChar.species)
+
+      }
+
+
+      const gender =
+        partnerCard.querySelector(
+          ".partner-gender"
+        )
+
+
+      if(gender){
+
+        gender.textContent =
+          text(
+            partnerChar.identity?.gender_identity
+          )
+
+      }
+
+
+      const pronouns =
+        partnerCard.querySelector(
+          ".partner-pronouns"
+        )
+
+
+      if(pronouns){
+
+        pronouns.textContent =
+          list(
+            partnerChar.identity?.pronouns
+          )
+
+      }
+
+
+      // =========================================
+      // OWNER / PARTNER NOTES
+      // =========================================
+
+      const notes =
+        partnerCard.querySelector(
+          ".partner-notes"
+        )
+
+
+      if(notes){
+
+        if(
+          Array.isArray(partner.notes) &&
+          partner.notes.length > 0
+        ){
+
+          notes.innerHTML =
+            partner.notes
+              .map(
+                note => `<li>${note}</li>`
+              )
+              .join("")
+
+        }else if(partner.notes){
+
+          notes.innerHTML =
+            `<li>${partner.notes}</li>`
+
+        }else{
+
+          notes.innerHTML =
+            "<li>N/A</li>"
+
+        }
+
+      }
+
+
+      // =========================================
+      // ADD OWNER CARD
+      // =========================================
+
+      container.appendChild(
+        partnerCard
+      )
+
+      loadedPartners++
+
+
+    }catch(err){
+
+      console.error(
+        `Could not load partner: ${partner.file}`,
+        err
+      )
+
+    }
+
+  }
+
+
+  // Only show section if at least
+  // one owner successfully loaded
+
+  section.hidden =
+    loadedPartners === 0
+
+}
+
+
+  setupPartners(pet)
 
   setupCharacterBackground(pet)
+
 
 }
 
