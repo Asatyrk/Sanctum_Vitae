@@ -1119,7 +1119,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
 .design-image-box-pet {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
