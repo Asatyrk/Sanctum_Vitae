@@ -329,3 +329,30 @@ function setupCharacterBackground(character){
   }
 
 }
+
+function getCharacter(){
+
+  const params =
+    new URLSearchParams(window.location.search)
+
+  return params.get("char")
+
+}
+
+
+async function fetchCharacter(path, errorMessage = "Character not found"){
+
+  const response =
+    await fetch(path)
+
+  if(!response.ok){
+
+    throw new Error(
+      errorMessage
+    )
+
+  }
+
+  return await response.json()
+
+}
