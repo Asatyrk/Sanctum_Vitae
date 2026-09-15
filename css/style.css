@@ -918,10 +918,6 @@ body.character-profile-page .site-nav a:focus-visible {
   gap: 0;
 }
 
-.info-field[hidden] {
-  display: none;
-}
-
 .info-row {
   display: flex;
   justify-content: space-between;

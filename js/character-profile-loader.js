@@ -198,25 +198,42 @@ function setOptionalField(id, value){
 
   if(!el) return
 
-  const field = el.closest(".info-field")
+  const row = el.closest(".info-row")
+  const divider = row?.nextElementSibling
 
-  if(!value || value === "N/A"){
+  const empty =
+    value === undefined ||
+    value === null ||
+    value === "" ||
+    value === "N/A"
 
-    if(field){
-      field.hidden = true
+  if(empty){
+
+    // Hide the entire row
+    if(row){
+      row.hidden = true
     }else{
       el.hidden = true
+    }
+
+    // Hide the divider immediately after it
+    if(divider && divider.classList.contains("info-divider")){
+      divider.hidden = true
     }
 
     return
   }
 
+  // Show the field
   el.textContent = value
+  el.hidden = false
 
-  if(field){
-    field.hidden = false
-  }else{
-    el.hidden = false
+  if(row){
+    row.hidden = false
+  }
+
+  if(divider && divider.classList.contains("info-divider")){
+    divider.hidden = false
   }
 
 }
@@ -635,7 +652,7 @@ try {
       .pop()
 
   const petProfileUrl =
-    `character-profile.html?char=${petSlug}`
+    `pet-profile.html?char=${petSlug}`
 
 
   // =========================================
