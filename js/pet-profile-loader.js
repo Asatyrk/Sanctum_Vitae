@@ -5,29 +5,6 @@ function getPet(){
 }
 
 
-function setPageTitle(name){
-
-  const title =
-    name || "Unknown Pet"
-
-  const pageTitle =
-    document.getElementById(
-      "page-title"
-    )
-
-  if(pageTitle){
-
-    pageTitle.textContent =
-      title
-
-  }
-
-  document.title =
-    "Sanctum Vitae | " + title
-
-}
-
-
 function displayPet(pet){
 
   applyCharacterColors(
@@ -53,7 +30,6 @@ function displayPet(pet){
       `Sanctum Vitae | ${name}`
 
   }
-
 
   setPageTitle(
     name
@@ -86,18 +62,12 @@ function displayPet(pet){
       "avatar-image"
     )
 
-  if(
-    avatarImage &&
-    pet.avatar
-  ){
+  if(avatarImage){
 
     avatarImage.style.backgroundImage =
-      `url('${pet.avatar}')`
-
-  }else if(avatarImage){
-
-    avatarImage.style.backgroundImage =
-      `url('https://placehold.co/120')`
+      pet.avatar
+        ? `url('${pet.avatar}')`
+        : `url('https://placehold.co/120')`
 
   }
 
@@ -111,18 +81,12 @@ function displayPet(pet){
       "banner-image"
     )
 
-  if(
-    bannerImage &&
-    pet.banner
-  ){
+  if(bannerImage){
 
     bannerImage.style.backgroundImage =
-      `url('${pet.banner}')`
-
-  }else if(bannerImage){
-
-    bannerImage.style.backgroundImage =
-      `url('https://placehold.co/600x200')`
+      pet.banner
+        ? `url('${pet.banner}')`
+        : `url('https://placehold.co/600x200')`
 
   }
 
@@ -136,18 +100,12 @@ function displayPet(pet){
       "design-image"
     )
 
-  if(
-    designImage &&
-    pet.design
-  ){
+  if(designImage){
 
     designImage.style.backgroundImage =
-      `url('${pet.design}')`
-
-  }else if(designImage){
-
-    designImage.style.backgroundImage =
-      `url('https://placehold.co/400x600')`
+      pet.fullbody
+        ? `url('${pet.fullbody}')`
+        : `url('https://placehold.co/600x600')`
 
   }
 
@@ -170,6 +128,11 @@ function displayPet(pet){
     pronouns:
       list(
         pet.identity?.pronouns
+      ),
+
+    elements:
+      list(
+        pet.elements
       )
 
   }

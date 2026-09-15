@@ -1,53 +1,57 @@
 async function loadCharacter(){
 
-const slug =
-getCharacter()
+  const slug =
+    getCharacter()
 
-if(!slug){
+  if(!slug){
 
-document.body.innerHTML =
-  "No character selected"
+    document.body.innerHTML =
+      "No character selected"
 
-return
+    return
 
+  }
+
+
+  try{
+
+    const character =
+      await fetchCharacter(
+        `characters/${slug}.json`,
+        "Character not found"
+      )
+
+
+    displayCharacter(
+      character
+    )
+
+
+    setupDetailTabs()
+
+
+  }catch(err){
+
+    console.error(
+      err
+    )
+
+    const page =
+      document.querySelector(
+        ".page-container"
+      )
+
+    if(page){
+
+      page.innerHTML =
+        "<h1>Character Not Found</h1>" +
+        "<p>The requested character does not exist.</p>"
+
+    }
+
+  }
 
 }
 
-try{
-
-const character =
-  await fetchCharacter(
-    `characters/${slug}.json`,
-    "Character not found"
-  )
-
-displayCharacter(
-  character
-)
-
-
-}catch(err){
-
-console.error(
-  err
-)
-
-const page =
-  document.querySelector(
-    ".page-container"
-  )
-
-if(page){
-
-  page.innerHTML =
-    "<h1>Character Not Found</h1>" +
-    "<p>The requested character does not exist.</p>"
-
-}
-
-
-}
-
-}
 
 loadCharacter()
