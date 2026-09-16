@@ -1804,11 +1804,8 @@ body.character-profile-page .site-nav a:focus-visible {
     var(--space-2)
     var(--space-3);
 
-  border: none;
-  border-radius: var(--border-radius-md);
-
-  background: var(--char-bg-1);
-  color: var(--char-primary);
+  color: var(--char-secondary);
+  background: var(--char-bg-2);
 
   font-family: inherit;
   font-size: var(--font-size-base);
@@ -1821,7 +1818,14 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 .detail-switcher-tab:hover {
-  background: var(--char-bg-2);
+  background-color:
+    color-mix(
+      in srgb,
+      var(--char-bg-2) 80%,
+      black 20%
+    );
+
+  color: var(--char-secondary);
 }
 
 .detail-switcher-tab:focus-visible {
@@ -1830,8 +1834,8 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 .detail-switcher-tab.active {
-  background: var(--char-primary);
-  color: var(--char-bg-1);
+  background: var(--char-secondary);
+  color: var(--char-bg-2);
 }
 
 
