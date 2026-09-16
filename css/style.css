@@ -1830,18 +1830,11 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 
-:root.has-background-gradient
-.detail-switcher-tab {
-  background:
-    var(--char-background-gradient);
-}
-
-
 .detail-switcher-tab:hover {
   background-color:
     color-mix(
       in srgb,
-      var(--char-page-bg) 80%,
+      var(--char-bg-1) 80%,
       black 20%
     );
 
@@ -1851,6 +1844,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
 .detail-switcher-tab.active {
   color: var(--char-secondary);
+  background-color: var(--char-bg-2);
 }
 
 

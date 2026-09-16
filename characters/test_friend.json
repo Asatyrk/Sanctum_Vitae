@@ -216,17 +216,17 @@
   "decorImage": "",
 
   "colors": {
-  "primary": "ffffff",
-  "secondary": "000000",
+  "primary": "#ffffff",
+  "secondary": "#000000",
   "accent": "",
   "bg_1": "",
   "bg_2": "",
-  "page_bg": "ffffff",
-  "background_gradient": "000000"
+  "page_bg": "#ffffff",
+  "background_gradient": "#000000"
   },
 
 "characterBackground": {
-  "particle_color": "",
+  "particle_color": "#000000",
   "particle_colors": [
     "",
     "",
