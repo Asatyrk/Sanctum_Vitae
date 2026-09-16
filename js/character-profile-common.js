@@ -618,12 +618,866 @@ function displayCharacter(character){
     character
   )
 
-  applyCharacterColors(
-  character
-  )
-
   const name =
     text(character.name)
+
+
+  // =========================
+  // HEADER
+  // =========================
+
+  const headerLogoText =
+    document.querySelector(
+      ".site-logo-text"
+    )
+
+  if(headerLogoText){
+
+    headerLogoText.textContent =
+      `Sanctum Vitae | ${name}`
+
+  }
+
+  setPageTitle(
+    name
+  )
+
+
+  // =========================
+  // NAME
+  // =========================
+
+  const nameEl =
+    document.getElementById(
+      "name"
+    )
+
+  if(nameEl){
+
+    nameEl.textContent =
+      name
+
+  }
+
+
+  // =========================
+  // AVATAR
+  // =========================
+
+  const avatarImage =
+    document.getElementById(
+      "avatar-image"
+    )
+
+  if(
+    avatarImage &&
+    character.avatar
+  ){
+
+    avatarImage.style.backgroundImage =
+      `url('${character.avatar}')`
+
+  }else if(avatarImage){
+
+    avatarImage.style.backgroundImage =
+      `url('https://placehold.co/120')`
+
+  }
+
+
+  // =========================
+  // BANNER
+  // =========================
+
+  const bannerImage =
+    document.getElementById(
+      "banner-image"
+    )
+
+  if(
+    bannerImage &&
+    character.banner
+  ){
+
+    bannerImage.style.backgroundImage =
+      `url('${character.banner}')`
+
+  }else if(bannerImage){
+
+    bannerImage.style.backgroundImage =
+      `url('https://placehold.co/600x200')`
+
+  }
+
+
+  // =========================
+  // FULLBODY
+  // =========================
+
+  const designImage =
+    document.getElementById(
+      "design-image"
+    )
+
+  if(
+    designImage &&
+    character.fullbody
+  ){
+
+    designImage.style.backgroundImage =
+      `url('${character.fullbody}')`
+
+  }else if(designImage){
+
+    designImage.style.backgroundImage =
+      `url('https://placehold.co/400x600')`
+
+  }
+
+
+  // =========================
+  // DECOR IMAGE
+  // =========================
+
+  const decorImage =
+    character.decorImage
+
+  const box1 =
+    document.getElementById(
+      "decor-image"
+    )
+
+  const box2 =
+    document.getElementById(
+      "decor-image-2"
+    )
+
+  const box3 =
+    document.getElementById(
+      "decor-image-3"
+    )
+
+  const finalImageUrl =
+    decorImage
+      ? decorImage
+      : "https://placehold.co/1000x100"
+
+  if(box1){
+
+    box1.style.backgroundImage =
+      `url("${finalImageUrl}")`
+
+  }
+
+  if(box2){
+
+    box2.style.backgroundImage =
+      `url("${finalImageUrl}")`
+
+  }
+
+  if(box3){
+
+    box3.style.backgroundImage =
+      `url("${finalImageUrl}")`
+
+  }
+
+
+  // =========================
+  // BASIC / DETAIL INFORMATION
+  // =========================
+
+  const map = {
+
+    age:
+      character.age,
+
+    species:
+      character.species,
+
+    gender_identity:
+      character.identity?.gender_identity,
+
+    pronouns:
+      list(
+        character.identity?.pronouns
+      ),
+
+    orientation:
+      character.identity?.orientation,
+
+    elements:
+      list(
+        character.elements
+      ),
+
+    ethnicity:
+      character.ethnicity,
+
+    full_name:
+      character.full_name,
+
+    aliases:
+      list(
+        character.aliases
+      ),
+
+    occupation:
+      list(
+        character.occupation
+      ),
+
+    height:
+      character.appearance?.height,
+
+    build:
+      character.appearance?.build,
+
+    eye_colour:
+      character.appearance?.eye_colour,
+
+    hair_colour:
+      character.appearance?.hair_colour,
+
+    relationship_status:
+      character.status?.relationship_status,
+
+    life_status:
+      character.status?.life_status,
+
+    birthday:
+      character.dates?.birthday,
+
+    zodiac:
+      character.dates?.zodiac,
+
+    mbti:
+      character.psychology?.mbti,
+
+    voice:
+      character.voice,
+
+    strengths:
+      list(
+        character.personality?.strengths
+      ),
+
+    weaknesses:
+      list(
+        character.personality?.weaknesses
+      ),
+
+    interests:
+      list(
+        character.personality?.interests
+      ),
+
+    hobbies:
+      list(
+        character.personality?.hobbies
+      ),
+
+    values:
+      list(
+        character.personality?.values
+      ),
+
+    goals:
+      list(
+        character.personality?.goals
+      ),
+
+    temperament:
+      list(
+        character.psychology?.temperament
+      ),
+
+    confidence:
+      list(
+        character.psychology?.confidence
+      ),
+
+    self_worth:
+      list(
+        character.psychology?.self_worth
+      ),
+
+    philosophy:
+      list(
+        character.psychology?.philosophy
+      ),
+
+    sense_of_humor:
+      list(
+        character.psychology?.sense_of_humor
+      ),
+
+    clothing_style:
+      list(
+        character.psychology?.clothing_style
+      ),
+
+    social_status:
+      list(
+        character.lifestyle?.social_status
+      ),
+
+    financial_status:
+      list(
+        character.lifestyle?.financial_status
+      ),
+
+    communication_style:
+      list(
+        character.lifestyle?.communication_style
+      ),
+
+    sleep_style:
+      list(
+        character.lifestyle?.sleep_style
+      ),
+
+    work_ethic:
+      list(
+        character.lifestyle?.work_ethic
+      ),
+
+    conflict_resolution:
+      list(
+        character.lifestyle?.conflict_resolution
+      ),
+
+    colours:
+      list(
+        character.favourites?.colours
+      ),
+
+    medias:
+      list(
+        character.favourites?.medias
+      ),
+
+    songs:
+      list(
+        character.favourites?.songs
+      ),
+
+    foods:
+      list(
+        character.favourites?.foods
+      ),
+
+    animals:
+      list(
+        character.favourites?.animals
+      ),
+
+    items:
+      list(
+        character.favourites?.items
+      ),
+
+    mental_health:
+      list(
+        character.health?.mental_health
+      ),
+
+    physical_health:
+      list(
+        character.health?.physical_health
+      ),
+
+    activity_level:
+      list(
+        character.health?.activity_level
+      ),
+
+    hygiene:
+      list(
+        character.health?.hygiene
+      ),
+
+    crisis_reaction:
+      list(
+        character.health?.crisis_reaction
+      ),
+
+    religion:
+      list(
+        character.background?.religion
+      ),
+
+    education:
+      list(
+        character.background?.education
+      ),
+
+    languages_spoken:
+      list(
+        character.background?.languages_spoken
+      ),
+
+    family_background:
+      list(
+        character.background?.family_background
+      ),
+
+    birthplace:
+      list(
+        character.background?.birthplace
+      ),
+
+    current_location:
+      list(
+        character.background?.current_location
+      )
+
+  }
+
+
+  Object.entries(map).forEach(
+    ([id, value]) => {
+
+      setOptionalField(
+        id,
+        value
+      )
+
+    }
+  )
+
+
+  // =========================
+  // PROFILE NOTES
+  // =========================
+
+  const profileNotes =
+    document.getElementById(
+      "profile-notes"
+    )
+
+  if(profileNotes){
+
+    if(
+      !character.profile_notes ||
+      character.profile_notes.length === 0
+    ){
+
+      profileNotes.innerHTML =
+        "<li>N/A</li>"
+
+    }else{
+
+      profileNotes.innerHTML =
+        character.profile_notes
+          .map(
+            note => `<li>${note}</li>`
+          )
+          .join("")
+
+    }
+
+  }
+
+
+  // =========================
+  // DESIGN NOTES
+  // =========================
+
+  const designNotes =
+    document.getElementById(
+      "design-notes"
+    )
+
+  if(designNotes){
+
+    const notes =
+      character.appearance?.design_notes
+
+    if(
+      !notes ||
+      notes.length === 0
+    ){
+
+      designNotes.innerHTML =
+        "<li>N/A</li>"
+
+    }else{
+
+      designNotes.innerHTML =
+        notes
+          .map(
+            note => `<li>${note}</li>`
+          )
+          .join("")
+
+    }
+
+  }
+
+
+  // =========================
+  // PERSONALITY NOTES
+  // =========================
+
+  const personalityNotes =
+    document.getElementById(
+      "personality-notes"
+    )
+
+  if(personalityNotes){
+
+    const notes =
+      character.personality?.notes
+
+    if(
+      !notes ||
+      notes.length === 0
+    ){
+
+      personalityNotes.innerHTML =
+        "<li>N/A</li>"
+
+    }else{
+
+      personalityNotes.innerHTML =
+        notes
+          .map(
+            note => `<li>${note}</li>`
+          )
+          .join("")
+
+    }
+
+  }
+
+
+  // =========================
+  // LIKES
+  // =========================
+
+  const likes =
+    document.getElementById(
+      "likes"
+    )
+
+  if(likes){
+
+    const notes =
+      character.personality?.likes
+
+    if(
+      !notes ||
+      notes.length === 0
+    ){
+
+      likes.innerHTML =
+        "<li>N/A</li>"
+
+    }else{
+
+      likes.innerHTML =
+        notes
+          .map(
+            note => `<li>${note}</li>`
+          )
+          .join("")
+
+    }
+
+  }
+
+
+  // =========================
+  // DISLIKES
+  // =========================
+
+  const dislikes =
+    document.getElementById(
+      "dislikes"
+    )
+
+  if(dislikes){
+
+    const notes =
+      character.personality?.dislikes
+
+    if(
+      !notes ||
+      notes.length === 0
+    ){
+
+      dislikes.innerHTML =
+        "<li>N/A</li>"
+
+    }else{
+
+      dislikes.innerHTML =
+        notes
+          .map(
+            note => `<li>${note}</li>`
+          )
+          .join("")
+
+    }
+
+  }
+
+
+  // =========================
+  // HEALTH NOTES
+  // =========================
+
+  const healthNotes =
+    document.getElementById(
+      "health-notes"
+    )
+
+  if(healthNotes){
+
+    const notes =
+      character.health?.notes
+
+    if(
+      !notes ||
+      notes.length === 0
+    ){
+
+      healthNotes.innerHTML =
+        "<li>N/A</li>"
+
+    }else{
+
+      healthNotes.innerHTML =
+        notes
+          .map(
+            note => `<li>${note}</li>`
+          )
+          .join("")
+
+    }
+
+  }
+
+
+  // =========================
+  // BACKGROUND NOTES
+  // =========================
+
+  const backgroundNotes =
+    document.getElementById(
+      "background-notes"
+    )
+
+  if(backgroundNotes){
+
+    const notes =
+      character.background?.notes
+
+    if(
+      !notes ||
+      notes.length === 0
+    ){
+
+      backgroundNotes.innerHTML =
+        "<li>N/A</li>"
+
+    }else{
+
+      backgroundNotes.innerHTML =
+        notes
+          .map(
+            note => `<li>${note}</li>`
+          )
+          .join("")
+
+    }
+
+  }
+
+
+  // =========================
+  // STORIES
+  // =========================
+
+  listLinks(
+    character.stories,
+    "stories"
+  )
+
+
+  // =========================
+  // BACKSTORY
+  // =========================
+
+  const backstory =
+    document.getElementById(
+      "backstory"
+    )
+
+  if(backstory){
+
+    backstory.textContent =
+      text(
+        character.backstory
+      )
+
+  }
+
+
+  // =========================
+  // TRIVIA
+  // =========================
+
+  const trivia =
+    document.getElementById(
+      "trivia"
+    )
+
+  if(trivia){
+
+    if(
+      !character.trivia ||
+      character.trivia.length === 0
+    ){
+
+      trivia.innerHTML =
+        "<li>N/A</li>"
+
+    }else{
+
+      trivia.innerHTML =
+        character.trivia
+          .map(
+            item => `<li>${item}</li>`
+          )
+          .join("")
+
+    }
+
+  }
+
+
+  // =========================
+  // PALETTE
+  // =========================
+
+  const palette =
+    document.getElementById(
+      "palette"
+    )
+
+  if(palette){
+
+    if(!character.palette){
+
+      palette.innerHTML =
+        "N/A"
+
+    }else{
+
+      palette.innerHTML =
+        Object.values(
+          character.palette
+        )
+        .filter(
+          value => value
+        )
+        .map(
+          color =>
+            `<span style="display:inline-block;width:40px;height:40px;background:${color};margin-right:6px;"></span>`
+        )
+        .join("")
+
+    }
+
+  }
+
+
+  // =========================
+  // LINKS
+  // =========================
+
+  const links =
+    document.getElementById(
+      "links"
+    )
+
+  if(links){
+
+    if(!character.links){
+
+      links.innerHTML =
+        "<li>N/A</li>"
+
+    }else{
+
+      let html =
+        ""
+
+      if(character.links.toyhouse){
+
+        html +=
+          `<li><a href="${character.links.toyhouse}" target="_blank">Toyhou.se</a></li>`
+
+      }
+
+      if(character.links.pinterest){
+
+        html +=
+          `<li><a href="${character.links.pinterest}" target="_blank">Pinterest</a></li>`
+
+      }
+
+      if(character.links.spotify){
+
+        html +=
+          `<li><a href="${character.links.spotify}" target="_blank">Spotify</a></li>`
+
+      }
+
+      if(character.links.other){
+
+        html +=
+          character.links.other
+            .map(
+              other =>
+                `<li><a href="${other.url}" target="_blank">${other.label}</a></li>`
+            )
+            .join("")
+
+      }
+
+      links.innerHTML =
+        html || "<li>N/A</li>"
+
+    }
+
+  }
+
+
+  // =========================
+  // SHARED PROFILE SECTIONS
+  // =========================
+
+  setupPartners(
+    character
+  )
+
+  setupRelationships(
+    character
+  )
+
+  setupPets(
+    character
+  )
+
+  setupCharacterBackground(
+    character
+  )
+
+}
 
 
 async function setupCharacterNavigation(
@@ -1659,4 +2513,4 @@ function setupDetailTabs(){
     }
   )
 
-}}
+}
