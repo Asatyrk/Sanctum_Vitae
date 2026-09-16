@@ -106,9 +106,6 @@ function applyCharacterColors(character) {
   const colors =
     character.colors || {}
 
-  const characterBackground =
-    character.characterBackground || {}
-
   const primary =
     colors.primary || "#b99b78"
 
@@ -184,7 +181,8 @@ function applyCharacterColors(character) {
       ? colors.text_gradient
       : null
 
-  if (textGradient) {
+
+  if(textGradient){
 
     root.style.setProperty(
       "--char-text-gradient",
@@ -195,7 +193,7 @@ function applyCharacterColors(character) {
       "has-text-gradient"
     )
 
-  } else {
+  }else{
 
     root.style.removeProperty(
       "--char-text-gradient"
@@ -218,7 +216,8 @@ function applyCharacterColors(character) {
       ? colors.page_bg_gradient
       : null
 
-  if (pageBgGradient) {
+
+  if(pageBgGradient){
 
     root.style.setProperty(
       "--char-page-bg-gradient",
@@ -229,7 +228,7 @@ function applyCharacterColors(character) {
       "has-page-bg-gradient"
     )
 
-  } else {
+  }else{
 
     root.style.removeProperty(
       "--char-page-bg-gradient"
@@ -244,13 +243,6 @@ function applyCharacterColors(character) {
 
   // =========================================
   // AUTOMATIC TEXT GRADIENT
-  //
-  // Any character-page element whose normal
-  // colour is primary or secondary receives
-  // the gradient when one is configured.
-  //
-  // Without a gradient, these elements retain
-  // their normal primary/secondary colour.
   // =========================================
 
   const characterElements =
@@ -258,80 +250,141 @@ function applyCharacterColors(character) {
       "body.character-profile-page *"
     )
 
-  characterElements.forEach(element => {
 
-    element.classList.remove(
-      "character-gradient-text"
-    )
+  // Always remove previously applied
+  // gradient classes first.
+  characterElements.forEach(
+    element => {
 
-  })
+      element.classList.remove(
+        "character-gradient-text"
+      )
 
-
-  if (!textGradient) {
-    return
-  }
-
-
-  // Convert the configured colours to the same
-  // format returned by getComputedStyle().
-  const colourTest =
-    document.createElement("span")
-
-  colourTest.style.position =
-    "absolute"
-
-  colourTest.style.visibility =
-    "hidden"
-
-  document.body.appendChild(
-    colourTest
+    }
   )
 
 
-  colourTest.style.color =
+  // Nothing else to do if this character
+  // doesn't have a text gradient.
+  if(!textGradient){
+
+    return
+
+  }
+
+
+  // =========================================
+  // CONVERT CONFIGURED HEX COLOURS
+  // TO THE FORMAT USED BY getComputedStyle()
+  // =========================================
+
+  const colourProbe =
+    document.createElement("span")
+
+  colourProbe.style.position =
+    "absolute"
+
+  colourProbe.style.visibility =
+    "hidden"
+
+  colourProbe.style.pointerEvents =
+    "none"
+
+  document.body.appendChild(
+    colourProbe
+  )
+
+
+  // Resolve primary colour
+  colourProbe.style.color =
     primary
 
   const primaryColour =
     getComputedStyle(
-      colourTest
+      colourProbe
     ).color
 
 
-  colourTest.style.color =
+  // Resolve secondary colour
+  colourProbe.style.color =
     secondary
 
   const secondaryColour =
     getComputedStyle(
-      colourTest
+      colourProbe
     ).color
 
 
-  colourTest.remove()
+  colourProbe.remove()
 
 
-  characterElements.forEach(element => {
+  // =========================================
+  // FIND MATCHING ELEMENTS FIRST
+  // =========================================
+  //
+  // We deliberately collect the elements
+  // before adding the gradient class.
+  //
+  // Otherwise adding the class to a parent
+  // can change the computed colour of its
+  // children while this loop is running.
+  // =========================================
 
-    const computedStyle =
-      getComputedStyle(element)
+  const gradientElements = []
 
-    const colour =
-      computedStyle.color
 
-    if (
-      colour === primaryColour ||
-      colour === secondaryColour
-    ) {
+  characterElements.forEach(
+    element => {
+
+      // Never touch bg_1, bg_2,
+      // or anything inside them.
+      if(
+        element.classList.contains("bg_1") ||
+        element.classList.contains("bg_2") ||
+        element.closest(".bg_1, .bg_2")
+      ){
+
+        return
+
+      }
+
+
+      const computedColour =
+        getComputedStyle(
+          element
+        ).color
+
+
+      if(
+        computedColour === primaryColour ||
+        computedColour === secondaryColour
+      ){
+
+        gradientElements.push(
+          element
+        )
+
+      }
+
+    }
+  )
+
+
+  // =========================================
+  // APPLY GRADIENT CLASS
+  // =========================================
+
+  gradientElements.forEach(
+    element => {
 
       element.classList.add(
         "character-gradient-text"
       )
 
     }
-
-  })
+  )
 
 }
-
 
 function setupCharacterBackground(character) {
 
