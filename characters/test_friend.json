@@ -216,13 +216,13 @@
   "decorImage": "",
 
   "colors": {
-  "primary": "",
-  "secondary": "",
+  "primary": "ffffff",
+  "secondary": "000000",
   "accent": "",
   "bg_1": "",
   "bg_2": "",
-  "page_bg": "",
-  "background_gradient": "",
+  "page_bg": "ffffff",
+  "background_gradient": "000000",
 
   "text_gradient": [
     "#0088FF",
