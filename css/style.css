@@ -1804,8 +1804,11 @@ body.character-profile-page .site-nav a:focus-visible {
     var(--space-2)
     var(--space-3);
 
-  color: var(--char-secondary);
+  border: none;
+  border-radius: var(--border-radius-md);
+
   background: var(--char-bg-2);
+  color: var(--char-secondary);
 
   font-family: inherit;
   font-size: var(--font-size-base);
@@ -1813,7 +1816,7 @@ body.character-profile-page .site-nav a:focus-visible {
   cursor: pointer;
 
   transition:
-    background var(--transition-fast),
+    background-color var(--transition-fast),
     color var(--transition-fast);
 }
 
@@ -1829,24 +1832,13 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 .detail-switcher-tab:focus-visible {
-  outline: 2px solid var(--char-primary);
+  outline: 2px solid var(--char-secondary);
   outline-offset: 2px;
 }
 
 .detail-switcher-tab.active {
-  background: var(--char-secondary);
+  background-color: var(--char-secondary);
   color: var(--char-bg-2);
-}
-
-
-/* Panels */
-
-.detail-switcher-panel {
-  margin-bottom: var(--space-12);
-}
-
-.detail-switcher-panel[hidden] {
-  display: none;
 }
 
 
