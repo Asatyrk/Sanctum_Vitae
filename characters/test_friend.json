@@ -225,15 +225,15 @@
   "background_gradient": "",
 
   "text_gradient": [
-    "",
-    "",
-    ""
+    "#0088FF",
+    "#FF8800",
+    "#FFFFFF"
   ],
 
   "page_bg_gradient": [
-    "",
-    "",
-    ""
+    "#0088FF",
+    "#FF8800",
+    "#FFFFFF"
   ]
   },
 
