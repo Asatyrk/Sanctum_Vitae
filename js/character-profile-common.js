@@ -101,8 +101,7 @@ function setOptionalField(id, value){
 
 }
 
-
-function applyCharacterColors(character){
+function applyCharacterColors(character) {
 
   const colors =
     character.colors || {}
@@ -143,6 +142,11 @@ function applyCharacterColors(character){
 
   const root =
     document.documentElement
+
+
+  // =========================================
+  // NORMAL COLOURS
+  // =========================================
 
   root.style.setProperty(
     "--char-primary",
@@ -194,20 +198,167 @@ function applyCharacterColors(character){
     `${particleBlur}px`
   )
 
+
+  // =========================================
+  // TEXT GRADIENT
+  // =========================================
+
+  const textGradient =
+    Array.isArray(colors.text_gradient) &&
+    colors.text_gradient.length >= 2
+      ? colors.text_gradient
+      : null
+
+  if (textGradient) {
+
+    root.style.setProperty(
+      "--char-text-gradient",
+      `linear-gradient(90deg, ${textGradient.join(", ")})`
+    )
+
+    root.classList.add(
+      "has-text-gradient"
+    )
+
+  } else {
+
+    root.style.removeProperty(
+      "--char-text-gradient"
+    )
+
+    root.classList.remove(
+      "has-text-gradient"
+    )
+
+  }
+
+
+  // =========================================
+  // BACKGROUND GRADIENT
+  // =========================================
+
+  const pageBgGradient =
+    Array.isArray(colors.page_bg_gradient) &&
+    colors.page_bg_gradient.length >= 2
+      ? colors.page_bg_gradient
+      : null
+
+  if (pageBgGradient) {
+
+    root.style.setProperty(
+      "--char-page-bg-gradient",
+      `linear-gradient(135deg, ${pageBgGradient.join(", ")})`
+    )
+
+    root.classList.add(
+      "has-page-bg-gradient"
+    )
+
+  } else {
+
+    root.style.removeProperty(
+      "--char-page-bg-gradient"
+    )
+
+    root.classList.remove(
+      "has-page-bg-gradient"
+    )
+
+  }
+
+
+  // =========================================
+  // AUTOMATIC TEXT GRADIENT
+  //
+  // Finds every element on the character
+  // page whose colour is primary or secondary.
+  // =========================================
+
+  document
+    .querySelectorAll(
+      "body.character-profile-page *"
+    )
+    .forEach(element => {
+
+      element.classList.remove(
+        "character-gradient-text"
+      )
+
+    })
+
+
+  if (textGradient) {
+
+    document
+      .querySelectorAll(
+        "body.character-profile-page *"
+      )
+      .forEach(element => {
+
+        const colour =
+          window.getComputedStyle(
+            element
+          ).color
+
+        const primaryRGB =
+          getComputedStyle(root)
+            .getPropertyValue("--char-primary")
+            .trim()
+
+        const secondaryRGB =
+          getComputedStyle(root)
+            .getPropertyValue("--char-secondary")
+            .trim()
+
+        const test =
+          document.createElement("div")
+
+        test.style.color =
+          primaryRGB
+
+        const primaryColour =
+          test.style.color
+
+        test.style.color =
+          secondaryRGB
+
+        const secondaryColour =
+          test.style.color
+
+        test.remove()
+
+        if (
+          colour === primaryColour ||
+          colour === secondaryColour
+        ) {
+
+          element.classList.add(
+            "character-gradient-text"
+          )
+
+        }
+
+      })
+
+  }
+
 }
 
 
-function setupCharacterBackground(character){
+function setupCharacterBackground(character) {
 
   const container =
     document.getElementById(
       "character-particles"
     )
 
-  if(!container) return
+  if (!container) return
 
   const characterBackground =
     character.characterBackground || {}
+
+  const colors =
+    character.colors || {}
 
   const count =
     Math.max(
@@ -228,9 +379,24 @@ function setupCharacterBackground(character){
     characterBackground.particle_random_size ??
     false
 
+  const particleColor =
+    characterBackground.particle_color ||
+    colors.primary ||
+    "#b99b78"
+
+  const particleColors =
+    Array.isArray(
+      characterBackground.particle_colors
+    ) &&
+    characterBackground.particle_colors.length > 0
+      ? characterBackground.particle_colors
+      : null
+
+
   container.innerHTML = ""
 
-  for(let i = 0; i < count; i++){
+
+  for (let i = 0; i < count; i++) {
 
     const particle =
       document.createElement("div")
@@ -242,24 +408,19 @@ function setupCharacterBackground(character){
       shape
 
 
-    // Size
+    // =========================================
+    // SIZE
+    // =========================================
 
-    let size
-
-    if(randomSize){
-
-      size =
-        16 + Math.random() * 35
-
-    }else{
-
-      size =
-        24
-
-    }
+    const size =
+      randomSize
+        ? 16 + Math.random() * 35
+        : 24
 
 
-    // Position and animation
+    // =========================================
+    // POSITION / ANIMATION
+    // =========================================
 
     const left =
       Math.random() * 100
@@ -280,6 +441,25 @@ function setupCharacterBackground(character){
       characterBackground.particle_blur ??
       0
 
+
+    // =========================================
+    // PARTICLE COLOUR
+    // =========================================
+
+    const color =
+      particleColors
+        ? particleColors[
+            Math.floor(
+              Math.random() *
+              particleColors.length
+            )
+          ]
+        : particleColor
+
+
+    // =========================================
+    // CSS VARIABLES
+    // =========================================
 
     particle.style.setProperty(
       "--particle-width",
@@ -321,6 +501,12 @@ function setupCharacterBackground(character){
       `${blur}px`
     )
 
+    particle.style.setProperty(
+      "--particle-color",
+      color
+    )
+
+
     container.appendChild(
       particle
     )
@@ -328,7 +514,6 @@ function setupCharacterBackground(character){
   }
 
 }
-
 
 function getCharacter(){
 

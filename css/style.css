@@ -149,6 +149,11 @@ h6 {
   );
 }
 
+.character-profile-page.has-page-bg-gradient
+.character-background {
+  background: var(--char-page-bg-gradient);
+}
+
 .character-particles {
   position: absolute;
   inset: 0;
@@ -164,7 +169,7 @@ h6 {
   width: var(--particle-width);
   height: var(--particle-height);
 
-  background: var(--char-particle-color);
+  background: var(--particle-color, var(--char-particle-color));
   opacity: var(--char-particle-opacity);
   filter: blur(var(--particle-blur, var(--char-particle-blur)));
 
@@ -354,6 +359,35 @@ h6 {
 .character-profile-page > .page-container {
   position: relative;
   z-index: 1;
+}
+
+/* Gradient text */
+
+.character-profile-page.has-text-gradient
+.character-gradient-text {
+  background-image: var(--char-text-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* Gradient page background */
+
+body {
+  background: var(--char-page-bg);
+}
+
+.has-page-bg-gradient body {
+  background: var(--char-page-bg-gradient);
+}
+
+
+/* Multi-colour particles */
+
+.character-particle {
+  background-color: var(--particle-color);
 }
 
 @media (prefers-reduced-motion: reduce) {

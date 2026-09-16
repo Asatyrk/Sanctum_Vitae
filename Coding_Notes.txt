@@ -1,7 +1,8 @@
 To add new character (/other):
 - Create new .json in characters (/other) folder with profile info (use base)
 - Tags can be found in characters.js
-- Add to index.json so it shows up in layout (inc. headshot)
+- Add to index.json so it shows up in layout (inc. headshot). 
+- Try to keep index in alphabetical order (refer to google sheets, A-Z auto-sorts).
 
 Image key:
 Headshot [1:1] = polaroid 
@@ -30,10 +31,12 @@ Particle shapes:
 
 To do:
 - Change favicon/icon (easy though, just replace files in assets folder)
-- ID section on char profile
-- Last/Next (per the index) on char page
+- Particle colour presets
+- Test colour presets
+- BG colour presets
 - Character page, details, etc
   - Story
+  - ID box
   - Links
   - Alt forms too? 
 - Mockup and code factions 

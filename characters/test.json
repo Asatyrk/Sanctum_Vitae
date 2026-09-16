@@ -194,23 +194,43 @@
   "decorImage": "",
 
   "colors": {
-    "primary": "#FF0000", 
-    "secondary": "#0000FF",
-    "accent": "#00FF00",
-    "bg_1": "#000000",
-    "bg_2": "#FFFFFF",
-    "page_bg": "#800080",
-    "background_gradient": "#FF00FF"
+  "primary": "#FF0000",
+  "secondary": "#0000FF",
+  "accent": "#00FF00",
+  "bg_1": "#000000",
+  "bg_2": "#FFFFFF",
+  "page_bg": "#800080",
+  "background_gradient": "#FF00FF",
+
+  "text_gradient": [
+    "#FF0000",
+    "#FFFF00",
+    "#00FF00"
+  ],
+
+  "page_bg_gradient": [
+    "#FF0000",
+    "#0000FF",
+    "#FF00FF"
+  ]
   },
 
-  "characterBackground": {
-    "particle_color": "#FF00FF",
-    "particle_shape": "square",
-    "particle_count": 30,
-    "particle_opacity": 0.2,
-    "particle_blur": 0,
-    "particle_random_size": true
-   },
+"characterBackground": {
+  "particle_color": "#FF00FF",
+  "particle_colors": [
+    "#FF0000",
+    "#FF8800",
+    "#FFFF00",
+    "#00FF00",
+    "#0088FF",
+    "#8800FF"
+  ],
+  "particle_shape": "square",
+  "particle_count": 30,
+  "particle_opacity": 0.2,
+  "particle_blur": 0,
+  "particle_random_size": true
+  },
 
   "tags": {
     "Species (Class)": ["Humanoid"],
