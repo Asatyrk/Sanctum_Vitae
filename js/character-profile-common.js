@@ -101,199 +101,14 @@ function setOptionalField(id, value){
 
 }
 
-function setupDetailTabs() {
 
-  const tabs =
-    Array.from(
-      document.querySelectorAll(
-        ".detail-switcher-tab"
-      )
-    )
+function applyCharacterColors(character){
 
-  const panels =
-    Array.from(
-      document.querySelectorAll(
-        ".detail-switcher-panel"
-      )
-    )
+  const colors =
+    character.colors || {}
 
-  if (
-    !tabs.length ||
-    !panels.length
-  ) {
-
-    return
-
-  }
-
-
-  function activateTab(tab) {
-
-    const targetId =
-      tab.getAttribute(
-        "aria-controls"
-      )
-
-    if (!targetId) {
-
-      return
-
-    }
-
-
-    const targetPanel =
-      document.getElementById(
-        targetId
-      )
-
-    if (!targetPanel) {
-
-      console.warn(
-        `Detail tab target not found: ${targetId}`
-      )
-
-      return
-
-    }
-
-
-    tabs.forEach(
-      currentTab => {
-
-        const active =
-          currentTab === tab
-
-        currentTab.classList.toggle(
-          "active",
-          active
-        )
-
-        currentTab.setAttribute(
-          "aria-selected",
-          active ? "true" : "false"
-        )
-
-        currentTab.setAttribute(
-          "tabindex",
-          active ? "0" : "-1"
-        )
-
-      }
-    )
-
-
-    panels.forEach(
-      panel => {
-
-        const active =
-          panel === targetPanel
-
-        panel.hidden =
-          !active
-
-        panel.setAttribute(
-          "aria-hidden",
-          active ? "false" : "true"
-        )
-
-      }
-    )
-
-  }
-
-
-  tabs.forEach(
-    tab => {
-
-      tab.addEventListener(
-        "click",
-        () => {
-
-          activateTab(
-            tab
-          )
-
-        }
-      )
-
-
-      tab.addEventListener(
-        "keydown",
-        event => {
-
-          if (
-            event.key !== "ArrowLeft" &&
-            event.key !== "ArrowRight"
-          ) {
-
-            return
-
-          }
-
-          event.preventDefault()
-
-
-          const currentIndex =
-            tabs.indexOf(
-              tab
-            )
-
-          const direction =
-            event.key === "ArrowRight"
-              ? 1
-              : -1
-
-          const nextIndex =
-            (
-              currentIndex +
-              direction +
-              tabs.length
-            ) %
-            tabs.length
-
-          const nextTab =
-            tabs[nextIndex]
-
-          activateTab(
-            nextTab
-          )
-
-          nextTab.focus()
-
-        }
-      )
-
-    }
-  )
-
-
-  // =========================================
-  // INITIAL TAB
-  // =========================================
-
-  const initialTab =
-    tabs.find(
-      tab =>
-        tab.classList.contains("active") ||
-        tab.getAttribute("aria-selected") === "true"
-    ) ||
-    tabs[0]
-
-
-  activateTab(
-    initialTab
-  )
-
-}
-
-function applyCharacterColors(character) {
-
-  const colors = character?.colors || {}
-  const root = document.documentElement
-
-  // =========================================
-  // FALLBACK COLOURS
-  // =========================================
+  const characterBackground =
+    character.characterBackground || {}
 
   const primary =
     colors.primary || "#b99b78"
@@ -302,27 +117,32 @@ function applyCharacterColors(character) {
     colors.secondary || "#a27d5f"
 
   const accent =
-    colors.accent || primary
+    colors.accent || "#8b6a4d"
 
   const bg1 =
-    colors.bg_1 ||
-    colors.background_1 ||
-    "#f4efe6"
+    colors.bg_1 || "#f4efe6"
 
   const bg2 =
-    colors.bg_2 ||
-    colors.background_2 ||
-    "#f3f1ec"
+    colors.bg_2 || "#f3f1ec"
 
   const pageBg =
-    colors.page_bg ||
-    colors.background ||
-    bg2
+    colors.page_bg || "#f3f1ec"
 
+  const backgroundGradient =
+    colors.background_gradient || "#FFFFFF"
 
-  // =========================================
-  // BASIC COLOURS
-  // =========================================
+  const particleColor =
+    characterBackground.particle_color ||
+    primary
+
+  const particleOpacity =
+    characterBackground.particle_opacity ?? 0.18
+
+  const particleBlur =
+    characterBackground.particle_blur ?? 0
+
+  const root =
+    document.documentElement
 
   root.style.setProperty(
     "--char-primary",
@@ -354,207 +174,40 @@ function applyCharacterColors(character) {
     pageBg
   )
 
-
-  // =========================================
-  // BACKGROUND GRADIENT
-  // =========================================
-
-  if (
-    typeof colors.background_gradient === "string" &&
-    colors.background_gradient.trim() !== ""
-  ) {
-
-    root.style.setProperty(
-      "--char-background-gradient",
-      colors.background_gradient
-    )
-
-    root.classList.add(
-      "has-background-gradient"
-    )
-
-  } else {
-
-    // IMPORTANT:
-    // Restore the CSS fallback instead of removing it.
-
-    root.style.setProperty(
-      "--char-background-gradient",
-      "#ffffff"
-    )
-
-    root.classList.remove(
-      "has-background-gradient"
-    )
-
-  }
-
-
-  // =========================================
-  // PAGE BACKGROUND GRADIENT
-  // =========================================
-
-  if (
-    Array.isArray(colors.page_bg_gradient) &&
-    colors.page_bg_gradient.length >= 2
-  ) {
-
-    root.style.setProperty(
-      "--char-page-bg-gradient",
-      `linear-gradient(135deg, ${colors.page_bg_gradient.join(", ")})`
-    )
-
-    root.classList.add(
-      "has-page-bg-gradient"
-    )
-
-  } else {
-
-    // Restore fallback
-
-    root.style.setProperty(
-      "--char-page-bg-gradient",
-      `linear-gradient(
-        to bottom,
-        ${pageBg} 0%,
-        ${pageBg} 65%,
-        #ffffff 100%
-      )`
-    )
-
-    root.classList.remove(
-      "has-page-bg-gradient"
-    )
-
-  }
-
-
-  // =========================================
-  // TEXT GRADIENT
-  // =========================================
-
-  if (
-    Array.isArray(colors.text_gradient) &&
-    colors.text_gradient.length >= 2
-  ) {
-
-    root.style.setProperty(
-      "--char-text-gradient",
-      `linear-gradient(90deg, ${colors.text_gradient.join(", ")})`
-    )
-
-    root.classList.add(
-      "has-text-gradient"
-    )
-
-  } else {
-
-    // Restore fallback
-
-    root.style.setProperty(
-      "--char-text-gradient",
-      `linear-gradient(90deg, ${primary}, ${secondary})`
-    )
-
-    root.classList.remove(
-      "has-text-gradient"
-    )
-
-  }
-
-}
-
-
-function applyCharacterTextGradient() {
-
-  const root =
-    document.documentElement
-
-  const textElements =
-    document.querySelectorAll(
-      `
-      body.character-profile-page h1,
-      body.character-profile-page h2,
-      body.character-profile-page h3,
-      body.character-profile-page h4,
-      body.character-profile-page h5,
-      body.character-profile-page h6,
-      body.character-profile-page p,
-      body.character-profile-page li,
-      body.character-profile-page span,
-      body.character-profile-page label,
-      body.character-profile-page strong,
-      body.character-profile-page em,
-      body.character-profile-page a,
-      body.character-profile-page button,
-      body.character-profile-page .info-label,
-      body.character-profile-page .info-value,
-      body.character-profile-page .card-name,
-      body.character-profile-page .tag,
-      body.character-profile-page summary
-      `
-    )
-
-
-  textElements.forEach(
-    element => {
-
-      element.classList.remove(
-        "character-gradient-text"
-      )
-
-    }
+  root.style.setProperty(
+    "--char-background-gradient",
+    backgroundGradient
   )
 
+  root.style.setProperty(
+    "--char-particle-color",
+    particleColor
+  )
 
-  if (
-    !root.classList.contains(
-      "has-text-gradient"
-    )
-  ) {
+  root.style.setProperty(
+    "--char-particle-opacity",
+    particleOpacity
+  )
 
-    return
-
-  }
-
-
-  textElements.forEach(
-    element => {
-
-      if (
-        element.matches(
-          "input, select, textarea, option"
-        )
-      ) {
-
-        return
-
-      }
-
-      element.classList.add(
-        "character-gradient-text"
-      )
-
-    }
+  root.style.setProperty(
+    "--char-particle-blur",
+    `${particleBlur}px`
   )
 
 }
 
 
-function setupCharacterBackground(character) {
+function setupCharacterBackground(character){
 
   const container =
     document.getElementById(
       "character-particles"
     )
 
-  if (!container) return
+  if(!container) return
 
   const characterBackground =
     character.characterBackground || {}
-
-  const colors =
-    character.colors || {}
 
   const count =
     Math.max(
@@ -575,23 +228,9 @@ function setupCharacterBackground(character) {
     characterBackground.particle_random_size ??
     false
 
-  const particleColors =
-    Array.isArray(
-      characterBackground.particle_colors
-    ) &&
-    characterBackground.particle_colors.length > 0
-      ? characterBackground.particle_colors
-      : null
-
-  const particleColor =
-    characterBackground.particle_color ||
-    colors.primary ||
-    "#b99b78"
-
   container.innerHTML = ""
 
-
-  for (let i = 0; i < count; i++) {
+  for(let i = 0; i < count; i++){
 
     const particle =
       document.createElement("div")
@@ -603,19 +242,24 @@ function setupCharacterBackground(character) {
       shape
 
 
-    // =========================================
-    // SIZE
-    // =========================================
+    // Size
 
-    const size =
-      randomSize
-        ? 16 + Math.random() * 35
-        : 24
+    let size
+
+    if(randomSize){
+
+      size =
+        16 + Math.random() * 35
+
+    }else{
+
+      size =
+        24
+
+    }
 
 
-    // =========================================
-    // POSITION / ANIMATION
-    // =========================================
+    // Position and animation
 
     const left =
       Math.random() * 100
@@ -636,25 +280,6 @@ function setupCharacterBackground(character) {
       characterBackground.particle_blur ??
       0
 
-
-    // =========================================
-    // PARTICLE COLOUR
-    // =========================================
-
-    const color =
-      particleColors
-        ? particleColors[
-            Math.floor(
-              Math.random() *
-              particleColors.length
-            )
-          ]
-        : particleColor
-
-
-    // =========================================
-    // CSS VARIABLES
-    // =========================================
 
     particle.style.setProperty(
       "--particle-width",
@@ -696,12 +321,6 @@ function setupCharacterBackground(character) {
       `${blur}px`
     )
 
-    particle.style.setProperty(
-      "--particle-color",
-      color
-    )
-
-
     container.appendChild(
       particle
     )
@@ -709,6 +328,7 @@ function setupCharacterBackground(character) {
   }
 
 }
+
 
 function getCharacter(){
 
@@ -814,9 +434,7 @@ function listLinks(list, id){
 }
 
 
-async function displayCharacter(character){
-
-  setupDetailTabs()
+function displayCharacter(character){
 
   applyCharacterColors(
     character
@@ -1665,17 +1283,21 @@ async function displayCharacter(character){
   // SHARED PROFILE SECTIONS
   // =========================
 
-    await Promise.all([
-    setupPartners(character),
-    setupRelationships(character),
-    setupPets(character)
-  ])
+  setupPartners(
+    character
+  )
+
+  setupRelationships(
+    character
+  )
+
+  setupPets(
+    character
+  )
 
   setupCharacterBackground(
-  character
-)
-
-applyCharacterTextGradient()
+    character
+  )
 
 }
 
@@ -2613,5 +2235,103 @@ async function setupPets(character){
 
   section.hidden =
     loadedPets === 0
+
+}
+
+
+function setupDetailTabs(){
+
+  const detailTabs =
+    document.querySelectorAll(
+      ".detail-switcher-tab"
+    )
+
+  const detailPanels =
+    document.querySelectorAll(
+      ".detail-switcher-panel"
+    )
+
+  if(
+    !detailTabs.length ||
+    !detailPanels.length
+  ){
+
+    return
+
+  }
+
+
+  detailTabs.forEach(
+    tab => {
+
+      tab.addEventListener(
+        "click",
+        () => {
+
+          const targetId =
+            tab.getAttribute(
+              "aria-controls"
+            )
+
+          const targetPanel =
+            document.getElementById(
+              targetId
+            )
+
+          if(!targetPanel) return
+
+
+          // Update buttons
+
+          detailTabs.forEach(
+            button => {
+
+              button.classList.remove(
+                "active"
+              )
+
+              button.setAttribute(
+                "aria-selected",
+                "false"
+              )
+
+            }
+          )
+
+
+          // Hide panels
+
+          detailPanels.forEach(
+            panel => {
+
+              panel.hidden =
+                true
+
+            }
+          )
+
+
+          // Activate selected tab
+
+          tab.classList.add(
+            "active"
+          )
+
+          tab.setAttribute(
+            "aria-selected",
+            "true"
+          )
+
+
+          // Show selected panel
+
+          targetPanel.hidden =
+            false
+
+        }
+      )
+
+    }
+  )
 
 }
