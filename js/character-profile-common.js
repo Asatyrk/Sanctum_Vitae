@@ -128,6 +128,23 @@ function applyCharacterColors(character){
   const pageBg =
     colors.page_bg || "#f3f1ec"
 
+  const pageBgGradient =
+    Array.isArray(
+      colors.page_bg_gradient
+    ) &&
+    colors.page_bg_gradient.length >= 2
+      ? `linear-gradient(
+          135deg,
+          ${colors.page_bg_gradient.join(", ")}
+        )`
+      : `linear-gradient(
+          to bottom,
+          ${pageBg} 0%,
+          ${pageBg} 65%,
+          #ffffff 100%
+        )`
+
+
   const backgroundGradient =
     colors.background_gradient || "#FFFFFF"
 
@@ -172,6 +189,11 @@ function applyCharacterColors(character){
   root.style.setProperty(
     "--char-page-bg",
     pageBg
+  )
+
+  root.style.setProperty(
+    "--char-page-bg-gradient",
+    pageBgGradient
   )
 
   root.style.setProperty(
