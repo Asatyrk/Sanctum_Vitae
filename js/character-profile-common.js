@@ -131,8 +131,7 @@ const pageBg =
   bg2
 
 const backgroundGradient =
-  colors.background_gradient ||
-  "#ffffff"
+  colors.background_gradient || null
 
 const pageBgGradient =
   Array.isArray(colors.page_bg_gradient) &&
@@ -185,10 +184,28 @@ const textGradient =
     pageBg
   )
 
+  if(backgroundGradient){
+
   root.style.setProperty(
     "--char-background-gradient",
     backgroundGradient
   )
+
+  root.classList.add(
+    "has-background-gradient"
+  )
+
+}else{
+
+  root.style.removeProperty(
+    "--char-background-gradient"
+  )
+
+  root.classList.remove(
+    "has-background-gradient"
+  )
+
+}
 
   if(pageBgGradient){
 
