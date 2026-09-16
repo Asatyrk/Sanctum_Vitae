@@ -107,6 +107,16 @@ function applyCharacterColors(character){
   const colors =
     character.colors || {}
 
+  const hasPageBgGradient =
+   Array.isArray(colors.page_bg_gradient) &&
+   colors.page_bg_gradient.length >= 2
+
+  document.documentElement.classList.toggle(
+   "has-page-bg-gradient",
+   hasPageBgGradient
+  )
+
+
   const characterBackground =
     character.characterBackground || {}
 
