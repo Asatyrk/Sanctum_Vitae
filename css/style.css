@@ -1807,7 +1807,7 @@ body.character-profile-page .site-nav a:focus-visible {
   border: none;
   border-radius: var(--border-radius-md);
 
-  background: var(--char-bg-2);
+  background-color: var(--char-bg-2);
   color: var(--char-secondary);
 
   font-family: inherit;

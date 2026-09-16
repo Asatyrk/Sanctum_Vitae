@@ -222,19 +222,7 @@
   "bg_1": "",
   "bg_2": "",
   "page_bg": "ffffff",
-  "background_gradient": "000000",
-
-  "text_gradient": [
-    "#0088FF",
-    "#FF8800",
-    "#FFFFFF"
-  ],
-
-  "page_bg_gradient": [
-    "#0088FF",
-    "#FF8800",
-    "#FFFFFF"
-  ]
+  "background_gradient": "000000"
   },
 
 "characterBackground": {

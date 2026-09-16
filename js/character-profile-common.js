@@ -303,7 +303,6 @@ function applyCharacterTextGradient(){
         "body.character-profile-page strong",
         "body.character-profile-page em",
         "body.character-profile-page a",
-        "body.character-profile-page button",
         "body.character-profile-page .info-label",
         "body.character-profile-page .info-value",
         "body.character-profile-page .card-name",
