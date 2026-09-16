@@ -130,16 +130,6 @@ function applyCharacterColors(character) {
   const backgroundGradient =
     colors.background_gradient || "#FFFFFF"
 
-  const particleColor =
-    characterBackground.particle_color ||
-    primary
-
-  const particleOpacity =
-    characterBackground.particle_opacity ?? 0.18
-
-  const particleBlur =
-    characterBackground.particle_blur ?? 0
-
   const root =
     document.documentElement
 
@@ -183,21 +173,6 @@ function applyCharacterColors(character) {
     backgroundGradient
   )
 
-  root.style.setProperty(
-    "--char-particle-color",
-    particleColor
-  )
-
-  root.style.setProperty(
-    "--char-particle-opacity",
-    particleOpacity
-  )
-
-  root.style.setProperty(
-    "--char-particle-blur",
-    `${particleBlur}px`
-  )
-
 
   // =========================================
   // TEXT GRADIENT
@@ -234,7 +209,7 @@ function applyCharacterColors(character) {
 
 
   // =========================================
-  // BACKGROUND GRADIENT
+  // PAGE BACKGROUND GRADIENT
   // =========================================
 
   const pageBgGradient =
@@ -270,77 +245,90 @@ function applyCharacterColors(character) {
   // =========================================
   // AUTOMATIC TEXT GRADIENT
   //
-  // Finds every element on the character
-  // page whose colour is primary or secondary.
+  // Any character-page element whose normal
+  // colour is primary or secondary receives
+  // the gradient when one is configured.
+  //
+  // Without a gradient, these elements retain
+  // their normal primary/secondary colour.
   // =========================================
 
-  document
-    .querySelectorAll(
+  const characterElements =
+    document.querySelectorAll(
       "body.character-profile-page *"
     )
-    .forEach(element => {
 
-      element.classList.remove(
+  characterElements.forEach(element => {
+
+    element.classList.remove(
+      "character-gradient-text"
+    )
+
+  })
+
+
+  if (!textGradient) {
+    return
+  }
+
+
+  // Convert the configured colours to the same
+  // format returned by getComputedStyle().
+  const colourTest =
+    document.createElement("span")
+
+  colourTest.style.position =
+    "absolute"
+
+  colourTest.style.visibility =
+    "hidden"
+
+  document.body.appendChild(
+    colourTest
+  )
+
+
+  colourTest.style.color =
+    primary
+
+  const primaryColour =
+    getComputedStyle(
+      colourTest
+    ).color
+
+
+  colourTest.style.color =
+    secondary
+
+  const secondaryColour =
+    getComputedStyle(
+      colourTest
+    ).color
+
+
+  colourTest.remove()
+
+
+  characterElements.forEach(element => {
+
+    const computedStyle =
+      getComputedStyle(element)
+
+    const colour =
+      computedStyle.color
+
+    if (
+      colour === primaryColour ||
+      colour === secondaryColour
+    ) {
+
+      element.classList.add(
         "character-gradient-text"
       )
 
-    })
+    }
 
-
-  if (textGradient) {
-
-    document
-      .querySelectorAll(
-        "body.character-profile-page *"
-      )
-      .forEach(element => {
-
-        const colour =
-          window.getComputedStyle(
-            element
-          ).color
-
-        const primaryRGB =
-          getComputedStyle(root)
-            .getPropertyValue("--char-primary")
-            .trim()
-
-        const secondaryRGB =
-          getComputedStyle(root)
-            .getPropertyValue("--char-secondary")
-            .trim()
-
-        const test =
-          document.createElement("div")
-
-        test.style.color =
-          primaryRGB
-
-        const primaryColour =
-          test.style.color
-
-        test.style.color =
-          secondaryRGB
-
-        const secondaryColour =
-          test.style.color
-
-        test.remove()
-
-        if (
-          colour === primaryColour ||
-          colour === secondaryColour
-        ) {
-
-          element.classList.add(
-            "character-gradient-text"
-          )
-
-        }
-
-      })
-
-  }
+  })
 
 }
 
@@ -379,11 +367,6 @@ function setupCharacterBackground(character) {
     characterBackground.particle_random_size ??
     false
 
-  const particleColor =
-    characterBackground.particle_color ||
-    colors.primary ||
-    "#b99b78"
-
   const particleColors =
     Array.isArray(
       characterBackground.particle_colors
@@ -392,6 +375,10 @@ function setupCharacterBackground(character) {
       ? characterBackground.particle_colors
       : null
 
+  const particleColor =
+    characterBackground.particle_color ||
+    colors.primary ||
+    "#b99b78"
 
   container.innerHTML = ""
 

@@ -149,7 +149,8 @@ h6 {
   );
 }
 
-.character-profile-page.has-page-bg-gradient
+html.has-page-bg-gradient
+body.character-profile-page
 .character-background {
   background: var(--char-page-bg-gradient);
 }
@@ -363,14 +364,20 @@ h6 {
 
 /* Gradient text */
 
-.character-profile-page.has-text-gradient
+html.has-text-gradient
+body.character-profile-page
 .character-gradient-text {
   background-image: var(--char-text-gradient);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
   background-clip: text;
   -webkit-background-clip: text;
+
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
+
 
 
 /* Gradient page background */
@@ -379,7 +386,7 @@ body {
   background: var(--char-page-bg);
 }
 
-.has-page-bg-gradient body {
+html.has-page-bg-gradient body {
   background: var(--char-page-bg-gradient);
 }
 
@@ -387,7 +394,8 @@ body {
 /* Multi-colour particles */
 
 .character-particle {
-  background-color: var(--particle-color);
+  background: var(--particle-color, var(--char-particle-color));
+  background-color: var(--particle-color, var(--char-particle-color));
 }
 
 @media (prefers-reduced-motion: reduce) {
