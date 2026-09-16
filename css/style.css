@@ -1,27 +1,38 @@
-/* =====================================================
-   CSS VARIABLES
-===================================================== */
+/* =========================================================
+   1. ROOT VARIABLES
+========================================================= */
 
 :root {
-  /* Colors */
+  /* -------------------------------------------------------
+     General colors
+  ------------------------------------------------------- */
+
   --color-primary: #b99b78;
   --color-primary-dark: #7a5d3c;
   --color-primary-darker: #6b5032;
   --color-accent: #a27d5f;
   --color-accent-light: #f7f3e8;
+
   --color-light: #f4efe6;
   --color-bg-light: #f3f1ec;
+
   --color-text-dark: #2b2b2b;
   --color-text-muted: #5a432e;
   --color-text-muted-light: #7a664e;
+
   --color-pin: #b33a33;
   --color-border: #8b6a4d;
   --color-input-bg: #e8e2d7;
   --color-white: #ffffff;
 
-  /* Typography */
+
+  /* -------------------------------------------------------
+     Typography
+  ------------------------------------------------------- */
+
   --font-display: "Castoro Titling", serif;
   --font-body: "IM Fell English", serif;
+
   --font-size-xs: 10px;
   --font-size-sm: 12px;
   --font-size-base: 14px;
@@ -29,7 +40,11 @@
   --font-size-lg: 22px;
   --font-size-xl: 34px;
 
-  /* Spacing */
+
+  /* -------------------------------------------------------
+     Spacing
+  ------------------------------------------------------- */
+
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -40,43 +55,84 @@
   --space-12: 60px;
   --space-20: 80px;
 
-  /* Components */
+
+  /* -------------------------------------------------------
+     Components
+  ------------------------------------------------------- */
+
   --card-width: 140px;
   --card-gap: 32px;
   --sidebar-width: 240px;
+
   --border-radius-sm: 3px;
   --border-radius-md: 4px;
   --border-radius-lg: 6px;
   --border-radius-full: 999px;
 
-  /* Transitions */
+
+  /* -------------------------------------------------------
+     Transitions
+  ------------------------------------------------------- */
+
   --transition-fast: 0.2s ease;
 
-  /* Grid dot pattern */
+
+  /* -------------------------------------------------------
+     Character grid / dot background
+  ------------------------------------------------------- */
+
   --dot-size: 1px;
   --dot-gap: 8px;
   --dot-offset: 4px;
   --dot-color: rgba(0, 0, 0, 0.03);
 
-  /* Character Profile Colors - Fallback */
+
+  /* -------------------------------------------------------
+     Character theme defaults
+
+     These are fallbacks only.
+     The JS/theme system can override them.
+  ------------------------------------------------------- */
+
   --char-primary: #b99b78;
   --char-secondary: #a27d5f;
   --char-accent: #8b6a4d;
+
   --char-bg-1: #f4efe6;
   --char-bg-2: #f3f1ec;
-  --char-page-bg: #f3f1ec;
-  --char-background-gradient: #FFFFFF;
 
-  /* Character Background - Fallback */
+  --char-page-bg: #f3f1ec;
+  --char-background-gradient: #ffffff;
+
+  --char-page-bg-gradient:
+    linear-gradient(
+      to bottom,
+      var(--char-page-bg) 0%,
+      var(--char-page-bg) 65%,
+      var(--char-background-gradient) 100%
+    );
+
+  --char-text-gradient:
+    linear-gradient(
+      90deg,
+      var(--char-primary),
+      var(--char-secondary)
+    );
+
+
+  /* -------------------------------------------------------
+     Character particles
+  ------------------------------------------------------- */
+
   --char-particle-color: #b99b78;
   --char-particle-opacity: 0.18;
   --char-particle-blur: 0px;
-
 }
 
-/* =====================================================
-   GLOBAL
-===================================================== */
+
+/* =========================================================
+   2. GLOBAL
+========================================================= */
 
 html {
   scroll-behavior: smooth;
@@ -84,14 +140,11 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-body);
-  background: var(--color-bg-light);
-  color: var(--color-text-dark);
   min-height: 100vh;
-}
 
-body.character-profile-page {
-  background: var(--char-page-bg);
+  font-family: var(--font-body);
+  color: var(--color-text-dark);
+  background: var(--color-bg-light);
 }
 
 h1,
@@ -103,13 +156,22 @@ h6 {
   font-family: var(--font-display);
 }
 
-/* =====================================================
-   PAGE BACKGROUNDS
-===================================================== */
+
+body.character-profile-page {
+  background: var(--char-page-bg);
+  color: var(--char-secondary);
+}
+
+
+/* =========================================================
+   3. PAGE BACKGROUNDS
+========================================================= */
 
 .page-characters {
-  background: var(--color-bg-light);
-  background-image: radial-gradient(
+  background-color: var(--color-bg-light);
+
+  background-image:
+    radial-gradient(
       var(--dot-color) var(--dot-size),
       transparent var(--dot-size)
     ),
@@ -117,17 +179,24 @@ h6 {
       var(--dot-color) var(--dot-size),
       transparent var(--dot-size)
     );
-  background-size: var(--dot-gap) var(--dot-gap);
-  background-position: 0 0, var(--dot-offset) var(--dot-offset);
+
+  background-size:
+    var(--dot-gap) var(--dot-gap),
+    var(--dot-gap) var(--dot-gap);
+
+  background-position:
+    0 0,
+    var(--dot-offset) var(--dot-offset);
 }
 
 .page-paper {
   background: var(--color-light);
 }
 
-/* =====================================================
-   CHARACTER ANIMATED BACKGROUND
-===================================================== */
+
+/* =========================================================
+   4. CHARACTER ANIMATED BACKGROUND
+========================================================= */
 
 .character-profile-page {
   position: relative;
@@ -138,15 +207,17 @@ h6 {
   position: fixed;
   inset: 0;
   z-index: 0;
+
   overflow: hidden;
   pointer-events: none;
 
-  background: linear-gradient(
-    to bottom,
-    var(--char-page-bg) 0%,
-    var(--char-page-bg) 65%,
-    var(--char-background-gradient) 100%
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      var(--char-page-bg) 0%,
+      var(--char-page-bg) 65%,
+      var(--char-background-gradient) 100%
+    );
 }
 
 html.has-page-bg-gradient
@@ -155,24 +226,40 @@ body.character-profile-page
   background: var(--char-page-bg-gradient);
 }
 
+
+/* Particle container */
+
 .character-particles {
   position: absolute;
   inset: 0;
   overflow: hidden;
 }
 
-/* Individual particles */
+
+/* ---------------------------------------------------------
+   Individual particles
+--------------------------------------------------------- */
 
 .character-particle {
   position: absolute;
   bottom: 0;
   left: var(--particle-left);
+
   width: var(--particle-width);
   height: var(--particle-height);
 
-  background: var(--particle-color, var(--char-particle-color));
+  background-color:
+    var(--particle-color, var(--char-particle-color));
+
+  background:
+    var(--particle-color, var(--char-particle-color));
+
   opacity: var(--char-particle-opacity);
-  filter: blur(var(--particle-blur, var(--char-particle-blur)));
+
+  filter:
+    blur(
+      var(--particle-blur, var(--char-particle-blur))
+    );
 
   transform:
     translateY(100%)
@@ -185,6 +272,11 @@ body.character-profile-page
     var(--particle-delay)
     infinite;
 }
+
+
+/* ---------------------------------------------------------
+   Particle shapes
+--------------------------------------------------------- */
 
 .character-particle[data-shape="square"] {
   border-radius: 0;
@@ -210,37 +302,41 @@ body.character-profile-page
 
 .character-particle[data-shape="triangle"] {
   border-radius: 0;
+
   clip-path: polygon(
-    50% 0%, 
-    0% 100%, 
+    50% 0%,
+    0% 100%,
     100% 100%
   );
 }
 
 .character-particle[data-shape="sparkle"] {
   border-radius: 0;
+
   clip-path: polygon(
-    50% 0%, 
-    84% 50%, 
-    50% 100%, 
+    50% 0%,
+    84% 50%,
+    50% 100%,
     16% 50%
   );
 }
 
 .character-particle[data-shape="hexagon"] {
   border-radius: 0;
+
   clip-path: polygon(
-    50% 0%, 
-    96% 25%, 
-    96% 75%, 
-    50% 100%, 
-    4% 75%, 
+    50% 0%,
+    96% 25%,
+    96% 75%,
+    50% 100%,
+    4% 75%,
     4% 25%
   );
 }
 
 .character-particle[data-shape="star"] {
   border-radius: 0;
+
   clip-path: polygon(
     50% 0%,
     61% 35%,
@@ -257,88 +353,96 @@ body.character-profile-page
 
 .character-particle[data-shape="cross"] {
   border-radius: 0;
+
   clip-path: polygon(
-    20% 0%, 
-    0% 20%, 
-    30% 50%, 
-    0% 80%, 
-    20% 100%, 
-    50% 70%, 
-    80% 100%, 
-    100% 80%, 
-    70% 50%, 
-    100% 20%, 
-    80% 0%, 
+    20% 0%,
+    0% 20%,
+    30% 50%,
+    0% 80%,
+    20% 100%,
+    50% 70%,
+    80% 100%,
+    100% 80%,
+    70% 50%,
+    100% 20%,
+    80% 0%,
     50% 30%
   );
 }
 
 .character-particle[data-shape="heart"] {
   border-radius: 0;
+
   clip-path: polygon(
-    50% 28%, 
-    70% 5%, 
-    96% 18%, 
-    100% 49%, 
-    80% 71%, 
-    50% 95%, 
-    20% 71%, 
-    0% 49%, 
-    4% 18%, 
+    50% 28%,
+    70% 5%,
+    96% 18%,
+    100% 49%,
+    80% 71%,
+    50% 95%,
+    20% 71%,
+    0% 49%,
+    4% 18%,
     30% 5%
   );
 }
 
 .character-particle[data-shape="frame"] {
   border-radius: 0;
+
   clip-path: polygon(
-    0% 0%, 
-    0% 100%, 
-    25% 100%, 
-    25% 25%, 
-    75% 25%, 
-    75% 75%, 
-    25% 75%, 
-    25% 100%, 
-    100% 100%, 
+    0% 0%,
+    0% 100%,
+    25% 100%,
+    25% 25%,
+    75% 25%,
+    75% 75%,
+    25% 75%,
+    25% 100%,
+    100% 100%,
     100% 0%
   );
 }
 
 .character-particle[data-shape="leaf"] {
   border-radius: 0;
+
   clip-path: polygon(
-    50% 4%, 
-    71% 38%, 
-    76% 61%, 
-    68% 75%, 
-    52% 82%, 
-    53% 96%, 
-    47% 96%, 
-    48% 82%, 
-    32% 75%, 
-    24% 61%, 
+    50% 4%,
+    71% 38%,
+    76% 61%,
+    68% 75%,
+    52% 82%,
+    53% 96%,
+    47% 96%,
+    48% 82%,
+    32% 75%,
+    24% 61%,
     30% 38%
   );
 }
 
 .character-particle[data-shape="bird"] {
   border-radius: 0;
+
   clip-path: polygon(
-    39% 11%, 
-    41% 38%, 
-    96% 95%, 
-    56% 87%, 
-    47% 96%, 
-    21% 78%, 
-    13% 51%, 
-    24% 18%, 
-    5% 18%, 
+    39% 11%,
+    41% 38%,
+    96% 95%,
+    56% 87%,
+    47% 96%,
+    21% 78%,
+    13% 51%,
+    24% 18%,
+    5% 18%,
     24% 6%
   );
 }
 
 
+/* ---------------------------------------------------------
+   Particle animation
+--------------------------------------------------------- */
 
 @keyframes character-particle-float {
   from {
@@ -354,7 +458,19 @@ body.character-profile-page
   }
 }
 
-/* Page content stays above background + particles */
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .character-particle {
+    animation-play-state: paused;
+  }
+}
+
+
+/* =========================================================
+   5. CHARACTER PAGE STACKING
+========================================================= */
 
 .character-profile-page > #site-header,
 .character-profile-page > .page-container {
@@ -362,7 +478,10 @@ body.character-profile-page
   z-index: 1;
 }
 
-/* Gradient text */
+
+/* =========================================================
+   6. CHARACTER TEXT GRADIENT
+========================================================= */
 
 html.has-text-gradient
 body.character-profile-page
@@ -372,7 +491,6 @@ body.character-profile-page
   background-size: 100% 100%;
   background-position: center;
 
-
   background-clip: text;
   -webkit-background-clip: text;
 
@@ -381,34 +499,24 @@ body.character-profile-page
 }
 
 
+/* =========================================================
+   7. CHARACTER PAGE BODY BACKGROUND
+========================================================= */
 
-/* Gradient page background */
 
-body {
+body.character-profile-page {
   background: var(--char-page-bg);
 }
 
-html.has-page-bg-gradient body {
+html.has-page-bg-gradient
+body.character-profile-page {
   background: var(--char-page-bg-gradient);
 }
 
 
-/* Multi-colour particles */
-
-.character-particle {
-  background: var(--particle-color, var(--char-particle-color));
-  background-color: var(--particle-color, var(--char-particle-color));
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .character-particle {
-    animation-play-state: paused;
-  }
-}
-
-/* =====================================================
-   SITE HEADER
-===================================================== */
+/* =========================================================
+   8. SITE HEADER
+========================================================= */
 
 .site-header {
   width: 100%;
@@ -417,35 +525,59 @@ html.has-page-bg-gradient body {
 
 .site-banner {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: var(--space-3) var(--space-6);
+  justify-content: space-between;
+
+  padding:
+    var(--space-3)
+    var(--space-6);
 }
 
 .site-logo {
   display: flex;
   align-items: center;
-  font-family: var(--font-display);
-  color: var(--color-light);
-  font-size: var(--font-size-lg);
+
   gap: var(--space-2);
+
+  font-family: var(--font-display);
+  font-size: var(--font-size-lg);
+  color: var(--color-light);
 }
 
 .site-logo-img {
-  height: 32px;
   width: auto;
+  height: 32px;
 }
 
 #header-page-title {
-  font-size: var(--font-size-lg);
-  margin-left: var(--space-3);
-  color: var(--color-light);
   display: inline-block;
+
+  margin-left: var(--space-3);
+
+  font-size: var(--font-size-lg);
+  color: var(--color-light);
 }
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
+
+/* Character header */
+
+body.character-profile-page .site-header {
+  background: var(--char-bg-1);
+}
+
+body.character-profile-page .site-logo,
+body.character-profile-page .site-logo-text {
+  color: var(--char-primary);
+}
+
+body.character-profile-page #header-page-title {
+  color: var(--char-primary);
+}
+
+
+/* =========================================================
+   9. NAVIGATION
+========================================================= */
 
 .site-nav {
   display: flex;
@@ -454,45 +586,56 @@ html.has-page-bg-gradient body {
 }
 
 .site-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
   color: var(--color-light);
-  text-decoration: none;
-  font-size: var(--font-size-base);
-
-  padding: var(--space-2) var(--space-3);
-
   background: var(--color-primary-dark);
+
   border: 1px solid transparent;
   border-radius: var(--border-radius-sm);
 
-  cursor: pointer;
   font-family: inherit;
+  font-size: var(--font-size-base);
+
+  text-decoration: none;
+  cursor: pointer;
 
   transition:
     background var(--transition-fast),
     border-color var(--transition-fast),
     transform var(--transition-fast);
-
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
 }
 
-/* Icon rules (global) */
+
+/* Navigation icons */
+
 .nav-icon {
-  width: 1.1em;
-  height: 1.1em;
-  fill: currentColor;
   display: inline-block;
   flex-shrink: 0;
+
+  width: 1.1em;
+  height: 1.1em;
+
+  fill: currentColor;
 }
 
 .svg-sprite {
   position: absolute;
+
   width: 0;
   height: 0;
+
   overflow: hidden;
 }
-/* end Icon rules (global) */
+
+
+/* Navigation states */
 
 .site-nav a:hover {
   background: var(--color-primary-darker);
@@ -508,43 +651,22 @@ html.has-page-bg-gradient body {
   outline-offset: 2px;
 }
 
-/* =====================================================
-   PAGE TITLE
-===================================================== */
 
-#page-title {
-  font-family: var(--font-display);
-  font-size: var(--font-size-xl);
-  margin-bottom: var(--space-6);
-}
-
-/* =====================================================
-   CHARACTER PAGE HEADER
-===================================================== */
-
-body.character-profile-page .site-header {
-  background: var(--char-bg-1);
-}
-
-body.character-profile-page .site-logo {
-  color: var(--char-primary);
-}
-
-body.character-profile-page .site-logo-text {
-  color: var(--char-primary);
-}
+/* Character navigation */
 
 body.character-profile-page .site-nav a {
-  background: var(--char-bg-2);
   color: var(--char-secondary);
+  background: var(--char-bg-2);
 }
 
 body.character-profile-page .site-nav a:hover {
-  background-color: color-mix(
-    in srgb,
-    var(--char-bg-2) 80%,
-    black 20%
-  );
+  background-color:
+    color-mix(
+      in srgb,
+      var(--char-bg-2) 80%,
+      black 20%
+    );
+
   color: var(--char-secondary);
 }
 
@@ -552,58 +674,92 @@ body.character-profile-page .site-nav a:focus-visible {
   outline-color: var(--char-secondary);
 }
 
-/* =====================================================
-   CHARACTER PAGE LAYOUT
-===================================================== */
+
+/* =========================================================
+   10. PAGE TITLE
+========================================================= */
+
+#page-title {
+  margin-bottom: var(--space-6);
+
+  font-family: var(--font-display);
+  font-size: var(--font-size-xl);
+}
+
+
+/* =========================================================
+   11. CHARACTER LIST PAGE LAYOUT
+========================================================= */
 
 .characters-layout {
   display: flex;
   align-items: flex-start;
+
   gap: var(--space-20);
-  padding: clamp(var(--space-10), 5vw, var(--space-20));
+
   max-width: 1600px;
   margin: auto;
+
+  padding:
+    clamp(
+      var(--space-10),
+      5vw,
+      var(--space-20)
+    );
 }
 
-/* =====================================================
-   CHARACTER SIDEBAR
-===================================================== */
+
+/* =========================================================
+   12. CHARACTER SIDEBAR
+========================================================= */
 
 .characters-sidebar {
-  width: var(--sidebar-width);
-  background: var(--color-primary);
-  padding: var(--space-3);
-  border-radius: var(--border-radius-lg);
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
   flex-shrink: 0;
+
+  width: var(--sidebar-width);
+
+  gap: var(--space-5);
+
+  padding: var(--space-3);
+
+  background: var(--color-primary);
+  border-radius: var(--border-radius-lg);
 }
 
-/* sidebar sections */
 .sidebar-section {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
 }
 
-/* sidebar labels */
 .sidebar-label {
   font-size: var(--font-size-base);
   color: var(--color-white);
 }
 
-/* sidebar inputs */
+
+/* Sidebar controls */
+
 .characters-sidebar input:not([type="checkbox"]),
 .characters-sidebar select {
+  box-sizing: border-box;
+
   width: 100%;
-  padding: var(--space-2) var(--space-3);
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
   border: none;
-  background: var(--color-input-bg);
   border-radius: var(--border-radius-md);
+
+  background: var(--color-input-bg);
+
   font-family: inherit;
   font-size: var(--font-size-base);
-  box-sizing: border-box;
+
   transition: background var(--transition-fast);
 }
 
@@ -613,16 +769,22 @@ body.character-profile-page .site-nav a:focus-visible {
   outline-offset: 2px;
 }
 
-/* sidebar button */
+
+/* Sidebar button */
+
 .sidebar-button {
   padding: var(--space-2);
+
   border: none;
+  border-radius: var(--border-radius-md);
+
   background: var(--color-primary-dark);
   color: var(--color-white);
+
   font-family: inherit;
   font-size: var(--font-size-base);
+
   cursor: pointer;
-  border-radius: var(--border-radius-md);
 }
 
 .sidebar-button:hover {
@@ -634,9 +796,10 @@ body.character-profile-page .site-nav a:focus-visible {
   outline-offset: 2px;
 }
 
-/* =====================================================
-   CHARACTER GRID
-===================================================== */
+
+/* =========================================================
+   13. CHARACTER GRID
+========================================================= */
 
 .characters-board {
   flex: 1;
@@ -644,64 +807,113 @@ body.character-profile-page .site-nav a:focus-visible {
 
 #character-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, var(--card-width));
+
+  grid-template-columns:
+    repeat(auto-fill, var(--card-width));
+
   gap: var(--card-gap);
+
   width: 100%;
 }
 
-/* =====================================================
-   POLAROID CARDS
-===================================================== */
+
+/* =========================================================
+   14. POLAROID CHARACTER CARDS
+========================================================= */
 
 .char-card {
-  width: var(--card-width);
+  position: relative;
+
   box-sizing: border-box;
-  background: var(--color-white);
+  width: var(--card-width);
+
   padding: var(--space-2);
+
+  background: var(--color-white);
+  color: var(--color-text-dark);
+
   text-align: center;
   text-decoration: none;
-  color: var(--color-text-dark);
-  position: relative;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
-  transition: transform var(--transition-fast);
+
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform var(--transition-fast);
 }
 
-/* Random corkboard tilt + vertical offset for messy look */
+
+/* Corkboard randomness */
+
 .char-card:nth-child(1n) {
-  transform: rotate(-2deg) translateY(1px);
-}
-.char-card:nth-child(2n) {
-  transform: rotate(3deg) translateY(-1px);
-}
-.char-card:nth-child(3n) {
-  transform: rotate(-1deg) translateY(2px);
-}
-.char-card:nth-child(4n) {
-  transform: rotate(2deg) translateY(-2px);
-}
-.char-card:nth-child(5n) {
-  transform: rotate(-4deg) translateY(3px);
-}
-.char-card:nth-child(6n) {
-  transform: rotate(1deg) translateY(-3px);
-}
-.char-card:nth-child(7n) {
-  transform: rotate(4deg) translateY(0px);
-}
-.char-card:nth-child(8n) {
-  transform: rotate(-3deg) translateY(2px);
-}
-.char-card:nth-child(9n) {
-  transform: rotate(2deg) translateY(-1px);
-}
-.char-card:nth-child(10n) {
-  transform: rotate(-1deg) translateY(1px);
+  transform:
+    rotate(-2deg)
+    translateY(1px);
 }
 
-/* hover */
+.char-card:nth-child(2n) {
+  transform:
+    rotate(3deg)
+    translateY(-1px);
+}
+
+.char-card:nth-child(3n) {
+  transform:
+    rotate(-1deg)
+    translateY(2px);
+}
+
+.char-card:nth-child(4n) {
+  transform:
+    rotate(2deg)
+    translateY(-2px);
+}
+
+.char-card:nth-child(5n) {
+  transform:
+    rotate(-4deg)
+    translateY(3px);
+}
+
+.char-card:nth-child(6n) {
+  transform:
+    rotate(1deg)
+    translateY(-3px);
+}
+
+.char-card:nth-child(7n) {
+  transform:
+    rotate(4deg)
+    translateY(0);
+}
+
+.char-card:nth-child(8n) {
+  transform:
+    rotate(-3deg)
+    translateY(2px);
+}
+
+.char-card:nth-child(9n) {
+  transform:
+    rotate(2deg)
+    translateY(-1px);
+}
+
+.char-card:nth-child(10n) {
+  transform:
+    rotate(-1deg)
+    translateY(1px);
+}
+
+
+/* Card interaction */
+
 .char-card:hover {
-  transform: rotate(0deg) scale(1.08);
   z-index: 10;
+
+  transform:
+    rotate(0deg)
+    scale(1.08);
 }
 
 .char-card:focus-visible {
@@ -709,63 +921,88 @@ body.character-profile-page .site-nav a:focus-visible {
   outline-offset: 2px;
 }
 
-/* push pin */
+
+/* Push pin */
+
 .char-card::before {
   content: "";
-  width: 16px;
-  height: 16px;
-  background: var(--color-pin);
-  border-radius: 50%;
+
   position: absolute;
   top: -8px;
   left: 50%;
+
+  width: 16px;
+  height: 16px;
+
   transform: translateX(-50%);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+
+  background: var(--color-pin);
+  border-radius: 50%;
+
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.35);
 }
 
-/* card image */
+
+/* Card image */
+
 .char-card img {
   width: 100%;
+
   aspect-ratio: 1 / 1;
+
   object-fit: cover;
+
   background: black;
 }
 
-/* name */
+
+/* Card name */
+
 .card-name {
   margin: 0;
   padding: var(--space-2);
+
   font-size: var(--font-size-md);
 }
 
-/* =====================================================
-   TAG FILTERS
-===================================================== */
+
+/* =========================================================
+   15. TAG FILTERS
+========================================================= */
 
 .tag-filters {
   margin-top: var(--space-2);
+
   font-size: var(--font-size-base);
 }
 
-/* category accordion */
 .tag-category {
+  overflow: hidden;
+
+  margin-bottom: var(--space-2);
+
   background: var(--color-accent-light);
   border-radius: var(--border-radius-lg);
-  overflow: hidden;
-  margin-bottom: var(--space-2);
 }
 
-/* category header */
 .tag-category summary {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  cursor: pointer;
-  padding: var(--space-2) var(--space-3);
+  justify-content: space-between;
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
   background: var(--color-accent);
   color: var(--color-white);
+
+  cursor: pointer;
   list-style: none;
-  transition: background var(--transition-fast);
+
+  transition:
+    background var(--transition-fast);
 }
 
 .tag-category summary:hover {
@@ -777,91 +1014,121 @@ body.character-profile-page .site-nav a:focus-visible {
   outline-offset: -2px;
 }
 
-/* remove browser arrow */
 .tag-category summary::-webkit-details-marker {
   display: none;
 }
 
-/* arrow */
 .tag-category summary::after {
   content: "▾";
+
   font-size: 0.8rem;
-  transition: transform var(--transition-fast);
+
+  transition:
+    transform var(--transition-fast);
 }
 
 .tag-category[open] summary::after {
   transform: rotate(180deg);
 }
 
-/* tag list container */
+
+/* Tag list */
+
 .tag-list {
-  background: var(--color-white);
-  padding: var(--space-2) var(--space-3);
   display: flex;
   flex-direction: column;
+
   gap: var(--space-1);
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  background: var(--color-white);
+
   text-align: left;
 }
 
-/* individual tag row */
 .tag-option {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
   gap: var(--space-2);
+
+  padding:
+    var(--space-1)
+    var(--space-2);
+
+  border-radius: var(--border-radius-md);
+
   font-size: var(--font-size-base);
+
   cursor: pointer;
   text-align: left;
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--border-radius-md);
-  transition: background var(--transition-fast);
+
+  transition:
+    background var(--transition-fast);
 }
 
-.tag-option:hover {
-  background: var(--color-accent-light);
-}
-
+.tag-option:hover,
 .tag-option:focus-within {
   background: var(--color-accent-light);
 }
 
-/* checkbox */
 .tag-option input[type="checkbox"] {
-  margin: 0;
   flex: 0 0 auto;
+
+  margin: 0;
+
   accent-color: var(--color-primary-dark);
+
   cursor: pointer;
 }
 
-/* =====================================================
-   TAG DISPLAY
-===================================================== */
+
+/* =========================================================
+   16. TAG DISPLAY
+========================================================= */
 
 .card-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-1);
   justify-content: center;
+
+  gap: var(--space-1);
+
   margin-top: var(--space-1);
 }
 
 .tag {
+  padding:
+    var(--space-1)
+    var(--space-1);
+
   background: #fdfcf6;
-  border: 1px solid var(--color-border);
+
+  border:
+    1px solid
+    var(--color-border);
+
   border-radius: var(--border-radius-full);
-  padding: var(--space-1) var(--space-1);
+
   font-size: var(--font-size-xs);
 }
 
-/* =====================================================
-   PROFILE TAG GROUPS
-===================================================== */
+
+/* =========================================================
+   17. PROFILE TAG GROUPS
+========================================================= */
 
 .tag-group {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+
   gap: var(--space-1);
+
   margin-top: var(--space-1);
 }
 
@@ -873,18 +1140,21 @@ body.character-profile-page .site-nav a:focus-visible {
 .tag-group-list {
   display: flex;
   flex-wrap: wrap;
+
   gap: var(--space-1);
 }
 
 .profile-tags {
   display: flex;
   flex-direction: column;
+
   gap: var(--space-1);
 }
 
-/* =====================================================
-   MISC
-===================================================== */
+
+/* =========================================================
+   18. MISC
+========================================================= */
 
 .no-results {
   color: var(--color-text-muted);
@@ -892,105 +1162,151 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 .tag-placeholder {
-  color: var(--color-text-muted-light);
-  font-style: italic;
-  font-size: var(--font-size-sm);
   padding: var(--space-1);
+
+  color: var(--color-text-muted-light);
+
+  font-size: var(--font-size-sm);
+  font-style: italic;
 }
 
-/* =====================================================
-   CHARACTER PROFILE
-===================================================== */
+
+/* =========================================================
+   19. CHARACTER PROFILE CONTAINER
+========================================================= */
 
 .page-container {
   max-width: 980px;
+
   margin: 0 auto;
-  padding: clamp(var(--space-10), 5vw, var(--space-12));
+
+  padding:
+    clamp(
+      var(--space-10),
+      5vw,
+      var(--space-12)
+    );
 }
+
+
+/* =========================================================
+   20. PROFILE NAVIGATION
+========================================================= */
 
 .profile-navigation {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+
   width: 100%;
+
   margin-bottom: var(--space-4);
 }
 
 .profile-navigation a {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  color: var(--char-primary);
-  text-decoration: none;
-}
 
-.profile-navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+  gap: var(--space-2);
+
+  color: var(--char-primary);
+
+  text-decoration: none;
 }
 
 .profile-navigation #character-navigation {
   color: var(--char-primary);
 }
 
-/* =====================================================
-   CHARACTER PROFILE CARD
-===================================================== */
+
+/* =========================================================
+   21. MAIN CHARACTER PROFILE CARD
+========================================================= */
 
 .character-profile-card {
   display: grid;
+
   grid-template-columns: 1fr 2fr;
+
   gap: 0;
+
   overflow: hidden;
+
   margin-bottom: var(--space-12);
 }
 
+
+/* ---------------------------------------------------------
+   Left panel
+--------------------------------------------------------- */
+
 .profile-card-left {
-  background: var(--char-bg-1);
-  padding: var(--space-6);
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  padding: var(--space-6);
+
+  background: var(--char-bg-1);
+
   text-align: center;
 }
+
+
+/* Avatar */
 
 .profile-avatar {
   width: 120px;
   height: 120px;
-  border-radius: 50%;
+
+  margin-bottom: var(--space-5);
+
   overflow: hidden;
+
+  border-radius: 50%;
+
   background-size: cover;
   background-position: center;
-  margin-bottom: var(--space-5);
 }
+
+
+/* Name */
 
 .profile-name {
-  font-size: var(--font-size-lg);
-  margin: 0 0 var(--space-5) 0;
+  margin: 0 0 var(--space-5);
+
   color: var(--char-primary);
+
+  font-size: var(--font-size-lg);
 }
 
+
+/* Information */
+
 .profile-info-section {
-  width: 100%;
-  font-size: var(--font-size-sm);
   display: flex;
   flex-direction: column;
+
+  width: 100%;
+
   gap: 0;
+
+  font-size: var(--font-size-sm);
 }
 
 .info-row {
   display: flex;
   justify-content: space-between;
+
   width: 100%;
+
   padding: var(--space-2) 0;
+
   text-align: left;
 }
 
-/* =====================================================
-   LEFT BOX TEXT
-===================================================== */
+
+/* Left-panel text */
 
 .profile-card-left .info-label,
 .profile-card-left .info-value {
@@ -998,32 +1314,23 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 .profile-card-left .info-value {
-  text-align: right;
-  word-break: break-word;
   max-width: 50%;
+
+  text-align: right;
+
+  word-break: break-word;
 }
 
 
-/* =====================================================
-   DIVIDERS
-===================================================== */
-
-.info-divider {
-  border: none;
-  border-top: 1px solid var(--char-accent);
-  margin: 0;
-  padding: 0;
-}
-
-
-/* =====================================================
-   RIGHT BOX
-===================================================== */
+/* ---------------------------------------------------------
+   Right panel
+--------------------------------------------------------- */
 
 .profile-card-right {
-  background: var(--char-bg-2);
   display: flex;
   flex-direction: column;
+
+  background: var(--char-bg-2);
 }
 
 .profile-card-right .info-label,
@@ -1032,32 +1339,53 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 .profile-card-right .info-value {
-  text-align: right;
-  word-break: break-word;
   max-width: 50%;
+
+  text-align: right;
+
+  word-break: break-word;
 }
+
+
+/* Banner */
 
 .profile-banner {
   height: 200px;
+
   background-size: cover;
   background-position: center;
 }
 
+
+/* Content */
+
 .profile-content {
-  padding: var(--space-6);
-  font-size: var(--font-size-sm);
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+
+  padding: var(--space-6);
+
+  color: var(--char-secondary);
+
+  font-size: var(--font-size-sm);
 }
 
+
+/* Traits */
+
 .profile-traits {
-  list-style: disc;
-  padding-left: var(--space-5);
-  margin: var(--space-5) 0;
   display: flex;
   flex-direction: column;
+
   gap: var(--space-1);
+
+  margin: var(--space-5) 0;
+
+  padding-left: var(--space-5);
+
+  list-style: disc;
+
   font-size: var(--font-size-sm);
   line-height: 1.2;
 }
@@ -1066,34 +1394,63 @@ body.character-profile-page .site-nav a:focus-visible {
   color: var(--char-secondary);
 }
 
-/* =====================================================
-   CHARACTER DETAILS
-===================================================== */
+
+/* =========================================================
+   22. DIVIDERS
+========================================================= */
+
+.info-divider {
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  border-top:
+    1px solid
+    var(--char-accent);
+}
+
+
+/* =========================================================
+   23. CHARACTER DETAILS
+========================================================= */
 
 .character-details {
   display: flex;
   flex-direction: column;
+
   gap: var(--space-4);
+
+  color: var(--char-secondary);
 }
 
 .character-details h2 {
   margin-top: var(--space-8);
   margin-bottom: var(--space-3);
-  font-size: var(--font-size-lg);
+
   color: var(--char-primary);
+
+  font-size: var(--font-size-lg);
+
   letter-spacing: 0.02em;
 }
 
 .character-details p,
 .character-details ul {
-  margin: 0 0 var(--space-3) 0;
+  margin: 0 0 var(--space-3);
 }
 
 .character-details p {
-  line-height: 1.8;
   display: grid;
-  grid-template-columns: max-content minmax(0, 1fr);
+
+  grid-template-columns:
+    max-content
+    minmax(0, 1fr);
+
   gap: var(--space-4);
+
+  color: var(--char-secondary);
+
+  line-height: 1.8;
 }
 
 .character-details p strong {
@@ -1102,105 +1459,166 @@ body.character-profile-page .site-nav a:focus-visible {
 
 .character-details ul {
   padding-left: var(--space-6);
+
+  color: var(--char-secondary);
+
   list-style: disc;
 }
 
 .character-details ul li {
   margin-bottom: var(--space-2);
+
+  color: var(--char-secondary);
 }
 
-/* =====================================================
-   CHARACTER DETAIL BOXES
-===================================================== */
+
+/* =========================================================
+   24. CHARACTER DETAIL BOXES
+========================================================= */
 
 .character-detail-card {
   width: 100%;
+
   margin-bottom: var(--space-12);
+
   overflow: hidden;
 }
 
-/* =====================================================
-   50/50 DETAIL BOX
-===================================================== */
+
+/* =========================================================
+   25. 50 / 50 DETAIL BOX
+========================================================= */
 
 .character-detail-split {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
 }
 
+
+/* =========================================================
+   26. DESIGN DETAILS LAYOUTS
+========================================================= */
+
 .design-details-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
-  gap: var(--space-6);
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 400px);
+
   align-items: stretch;
+
+  gap: var(--space-6);
+
   margin-bottom: var(--space-12);
 }
 
 .design-details-layout-pet {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 500px);
-  gap: var(--space-6);
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 500px);
+
   align-items: stretch;
+
+  gap: var(--space-6);
+
   margin-bottom: var(--space-12);
 }
+
+
+/* Left side */
 
 .design-details-left {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+
   min-height: 0;
+
+  gap: var(--space-6);
 }
+
+
+/* Information box */
 
 .design-info-box {
-  margin-bottom: 0;
   flex-shrink: 0;
+
+  margin-bottom: 0;
 }
 
+
+/* Notes box */
+
 .design-notes-box {
-  margin-bottom: 0;
-  flex: 1;
-  min-height: 0;
   display: flex;
   flex-direction: column;
+
+  flex: 1;
+
+  min-height: 0;
+
+  margin-bottom: 0;
 }
 
 .design-notes-box .detail-banner-content {
   flex: 1;
+
   min-height: 0;
+
   overflow-y: auto;
 }
 
+
+/* Design image */
+
 .design-image-box {
   width: 100%;
+
+  min-height: 0;
+
   aspect-ratio: 2 / 3;
+
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  min-height: 0;
 }
 
 .design-image-box-pet {
   width: 100%;
+
+  min-height: 0;
+
   aspect-ratio: 1 / 1;
+
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  min-height: 0;
 }
 
-/* Left side */
+
+/* =========================================================
+   27. DETAIL SPLIT — LEFT
+========================================================= */
 
 .detail-split-left {
-  background: var(--char-bg-1);
   padding: var(--space-6);
+
+  background: var(--char-bg-1);
+
   color: var(--char-primary);
+
   font-size: var(--font-size-sm);
 }
 
 .detail-split-left h2 {
   margin-top: 0;
   margin-bottom: var(--space-4);
+
   color: var(--char-primary);
+
   font-size: var(--font-size-lg);
 }
 
@@ -1210,25 +1628,34 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 .detail-split-left .info-value {
-  text-align: right;
-  word-break: break-word;
   max-width: 50%;
+
+  text-align: right;
+
+  word-break: break-word;
 }
 
 
-/* Right side */
+/* =========================================================
+   28. DETAIL SPLIT — RIGHT
+========================================================= */
 
 .detail-split-right {
-  background: var(--char-bg-2);
   padding: var(--space-6);
+
+  background: var(--char-bg-2);
+
   color: var(--char-secondary);
+
   font-size: var(--font-size-sm);
 }
 
 .detail-split-right h2 {
   margin-top: 0;
   margin-bottom: var(--space-4);
+
   color: var(--char-secondary);
+
   font-size: var(--font-size-lg);
 }
 
@@ -1236,18 +1663,24 @@ body.character-profile-page .site-nav a:focus-visible {
   margin: 0;
 }
 
-/* Lists inside the split detail panels */
+
+/* Split-panel lists */
+
 .detail-split-left .profile-traits,
 .detail-split-right .profile-traits {
   display: block;
-  list-style-type: disc;
-  padding-left: var(--space-6);
+
   margin: var(--space-4) 0;
+
+  padding-left: var(--space-6);
+
+  list-style-type: disc;
 }
 
 .detail-split-left .profile-traits li,
 .detail-split-right .profile-traits li {
   display: list-item;
+
   margin-bottom: var(--space-2);
 }
 
@@ -1260,9 +1693,9 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 
-/* =====================================================
-   BANNER DETAIL BOX
-===================================================== */
+/* =========================================================
+   29. BANNER DETAIL BOX
+========================================================= */
 
 .character-detail-banner {
   display: flex;
@@ -1270,81 +1703,105 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 
-/* Top banner */
+/* Header */
 
 .detail-banner-header {
+  padding:
+    var(--space-5)
+    var(--space-6);
+
   background: var(--char-bg-1);
   color: var(--char-primary);
-  padding: var(--space-5) var(--space-6);
 }
 
 .detail-banner-header h2 {
   margin: 0;
+
   color: var(--char-primary);
+
   font-size: var(--font-size-lg);
 }
 
 
-/* Main content */
+/* Content */
 
 .detail-banner-content {
+  padding: var(--space-6);
+
   background: var(--char-bg-2);
   color: var(--char-secondary);
-  padding: var(--space-6);
+
   font-size: var(--font-size-sm);
 }
 
 .detail-banner-content p {
-  margin: 0 0 var(--space-4) 0;
+  margin: 0 0 var(--space-4);
+
+  color: var(--char-secondary);
+
   line-height: 1.8;
 }
 
 .detail-banner-content ul {
   margin: 0;
+
   padding-left: var(--space-6);
+
+  color: var(--char-secondary);
 }
 
 .detail-banner-content li {
   margin-bottom: var(--space-2);
+
+  color: var(--char-secondary);
 }
 
-/* =====================================================
-   DETAIL SWITCHER
-===================================================== */
+
+/* =========================================================
+   30. DETAIL SWITCHER
+========================================================= */
 
 .character-detail-switcher {
   width: 100%;
 }
 
 
-/* =====================================================
-   SWITCHER TABS
-===================================================== */
+/* Tabs */
 
 .detail-switcher-tabs {
   display: flex;
-  gap: var(--space-2);
-  margin-bottom: var(--space-4);
   flex-wrap: wrap;
+
+  gap: var(--space-2);
+
+  margin-bottom: var(--space-4);
 }
 
 .detail-switcher-tab {
-  border: none;
-  padding: var(--space-2) var(--space-3);
-  background: var(--char-bg-1);
-  color: var(--char-primary);
-  font-family: inherit;
-  font-size: var(--font-size-base);
-  cursor: pointer;
-  border-radius: var(--border-radius-md);
   display: inline-flex;
   align-items: center;
+
   gap: var(--space-2);
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  border: none;
+  border-radius: var(--border-radius-md);
+
+  background: var(--char-bg-1);
+  color: var(--char-primary);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+
+  cursor: pointer;
+
   transition:
     background var(--transition-fast),
     color var(--transition-fast);
 }
-
 
 .detail-switcher-tab:hover {
   background: var(--char-bg-2);
@@ -1361,9 +1818,7 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 
-/* =====================================================
-   SWITCHER PANELS
-===================================================== */
+/* Panels */
 
 .detail-switcher-panel {
   margin-bottom: var(--space-12);
@@ -1373,24 +1828,31 @@ body.character-profile-page .site-nav a:focus-visible {
   display: none;
 }
 
-/* =====================================================
-   DECOR IMAGE
-===================================================== */
+
+/* =========================================================
+   31. DECORATIVE IMAGE
+========================================================= */
 
 .decor-image-box {
   width: 100%;
+
+  min-height: 75px;
+
   margin-bottom: var(--space-12);
+
   aspect-ratio: 10 / 1;
+
+  overflow: hidden;
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  overflow: hidden;
-  min-height: 75px;
 }
 
-/* =====================================================
-   PARTNER PROFILE
-===================================================== */
+
+/* =========================================================
+   32. PARTNER PROFILE
+========================================================= */
 
 .partner-card {
   grid-template-columns: 2fr 1fr;
@@ -1399,7 +1861,9 @@ body.character-profile-page .site-nav a:focus-visible {
 .partner-card .profile-card-right h2 {
   margin-top: 0;
   margin-bottom: var(--space-4);
+
   color: var(--char-secondary);
+
   font-size: var(--font-size-lg);
 }
 
@@ -1409,20 +1873,26 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 .partner-card .profile-card-right .info-value {
-  text-align: right;
-  word-break: break-word;
   max-width: 50%;
+
+  text-align: right;
+
+  word-break: break-word;
 }
 
 .partner-avatar-link {
   display: block;
-  text-decoration: none;
+
   color: inherit;
+
+  text-decoration: none;
 }
 
 .partner-card .partner-name {
-  margin: 0 0 var(--space-5) 0;
+  margin: 0 0 var(--space-5);
+
   color: var(--char-primary);
+
   font-size: var(--font-size-lg);
 }
 
@@ -1432,214 +1902,292 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 .partner-card .profile-card-left .info-value {
-  text-align: right;
-  word-break: break-word;
   max-width: 50%;
+
+  text-align: right;
+
+  word-break: break-word;
 }
 
 .partner-card .partner-notes {
-  margin: var(--space-5) 0 0 0;
+  margin: var(--space-5) 0 0;
+
   color: var(--char-secondary);
 }
 
-/* =====================================================
-    RELATIONSHIPS
- ===================================================== */
+
+/* =========================================================
+   33. RELATIONSHIPS
+========================================================= */
 
 .relationships-section {
   width: 100%;
+
   margin-bottom: var(--space-12);
 }
 
-/* Section heading */
+
+/* Header */
 
 .relationships-header {
+  padding:
+    var(--space-5)
+    var(--space-6);
+
   background: var(--char-bg-1);
   color: var(--char-primary);
-  padding: var(--space-5) var(--space-6);
 }
 
 .relationships-header h2 {
   margin: 0;
+
   color: var(--char-primary);
+
   font-size: var(--font-size-lg);
 }
 
-/* Relationship card grid */
+
+/* Relationship grid */
 
 .relationships-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(150px, 1fr)
+    );
+
   gap: var(--space-4);
+
   padding: var(--space-5);
+
   background: var(--char-bg-2);
 }
 
-/* Individual relationship card */
+
+/* Relationship card */
 
 .relationship-card {
-  background: var(--char-bg-1);
-  color: var(--char-primary);
-  padding: var(--space-4);
-  text-align: center;
-
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  padding: var(--space-4);
+
+  background: var(--char-bg-1);
+  color: var(--char-primary);
+
+  text-align: center;
 }
 
-/* Avatar + link */
+
+/* Avatar */
 
 .relationship-avatar-link {
   display: block;
+
   width: 120px;
   height: 120px;
+
   margin-bottom: var(--space-3);
 }
 
 .relationship-avatar {
   width: 120px;
   height: 120px;
-  border-radius: 50%;
+
   overflow: hidden;
+
+  border-radius: 50%;
+
   background-color: var(--char-bg-2);
+
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
 
 .relationship-avatar-image {
+  display: block;
+
   width: 100%;
   height: 100%;
-  display: block;
+
   object-fit: contain;
 }
 
-/* Character name */
+
+/* Name */
 
 .relationship-name {
-  margin: 0 0 var(--space-1) 0;
+  margin: 0 0 var(--space-1);
+
   color: var(--char-primary);
+
   font-family: var(--font-display);
   font-size: var(--font-size-md);
 }
+
 
 /* Relationship type */
 
 .relationship-type {
   margin: 0;
+
   color: var(--char-primary);
+
   font-size: var(--font-size-sm);
 }
 
-/* =====================================================
-PET PROFILE
-===================================================== */
+
+/* =========================================================
+   34. PET PROFILE
+========================================================= */
 
 .pets-section {
-width: 100%;
-margin-bottom: var(--space-12);
+  width: 100%;
+
+  margin-bottom: var(--space-12);
 }
 
 .pet-layout {
-display: grid;
-grid-template-columns: minmax(0, 1fr) 300px;
-gap: var(--space-6);
-align-items: stretch;
-margin-bottom: var(--space-12);
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    300px;
+
+  align-items: stretch;
+
+  gap: var(--space-6);
+
+  margin-bottom: var(--space-12);
 }
+
 
 /* Pet information card */
 
 .pet-card {
-grid-template-columns: 1fr 2fr;
-margin-bottom: 0;
-min-width: 0;
+  grid-template-columns: 1fr 2fr;
+
+  min-width: 0;
+
+  margin-bottom: 0;
 }
+
 
 /* Pet avatar link */
 
 .pet-avatar-link {
-display: block;
-text-decoration: none;
-color: inherit;
+  display: block;
+
+  color: inherit;
+
+  text-decoration: none;
 }
+
 
 /* Pet name */
 
 .pet-card .pet-name {
-margin: 0 0 var(--space-5) 0;
-color: var(--char-primary);
-font-size: var(--font-size-lg);
+  margin: 0 0 var(--space-5);
+
+  color: var(--char-primary);
+
+  font-size: var(--font-size-lg);
 }
+
 
 /* Pet information */
 
 .pet-card .profile-card-left .info-label,
 .pet-card .profile-card-left .info-value {
-color: var(--char-primary);
+  color: var(--char-primary);
 }
 
 .pet-card .profile-card-left .info-value {
-text-align: right;
-word-break: break-word;
-max-width: 50%;
+  max-width: 50%;
+
+  text-align: right;
+
+  word-break: break-word;
 }
+
 
 /* Right-side title */
 
 .pet-card .profile-card-right h2 {
-margin-top: 0;
-margin-bottom: var(--space-2);
-color: var(--char-secondary);
-font-size: var(--font-size-lg);
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+
+  color: var(--char-secondary);
+
+  font-size: var(--font-size-lg);
 }
+
 
 /* Pet notes */
 
 .pet-card .pet-notes {
-margin: var(--space-2) 0 0 0;
+  margin: var(--space-2) 0 0;
 }
 
 .pet-card .profile-card-right .pet-notes li {
-color: var(--char-secondary);
+  color: var(--char-secondary);
 }
 
-/* Pet fullbody image */
+
+/* Pet full-body image */
 
 .pet-image-box {
-width: 300px;
-height: 300px;
-background: var(--char-bg-2);
-overflow: hidden;
-display: flex;
-align-items: center;
-justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 300px;
+  height: 300px;
+
+  overflow: hidden;
+
+  background: var(--char-bg-2);
 }
 
 .pet-image-link {
-display: block;
-width: 100%;
-height: 100%;
+  display: block;
+
+  width: 100%;
+  height: 100%;
 }
 
 .pet-fullbody {
-width: 100%;
-height: 100%;
-background-size: contain;
-background-repeat: no-repeat;
-background-position: center;
+  width: 100%;
+  height: 100%;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-/* =====================================================
-   RESPONSIVE DETAIL BOXES
-===================================================== */
+
+/* =========================================================
+   35. RESPONSIVE
+========================================================= */
 
 @media (max-width: 768px) {
+
+  /* -------------------------------------------------------
+     Detail split
+  ------------------------------------------------------- */
 
   .character-detail-split {
     grid-template-columns: 1fr;
   }
+
+
+  /* -------------------------------------------------------
+     Design layout
+  ------------------------------------------------------- */
 
   .design-details-layout {
     grid-template-columns: 1fr;
@@ -1647,8 +2195,14 @@ background-position: center;
 
   .design-image-box {
     width: 100%;
+
     aspect-ratio: 2 / 3;
   }
+
+
+  /* -------------------------------------------------------
+     Detail padding
+  ------------------------------------------------------- */
 
   .detail-split-left,
   .detail-split-right,
@@ -1660,13 +2214,24 @@ background-position: center;
     padding: var(--space-4);
   }
 
+
+  /* -------------------------------------------------------
+     Profile container
+  ------------------------------------------------------- */
+
   .page-container {
     padding: var(--space-5);
   }
 
+
+  /* -------------------------------------------------------
+     Main profile card
+  ------------------------------------------------------- */
+
   .character-profile-card {
-    padding: 0;
     grid-template-columns: 1fr;
+
+    padding: 0;
   }
 
   .profile-card-left {
@@ -1677,6 +2242,11 @@ background-position: center;
     padding: var(--space-4);
   }
 
+
+  /* -------------------------------------------------------
+     Character details
+  ------------------------------------------------------- */
+
   .character-details p {
     grid-template-columns: 1fr;
   }
@@ -1685,14 +2255,25 @@ background-position: center;
     margin-top: var(--space-6);
   }
 
+
+  /* -------------------------------------------------------
+     Switcher
+  ------------------------------------------------------- */
+
   .detail-switcher-tabs {
     gap: var(--space-1);
   }
 
   .detail-switcher-tab {
     flex: 1 1 auto;
+
     text-align: center;
   }
+
+
+  /* -------------------------------------------------------
+     Pets
+  ------------------------------------------------------- */
 
   .pet-layout {
     grid-template-columns: 1fr;
@@ -1702,5 +2283,4 @@ background-position: center;
     width: 100%;
     height: 300px;
   }
-
 }
