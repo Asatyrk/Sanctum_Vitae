@@ -116,29 +116,36 @@ function applyCharacterColors(character) {
     colors.accent || primary
 
   const bg1 =
-    colors.bg_1 ||
-    colors.background_1 ||
-    "#f4efe6"
+  colors.bg_1 ||
+  colors.background_1 ||
+  "#f4efe6"
 
-  const bg2 =
-    colors.bg_2 ||
-    colors.background_2 ||
-    "#f3f1ec"
+const bg2 =
+  colors.bg_2 ||
+  colors.background_2 ||
+  "#f3f1ec"
 
-  const pageBg =
-    colors.page_bg ||
-    colors.background ||
-    bg2
+const pageBg =
+  colors.page_bg ||
+  colors.background ||
+  bg2
 
-  const backgroundGradient =
-    colors.background_gradient ||
-    "#ffffff"
+const backgroundGradient =
+  colors.background_gradient ||
+  "#ffffff"
 
-  const textGradient =
-    Array.isArray(colors.text_gradient) &&
-    colors.text_gradient.length >= 2
-      ? colors.text_gradient
-      : null
+const pageBgGradient =
+  Array.isArray(colors.page_bg_gradient) &&
+  colors.page_bg_gradient.length >= 2
+    ? colors.page_bg_gradient
+    : null
+
+const textGradient =
+  Array.isArray(colors.text_gradient) &&
+  colors.text_gradient.length >= 2
+    ? colors.text_gradient
+    : null
+
 
   const root =
     document.documentElement
@@ -182,6 +189,30 @@ function applyCharacterColors(character) {
     "--char-background-gradient",
     backgroundGradient
   )
+
+  if(pageBgGradient){
+
+  root.style.setProperty(
+    "--char-page-bg-gradient",
+    `linear-gradient(135deg, ${pageBgGradient.join(", ")})`
+  )
+
+  root.classList.add(
+    "has-page-bg-gradient"
+  )
+
+}else{
+
+  root.style.removeProperty(
+    "--char-page-bg-gradient"
+  )
+
+  root.classList.remove(
+    "has-page-bg-gradient"
+  )
+
+}
+
 
 
   // =========================================
