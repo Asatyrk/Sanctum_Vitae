@@ -209,6 +209,17 @@ function setupCharacterBackground(character){
   const characterBackground =
     character.characterBackground || {}
 
+    const colors =
+    character.colors || {}
+
+    const particleColors =
+    Array.isArray(
+       characterBackground.particle_colors
+      ) &&
+      characterBackground.particle_colors.length > 0
+        ? characterBackground.particle_colors
+        : null
+
   const count =
     Math.max(
       1,
@@ -280,10 +291,28 @@ function setupCharacterBackground(character){
       characterBackground.particle_blur ??
       0
 
+      const particleColor =
+       particleColors
+        ? particleColors[
+            Math.floor(
+            Math.random() *
+          particleColors.length
+        )
+        ]
+      : (
+          characterBackground.particle_color ||
+          colors.primary ||
+          "#b99b78"
+        )
 
     particle.style.setProperty(
       "--particle-width",
       `${size}px`
+    )
+
+    particle.style.setProperty(
+      "--particle-color",
+      particleColor
     )
 
     particle.style.setProperty(

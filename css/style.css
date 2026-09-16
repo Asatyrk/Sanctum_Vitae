@@ -1826,7 +1826,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
 
 .detail-switcher-tab {
-  background-color: var(--char-page-bg);
+  background-color: var(--char-bg-1);
 }
 
 
@@ -1850,7 +1850,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
 
 .detail-switcher-tab.active {
-  color: var(--char-primary);
+  color: var(--char-secondary);
 }
 
 
