@@ -101,10 +101,199 @@ function setOptionalField(id, value){
 
 }
 
+function setupDetailTabs() {
+
+  const tabs =
+    Array.from(
+      document.querySelectorAll(
+        ".detail-switcher-tab"
+      )
+    )
+
+  const panels =
+    Array.from(
+      document.querySelectorAll(
+        ".detail-switcher-panel"
+      )
+    )
+
+  if (
+    !tabs.length ||
+    !panels.length
+  ) {
+
+    return
+
+  }
+
+
+  function activateTab(tab) {
+
+    const targetId =
+      tab.getAttribute(
+        "aria-controls"
+      )
+
+    if (!targetId) {
+
+      return
+
+    }
+
+
+    const targetPanel =
+      document.getElementById(
+        targetId
+      )
+
+    if (!targetPanel) {
+
+      console.warn(
+        `Detail tab target not found: ${targetId}`
+      )
+
+      return
+
+    }
+
+
+    tabs.forEach(
+      currentTab => {
+
+        const active =
+          currentTab === tab
+
+        currentTab.classList.toggle(
+          "active",
+          active
+        )
+
+        currentTab.setAttribute(
+          "aria-selected",
+          active ? "true" : "false"
+        )
+
+        currentTab.setAttribute(
+          "tabindex",
+          active ? "0" : "-1"
+        )
+
+      }
+    )
+
+
+    panels.forEach(
+      panel => {
+
+        const active =
+          panel === targetPanel
+
+        panel.hidden =
+          !active
+
+        panel.setAttribute(
+          "aria-hidden",
+          active ? "false" : "true"
+        )
+
+      }
+    )
+
+  }
+
+
+  tabs.forEach(
+    tab => {
+
+      tab.addEventListener(
+        "click",
+        () => {
+
+          activateTab(
+            tab
+          )
+
+        }
+      )
+
+
+      tab.addEventListener(
+        "keydown",
+        event => {
+
+          if (
+            event.key !== "ArrowLeft" &&
+            event.key !== "ArrowRight"
+          ) {
+
+            return
+
+          }
+
+          event.preventDefault()
+
+
+          const currentIndex =
+            tabs.indexOf(
+              tab
+            )
+
+          const direction =
+            event.key === "ArrowRight"
+              ? 1
+              : -1
+
+          const nextIndex =
+            (
+              currentIndex +
+              direction +
+              tabs.length
+            ) %
+            tabs.length
+
+          const nextTab =
+            tabs[nextIndex]
+
+          activateTab(
+            nextTab
+          )
+
+          nextTab.focus()
+
+        }
+      )
+
+    }
+  )
+
+
+  // =========================================
+  // INITIAL TAB
+  // =========================================
+
+  const initialTab =
+    tabs.find(
+      tab =>
+        tab.classList.contains("active") ||
+        tab.getAttribute("aria-selected") === "true"
+    ) ||
+    tabs[0]
+
+
+  activateTab(
+    initialTab
+  )
+
+}
+
 function applyCharacterColors(character) {
 
-  const colors =
-    character?.colors || {}
+  const colors = character?.colors || {}
+  const root = document.documentElement
+
+  // =========================================
+  // FALLBACK COLOURS
+  // =========================================
 
   const primary =
     colors.primary || "#b99b78"
@@ -130,28 +319,9 @@ function applyCharacterColors(character) {
     colors.background ||
     bg2
 
-  const backgroundGradient =
-    colors.background_gradient || null
-
-  const pageBgGradient =
-    Array.isArray(colors.page_bg_gradient) &&
-    colors.page_bg_gradient.length >= 2
-      ? colors.page_bg_gradient
-      : null
-
-  const textGradient =
-    Array.isArray(colors.text_gradient) &&
-    colors.text_gradient.length >= 2
-      ? colors.text_gradient
-      : null
-
-
-  const root =
-    document.documentElement
-
 
   // =========================================
-  // BASIC CHARACTER COLOURS
+  // BASIC COLOURS
   // =========================================
 
   root.style.setProperty(
@@ -186,24 +356,31 @@ function applyCharacterColors(character) {
 
 
   // =========================================
-  // FULL BACKGROUND GRADIENT
+  // BACKGROUND GRADIENT
   // =========================================
 
-  if(backgroundGradient){
+  if (
+    typeof colors.background_gradient === "string" &&
+    colors.background_gradient.trim() !== ""
+  ) {
 
     root.style.setProperty(
       "--char-background-gradient",
-      backgroundGradient
+      colors.background_gradient
     )
 
     root.classList.add(
       "has-background-gradient"
     )
 
-  }else{
+  } else {
 
-    root.style.removeProperty(
-      "--char-background-gradient"
+    // IMPORTANT:
+    // Restore the CSS fallback instead of removing it.
+
+    root.style.setProperty(
+      "--char-background-gradient",
+      "#ffffff"
     )
 
     root.classList.remove(
@@ -214,24 +391,35 @@ function applyCharacterColors(character) {
 
 
   // =========================================
-  // PAGE BACKGROUND / BOTTOM GRADIENT
+  // PAGE BACKGROUND GRADIENT
   // =========================================
 
-  if(pageBgGradient){
+  if (
+    Array.isArray(colors.page_bg_gradient) &&
+    colors.page_bg_gradient.length >= 2
+  ) {
 
     root.style.setProperty(
       "--char-page-bg-gradient",
-      `linear-gradient(135deg, ${pageBgGradient.join(", ")})`
+      `linear-gradient(135deg, ${colors.page_bg_gradient.join(", ")})`
     )
 
     root.classList.add(
       "has-page-bg-gradient"
     )
 
-  }else{
+  } else {
 
-    root.style.removeProperty(
-      "--char-page-bg-gradient"
+    // Restore fallback
+
+    root.style.setProperty(
+      "--char-page-bg-gradient",
+      `linear-gradient(
+        to bottom,
+        ${pageBg} 0%,
+        ${pageBg} 65%,
+        #ffffff 100%
+      )`
     )
 
     root.classList.remove(
@@ -245,21 +433,27 @@ function applyCharacterColors(character) {
   // TEXT GRADIENT
   // =========================================
 
-  if(textGradient){
+  if (
+    Array.isArray(colors.text_gradient) &&
+    colors.text_gradient.length >= 2
+  ) {
 
     root.style.setProperty(
       "--char-text-gradient",
-      `linear-gradient(90deg, ${textGradient.join(", ")})`
+      `linear-gradient(90deg, ${colors.text_gradient.join(", ")})`
     )
 
     root.classList.add(
       "has-text-gradient"
     )
 
-  }else{
+  } else {
 
-    root.style.removeProperty(
-      "--char-text-gradient"
+    // Restore fallback
+
+    root.style.setProperty(
+      "--char-text-gradient",
+      `linear-gradient(90deg, ${primary}, ${secondary})`
     )
 
     root.classList.remove(
@@ -270,34 +464,35 @@ function applyCharacterColors(character) {
 
 }
 
-function applyCharacterTextGradient(){
+
+function applyCharacterTextGradient() {
 
   const root =
     document.documentElement
 
   const textElements =
     document.querySelectorAll(
-      [
-        "body.character-profile-page h1",
-        "body.character-profile-page h2",
-        "body.character-profile-page h3",
-        "body.character-profile-page h4",
-        "body.character-profile-page h5",
-        "body.character-profile-page h6",
-        "body.character-profile-page p",
-        "body.character-profile-page li",
-        "body.character-profile-page span",
-        "body.character-profile-page label",
-        "body.character-profile-page strong",
-        "body.character-profile-page em",
-        "body.character-profile-page a",
-        "body.character-profile-page button",
-        "body.character-profile-page .info-label",
-        "body.character-profile-page .info-value",
-        "body.character-profile-page .card-name",
-        "body.character-profile-page .tag",
-        "body.character-profile-page summary"
-      ].join(",")
+      `
+      body.character-profile-page h1,
+      body.character-profile-page h2,
+      body.character-profile-page h3,
+      body.character-profile-page h4,
+      body.character-profile-page h5,
+      body.character-profile-page h6,
+      body.character-profile-page p,
+      body.character-profile-page li,
+      body.character-profile-page span,
+      body.character-profile-page label,
+      body.character-profile-page strong,
+      body.character-profile-page em,
+      body.character-profile-page a,
+      body.character-profile-page button,
+      body.character-profile-page .info-label,
+      body.character-profile-page .info-value,
+      body.character-profile-page .card-name,
+      body.character-profile-page .tag,
+      body.character-profile-page summary
+      `
     )
 
 
@@ -312,11 +507,11 @@ function applyCharacterTextGradient(){
   )
 
 
-  if(
+  if (
     !root.classList.contains(
       "has-text-gradient"
     )
-  ){
+  ) {
 
     return
 
@@ -326,11 +521,11 @@ function applyCharacterTextGradient(){
   textElements.forEach(
     element => {
 
-      if(
+      if (
         element.matches(
           "input, select, textarea, option"
         )
-      ){
+      ) {
 
         return
 
@@ -344,6 +539,7 @@ function applyCharacterTextGradient(){
   )
 
 }
+
 
 function setupCharacterBackground(character) {
 
@@ -619,6 +815,8 @@ function listLinks(list, id){
 
 
 async function displayCharacter(character){
+
+  setupDetailTabs()
 
   applyCharacterColors(
     character
@@ -1478,8 +1676,6 @@ async function displayCharacter(character){
 )
 
 applyCharacterTextGradient()
-
-setupDetailTabs()
 
 }
 
@@ -2417,123 +2613,5 @@ async function setupPets(character){
 
   section.hidden =
     loadedPets === 0
-
-}
-
-
-function setupDetailTabs(){
-
-  const detailTabs =
-    document.querySelectorAll(
-      ".detail-switcher-tab"
-    )
-
-  const detailPanels =
-    document.querySelectorAll(
-      ".detail-switcher-panel"
-    )
-
-  if(!detailTabs.length){
-    return
-  }
-
-
-  function activateTab(tab){
-
-    const targetId =
-      tab.getAttribute(
-        "aria-controls"
-      )
-
-    const targetPanel =
-      document.getElementById(
-        targetId
-      )
-
-    if(!targetPanel){
-      return
-    }
-
-
-    detailTabs.forEach(
-      button => {
-
-        const active =
-          button === tab
-
-        button.classList.toggle(
-          "active",
-          active
-        )
-
-        button.setAttribute(
-          "aria-selected",
-          String(active)
-        )
-
-      }
-    )
-
-
-    detailPanels.forEach(
-      panel => {
-
-        panel.hidden =
-          panel !== targetPanel
-
-      }
-    )
-
-  }
-
-
-  detailTabs.forEach(
-    tab => {
-
-      tab.addEventListener(
-        "click",
-        () => {
-
-          activateTab(
-            tab
-          )
-
-        }
-      )
-
-    }
-  )
-
-
-  // =========================================
-  // INITIAL STATE
-  // =========================================
-
-  const activeTab =
-    Array.from(
-      detailTabs
-    ).find(
-      tab =>
-        tab.classList.contains(
-          "active"
-        ) ||
-        tab.getAttribute(
-          "aria-selected"
-        ) === "true"
-    )
-
-  if(activeTab){
-
-    activateTab(
-      activeTab
-    )
-
-  }else{
-
-    activateTab(
-      detailTabs[0]
-    )
-
-  }
 
 }
