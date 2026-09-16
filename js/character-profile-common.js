@@ -104,13 +104,35 @@ function setOptionalField(id, value){
 function applyCharacterColors(character) {
 
   const colors =
-    character.colors || {}
+    character?.colors || {}
 
   const primary =
     colors.primary || "#b99b78"
 
   const secondary =
     colors.secondary || "#a27d5f"
+
+  const accent =
+    colors.accent || primary
+
+  const bg1 =
+    colors.bg_1 ||
+    colors.background_1 ||
+    "#f4efe6"
+
+  const bg2 =
+    colors.bg_2 ||
+    colors.background_2 ||
+    "#f3f1ec"
+
+  const pageBg =
+    colors.page_bg ||
+    colors.background ||
+    bg2
+
+  const backgroundGradient =
+    colors.background_gradient ||
+    "#ffffff"
 
   const textGradient =
     Array.isArray(colors.text_gradient) &&
@@ -123,7 +145,7 @@ function applyCharacterColors(character) {
 
 
   // =========================================
-  // SET CHARACTER COLOURS
+  // CHARACTER COLOURS
   // =========================================
 
   root.style.setProperty(
@@ -136,9 +158,34 @@ function applyCharacterColors(character) {
     secondary
   )
 
+  root.style.setProperty(
+    "--char-accent",
+    accent
+  )
+
+  root.style.setProperty(
+    "--char-bg-1",
+    bg1
+  )
+
+  root.style.setProperty(
+    "--char-bg-2",
+    bg2
+  )
+
+  root.style.setProperty(
+    "--char-page-bg",
+    pageBg
+  )
+
+  root.style.setProperty(
+    "--char-background-gradient",
+    backgroundGradient
+  )
+
 
   // =========================================
-  // SET TEXT GRADIENT
+  // CHARACTER TEXT GRADIENT
   // =========================================
 
   if(textGradient){
@@ -166,12 +213,12 @@ function applyCharacterColors(character) {
 
 
   // =========================================
-  // REMOVE OLD GRADIENT TEXT
+  // APPLY / REMOVE GRADIENT TEXT
   // =========================================
 
   document
     .querySelectorAll(
-      ".character-gradient-text"
+      "body.character-profile-page .character-gradient-text"
     )
     .forEach(
       element => {
@@ -184,7 +231,6 @@ function applyCharacterColors(character) {
     )
 
 
-  // No text gradient = stop here
   if(!textGradient){
 
     return
@@ -192,90 +238,56 @@ function applyCharacterColors(character) {
   }
 
 
-  // =========================================
-  // TURN HEX INTO RGB
-  // =========================================
+}
 
-  function hexToRgb(hex){
+function applyCharacterTextGradient(){
 
-    hex =
-      String(hex)
-        .replace("#", "")
-        .trim()
+  const root =
+    document.documentElement
 
-    if(hex.length === 3){
+  if(
+    !root.classList.contains(
+      "has-text-gradient"
+    )
+  ){
 
-      hex =
-        hex
-          .split("")
-          .map(
-            char => char + char
-          )
-          .join("")
-
-    }
-
-    const red =
-      parseInt(
-        hex.substring(0, 2),
-        16
-      )
-
-    const green =
-      parseInt(
-        hex.substring(2, 4),
-        16
-      )
-
-    const blue =
-      parseInt(
-        hex.substring(4, 6),
-        16
-      )
-
-    return `rgb(${red}, ${green}, ${blue})`
+    return
 
   }
 
 
-  const primaryRgb =
-    hexToRgb(primary)
-
-  const secondaryRgb =
-    hexToRgb(secondary)
-
-
-  // =========================================
-  // ONLY TEXT + BUTTONS
-  // =========================================
-
   const textElements =
     document.querySelectorAll(
-      "body.character-profile-page button, " +
-      "body.character-profile-page a, " +
-      "body.character-profile-page h1, " +
-      "body.character-profile-page h2, " +
-      "body.character-profile-page h3, " +
-      "body.character-profile-page h4, " +
-      "body.character-profile-page h5, " +
-      "body.character-profile-page h6, " +
-      "body.character-profile-page p, " +
-      "body.character-profile-page span, " +
-      "body.character-profile-page li, " +
-      "body.character-profile-page label, " +
-      "body.character-profile-page strong, " +
-      "body.character-profile-page em"
+      [
+        "body.character-profile-page h1",
+        "body.character-profile-page h2",
+        "body.character-profile-page h3",
+        "body.character-profile-page h4",
+        "body.character-profile-page h5",
+        "body.character-profile-page h6",
+        "body.character-profile-page p",
+        "body.character-profile-page li",
+        "body.character-profile-page span",
+        "body.character-profile-page label",
+        "body.character-profile-page strong",
+        "body.character-profile-page em",
+        "body.character-profile-page a",
+        "body.character-profile-page button",
+        "body.character-profile-page .info-label",
+        "body.character-profile-page .info-value",
+        "body.character-profile-page .card-name",
+        "body.character-profile-page .tag",
+        "body.character-profile-page summary"
+      ].join(",")
     )
 
 
   textElements.forEach(
     element => {
 
-      // Never touch anything inside bg_1
-      // or bg_2
       if(
-        element.closest(
-          ".bg_1, .bg_2"
+        element.matches(
+          "input, select, textarea, option"
         )
       ){
 
@@ -283,30 +295,14 @@ function applyCharacterColors(character) {
 
       }
 
-
-      const computedColour =
-        getComputedStyle(
-          element
-        ).color
-
-
-      // ONLY primary or secondary text
-      if(
-        computedColour === primaryRgb ||
-        computedColour === secondaryRgb
-      ){
-
-        element.classList.add(
-          "character-gradient-text"
-        )
-
-      }
+      element.classList.add(
+        "character-gradient-text"
+      )
 
     }
   )
 
 }
-
 
 function setupCharacterBackground(character) {
 
@@ -581,7 +577,7 @@ function listLinks(list, id){
 }
 
 
-function displayCharacter(character){
+async function displayCharacter(character){
 
   applyCharacterColors(
     character
@@ -1430,21 +1426,17 @@ function displayCharacter(character){
   // SHARED PROFILE SECTIONS
   // =========================
 
-  setupPartners(
-    character
-  )
-
-  setupRelationships(
-    character
-  )
-
-  setupPets(
-    character
-  )
+    await Promise.all([
+    setupPartners(character),
+    setupRelationships(character),
+    setupPets(character)
+  ])
 
   setupCharacterBackground(
     character
   )
+
+  applyCharacterTextGradient()
 
 }
 

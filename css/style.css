@@ -483,10 +483,12 @@ body.character-profile-page
    6. CHARACTER TEXT GRADIENT
 ========================================================= */
 
-html.has-text-gradient
 body.character-profile-page
 .character-gradient-text {
-  background-image: var(--char-text-gradient);
+
+  background-image:
+    var(--char-text-gradient);
+
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
@@ -497,6 +499,21 @@ body.character-profile-page
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
+
+
+/* Only enable gradient colours when the character
+   actually provides a text gradient. */
+
+html:not(.has-text-gradient)
+body.character-profile-page
+.character-gradient-text {
+
+  background-image: none;
+
+  color: inherit;
+  -webkit-text-fill-color: currentColor;
+}
+
 
 
 /* =========================================================
