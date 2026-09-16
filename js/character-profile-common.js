@@ -243,49 +243,12 @@ const textGradient =
   }
 
 
-  // =========================================
-  // APPLY / REMOVE GRADIENT TEXT
-  // =========================================
-
-  document
-    .querySelectorAll(
-      "body.character-profile-page .character-gradient-text"
-    )
-    .forEach(
-      element => {
-
-        element.classList.remove(
-          "character-gradient-text"
-        )
-
-      }
-    )
-
-
-  if(!textGradient){
-
-    return
-
-  }
-
-
 }
 
 function applyCharacterTextGradient(){
 
   const root =
     document.documentElement
-
-  if(
-    !root.classList.contains(
-      "has-text-gradient"
-    )
-  ){
-
-    return
-
-  }
-
 
   const textElements =
     document.querySelectorAll(
@@ -303,6 +266,7 @@ function applyCharacterTextGradient(){
         "body.character-profile-page strong",
         "body.character-profile-page em",
         "body.character-profile-page a",
+        "body.character-profile-page button",
         "body.character-profile-page .info-label",
         "body.character-profile-page .info-value",
         "body.character-profile-page .card-name",
@@ -310,6 +274,28 @@ function applyCharacterTextGradient(){
         "body.character-profile-page summary"
       ].join(",")
     )
+
+
+  textElements.forEach(
+    element => {
+
+      element.classList.remove(
+        "character-gradient-text"
+      )
+
+    }
+  )
+
+
+  if(
+    !root.classList.contains(
+      "has-text-gradient"
+    )
+  ){
+
+    return
+
+  }
 
 
   textElements.forEach(
@@ -1463,10 +1449,12 @@ async function displayCharacter(character){
   ])
 
   setupCharacterBackground(
-    character
-  )
+  character
+)
 
-  applyCharacterTextGradient()
+applyCharacterTextGradient()
+
+setupDetailTabs()
 
 }
 
