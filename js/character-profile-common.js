@@ -153,7 +153,14 @@ function applyCharacterColors(character){
           ${pageBg} 65%,
           #ffffff 100%
         )`
-
+  const textGradient =
+    Array.isArray(colors.text_gradient) &&
+    colors.text_gradient.length >= 2
+      ? `linear-gradient(
+          135deg,
+          ${colors.text_gradient.join(", ")}
+        )`
+      : null
 
   const backgroundGradient =
     colors.background_gradient || "#FFFFFF"
@@ -171,6 +178,15 @@ function applyCharacterColors(character){
   const root =
     document.documentElement
 
+  const hasTextGradient =
+    Array.isArray(colors.text_gradient) &&
+    colors.text_gradient.length >= 2
+
+  root.classList.toggle(
+    "has-text-gradient",
+    hasTextGradient
+  )
+
   root.style.setProperty(
     "--char-primary",
     primary
@@ -179,6 +195,11 @@ function applyCharacterColors(character){
   root.style.setProperty(
     "--char-secondary",
     secondary
+  )
+
+  root.style.setProperty(
+    "--char-text-gradient",
+    textGradient || "none"
   )
 
   root.style.setProperty(
