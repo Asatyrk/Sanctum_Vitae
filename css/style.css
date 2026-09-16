@@ -1773,7 +1773,6 @@ body.character-profile-page .site-nav a:focus-visible {
   color: var(--char-secondary);
 }
 
-
 /* =========================================================
    30. DETAIL SWITCHER
 ========================================================= */
@@ -1781,6 +1780,7 @@ body.character-profile-page .site-nav a:focus-visible {
 .character-detail-switcher {
   width: 100%;
 }
+
 
 .detail-switcher-tabs {
   display: flex;
@@ -1802,68 +1802,57 @@ body.character-profile-page .site-nav a:focus-visible {
   border: none;
   border-radius: var(--border-radius-md);
 
-  
-  background:
-    linear-gradient(
-      to bottom,
-      var(--char-page-bg),
-      var(--char-background-gradient)
-    );
-
-  color: var(--char-secondary);
-
   font-family: inherit;
   font-size: var(--font-size-base);
-  font-weight: inherit;
 
   cursor: pointer;
 
+  /* TEXT SYSTEM */
+  color: var(--char-primary);
+
+  /* BACKGROUND SYSTEM */
+  background: var(--char-page-bg);
+
   transition:
     background var(--transition-fast),
-    color var(--transition-fast),
-    opacity var(--transition-fast);
+    color var(--transition-fast);
 }
 
 
-.has-page-bg-gradient .detail-switcher-tab {
+:root.has-text-gradient
+.detail-switcher-tab {
+  background-clip: padding-box;
+}
+
+
+.detail-switcher-tab {
+  background-color: var(--char-page-bg);
+}
+
+
+:root.has-background-gradient
+.detail-switcher-tab {
   background:
-    var(--char-page-bg-gradient);
+    var(--char-background-gradient);
 }
 
 
 .detail-switcher-tab:hover {
-  background:
-    linear-gradient(
-      to bottom,
-      var(--char-page-bg),
-      var(--char-background-gradient)
+  background-color:
+    color-mix(
+      in srgb,
+      var(--char-page-bg) 80%,
+      black 20%
     );
 
-  color: var(--char-primary);
+  color: var(--char-secondary);
 }
 
-
-.has-page-bg-gradient .detail-switcher-tab:hover {
-  background:
-    var(--char-page-bg-gradient);
-}
 
 .detail-switcher-tab.active {
-  background:
-    linear-gradient(
-      to bottom,
-      var(--char-page-bg),
-      var(--char-background-gradient)
-    );
-
   color: var(--char-primary);
 }
 
-
-.has-page-bg-gradient .detail-switcher-tab.active {
-  background:
-    var(--char-page-bg-gradient);
-}
 
 .detail-switcher-tab:focus-visible {
   outline:
@@ -1873,95 +1862,15 @@ body.character-profile-page .site-nav a:focus-visible {
   outline-offset: 2px;
 }
 
-.has-text-gradient .detail-switcher-tab.character-gradient-text {
-  background-image:
-    var(--char-text-gradient);
 
-  background-size:
-    100% 100%;
-
-  background-repeat:
-    no-repeat;
-
-  background-clip:
-    text;
-
-  -webkit-background-clip:
-    text;
-
-  color:
-    transparent;
-
-  -webkit-text-fill-color:
-    transparent;
-}
-
-.has-text-gradient
-.detail-switcher-tab.character-gradient-text
-.nav-icon {
-  color:
-    var(--char-primary);
-
-  fill:
-    currentColor;
-
-  stroke:
-    currentColor;
-}
-
-:not(.has-text-gradient)
-.detail-switcher-tab.character-gradient-text {
-  background-clip:
-    border-box;
-
-  -webkit-background-clip:
-    border-box;
-
-  background-image:
-    none;
-
-  color:
-    var(--char-secondary);
-
-  -webkit-text-fill-color:
-    currentColor;
+.detail-switcher-tab .nav-icon {
+  flex-shrink: 0;
 }
 
 
-:not(.has-text-gradient)
-.detail-switcher-tab.character-gradient-text:hover {
-  color:
-    var(--char-primary);
+.detail-switcher-panel[hidden] {
+  display: none;
 }
-
-
-:not(.has-text-gradient)
-.detail-switcher-tab.character-gradient-text.active {
-  color:
-    var(--char-primary);
-}
-
-
-/* =========================================================
-   31. DECORATIVE IMAGE
-========================================================= */
-
-.decor-image-box {
-  width: 100%;
-
-  min-height: 75px;
-
-  margin-bottom: var(--space-12);
-
-  aspect-ratio: 10 / 1;
-
-  overflow: hidden;
-
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
 
 /* =========================================================
    32. PARTNER PROFILE

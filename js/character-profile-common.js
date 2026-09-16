@@ -116,34 +116,34 @@ function applyCharacterColors(character) {
     colors.accent || primary
 
   const bg1 =
-  colors.bg_1 ||
-  colors.background_1 ||
-  "#f4efe6"
+    colors.bg_1 ||
+    colors.background_1 ||
+    "#f4efe6"
 
-const bg2 =
-  colors.bg_2 ||
-  colors.background_2 ||
-  "#f3f1ec"
+  const bg2 =
+    colors.bg_2 ||
+    colors.background_2 ||
+    "#f3f1ec"
 
-const pageBg =
-  colors.page_bg ||
-  colors.background ||
-  bg2
+  const pageBg =
+    colors.page_bg ||
+    colors.background ||
+    bg2
 
-const backgroundGradient =
-  colors.background_gradient || null
+  const backgroundGradient =
+    colors.background_gradient || null
 
-const pageBgGradient =
-  Array.isArray(colors.page_bg_gradient) &&
-  colors.page_bg_gradient.length >= 2
-    ? colors.page_bg_gradient
-    : null
+  const pageBgGradient =
+    Array.isArray(colors.page_bg_gradient) &&
+    colors.page_bg_gradient.length >= 2
+      ? colors.page_bg_gradient
+      : null
 
-const textGradient =
-  Array.isArray(colors.text_gradient) &&
-  colors.text_gradient.length >= 2
-    ? colors.text_gradient
-    : null
+  const textGradient =
+    Array.isArray(colors.text_gradient) &&
+    colors.text_gradient.length >= 2
+      ? colors.text_gradient
+      : null
 
 
   const root =
@@ -151,7 +151,7 @@ const textGradient =
 
 
   // =========================================
-  // CHARACTER COLOURS
+  // BASIC CHARACTER COLOURS
   // =========================================
 
   root.style.setProperty(
@@ -184,56 +184,65 @@ const textGradient =
     pageBg
   )
 
+
+  // =========================================
+  // FULL BACKGROUND GRADIENT
+  // =========================================
+
   if(backgroundGradient){
 
-  root.style.setProperty(
-    "--char-background-gradient",
-    backgroundGradient
-  )
+    root.style.setProperty(
+      "--char-background-gradient",
+      backgroundGradient
+    )
 
-  root.classList.add(
-    "has-background-gradient"
-  )
+    root.classList.add(
+      "has-background-gradient"
+    )
 
-}else{
+  }else{
 
-  root.style.removeProperty(
-    "--char-background-gradient"
-  )
+    root.style.removeProperty(
+      "--char-background-gradient"
+    )
 
-  root.classList.remove(
-    "has-background-gradient"
-  )
+    root.classList.remove(
+      "has-background-gradient"
+    )
 
-}
-
-  if(pageBgGradient){
-
-  root.style.setProperty(
-    "--char-page-bg-gradient",
-    `linear-gradient(135deg, ${pageBgGradient.join(", ")})`
-  )
-
-  root.classList.add(
-    "has-page-bg-gradient"
-  )
-
-}else{
-
-  root.style.removeProperty(
-    "--char-page-bg-gradient"
-  )
-
-  root.classList.remove(
-    "has-page-bg-gradient"
-  )
-
-}
-
+  }
 
 
   // =========================================
-  // CHARACTER TEXT GRADIENT
+  // PAGE BACKGROUND / BOTTOM GRADIENT
+  // =========================================
+
+  if(pageBgGradient){
+
+    root.style.setProperty(
+      "--char-page-bg-gradient",
+      `linear-gradient(135deg, ${pageBgGradient.join(", ")})`
+    )
+
+    root.classList.add(
+      "has-page-bg-gradient"
+    )
+
+  }else{
+
+    root.style.removeProperty(
+      "--char-page-bg-gradient"
+    )
+
+    root.classList.remove(
+      "has-page-bg-gradient"
+    )
+
+  }
+
+
+  // =========================================
+  // TEXT GRADIENT
   // =========================================
 
   if(textGradient){
@@ -258,7 +267,6 @@ const textGradient =
     )
 
   }
-
 
 }
 
@@ -2425,12 +2433,56 @@ function setupDetailTabs(){
       ".detail-switcher-panel"
     )
 
-  if(
-    !detailTabs.length ||
-    !detailPanels.length
-  ){
-
+  if(!detailTabs.length){
     return
+  }
+
+
+  function activateTab(tab){
+
+    const targetId =
+      tab.getAttribute(
+        "aria-controls"
+      )
+
+    const targetPanel =
+      document.getElementById(
+        targetId
+      )
+
+    if(!targetPanel){
+      return
+    }
+
+
+    detailTabs.forEach(
+      button => {
+
+        const active =
+          button === tab
+
+        button.classList.toggle(
+          "active",
+          active
+        )
+
+        button.setAttribute(
+          "aria-selected",
+          String(active)
+        )
+
+      }
+    )
+
+
+    detailPanels.forEach(
+      panel => {
+
+        panel.hidden =
+          panel !== targetPanel
+
+      }
+    )
 
   }
 
@@ -2442,70 +2494,46 @@ function setupDetailTabs(){
         "click",
         () => {
 
-          const targetId =
-            tab.getAttribute(
-              "aria-controls"
-            )
-
-          const targetPanel =
-            document.getElementById(
-              targetId
-            )
-
-          if(!targetPanel) return
-
-
-          // Update buttons
-
-          detailTabs.forEach(
-            button => {
-
-              button.classList.remove(
-                "active"
-              )
-
-              button.setAttribute(
-                "aria-selected",
-                "false"
-              )
-
-            }
+          activateTab(
+            tab
           )
-
-
-          // Hide panels
-
-          detailPanels.forEach(
-            panel => {
-
-              panel.hidden =
-                true
-
-            }
-          )
-
-
-          // Activate selected tab
-
-          tab.classList.add(
-            "active"
-          )
-
-          tab.setAttribute(
-            "aria-selected",
-            "true"
-          )
-
-
-          // Show selected panel
-
-          targetPanel.hidden =
-            false
 
         }
       )
 
     }
   )
+
+
+  // =========================================
+  // INITIAL STATE
+  // =========================================
+
+  const activeTab =
+    Array.from(
+      detailTabs
+    ).find(
+      tab =>
+        tab.classList.contains(
+          "active"
+        ) ||
+        tab.getAttribute(
+          "aria-selected"
+        ) === "true"
+    )
+
+  if(activeTab){
+
+    activateTab(
+      activeTab
+    )
+
+  }else{
+
+    activateTab(
+      detailTabs[0]
+    )
+
+  }
 
 }
