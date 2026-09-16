@@ -112,27 +112,18 @@ function applyCharacterColors(character) {
   const secondary =
     colors.secondary || "#a27d5f"
 
-  const accent =
-    colors.accent || "#8b6a4d"
-
-  const bg1 =
-    colors.bg_1 || "#f4efe6"
-
-  const bg2 =
-    colors.bg_2 || "#f3f1ec"
-
-  const pageBg =
-    colors.page_bg || "#f3f1ec"
-
-  const backgroundGradient =
-    colors.background_gradient || "#FFFFFF"
+  const textGradient =
+    Array.isArray(colors.text_gradient) &&
+    colors.text_gradient.length >= 2
+      ? colors.text_gradient
+      : null
 
   const root =
     document.documentElement
 
 
   // =========================================
-  // NORMAL COLOURS
+  // SET CHARACTER COLOURS
   // =========================================
 
   root.style.setProperty(
@@ -145,42 +136,10 @@ function applyCharacterColors(character) {
     secondary
   )
 
-  root.style.setProperty(
-    "--char-accent",
-    accent
-  )
-
-  root.style.setProperty(
-    "--char-bg-1",
-    bg1
-  )
-
-  root.style.setProperty(
-    "--char-bg-2",
-    bg2
-  )
-
-  root.style.setProperty(
-    "--char-page-bg",
-    pageBg
-  )
-
-  root.style.setProperty(
-    "--char-background-gradient",
-    backgroundGradient
-  )
-
 
   // =========================================
-  // TEXT GRADIENT
+  // SET TEXT GRADIENT
   // =========================================
-
-  const textGradient =
-    Array.isArray(colors.text_gradient) &&
-    colors.text_gradient.length >= 2
-      ? colors.text_gradient
-      : null
-
 
   if(textGradient){
 
@@ -207,65 +166,25 @@ function applyCharacterColors(character) {
 
 
   // =========================================
-  // PAGE BACKGROUND GRADIENT
+  // REMOVE OLD GRADIENT TEXT
   // =========================================
 
-  const pageBgGradient =
-    Array.isArray(colors.page_bg_gradient) &&
-    colors.page_bg_gradient.length >= 2
-      ? colors.page_bg_gradient
-      : null
-
-
-  if(pageBgGradient){
-
-    root.style.setProperty(
-      "--char-page-bg-gradient",
-      `linear-gradient(135deg, ${pageBgGradient.join(", ")})`
+  document
+    .querySelectorAll(
+      ".character-gradient-text"
     )
+    .forEach(
+      element => {
 
-    root.classList.add(
-      "has-page-bg-gradient"
-    )
+        element.classList.remove(
+          "character-gradient-text"
+        )
 
-  }else{
-
-    root.style.removeProperty(
-      "--char-page-bg-gradient"
-    )
-
-    root.classList.remove(
-      "has-page-bg-gradient"
-    )
-
-  }
-
-
-  // =========================================
-  // AUTOMATIC TEXT GRADIENT
-  // =========================================
-
-  const characterElements =
-    document.querySelectorAll(
-      "body.character-profile-page *"
+      }
     )
 
 
-  // Always remove previously applied
-  // gradient classes first.
-  characterElements.forEach(
-    element => {
-
-      element.classList.remove(
-        "character-gradient-text"
-      )
-
-    }
-  )
-
-
-  // Nothing else to do if this character
-  // doesn't have a text gradient.
+  // No text gradient = stop here
   if(!textGradient){
 
     return
@@ -274,74 +193,90 @@ function applyCharacterColors(character) {
 
 
   // =========================================
-  // CONVERT CONFIGURED HEX COLOURS
-  // TO THE FORMAT USED BY getComputedStyle()
+  // TURN HEX INTO RGB
   // =========================================
 
-  const colourProbe =
-    document.createElement("span")
+  function hexToRgb(hex){
 
-  colourProbe.style.position =
-    "absolute"
+    hex =
+      String(hex)
+        .replace("#", "")
+        .trim()
 
-  colourProbe.style.visibility =
-    "hidden"
+    if(hex.length === 3){
 
-  colourProbe.style.pointerEvents =
-    "none"
+      hex =
+        hex
+          .split("")
+          .map(
+            char => char + char
+          )
+          .join("")
 
-  document.body.appendChild(
-    colourProbe
-  )
+    }
+
+    const red =
+      parseInt(
+        hex.substring(0, 2),
+        16
+      )
+
+    const green =
+      parseInt(
+        hex.substring(2, 4),
+        16
+      )
+
+    const blue =
+      parseInt(
+        hex.substring(4, 6),
+        16
+      )
+
+    return `rgb(${red}, ${green}, ${blue})`
+
+  }
 
 
-  // Resolve primary colour
-  colourProbe.style.color =
-    primary
+  const primaryRgb =
+    hexToRgb(primary)
 
-  const primaryColour =
-    getComputedStyle(
-      colourProbe
-    ).color
-
-
-  // Resolve secondary colour
-  colourProbe.style.color =
-    secondary
-
-  const secondaryColour =
-    getComputedStyle(
-      colourProbe
-    ).color
-
-
-  colourProbe.remove()
+  const secondaryRgb =
+    hexToRgb(secondary)
 
 
   // =========================================
-  // FIND MATCHING ELEMENTS FIRST
-  // =========================================
-  //
-  // We deliberately collect the elements
-  // before adding the gradient class.
-  //
-  // Otherwise adding the class to a parent
-  // can change the computed colour of its
-  // children while this loop is running.
+  // ONLY TEXT + BUTTONS
   // =========================================
 
-  const gradientElements = []
+  const textElements =
+    document.querySelectorAll(
+      "body.character-profile-page button, " +
+      "body.character-profile-page a, " +
+      "body.character-profile-page h1, " +
+      "body.character-profile-page h2, " +
+      "body.character-profile-page h3, " +
+      "body.character-profile-page h4, " +
+      "body.character-profile-page h5, " +
+      "body.character-profile-page h6, " +
+      "body.character-profile-page p, " +
+      "body.character-profile-page span, " +
+      "body.character-profile-page li, " +
+      "body.character-profile-page label, " +
+      "body.character-profile-page strong, " +
+      "body.character-profile-page em"
+    )
 
 
-  characterElements.forEach(
+  textElements.forEach(
     element => {
 
-      // Never touch bg_1, bg_2,
-      // or anything inside them.
+      // Never touch anything inside bg_1
+      // or bg_2
       if(
-        element.classList.contains("bg_1") ||
-        element.classList.contains("bg_2") ||
-        element.closest(".bg_1, .bg_2")
+        element.closest(
+          ".bg_1, .bg_2"
+        )
       ){
 
         return
@@ -355,13 +290,14 @@ function applyCharacterColors(character) {
         ).color
 
 
+      // ONLY primary or secondary text
       if(
-        computedColour === primaryColour ||
-        computedColour === secondaryColour
+        computedColour === primaryRgb ||
+        computedColour === secondaryRgb
       ){
 
-        gradientElements.push(
-          element
+        element.classList.add(
+          "character-gradient-text"
         )
 
       }
@@ -369,22 +305,8 @@ function applyCharacterColors(character) {
     }
   )
 
-
-  // =========================================
-  // APPLY GRADIENT CLASS
-  // =========================================
-
-  gradientElements.forEach(
-    element => {
-
-      element.classList.add(
-        "character-gradient-text"
-      )
-
-    }
-  )
-
 }
+
 
 function setupCharacterBackground(character) {
 
