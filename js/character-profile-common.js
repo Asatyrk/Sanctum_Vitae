@@ -107,16 +107,6 @@ function applyCharacterColors(character){
   const colors =
     character.colors || {}
 
-  const hasPageBgGradient =
-   Array.isArray(colors.page_bg_gradient) &&
-   colors.page_bg_gradient.length >= 2
-
-  document.documentElement.classList.toggle(
-   "has-page-bg-gradient",
-   hasPageBgGradient
-  )
-
-
   const characterBackground =
     character.characterBackground || {}
 
@@ -138,30 +128,6 @@ function applyCharacterColors(character){
   const pageBg =
     colors.page_bg || "#f3f1ec"
 
-  const pageBgGradient =
-    Array.isArray(
-      colors.page_bg_gradient
-    ) &&
-    colors.page_bg_gradient.length >= 2
-      ? `linear-gradient(
-          135deg,
-          ${colors.page_bg_gradient.join(", ")}
-        )`
-      : `linear-gradient(
-          to bottom,
-          ${pageBg} 0%,
-          ${pageBg} 65%,
-          #ffffff 100%
-        )`
-  const textGradient =
-    Array.isArray(colors.text_gradient) &&
-    colors.text_gradient.length >= 2
-      ? `linear-gradient(
-          135deg,
-          ${colors.text_gradient.join(", ")}
-        )`
-      : null
-
   const backgroundGradient =
     colors.background_gradient || "#FFFFFF"
 
@@ -178,15 +144,6 @@ function applyCharacterColors(character){
   const root =
     document.documentElement
 
-  const hasTextGradient =
-    Array.isArray(colors.text_gradient) &&
-    colors.text_gradient.length >= 2
-
-  root.classList.toggle(
-    "has-text-gradient",
-    hasTextGradient
-  )
-
   root.style.setProperty(
     "--char-primary",
     primary
@@ -195,11 +152,6 @@ function applyCharacterColors(character){
   root.style.setProperty(
     "--char-secondary",
     secondary
-  )
-
-  root.style.setProperty(
-    "--char-text-gradient",
-    textGradient || "none"
   )
 
   root.style.setProperty(
@@ -220,11 +172,6 @@ function applyCharacterColors(character){
   root.style.setProperty(
     "--char-page-bg",
     pageBg
-  )
-
-  root.style.setProperty(
-    "--char-page-bg-gradient",
-    pageBgGradient
   )
 
   root.style.setProperty(
