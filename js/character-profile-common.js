@@ -229,7 +229,7 @@ function applyCharacterColors(character){
 
 }
 
-function setCharacterTextGradient(character){
+function applyCharacterTextGradient(character){
 
   const root =
     document.documentElement
@@ -237,95 +237,81 @@ function setCharacterTextGradient(character){
   const colors =
     character?.colors || {}
 
-  if(
+  const textGradient =
     Array.isArray(colors.text_gradient) &&
     colors.text_gradient.length >= 2
-  ){
-
-    root.style.setProperty(
-      "--char-text-gradient",
-      `linear-gradient(
-        90deg,
-        ${colors.text_gradient.join(", ")}
-      )`
-    )
-
-    root.classList.add(
-      "has-text-gradient"
-    )
-
-  }else{
-
-    const primary =
-      colors.primary || "#b99b78"
-
-    const secondary =
-      colors.secondary || "#a27d5f"
-
-    root.style.setProperty(
-      "--char-text-gradient",
-      `linear-gradient(
-        90deg,
-        ${primary},
-        ${secondary}
-      )`
-    )
-
-    root.classList.remove(
-      "has-text-gradient"
-    )
-
-  }
-
-}
+      ? colors.text_gradient
+      : [
+          colors.primary || "#b99b78",
+          colors.secondary || "#a27d5f"
+        ]
 
 
-function applyCharacterTextGradient(){
+  root.style.setProperty(
+    "--char-text-gradient",
+    `linear-gradient(
+      90deg,
+      ${textGradient.join(", ")}
+    )`
+  )
+
+
+  root.classList.add(
+    "has-text-gradient"
+  )
+
+
+  /*
+   * Find ALL text-containing elements
+   * that exist after the character page
+   * has finished rendering.
+   */
 
   const textElements =
     document.querySelectorAll(
-      "body.character-profile-page *"
+      `
+      body.character-profile-page
+      :is(
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        li,
+        span,
+        label,
+        strong,
+        em,
+        b,
+        i,
+        a,
+        small,
+        summary,
+        dt,
+        dd,
+        th,
+        td,
+        figcaption,
+        blockquote,
+        button
+      )
+      `
     )
+
 
   textElements.forEach(
     element => {
 
-      if(
-        element.matches(
-          "input, select, textarea, option"
-        )
-      ){
-        return
-      }
-
-      if(
-        element.closest("svg")
-      ){
-        return
-      }
-
-      const hasDirectText =
-        Array.from(
-          element.childNodes
-        ).some(
-          node =>
-            node.nodeType === Node.TEXT_NODE &&
-            node.textContent.trim()
-        )
-
-      if(hasDirectText){
-
-        element.classList.add(
-          "character-gradient-text"
-        )
-
-      }
+      element.classList.add(
+        "character-gradient-text"
+      )
 
     }
   )
 
 }
-
 
 
 function setupCharacterBackground(character){
@@ -597,10 +583,6 @@ function listLinks(list, id){
 async function displayCharacter(character){
 
   applyCharacterColors(
-    character
-  )
-
-  applyCharacterTextGradient(
     character
   )
 
@@ -1448,23 +1430,24 @@ async function displayCharacter(character){
   // =========================
 
   await setupPartners(
-  character
-)
+    character
+  )
 
-await setupRelationships(
-  character
-)
+  await setupRelationships(
+    character
+  )
 
-await setupPets(
-  character
-)
+  await setupPets(
+    character
+  )
 
-setupCharacterBackground(
-  character
-)
+  setupCharacterBackground(
+    character
+  )
 
-applyCharacterTextGradient()
-
+  applyCharacterTextGradient(
+    character
+  )
 
 }
 
