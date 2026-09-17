@@ -229,7 +229,7 @@ function applyCharacterColors(character){
 
 }
 
-function applyCharacterTextGradient(character) {
+function setCharacterTextGradient(character){
 
   const root =
     document.documentElement
@@ -237,10 +237,10 @@ function applyCharacterTextGradient(character) {
   const colors =
     character?.colors || {}
 
-  if (
+  if(
     Array.isArray(colors.text_gradient) &&
     colors.text_gradient.length >= 2
-  ) {
+  ){
 
     root.style.setProperty(
       "--char-text-gradient",
@@ -254,7 +254,7 @@ function applyCharacterTextGradient(character) {
       "has-text-gradient"
     )
 
-  } else {
+  }else{
 
     const primary =
       colors.primary || "#b99b78"
@@ -277,73 +277,55 @@ function applyCharacterTextGradient(character) {
 
   }
 
+}
+
+
+function applyCharacterTextGradient(){
 
   const textElements =
-  document.querySelectorAll(
-    `
-    body.character-profile-page
-    :is(
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p,
-      li,
-      span,
-      label,
-      strong,
-      em,
-      a
+    document.querySelectorAll(
+      "body.character-profile-page *"
     )
-    `
-  )
-
-
 
   textElements.forEach(
     element => {
 
-      element.classList.remove(
-        "character-gradient-text"
-      )
-
-    }
-  )
-
-  if (
-    !root.classList.contains(
-      "has-text-gradient"
-    )
-  ) {
-
-    return
-
-  }
-
-
-  textElements.forEach(
-    element => {
-
-      if (
+      if(
         element.matches(
           "input, select, textarea, option"
         )
-      ) {
-
+      ){
         return
-
       }
 
-      element.classList.add(
-        "character-gradient-text"
-      )
+      if(
+        element.closest("svg")
+      ){
+        return
+      }
+
+      const hasDirectText =
+        Array.from(
+          element.childNodes
+        ).some(
+          node =>
+            node.nodeType === Node.TEXT_NODE &&
+            node.textContent.trim()
+        )
+
+      if(hasDirectText){
+
+        element.classList.add(
+          "character-gradient-text"
+        )
+
+      }
 
     }
   )
 
 }
+
 
 
 function setupCharacterBackground(character){
@@ -612,7 +594,7 @@ function listLinks(list, id){
 }
 
 
-function displayCharacter(character){
+async function displayCharacter(character){
 
   applyCharacterColors(
     character
@@ -1465,21 +1447,24 @@ function displayCharacter(character){
   // SHARED PROFILE SECTIONS
   // =========================
 
-  setupPartners(
-    character
-  )
+  await setupPartners(
+  character
+)
 
-  setupRelationships(
-    character
-  )
+await setupRelationships(
+  character
+)
 
-  setupPets(
-    character
-  )
+await setupPets(
+  character
+)
 
-  setupCharacterBackground(
-    character
-  )
+setupCharacterBackground(
+  character
+)
+
+applyCharacterTextGradient()
+
 
 }
 
