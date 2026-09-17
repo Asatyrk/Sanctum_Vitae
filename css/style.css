@@ -497,16 +497,13 @@ body.character-profile-page
   -webkit-background-clip: text;
 
   color: transparent;
-  -webkit-text-fill-color: transparent;
 }
 
 
 body.character-profile-page
 li.character-gradient-text::marker {
 
-  color: var(--char-accent) !important;
-
-  -webkit-text-fill-color: var(--char-accent) !important;
+  color: var(--char-accent);
 }
 
 
@@ -517,7 +514,6 @@ body.character-profile-page
   background-image: none;
 
   color: inherit;
-  -webkit-text-fill-color: currentColor;
 }
 
 
