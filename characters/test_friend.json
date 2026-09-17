@@ -216,8 +216,8 @@
   "decorImage": "",
 
   "colors": {
-  "primary": "#FF0000",
-  "secondary": "#0000FF",
+  "primary": "",
+  "secondary": "",
   "accent": "",
   "bg_1": "",
   "bg_2": "",
@@ -226,7 +226,7 @@
   },
 
 "characterBackground": {
-  "particle_color": "",
+  "particle_color": "#ff0000",
   "particle_colors": [
     "",
     "",
