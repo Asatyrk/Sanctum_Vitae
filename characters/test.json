@@ -71,8 +71,9 @@
     "values": ["Unknown"],
     "goals": ["Unknown"],
     "notes": [
-      "Unknown", 
-      "Unknown"
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
     ]
   },
 
@@ -92,8 +93,9 @@
     "hygiene": "Unknown",
     "crisis_reaction": "Unknown",
     "notes": [
-      "Unknown",
-      "Unknown"
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
     ]
   },
 
@@ -105,8 +107,9 @@
     "birthplace": "Unknown",
     "current_location": "Unknown",
     "notes": [
-      "Unknown",
-      "Unknown"
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
     ]
   },
 
@@ -168,11 +171,12 @@
     "extra": []
   },
 
-  "backstory": "Large detailed backstory text goes here.",
+  "backstory": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in commodo lectus. Fusce pretium cursus ligula sed cursus. Proin imperdiet, lorem ut sollicitudin porttitor, arcu eros sagittis justo, id ullamcorper magna metus id nibh. Maecenas venenatis diam nec orci varius, quis rhoncus lectus commodo. Duis magna lectus, viverra sed viverra vitae, gravida eu ante. Mauris elit elit, consequat in tortor non, suscipit placerat ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In vitae sem vel enim consequat porta ut eu eros.",
 
   "trivia": [
-    "Trivia fact 1",
-    "Trivia fact 2"
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+    "Phasellus et nibh vel odio suscipit cursus sed ac magna.", 
+    "Ut nec dolor varius nibh tempor tempus eget venenatis lectus."
   ],
 
   "links": {
