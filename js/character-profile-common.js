@@ -229,24 +229,33 @@ function applyCharacterColors(character){
 
 }
 
-function applyCharacterTextGradient(character){
-
-  const root =
-    document.documentElement
-
-  const colors =
-    character?.colors || {}
+function applyCharacterTextGradient(character) {
+  const root = document.documentElement
+  const colors = character?.colors || {}
 
   const textGradient =
     Array.isArray(colors.text_gradient) &&
     colors.text_gradient.length >= 2
       ? colors.text_gradient
-      : [
-          colors.primary || "#b99b78",
-          colors.secondary || "#a27d5f"
-        ]
+      : null
 
+  // No text_gradient: leave the existing primary/secondary
+  // text colours alone and don't apply gradient classes.
+  if (!textGradient) {
+    root.classList.remove("has-text-gradient")
 
+    document
+      .querySelectorAll(".character-gradient-text")
+      .forEach(element => {
+        element.classList.remove("character-gradient-text")
+      })
+
+    root.style.removeProperty("--char-text-gradient")
+
+    return
+  }
+
+  // text_gradient exists and has at least 2 colours
   root.style.setProperty(
     "--char-text-gradient",
     `linear-gradient(
@@ -255,14 +264,10 @@ function applyCharacterTextGradient(character){
     )`
   )
 
-
-  root.classList.add(
-    "has-text-gradient"
-  )
+  root.classList.add("has-text-gradient")
 
   const textElements =
-    document.querySelectorAll(
-      `
+    document.querySelectorAll(`
       body.character-profile-page
       :is(
         h1,
@@ -287,22 +292,12 @@ function applyCharacterTextGradient(character){
         td,
         figcaption,
         blockquote,
-        button
       )
-      `
-    )
+    `)
 
-
-  textElements.forEach(
-    element => {
-
-      element.classList.add(
-        "character-gradient-text"
-      )
-
-    }
-  )
-
+  textElements.forEach(element => {
+    element.classList.add("character-gradient-text")
+  })
 }
 
 
