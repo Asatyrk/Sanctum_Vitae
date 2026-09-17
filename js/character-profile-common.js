@@ -296,7 +296,7 @@ function applyCharacterTextGradient(character) {
       body.character-profile-page .likes,
       body.character-profile-page .dislikes,
       body.character-profile-page .background-notes,
-      body.character-profile-page .health-notes,
+      body.character-profile-page .health-notes
       `
     )
 
