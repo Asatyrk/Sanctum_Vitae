@@ -483,8 +483,7 @@ body.character-profile-page
    6. CHARACTER TEXT GRADIENT
 ========================================================= */
 
-body.character-profile-page
-.character-gradient-text {
+body.character-profile-page .character-gradient-text {
 
   background-image:
     var(--char-text-gradient);
@@ -501,9 +500,6 @@ body.character-profile-page
 }
 
 
-/* Only enable gradient colours when the character
-   actually provides a text gradient. */
-
 html:not(.has-text-gradient)
 body.character-profile-page
 .character-gradient-text {
@@ -514,6 +510,15 @@ body.character-profile-page
   -webkit-text-fill-color: currentColor;
 }
 
+body.character-profile-page button {
+
+  background-image: none;
+
+  background-color: var(--char-bg-1);
+
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+}
 
 
 /* =========================================================
@@ -1791,6 +1796,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
 
 .detail-switcher-tab {
+
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -1807,30 +1813,23 @@ body.character-profile-page .site-nav a:focus-visible {
 
   cursor: pointer;
 
-  /* TEXT SYSTEM */
+  /* Solid button background */
+  background-image: none;
+  background-color: var(--char-bg-1);
+
+  /* Text colour */
   color: var(--char-primary);
 
-  /* BACKGROUND SYSTEM */
-  background: var(--char-page-bg);
-
   transition:
-    background var(--transition-fast),
+    background-color var(--transition-fast),
     color var(--transition-fast);
 }
 
 
-:root.has-text-gradient
-.detail-switcher-tab {
-  background-clip: padding-box;
-}
-
-
-.detail-switcher-tab {
-  background-color: var(--char-bg-1);
-}
-
-
 .detail-switcher-tab:hover {
+
+  background-image: none;
+
   background-color:
     color-mix(
       in srgb,
@@ -1843,12 +1842,17 @@ body.character-profile-page .site-nav a:focus-visible {
 
 
 .detail-switcher-tab.active {
-  color: var(--char-secondary);
+
+  background-image: none;
+
   background-color: var(--char-bg-2);
+
+  color: var(--char-secondary);
 }
 
 
 .detail-switcher-tab:focus-visible {
+
   outline:
     2px solid
     var(--char-secondary);
