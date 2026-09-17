@@ -244,7 +244,10 @@ function applyCharacterTextGradient(character) {
 
     root.style.setProperty(
       "--char-text-gradient",
-      `linear-gradient(90deg, ${colors.text_gradient.join(", ")})`
+      `linear-gradient(
+        90deg,
+        ${colors.text_gradient.join(", ")}
+      )`
     )
 
     root.classList.add(
@@ -261,7 +264,11 @@ function applyCharacterTextGradient(character) {
 
     root.style.setProperty(
       "--char-text-gradient",
-      `linear-gradient(90deg, ${primary}, ${secondary})`
+      `linear-gradient(
+        90deg,
+        ${primary},
+        ${secondary}
+      )`
     )
 
     root.classList.remove(
@@ -272,33 +279,27 @@ function applyCharacterTextGradient(character) {
 
 
   const textElements =
-    document.querySelectorAll(
-      `
-      body.character-profile-page h1,
-      body.character-profile-page h2,
-      body.character-profile-page h3,
-      body.character-profile-page h4,
-      body.character-profile-page h5,
-      body.character-profile-page h6,
-      body.character-profile-page p,
-      body.character-profile-page li,
-      body.character-profile-page span,
-      body.character-profile-page label,
-      body.character-profile-page strong,
-      body.character-profile-page em,
-      body.character-profile-page a,
-      body.character-profile-page .info-label,
-      body.character-profile-page .info-value,
-      body.character-profile-page .profile-notes,
-      body.character-profile-page .design-notes,
-      body.character-profile-page .personality-notes,
-      body.character-profile-page .trivia,
-      body.character-profile-page .likes,
-      body.character-profile-page .dislikes,
-      body.character-profile-page .background-notes,
-      body.character-profile-page .health-notes
-      `
+  document.querySelectorAll(
+    `
+    body.character-profile-page
+    :is(
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      li,
+      span,
+      label,
+      strong,
+      em,
+      a
     )
+    `
+  )
+
 
 
   textElements.forEach(
@@ -310,7 +311,6 @@ function applyCharacterTextGradient(character) {
 
     }
   )
-
 
   if (
     !root.classList.contains(
