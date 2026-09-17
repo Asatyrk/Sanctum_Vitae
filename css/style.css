@@ -500,6 +500,7 @@ body.character-profile-page
   -webkit-text-fill-color: transparent;
 }
 
+
 html:not(.has-text-gradient)
 body.character-profile-page
 .character-gradient-text {
@@ -507,6 +508,7 @@ body.character-profile-page
   background-image: none;
 
   color: inherit;
+  -webkit-text-fill-color: currentColor;
 }
 
 

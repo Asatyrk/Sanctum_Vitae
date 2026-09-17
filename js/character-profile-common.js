@@ -1310,7 +1310,7 @@ async function displayCharacter(character){
       trivia.innerHTML =
         character.trivia
           .map(
-            item => `<li>${item}</li>`
+            item => `<li><span>${item}</span></li>`
           )
           .join("")
 

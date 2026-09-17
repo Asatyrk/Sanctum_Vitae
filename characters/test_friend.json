@@ -216,8 +216,8 @@
   "decorImage": "",
 
   "colors": {
-  "primary": "",
-  "secondary": "",
+  "primary": "#FF0000",
+  "secondary": "#0000FF",
   "accent": "",
   "bg_1": "",
   "bg_2": "",
