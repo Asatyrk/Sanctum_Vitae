@@ -483,7 +483,8 @@ body.character-profile-page
    6. CHARACTER TEXT GRADIENT
 ========================================================= */
 
-body.character-profile-page .character-gradient-text {
+body.character-profile-page
+.character-gradient-text {
 
   background-image:
     var(--char-text-gradient);
@@ -499,7 +500,6 @@ body.character-profile-page .character-gradient-text {
   -webkit-text-fill-color: transparent;
 }
 
-
 html:not(.has-text-gradient)
 body.character-profile-page
 .character-gradient-text {
@@ -510,14 +510,19 @@ body.character-profile-page
   -webkit-text-fill-color: currentColor;
 }
 
-body.character-profile-page button {
+
+body.character-profile-page
+button.character-gradient-text {
 
   background-image: none;
 
   background-color: var(--char-bg-1);
 
-  -webkit-background-clip: border-box;
   background-clip: border-box;
+  -webkit-background-clip: border-box;
+
+  color: var(--char-primary);
+  -webkit-text-fill-color: var(--char-primary);
 }
 
 
@@ -1813,12 +1818,10 @@ body.character-profile-page .site-nav a:focus-visible {
 
   cursor: pointer;
 
-  /* Solid button background */
+  color: var(--char-primary);
+
   background-image: none;
   background-color: var(--char-bg-1);
-
-  /* Text colour */
-  color: var(--char-primary);
 
   transition:
     background-color var(--transition-fast),
