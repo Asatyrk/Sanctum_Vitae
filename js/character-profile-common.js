@@ -289,9 +289,14 @@ function applyCharacterTextGradient(character) {
       body.character-profile-page a,
       body.character-profile-page .info-label,
       body.character-profile-page .info-value,
-      body.character-profile-page .card-name,
-      body.character-profile-page .tag,
-      body.character-profile-page summary
+      body.character-profile-page .profile-notes,
+      body.character-profile-page .design-notes,
+      body.character-profile-page .personality-notes,
+      body.character-profile-page .trivia,
+      body.character-profile-page .likes,
+      body.character-profile-page .dislikes,
+      body.character-profile-page .background-notes,
+      body.character-profile-page .health-notes,
       `
     )
 
