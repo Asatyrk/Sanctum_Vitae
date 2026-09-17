@@ -260,13 +260,6 @@ function applyCharacterTextGradient(character){
     "has-text-gradient"
   )
 
-
-  /*
-   * Find ALL text-containing elements
-   * that exist after the character page
-   * has finished rendering.
-   */
-
   const textElements =
     document.querySelectorAll(
       `
@@ -279,7 +272,6 @@ function applyCharacterTextGradient(character){
         h5,
         h6,
         p,
-        li,
         span,
         label,
         strong,
@@ -1040,7 +1032,7 @@ async function displayCharacter(character){
       profileNotes.innerHTML =
         character.profile_notes
           .map(
-            note => `<li>${note}</li>`
+            note => `<li><span>${note}</span></li>`
           )
           .join("")
 
@@ -1076,7 +1068,7 @@ async function displayCharacter(character){
       designNotes.innerHTML =
         notes
           .map(
-            note => `<li>${note}</li>`
+            note => `<li><span>${note}</span></li>`
           )
           .join("")
 
@@ -1112,7 +1104,7 @@ async function displayCharacter(character){
       personalityNotes.innerHTML =
         notes
           .map(
-            note => `<li>${note}</li>`
+            note => `<li><span>${note}</span></li>`
           )
           .join("")
 
@@ -1148,7 +1140,7 @@ async function displayCharacter(character){
       likes.innerHTML =
         notes
           .map(
-            note => `<li>${note}</li>`
+            note => `<li><span>${note}</span></li>`
           )
           .join("")
 
@@ -1184,7 +1176,7 @@ async function displayCharacter(character){
       dislikes.innerHTML =
         notes
           .map(
-            note => `<li>${note}</li>`
+            note => `<li><span>${note}</span></li>`
           )
           .join("")
 
@@ -1220,7 +1212,7 @@ async function displayCharacter(character){
       healthNotes.innerHTML =
         notes
           .map(
-            note => `<li>${note}</li>`
+            note => `<li><span>${note}</span></li>`
           )
           .join("")
 
@@ -1256,7 +1248,7 @@ async function displayCharacter(character){
       backgroundNotes.innerHTML =
         notes
           .map(
-            note => `<li>${note}</li>`
+            note => `<li><span>${note}</span></li>`
           )
           .join("")
 
@@ -1882,7 +1874,7 @@ if(avatarLink){
           notes.innerHTML =
             partner.notes
               .map(
-                note => `<li>${note}</li>`
+                note => `<li><span>${note}</span></li>`
               )
               .join("")
 
@@ -2314,7 +2306,7 @@ async function setupPets(character){
           notes.innerHTML =
             pet.notes
               .map(
-                note => `<li>${note}</li>`
+                note => `<li><span>${note}</span></li>`
               )
               .join("")
 
