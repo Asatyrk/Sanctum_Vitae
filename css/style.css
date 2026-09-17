@@ -1771,16 +1771,6 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 .detail-banner-content ul {
-  margin: 0;
-
-  padding-left: var(--space-6);
-
-  color: var(--char-secondary);
-}
-
-.detail-banner-content li {
-  margin-bottom: var(--space-2);
-
   color: var(--char-secondary);
 }
 
