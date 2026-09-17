@@ -226,7 +226,7 @@
   },
 
 "characterBackground": {
-  "particle_color": "#ff0000",
+  "particle_color": "",
   "particle_colors": [
     "",
     "",

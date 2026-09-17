@@ -317,12 +317,15 @@ function setupCharacterBackground(character){
     character.colors || {}
 
     const particleColors =
-    Array.isArray(
-       characterBackground.particle_colors
-      ) &&
-      characterBackground.particle_colors.length > 0
-        ? characterBackground.particle_colors
-        : null
+     Array.isArray(characterBackground.particle_colors)
+       ? characterBackground.particle_colors
+           .filter(color => typeof color === "string" && color.trim() !== "")
+       : []
+
+   const fallbackParticleColor =
+     characterBackground.particle_color?.trim() ||
+     colors.primary ||
+     "#b99b78"
 
   const count =
     Math.max(
@@ -396,18 +399,13 @@ function setupCharacterBackground(character){
       0
 
       const particleColor =
-       particleColors
-        ? particleColors[
-            Math.floor(
-            Math.random() *
-          particleColors.length
-        )
-        ]
-      : (
-          characterBackground.particle_color ||
-          colors.primary ||
-          "#b99b78"
-        )
+       particleColors.length > 0
+         ? particleColors[
+             Math.floor(
+               Math.random() * particleColors.length
+             )
+            ]
+    : fallbackParticleColor
 
     particle.style.setProperty(
       "--particle-width",
