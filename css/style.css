@@ -1408,13 +1408,20 @@ body.character-profile-page .site-nav a:focus-visible {
 
   gap: var(--space-1);
 
-  margin: var(--space-5) 0;
-
-  padding-left: var(--space-5);
+  margin: 0;
+  padding: 0 0 0 var(--space-5);
 
   list-style: disc;
 
+  font-family: var(--font-body);
   font-size: var(--font-size-sm);
+  line-height: 1.2;
+}
+
+.profile-traits li {
+  margin: 0;
+  padding: 0;
+
   line-height: 1.2;
 }
 
@@ -1689,27 +1696,6 @@ body.character-profile-page .site-nav a:focus-visible {
 
 .detail-split-right .profile-traits {
   margin: 0;
-}
-
-
-/* Split-panel lists */
-
-.detail-split-left .profile-traits,
-.detail-split-right .profile-traits {
-  display: block;
-
-  margin: var(--space-4) 0;
-
-  padding-left: var(--space-6);
-
-  list-style-type: disc;
-}
-
-.detail-split-left .profile-traits li,
-.detail-split-right .profile-traits li {
-  display: list-item;
-
-  margin-bottom: var(--space-2);
 }
 
 .detail-split-left .profile-traits li {
