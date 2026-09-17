@@ -1429,6 +1429,9 @@ body.character-profile-page .site-nav a:focus-visible {
   color: var(--char-secondary);
 }
 
+#profile-notes {
+  margin-top: var(--space-3);
+}
 
 /* =========================================================
    22. DIVIDERS
@@ -1910,7 +1913,7 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 .partner-card .partner-notes {
-  margin: var(--space-5) 0 0;
+  margin: var(--space-3);
 
   color: var(--char-secondary);
 }
