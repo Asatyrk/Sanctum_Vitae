@@ -504,8 +504,9 @@ body.character-profile-page
 body.character-profile-page
 li.character-gradient-text::marker {
 
-  color: var(--char-accent);
-  -webkit-text-fill-color: var(--char-accent);
+  color: var(--char-accent) !important;
+
+  -webkit-text-fill-color: var(--char-accent) !important;
 }
 
 
