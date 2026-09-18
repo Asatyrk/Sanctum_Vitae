@@ -1,16 +1,19 @@
 {
   "name": "Story Title",
   "tagline": "A short line about the story.",
-  "cover": "assets/stories/story-title/cover.jpg",
-  "banner": "assets/stories/story-title/banner.jpg",
   "description": [
     "First paragraph of the story description.",
     "Second paragraph of the story description."
   ],
+  
+  "avatar": "assets/stories/story-title/avatar.jpg",
+  "banner": "assets/stories/story-title/banner.jpg",
+
   "readUrl": "stories/story-title.html",
+
   "tags": {
     "Genre": ["Fantasy"],
-    "Age Range": ["18+"],
+    "Age Range": ["Explicit [18+]"],
     "Status": ["Ongoing"]
   }
 }
