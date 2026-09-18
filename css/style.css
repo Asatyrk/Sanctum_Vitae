@@ -2199,7 +2199,6 @@ body.character-profile-page .site-nav a:focus-visible {
 
 .links-section {
   width: 100%;
-
   margin-bottom: var(--space-12);
 }
 
@@ -2235,9 +2234,9 @@ body.character-profile-page .site-nav a:focus-visible {
       minmax(220px, 1fr)
     );
 
-  gap: var(--space-4);
+  gap: var(--space-3);
 
-  padding: var(--space-5);
+  padding: var(--space-4);
 
   background: var(--char-bg-2);
 }
@@ -2251,7 +2250,9 @@ body.character-profile-page .site-nav a:focus-visible {
 
   min-width: 0;
 
-  padding: var(--space-4);
+  padding:
+    var(--space-3)
+    var(--space-4);
 
   background: var(--char-bg-1);
   color: var(--char-primary);
@@ -2276,15 +2277,41 @@ body.character-profile-page .site-nav a:focus-visible {
 /* Icon */
 
 .link-icon {
-  flex: 0 0 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  width: 42px;
-  height: 42px;
+  flex: 0 0 36px;
+
+  width: 36px;
+  height: 36px;
+
+  margin-right: var(--space-3);
 
   color: var(--char-primary);
 
-  fill: currentColor;
+  box-sizing: border-box;
 }
+
+
+/* Actual SVG */
+
+.link-icon svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: 36px;
+  max-height: 36px;
+
+  fill: currentColor;
+
+  overflow: visible;
+}
+
+
+/* Related character avatar */
 
 .link-icon-image {
   border-radius: 50%;
@@ -2318,7 +2345,11 @@ body.character-profile-page .site-nav a:focus-visible {
   color: var(--char-primary);
 
   font-family: var(--font-display);
-  font-size: var(--font-size-md);
+
+  /* Slightly smaller than before */
+  font-size: var(--font-size-sm);
+
+  line-height: 1.3;
 
   overflow-wrap: anywhere;
 }
@@ -2333,7 +2364,9 @@ body.character-profile-page .site-nav a:focus-visible {
 
   color: var(--char-primary);
 
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
+
+  line-height: 1;
 
   transition:
     transform 0.2s ease;
@@ -2344,12 +2377,16 @@ body.character-profile-page .site-nav a:focus-visible {
   transform: translateX(4px);
 }
 
+
+/* Placeholder icon*/
+
 .link-icon-placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
+  line-height: 1;
 }
 
 /* =========================================================
