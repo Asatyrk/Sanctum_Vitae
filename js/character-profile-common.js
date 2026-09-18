@@ -1486,20 +1486,9 @@ async function displayCharacter(character){
             icon.textContent =
               "↗"
 
-            icon.style.display =
-              "flex"
-
-            icon.style.alignItems =
-              "center"
-
-            icon.style.justifyContent =
-              "center"
-
-            icon.style.fontSize =
-              "24px"
-
-            icon.style.color =
-              "var(--char-primary)"
+            icon.classList.add(
+              "link-icon-placeholder"
+            )
 
           }
 
