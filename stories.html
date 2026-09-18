@@ -10,15 +10,8 @@
 
 <link rel="stylesheet" href="css/style.css">
 
-<link
-  href="https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap"
-  rel="stylesheet"
->
-
-<link
-  href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap"
-  rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 
 <script defer src="js/layout.js"></script>
 <script defer src="js/page-title.js"></script>
@@ -33,43 +26,11 @@
 <div class="stories-layout">
 
   <!-- LEFT SIDEBAR -->
-
   <aside class="stories-sidebar">
 
     <div class="sidebar-section">
-
-      <label class="sidebar-label">bio text here</label>
-
+      <label class="sidebar-label">Info text.</label>
     </div>
-
-
-    <div class="sidebar-section">
-
-      <label class="sidebar-label">Other Indexes</label>
-
-      <button
-        onclick="window.location.href='character.html';"
-        class="sidebar-button"
-      >
-        View Character Index
-      </button>
-
-      <button
-        onclick="window.location.href='pets.html';"
-        class="sidebar-button"
-      >
-        View Pet Index
-      </button>
-
-      <button
-        onclick="window.location.href='otherly-owned.html';"
-        class="sidebar-button"
-      >
-        View Otherly-Owned Index
-      </button>
-
-    </div>
-
 
     <div class="sidebar-section">
 
@@ -83,68 +44,47 @@
 
     </div>
 
-
     <div class="sidebar-section">
 
       <label class="sidebar-label">Sort</label>
 
       <select id="story-sort-select">
-
-        <option value="name-asc" selected>
-          Name A→Z
-        </option>
-
-        <option value="name-desc">
-          Name Z→A
-        </option>
-
+        <option value="name-asc" selected>Name A→Z</option>
+        <option value="name-desc">Name Z→A</option>
       </select>
 
     </div>
 
-
     <div class="sidebar-section">
 
-      <label class="sidebar-label">Genre</label>
+      <label class="sidebar-label">Match Mode</label>
 
-      <div id="genre-filters" class="story-filter-list"></div>
-
-    </div>
-
-
-    <div class="sidebar-section">
-
-      <label class="sidebar-label">Age Range</label>
-
-      <div id="age-filters" class="story-filter-list"></div>
+      <select id="story-match-mode">
+        <option value="and" selected>All selected tags</option>
+        <option value="or">Any selected tag</option>
+      </select>
 
     </div>
-
-
-    <div class="sidebar-section">
-
-      <label class="sidebar-label">Status</label>
-
-      <div id="status-filters" class="story-filter-list"></div>
-
-    </div>
-
 
     <button
-      id="clear-story-filters"
+      id="story-clear-filters"
       class="sidebar-button"
     >
       Clear Filters
     </button>
 
+    <div
+      id="story-tag-filters"
+      class="tag-filters"
+    ></div>
+
   </aside>
 
 
-  <!-- STORY CONTENT -->
-
+  <!-- STORY GRID -->
   <main class="stories-board">
 
-    <div id="story-list"></div>
+    <div id="story-grid"></div>
 
   </main>
 
