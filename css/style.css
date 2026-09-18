@@ -12,8 +12,9 @@
   --color-primary-darker: #6b5032;
   --color-accent: #a27d5f;
   --color-accent-light: #f7f3e8;
-  --color-box-1: #e4d0b7;
 
+  --color-box-1: #e4d0b7;
+  --color-box-2: #c9ad8a;
 
   --color-light: #f4efe6;
   --color-bg-light: #f3f1ec;
@@ -772,7 +773,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
 /* Sidebar controls */
 
-.characters-sidebar input:not([type="checkbox"]),
+.characters-sidebar input,
 .characters-sidebar select {
   box-sizing: border-box;
 
@@ -2457,7 +2458,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
   padding: var(--space-6);
 
-  background: var(--color-accent);
+  background: var(--color-box-2);
   color: var(--color-text-muted);
 
   text-align: center;
@@ -2617,7 +2618,7 @@ body.character-profile-page .site-nav a:focus-visible {
   width: 100%;
   height: 180px;
 
-  background-color: var(--color-accent);
+  background-color: var(--color-box-2);
 
   background-size: cover;
   background-position: center;
