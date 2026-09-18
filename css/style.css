@@ -2238,10 +2238,6 @@ body.character-profile-page .site-nav a:focus-visible {
   background: var(--char-bg-2);
 }
 
-.links-container {
-  grid-template-columns: 1fr;
-}
-
 /* Link card */
 
 .link-card {
@@ -2251,6 +2247,7 @@ body.character-profile-page .site-nav a:focus-visible {
   min-width: 0;
 
   padding:
+    var(--space-3)
     var(--space-4);
 
   background: var(--char-bg-1);
@@ -2326,6 +2323,8 @@ body.character-profile-page .site-nav a:focus-visible {
   flex: 1;
 
   min-width: 0;
+
+  min-height: 36px;
 }
 
 
@@ -2381,6 +2380,8 @@ body.character-profile-page .site-nav a:focus-visible {
 .link-label-related {
   display: flex;
   flex-direction: column;
+
+  justify-content: center;
 
   gap: 2px;
 }
