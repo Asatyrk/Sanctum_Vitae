@@ -2339,7 +2339,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
   font-family: var(--font-display);
 
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-sm);
 
   overflow-wrap: anywhere;
 }
