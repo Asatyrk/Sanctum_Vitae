@@ -2179,7 +2179,20 @@ body.character-profile-page .site-nav a:focus-visible {
 
 
 /* =========================================================
-   35. RESPONSIVE
+   35. DECOR IMAGE
+========================================================= */
+
+.decor-image-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* =========================================================
+   36. RESPONSIVE
 ========================================================= */
 
 @media (max-width: 768px) {

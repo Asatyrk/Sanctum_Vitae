@@ -688,53 +688,78 @@ async function displayCharacter(character){
   }
 
 
-  // =========================
+    // =========================
   // DECOR IMAGE
   // =========================
 
   const decorImage =
     character.decorImage
 
-  const box1 =
+  const fallbackImageUrl =
+    "https://placehold.co/1000x100"
+
+  const boxes = [
     document.getElementById(
       "decor-image"
-    )
-
-  const box2 =
+    ),
     document.getElementById(
       "decor-image-2"
-    )
-
-  const box3 =
+    ),
     document.getElementById(
       "decor-image-3"
     )
+  ].filter(Boolean)
+
+
+  function setDecorImage(
+    box,
+    imageUrl
+  ){
+
+    if(!box) return
+
+    const testImage =
+      new Image()
+
+    testImage.onload =
+      () => {
+
+        box.style.backgroundImage =
+          `url("${imageUrl}")`
+
+      }
+
+    testImage.onerror =
+      () => {
+
+        box.style.backgroundImage =
+          `url("${fallbackImageUrl}")`
+
+      }
+
+    testImage.src =
+      imageUrl
+
+  }
+
 
   const finalImageUrl =
-    decorImage
-      ? decorImage
-      : "https://placehold.co/1000x100"
+    typeof decorImage === "string" &&
+    decorImage.trim() !== ""
+      ? decorImage.trim()
+      : fallbackImageUrl
 
-  if(box1){
 
-    box1.style.backgroundImage =
-      `url("${finalImageUrl}")`
+  boxes.forEach(
+    box => {
 
-  }
+      setDecorImage(
+        box,
+        finalImageUrl
+      )
 
-  if(box2){
-
-    box2.style.backgroundImage =
-      `url("${finalImageUrl}")`
-
-  }
-
-  if(box3){
-
-    box3.style.backgroundImage =
-      `url("${finalImageUrl}")`
-
-  }
+    }
+  )
 
 
   // =========================
