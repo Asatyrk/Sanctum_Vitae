@@ -2269,8 +2269,6 @@ body.character-profile-page .site-nav a:focus-visible {
 /* Hover */
 
 .link-card:hover {
-  background: var(--char-bg-2);
-
   transform: translateY(-2px);
 }
 
