@@ -292,7 +292,6 @@ function applyCharacterTextGradient(character) {
         figcaption,
         blockquote
         ):not(.link-arrow)
-      )
     `)
 
   textElements.forEach(element => {
