@@ -2343,190 +2343,160 @@ async function setupPets(character){
 
 }
 
-async function setupLinks(character){
-
+async function setupLinks(character) {
   const section =
     document.getElementById(
       "links-section"
-    )
+    );
 
   const container =
     document.getElementById(
       "links-container"
-    )
+    );
 
   const template =
     document.getElementById(
       "link-template"
-    )
+    );
 
-  if(
+  if (
     !section ||
     !container ||
     !template
-  ){
-
-    return
-
+  ) {
+    return;
   }
 
-
   container.innerHTML =
-    ""
+    "";
 
   const links =
-    character.links || {}
+    character.links || {};
 
   let loadedLinks =
-    0
-
+    0;
 
   // =========================
   // CREATE LINK CARD
   // =========================
 
   const createLinkCard =
-  ({
-    label,
-    url,
-    image = null,
-    icon = null,
-    target = "_blank"
-  }) => {
-
-    if(
-      !label ||
-      !url
-    ){
-
-      return
-
-    }
-
-
-    const card =
-      linkTemplate.content.cloneNode(
-        true
-      )
-
-
-    const link =
-      card.querySelector(
-        ".link-card"
-      )
-
-    const iconElement =
-      card.querySelector(
-        ".link-icon"
-      )
-
-    const labelEl =
-      card.querySelector(
-        ".link-label"
-      )
-
-
-    if(link){
-
-      link.href =
-        url
-
-      link.target =
-        target
-
-    }
-
-
-    if(labelEl){
-
-      labelEl.textContent =
-        label
-
-    }
-
-
-    // =========================
-    // ICON
-    // =========================
-
-    if(iconElement){
-
-      const use =
-        iconElement.querySelector(
-          "use"
-        )
-
-
-      if(icon){
-
-        use?.setAttribute(
-          "href",
-          icon
-        )
-
-      }else if(image){
-
-        // Related character avatar
-
-        iconElement.outerHTML = `
-          <div
-            class="link-icon link-icon-image"
-            style="background-image:url('${image}')"
-          ></div>
-        `
-
-      }else{
-
-        iconElement.outerHTML = `
-          <div class="link-icon link-icon-placeholder">
-            ↗
-          </div>
-        `
-
+    ({
+      label,
+      url,
+      image = null,
+      icon = null,
+      target = "_blank"
+    }) => {
+      if (
+        !label ||
+        !url
+      ) {
+        return;
       }
 
-    }
+      const card =
+        template.content.cloneNode(
+          true
+        );
 
+      const link =
+        card.querySelector(
+          ".link-card"
+        );
 
-    container.appendChild(
-      card
-    )
+      const iconElement =
+        card.querySelector(
+          ".link-icon"
+        );
 
-    loadedLinks++
+      const labelEl =
+        card.querySelector(
+          ".link-label"
+        );
 
-  }
+      if (link) {
+        link.href =
+          url;
+
+        link.target =
+          target;
+      }
+
+      if (labelEl) {
+        labelEl.textContent =
+          label;
+      }
+
+      // =========================
+      // ICON
+      // =========================
+
+      if (iconElement) {
+        const use =
+          iconElement.querySelector(
+            "use"
+          );
+
+        if (icon) {
+          use?.setAttribute(
+            "href",
+            icon
+          );
+        } else if (image) {
+          // Related character avatar
+
+          iconElement.outerHTML = `
+            <div
+              class="link-icon link-icon-image"
+              style="background-image:url('${image}')"
+            ></div>
+          `;
+        } else {
+          iconElement.outerHTML = `
+            <div class="link-icon link-icon-placeholder">
+              ↗
+            </div>
+          `;
+        }
+      }
+
+      container.appendChild(
+        card
+      );
+
+      loadedLinks++;
+    };
 
   // =========================
   // STANDARD SOCIAL LINKS
   // =========================
 
   const standardLinks = [
+    {
+      key: "toyhouse",
+      label: "Toyhouse",
+      icon: "#icon-toyhouse"
+    },
 
-  {
-    key: "toyhouse",
-    label: "Toyhouse",
-    icon: "#icon-toyhouse"
-  },
+    {
+      key: "gallery",
+      label: "Gallery",
+      icon: "#icon-gallery"
+    },
 
-  {
-    key: "gallery",
-    label: "Gallery",
-    icon: "#icon-gallery"
-  },
+    {
+      key: "pinterest",
+      label: "Pinterest",
+      icon: "#icon-pinterest"
+    },
 
-  {
-    key: "pinterest",
-    label: "Pinterest",
-    icon: "#icon-pinterest"
-  },
-
-  {
-    key: "spotify",
-    label: "Spotify",
-    icon: "#icon-spotify"
-  }
-
-]
+    {
+      key: "spotify",
+      label: "Spotify",
+      icon: "#icon-spotify"
+    }
+  ];
 
 
   standardLinks.forEach(
