@@ -240,12 +240,12 @@ designNotes.innerHTML =
 // SHARED SECTIONS
 // =========================
 
-setupPartners(
-pet
+await setupPartners(
+  pet
 )
 
-setupRelationships(
-pet
+await setupRelationships(
+  pet
 )
 
 await setupLinks(
@@ -253,7 +253,7 @@ await setupLinks(
 )
 
 setupCharacterBackground(
-pet
+  pet
 )
 
 applyCharacterTextGradient(
@@ -285,7 +285,7 @@ const pet =
     "Pet not found"
   )
 
-displayPet(
+await displayPet(
   pet
 )
 

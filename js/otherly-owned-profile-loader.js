@@ -223,11 +223,17 @@ async function displayOtherlyOwned(character){
   // SHARED CHARACTER SECTIONS
   // =========================
 
-  setupPartners(character)
+  await setupPartners(
+    character
+  )
 
-  setupRelationships(character)
+  await setupRelationships(
+    character
+  )
 
-  setupPets(character)
+  await setupPets(
+    character
+  )
 
   await setupLinks(
     character
@@ -272,7 +278,7 @@ async function loadOtherlyOwned(){
       )
 
 
-    displayOtherlyOwned(
+    await displayOtherlyOwned(
       character
     )
 
