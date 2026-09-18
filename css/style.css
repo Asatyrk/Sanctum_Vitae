@@ -1522,6 +1522,11 @@ body.character-profile-page .site-nav a:focus-visible {
   overflow: hidden;
 }
 
+/* Backstory box format */
+
+#backstory {
+  white-space: pre-line;
+}
 
 /* =========================================================
    25. 50 / 50 DETAIL BOX
