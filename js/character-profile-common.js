@@ -1271,10 +1271,13 @@ async function displayCharacter(character){
 
   if(backstory){
 
+    const backstoryText =
+      Array.isArray(character.backstory)
+        ? character.backstory.join("\n\n")
+        : character.backstory || ""
+
     backstory.textContent =
-      text(
-        character.backstory
-      )
+      text(backstoryText)
 
   }
 
