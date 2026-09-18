@@ -2383,6 +2383,7 @@ async function setupLinks(character) {
   const createLinkCard =
     ({
       label,
+      labelPrefix = null,
       url,
       image = null,
       icon = null,
@@ -2423,10 +2424,31 @@ async function setupLinks(character) {
           target;
       }
 
-      if (labelEl) {
+      if(labelEl){
+
+       if(labelPrefix){
+
+        labelEl.innerHTML = `
+          <span class="link-label-prefix">
+            ${labelPrefix}
+          </span>
+          <span class="link-label-name">
+            ${label}
+          </span>
+        `
+
+        labelEl.classList.add(
+          "link-label-related"
+        )
+
+      }else{
+
         labelEl.textContent =
-          label;
+          label
+
       }
+
+    }
 
       // =========================
       // ICON
@@ -2569,9 +2591,12 @@ async function setupLinks(character) {
         createLinkCard({
 
           label:
-  `Related character: ${text(
-    relatedCharacter.name
-  )}`,
+            text(
+             relatedCharacter.name
+           ),
+
+         labelPrefix:
+           "Related character",
 
 
           url:
