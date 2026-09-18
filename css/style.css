@@ -2184,11 +2184,13 @@ body.character-profile-page .site-nav a:focus-visible {
 
 .decor-image-box {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  max-height: 75px;
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  margin-bottom: var(--space-12);
 }
 
 /* =========================================================
