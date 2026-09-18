@@ -4,7 +4,7 @@ return getCharacter()
 
 }
 
-function displayPet(pet){
+async function displayPet(pet){
 
 applyCharacterColors(
 pet
@@ -237,26 +237,26 @@ designNotes.innerHTML =
 }
 
 // =========================
-// PARTNERS / OWNERS
+// SHARED SECTIONS
 // =========================
 
 setupPartners(
 pet
 )
 
-// =========================
-// RELATIONSHIPS
-// =========================
-
 setupRelationships(
 pet
 )
 
-// =========================
-// BACKGROUND
-// =========================
+await setupLinks(
+  pet
+)
 
 setupCharacterBackground(
+pet
+)
+
+applyCharacterTextGradient(
 pet
 )
 

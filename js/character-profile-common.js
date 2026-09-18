@@ -1376,343 +1376,6 @@ async function displayCharacter(character){
   }
 
 
-    // =========================
-  // LINKS
-  // =========================
-
-  const linksSection =
-    document.getElementById(
-      "links-section"
-    )
-
-  const linksContainer =
-    document.getElementById(
-      "links-container"
-    )
-
-  const linkTemplate =
-    document.getElementById(
-      "link-template"
-    )
-
-  if(
-    linksSection &&
-    linksContainer &&
-    linkTemplate
-  ){
-
-    linksContainer.innerHTML =
-      ""
-
-    const links =
-      character.links || {}
-
-    let loadedLinks =
-      0
-
-
-    // =========================
-    // CREATE LINK CARD
-    // =========================
-
-    const createLinkCard =
-      ({
-        label,
-        url,
-        image = null,
-        target = "_blank"
-      }) => {
-
-        if(
-          !label ||
-          !url
-        ){
-
-          return
-
-        }
-
-
-        const card =
-          linkTemplate.content.cloneNode(
-            true
-          )
-
-
-        const link =
-          card.querySelector(
-            ".link-card"
-          )
-
-        const icon =
-          card.querySelector(
-            ".link-icon"
-          )
-
-        const labelEl =
-          card.querySelector(
-            ".link-label"
-          )
-
-
-        if(link){
-
-          link.href =
-            url
-
-          link.target =
-            target
-
-        }
-
-
-        if(labelEl){
-
-          labelEl.textContent =
-            label
-
-        }
-
-
-        if(icon){
-
-          if(image){
-
-            icon.style.backgroundImage =
-              `url("${image}")`
-
-          }else{
-
-            icon.textContent =
-              "↗"
-
-            icon.classList.add(
-              "link-icon-placeholder"
-            )
-
-          }
-
-        }
-
-
-        linksContainer.appendChild(
-          card
-        )
-
-        loadedLinks++
-
-      }
-
-
-    // =========================
-    // STANDARD SOCIAL LINKS
-    // =========================
-
-    const standardLinks = [
-      {
-        key: "toyhouse",
-        label: "Toyhouse"
-      },
-      {
-        key: "gallery",
-        label: "Gallery"
-      },
-      {
-        key: "pinterest",
-        label: "Pinterest"
-      },
-      {
-        key: "spotify",
-        label: "Spotify"
-      }
-    ]
-
-
-    standardLinks.forEach(
-      item => {
-
-        const url =
-          links[item.key]
-
-        if(
-          typeof url !== "string" ||
-          url.trim() === ""
-        ){
-
-          return
-
-        }
-
-
-        createLinkCard({
-          label:
-            item.label,
-
-          url:
-            url.trim()
-        })
-
-      }
-    )
-
-
-    // =========================
-    // RELATED CHARACTERS
-    // =========================
-
-    if(
-      Array.isArray(
-        links["related character(s)"]
-      )
-    ){
-
-      for(
-        const file of
-        links["related character(s)"]
-      ){
-
-        if(
-          typeof file !== "string" ||
-          file.trim() === ""
-        ){
-
-          continue
-
-        }
-
-
-        try{
-
-          const relatedCharacter =
-            await fetchCharacter(
-              file,
-              `Related character not found: ${file}`
-            )
-
-          createLinkCard({
-
-            label:
-              text(
-                relatedCharacter.name
-              ),
-
-            url:
-              getProfileUrl(
-                file
-              ),
-
-            image:
-              relatedCharacter.avatar || null,
-
-            target:
-              "_self"
-
-          })
-
-        }catch(err){
-
-          console.error(
-            `Could not load related character: ${file}`,
-            err
-          )
-
-        }
-
-      }
-
-    }
-
-
-    // =========================
-    // AU LINKS
-    // =========================
-
-    if(
-      Array.isArray(
-        links["AU(s)"]
-      )
-    ){
-
-      links["AU(s)"].forEach(
-        item => {
-
-          if(
-            !item ||
-            !item.url ||
-            !item.label
-          ){
-
-            return
-
-          }
-
-
-          createLinkCard({
-
-            label:
-              item.label,
-
-            url:
-              item.url
-
-          })
-
-        }
-      )
-
-    }
-
-
-    // =========================
-    // OTHER LINKS
-    // =========================
-
-    if(
-      Array.isArray(
-        links.other
-      )
-    ){
-
-      links.other.forEach(
-        item => {
-
-          if(
-            !item ||
-            !item.url ||
-            !item.label
-          ){
-
-            return
-
-          }
-
-
-          createLinkCard({
-
-            label:
-              item.label,
-
-            url:
-              item.url
-
-          })
-
-        }
-      )
-
-    }
-
-
-    // =========================
-    // SHOW / HIDE SECTION
-    // =========================
-
-    linksSection.hidden =
-      loadedLinks === 0
-
-  }
-
-
   // =========================
   // SHARED PROFILE SECTIONS
   // =========================
@@ -1726,6 +1389,10 @@ async function displayCharacter(character){
   )
 
   await setupPets(
+    character
+  )
+
+  await setupLinks(
     character
   )
 
@@ -2674,6 +2341,348 @@ async function setupPets(character){
 
   section.hidden =
     loadedPets === 0
+
+}
+
+async function setupLinks(character){
+
+  const section =
+    document.getElementById(
+      "links-section"
+    )
+
+  const container =
+    document.getElementById(
+      "links-container"
+    )
+
+  const template =
+    document.getElementById(
+      "link-template"
+    )
+
+  if(
+    !section ||
+    !container ||
+    !template
+  ){
+
+    return
+
+  }
+
+
+  container.innerHTML =
+    ""
+
+  const links =
+    character.links || {}
+
+  let loadedLinks =
+    0
+
+
+  // =========================
+  // CREATE LINK CARD
+  // =========================
+
+  const createLinkCard =
+    ({
+      label,
+      url,
+      image = null,
+      target = "_blank"
+    }) => {
+
+      if(
+        !label ||
+        !url
+      ){
+
+        return
+
+      }
+
+
+      const card =
+        template.content.cloneNode(
+          true
+        )
+
+
+      const link =
+        card.querySelector(
+          ".link-card"
+        )
+
+      const icon =
+        card.querySelector(
+          ".link-icon"
+        )
+
+      const labelEl =
+        card.querySelector(
+          ".link-label"
+        )
+
+
+      if(link){
+
+        link.href =
+          url
+
+        link.target =
+          target
+
+      }
+
+
+      if(labelEl){
+
+        labelEl.textContent =
+          label
+
+      }
+
+
+      if(icon){
+
+        if(image){
+
+          icon.style.backgroundImage =
+            `url("${image}")`
+
+        }else{
+
+          icon.textContent =
+            "↗"
+
+          icon.classList.add(
+            "link-icon-placeholder"
+          )
+
+        }
+
+      }
+
+
+      container.appendChild(
+        card
+      )
+
+      loadedLinks++
+
+    }
+
+
+  // =========================
+  // STANDARD SOCIAL LINKS
+  // =========================
+
+  const standardLinks = [
+    {
+      key: "toyhouse",
+      label: "Toyhouse"
+    },
+    {
+      key: "gallery",
+      label: "Gallery"
+    },
+    {
+      key: "pinterest",
+      label: "Pinterest"
+    },
+    {
+      key: "spotify",
+      label: "Spotify"
+    }
+  ]
+
+
+  standardLinks.forEach(
+    item => {
+
+      const url =
+        links[item.key]
+
+      if(
+        typeof url !== "string" ||
+        url.trim() === ""
+      ){
+
+        return
+
+      }
+
+
+      createLinkCard({
+
+        label:
+          item.label,
+
+        url:
+          url.trim()
+
+      })
+
+    }
+  )
+
+
+  // =========================
+  // RELATED CHARACTERS
+  // =========================
+
+  if(
+    Array.isArray(
+      links["related character(s)"]
+    )
+  ){
+
+    for(
+      const file of
+      links["related character(s)"]
+    ){
+
+      if(
+        typeof file !== "string" ||
+        file.trim() === ""
+      ){
+
+        continue
+
+      }
+
+
+      try{
+
+        const relatedCharacter =
+          await fetchCharacter(
+            file,
+            `Related character not found: ${file}`
+          )
+
+
+        createLinkCard({
+
+          label:
+            text(
+              relatedCharacter.name
+            ),
+
+          url:
+            getProfileUrl(
+              file
+            ),
+
+          image:
+            relatedCharacter.avatar || null,
+
+          target:
+            "_self"
+
+        })
+
+      }catch(err){
+
+        console.error(
+          `Could not load related character: ${file}`,
+          err
+        )
+
+      }
+
+    }
+
+  }
+
+
+  // =========================
+  // AU LINKS
+  // =========================
+
+  if(
+    Array.isArray(
+      links["AU(s)"]
+    )
+  ){
+
+    links["AU(s)"].forEach(
+      item => {
+
+        if(
+          !item ||
+          !item.url ||
+          !item.label
+        ){
+
+          return
+
+        }
+
+
+        createLinkCard({
+
+          label:
+            item.label,
+
+          url:
+            item.url
+
+        })
+
+      }
+    )
+
+  }
+
+
+  // =========================
+  // OTHER LINKS
+  // =========================
+
+  if(
+    Array.isArray(
+      links.other
+    )
+  ){
+
+    links.other.forEach(
+      item => {
+
+        if(
+          !item ||
+          !item.url ||
+          !item.label
+        ){
+
+          return
+
+        }
+
+
+        createLinkCard({
+
+          label:
+            item.label,
+
+          url:
+            item.url
+
+        })
+
+      }
+    )
+
+  }
+
+
+  // =========================
+  // SHOW / HIDE SECTION
+  // =========================
+
+  section.hidden =
+    loadedLinks === 0
 
 }
 

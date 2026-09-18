@@ -28,7 +28,7 @@ function setPageTitle(name){
 }
 
 
-function displayOtherlyOwned(character){
+async function displayOtherlyOwned(character){
 
   applyCharacterColors(
     character
@@ -229,7 +229,15 @@ function displayOtherlyOwned(character){
 
   setupPets(character)
 
+  await setupLinks(
+    character
+  )
+
   setupCharacterBackground(
+    character
+  )
+
+  applyCharacterTextGradient(
     character
   )
 
