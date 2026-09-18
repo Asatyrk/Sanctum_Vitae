@@ -1376,64 +1376,350 @@ async function displayCharacter(character){
   }
 
 
-  // =========================
+    // =========================
   // LINKS
   // =========================
 
-  const links =
+  const linksSection =
     document.getElementById(
-      "links"
+      "links-section"
     )
 
-  if(links){
+  const linksContainer =
+    document.getElementById(
+      "links-container"
+    )
 
-    if(!character.links){
+  const linkTemplate =
+    document.getElementById(
+      "link-template"
+    )
 
-      links.innerHTML =
-        "<li>N/A</li>"
+  if(
+    linksSection &&
+    linksContainer &&
+    linkTemplate
+  ){
 
-    }else{
+    linksContainer.innerHTML =
+      ""
 
-      let html =
-        ""
+    const links =
+      character.links || {}
 
-      if(character.links.toyhouse){
+    let loadedLinks =
+      0
 
-        html +=
-          `<li><a href="${character.links.toyhouse}" target="_blank">Toyhou.se</a></li>`
+
+    // =========================
+    // CREATE LINK CARD
+    // =========================
+
+    const createLinkCard =
+      ({
+        label,
+        url,
+        image = null,
+        target = "_blank"
+      }) => {
+
+        if(
+          !label ||
+          !url
+        ){
+
+          return
+
+        }
+
+
+        const card =
+          linkTemplate.content.cloneNode(
+            true
+          )
+
+
+        const link =
+          card.querySelector(
+            ".link-card"
+          )
+
+        const icon =
+          card.querySelector(
+            ".link-icon"
+          )
+
+        const labelEl =
+          card.querySelector(
+            ".link-label"
+          )
+
+
+        if(link){
+
+          link.href =
+            url
+
+          link.target =
+            target
+
+        }
+
+
+        if(labelEl){
+
+          labelEl.textContent =
+            label
+
+        }
+
+
+        if(icon){
+
+          if(image){
+
+            icon.style.backgroundImage =
+              `url("${image}")`
+
+          }else{
+
+            icon.textContent =
+              "↗"
+
+            icon.style.display =
+              "flex"
+
+            icon.style.alignItems =
+              "center"
+
+            icon.style.justifyContent =
+              "center"
+
+            icon.style.fontSize =
+              "24px"
+
+            icon.style.color =
+              "var(--char-primary)"
+
+          }
+
+        }
+
+
+        linksContainer.appendChild(
+          card
+        )
+
+        loadedLinks++
 
       }
 
-      if(character.links.pinterest){
 
-        html +=
-          `<li><a href="${character.links.pinterest}" target="_blank">Pinterest</a></li>`
+    // =========================
+    // STANDARD SOCIAL LINKS
+    // =========================
+
+    const standardLinks = [
+      {
+        key: "toyhouse",
+        label: "Toyhouse"
+      },
+      {
+        key: "gallery",
+        label: "Gallery"
+      },
+      {
+        key: "pinterest",
+        label: "Pinterest"
+      },
+      {
+        key: "spotify",
+        label: "Spotify"
+      }
+    ]
+
+
+    standardLinks.forEach(
+      item => {
+
+        const url =
+          links[item.key]
+
+        if(
+          typeof url !== "string" ||
+          url.trim() === ""
+        ){
+
+          return
+
+        }
+
+
+        createLinkCard({
+          label:
+            item.label,
+
+          url:
+            url.trim()
+        })
 
       }
+    )
 
-      if(character.links.spotify){
 
-        html +=
-          `<li><a href="${character.links.spotify}" target="_blank">Spotify</a></li>`
+    // =========================
+    // RELATED CHARACTERS
+    // =========================
 
-      }
+    if(
+      Array.isArray(
+        links["related character(s)"]
+      )
+    ){
 
-      if(character.links.other){
+      for(
+        const file of
+        links["related character(s)"]
+      ){
 
-        html +=
-          character.links.other
-            .map(
-              other =>
-                `<li><a href="${other.url}" target="_blank">${other.label}</a></li>`
+        if(
+          typeof file !== "string" ||
+          file.trim() === ""
+        ){
+
+          continue
+
+        }
+
+
+        try{
+
+          const relatedCharacter =
+            await fetchCharacter(
+              file,
+              `Related character not found: ${file}`
             )
-            .join("")
+
+          createLinkCard({
+
+            label:
+              text(
+                relatedCharacter.name
+              ),
+
+            url:
+              getProfileUrl(
+                file
+              ),
+
+            image:
+              relatedCharacter.avatar || null,
+
+            target:
+              "_self"
+
+          })
+
+        }catch(err){
+
+          console.error(
+            `Could not load related character: ${file}`,
+            err
+          )
+
+        }
 
       }
-
-      links.innerHTML =
-        html || "<li>N/A</li>"
 
     }
+
+
+    // =========================
+    // AU LINKS
+    // =========================
+
+    if(
+      Array.isArray(
+        links["AU(s)"]
+      )
+    ){
+
+      links["AU(s)"].forEach(
+        item => {
+
+          if(
+            !item ||
+            !item.url ||
+            !item.label
+          ){
+
+            return
+
+          }
+
+
+          createLinkCard({
+
+            label:
+              item.label,
+
+            url:
+              item.url
+
+          })
+
+        }
+      )
+
+    }
+
+
+    // =========================
+    // OTHER LINKS
+    // =========================
+
+    if(
+      Array.isArray(
+        links.other
+      )
+    ){
+
+      links.other.forEach(
+        item => {
+
+          if(
+            !item ||
+            !item.url ||
+            !item.label
+          ){
+
+            return
+
+          }
+
+
+          createLinkCard({
+
+            label:
+              item.label,
+
+            url:
+              item.url
+
+          })
+
+        }
+      )
+
+    }
+
+
+    // =========================
+    // SHOW / HIDE SECTION
+    // =========================
+
+    linksSection.hidden =
+      loadedLinks === 0
 
   }
 

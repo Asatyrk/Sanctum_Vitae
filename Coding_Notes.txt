@@ -31,9 +31,7 @@ Particle shapes:
 
 To do:
 - Change favicon/icon (easy though, just replace files in assets folder)
-- Particle colour presets
-- Test colour presets
-- BG colour presets
+- Make gradient text work on pet/ooc pages
 - Character page, details, etc
   - Story
   - ID box
@@ -41,6 +39,7 @@ To do:
   - Alt forms too? 
 - Mockup and code factions 
 - Mockup and code stories
+- Mockup and code lore
 - Ensure page base is setup correctly
 - Add animations to the tag boxes (pulling down, closing up)?
 - Other pages, but maybe just that for now

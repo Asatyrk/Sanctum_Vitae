@@ -868,17 +868,17 @@
 
   <template id="relationship-template">
 
-    <div class="relationship-card">
+   <a class="relationship-avatar-link" target="_self">
+     <div class="relationship-card">
 
-      <a class="relationship-avatar-link" target="_self">
         <div class="relationship-avatar"></div>
-      </a>
 
-      <h2 class="relationship-name"></h2>
+        <h2 class="relationship-name"></h2>
 
-      <p class="relationship-type"></p>
+        <p class="relationship-type"></p>
 
-    </div>
+     </div>
+   </a>
 
   </template>
 
@@ -951,6 +951,33 @@
 <!-- DECOR IMAGE BOX -->
 <div class="decor-image-box" id="decor-image-3"></div>
 <!-- END DECOR IMAGE BOX -->
+
+<!-- LINKS BOX -->
+<div id="links-section" class="links-section" hidden>
+
+  <div class="links-header">
+    <h2>Links</h2>
+  </div>
+
+  <div id="links-container" class="links-container"></div>
+
+  <template id="link-template">
+
+    <a class="link-card" target="_blank" rel="noopener noreferrer">
+
+      <div class="link-icon"></div>
+
+      <div class="link-content">
+        <span class="link-label"></span>
+        <span class="link-arrow">→</span>
+      </div>
+
+    </a>
+
+  </template>
+
+</div>
+<!-- END LINKS BOX -->
 
 </div>
 

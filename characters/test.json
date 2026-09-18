@@ -183,10 +183,19 @@
   ],
 
   "links": {
-    "toyhouse": "",
-    "pinterest": "",
-    "spotify": "",
-    "alt forms": ["characters/test_friend.json"],
+    "toyhouse": "https://toyhou.se/Asatyrk",
+    "gallery": "https://toyhou.se/Asatyrk/art",
+    "pinterest": "https://www.pinterest.com/",
+    "spotify": "https://open.spotify.com/",
+    "related character(s)": [
+      "characters/test_friend.json"
+    ],
+    "AU(s)": [
+      {
+        "label": "Example Link",
+        "url": "characters/test_friend.json"
+      }
+    ],
     "other": [
       {
         "label": "Example Link",
