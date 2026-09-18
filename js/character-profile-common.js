@@ -2386,116 +2386,147 @@ async function setupLinks(character){
   // =========================
 
   const createLinkCard =
-    ({
-      label,
-      url,
-      image = null,
-      target = "_blank"
-    }) => {
+  ({
+    label,
+    url,
+    image = null,
+    icon = null,
+    target = "_blank"
+  }) => {
 
-      if(
-        !label ||
-        !url
-      ){
+    if(
+      !label ||
+      !url
+    ){
 
-        return
+      return
 
-      }
+    }
 
 
-      const card =
-        template.content.cloneNode(
-          true
+    const card =
+      linkTemplate.content.cloneNode(
+        true
+      )
+
+
+    const link =
+      card.querySelector(
+        ".link-card"
+      )
+
+    const iconElement =
+      card.querySelector(
+        ".link-icon"
+      )
+
+    const labelEl =
+      card.querySelector(
+        ".link-label"
+      )
+
+
+    if(link){
+
+      link.href =
+        url
+
+      link.target =
+        target
+
+    }
+
+
+    if(labelEl){
+
+      labelEl.textContent =
+        label
+
+    }
+
+
+    // =========================
+    // ICON
+    // =========================
+
+    if(iconElement){
+
+      const use =
+        iconElement.querySelector(
+          "use"
         )
-
-
-      const link =
-        card.querySelector(
-          ".link-card"
-        )
-
-      const icon =
-        card.querySelector(
-          ".link-icon"
-        )
-
-      const labelEl =
-        card.querySelector(
-          ".link-label"
-        )
-
-
-      if(link){
-
-        link.href =
-          url
-
-        link.target =
-          target
-
-      }
-
-
-      if(labelEl){
-
-        labelEl.textContent =
-          label
-
-      }
 
 
       if(icon){
 
-        if(image){
+        use?.setAttribute(
+          "href",
+          icon
+        )
 
-          icon.style.backgroundImage =
-            `url("${image}")`
+      }else if(image){
 
-        }else{
+        // Related character avatar
 
-          icon.textContent =
-            "↗"
+        iconElement.outerHTML = `
+          <div
+            class="link-icon link-icon-image"
+            style="background-image:url('${image}')"
+          ></div>
+        `
 
-          icon.classList.add(
-            "link-icon-placeholder"
-          )
+      }else{
 
-        }
+        iconElement.outerHTML = `
+          <div class="link-icon link-icon-placeholder">
+            ↗
+          </div>
+        `
 
       }
 
-
-      container.appendChild(
-        card
-      )
-
-      loadedLinks++
-
     }
 
+
+    container.appendChild(
+      card
+    )
+
+    loadedLinks++
+
+  }
 
   // =========================
   // STANDARD SOCIAL LINKS
   // =========================
 
   const standardLinks = [
-    {
-      key: "toyhouse",
-      label: "Toyhouse"
-    },
-    {
-      key: "gallery",
-      label: "Gallery"
-    },
-    {
-      key: "pinterest",
-      label: "Pinterest"
-    },
-    {
-      key: "spotify",
-      label: "Spotify"
-    }
-  ]
+
+  {
+    key: "toyhouse",
+    label: "Toyhouse",
+    icon: "#icon-toyhouse"
+  },
+
+  {
+    key: "gallery",
+    label: "Gallery",
+    icon: "#icon-gallery"
+  },
+
+  {
+    key: "pinterest",
+    label: "Pinterest",
+    icon: "#icon-pinterest"
+  },
+
+  {
+    key: "spotify",
+    label: "Spotify",
+    icon: "#icon-spotify"
+  }
+
+]
 
 
   standardLinks.forEach(
@@ -2516,13 +2547,16 @@ async function setupLinks(character){
 
       createLinkCard({
 
-        label:
-          item.label,
+  label:
+    item.label,
 
-        url:
-          url.trim()
+  url:
+    url.trim(),
 
-      })
+  icon:
+    item.icon
+
+})
 
     }
   )
@@ -2565,9 +2599,10 @@ async function setupLinks(character){
         createLinkCard({
 
           label:
-            text(
-              relatedCharacter.name
-            ),
+  `Related character: ${text(
+    relatedCharacter.name
+  )}`,
+
 
           url:
             getProfileUrl(

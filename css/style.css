@@ -2276,18 +2276,24 @@ body.character-profile-page .site-nav a:focus-visible {
 /* Icon */
 
 .link-icon {
-  flex: 0 0 48px;
+  flex: 0 0 42px;
 
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
 
-  margin-right: var(--space-4);
+  color: var(--char-primary);
+
+  fill: currentColor;
+}
+
+.link-icon-image {
+  border-radius: 50%;
 
   background-color: var(--char-bg-2);
 
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 }
 
 
@@ -2340,13 +2346,10 @@ body.character-profile-page .site-nav a:focus-visible {
 
 .link-icon-placeholder {
   display: flex;
-
   align-items: center;
   justify-content: center;
 
-  color: var(--char-primary);
-
-  font-size: 24px;
+  font-size: var(--font-size-lg);
 }
 
 /* =========================================================
