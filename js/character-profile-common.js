@@ -283,7 +283,6 @@ function applyCharacterTextGradient(character) {
         em,
         b,
         i,
-        a,
         small,
         summary,
         dt,
@@ -291,7 +290,8 @@ function applyCharacterTextGradient(character) {
         th,
         td,
         figcaption,
-        blockquote,
+        blockquote
+        ):not(.link-arrow)
       )
     `)
 
