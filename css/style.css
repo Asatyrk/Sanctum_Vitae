@@ -2184,7 +2184,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
 .decor-image-box {
   width: 100%;
-  max-height: 75px;
+  height: 75px;
 
   background-size: cover;
   background-position: center;
