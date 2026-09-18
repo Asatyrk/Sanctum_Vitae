@@ -2626,7 +2626,7 @@ async function setupLinks(character) {
   }
 
 
-  // =========================
+    // =========================
   // AU LINKS
   // =========================
 
@@ -2655,8 +2655,14 @@ async function setupLinks(character) {
           label:
             item.label,
 
+          labelPrefix:
+            "AU",
+
           url:
-            item.url
+            item.url,
+
+          icon:
+            "#icon-au"
 
         })
 
