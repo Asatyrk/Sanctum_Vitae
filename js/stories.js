@@ -869,7 +869,7 @@ function sortStories(stories) {
 
 
 /* =========================================================
-   15. ESCAPE HTML
+   15. ESCAPE HTML / IMAGE FALLBACK
 ========================================================= */
 
 function escapeHtml(value) {
@@ -883,6 +883,41 @@ function escapeHtml(value) {
 
 }
 
+function addImageFallback(element, fallbackUrl) {
+
+  const image = new Image()
+
+  image.onload = () => {
+    element.style.backgroundImage =
+      `url("${element.dataset.image}")`
+  }
+
+  image.onerror = () => {
+    element.style.backgroundImage =
+      `url("${fallbackUrl}")`
+  }
+
+  image.src = element.dataset.image
+
+}
+
+function addImageFallback(element, fallbackUrl) {
+
+  const image = new Image()
+
+  image.onload = () => {
+    element.style.backgroundImage =
+      `url("${element.dataset.image}")`
+  }
+
+  image.onerror = () => {
+    element.style.backgroundImage =
+      `url("${fallbackUrl}")`
+  }
+
+  image.src = element.dataset.image
+
+}
 
 /* =========================================================
    16. CREATE STORY CARD
@@ -971,10 +1006,10 @@ function createStoryCard(story) {
     <div class="story-card-left">
 
       <div
-        class="story-avatar"
-        style="background-image: url('${escapeHtml(story.avatar)}');"
-        role="img"
-        aria-label="${escapeHtml(story.name)} avatar"
+       class="story-avatar"
+       data-image="${escapeHtml(story.avatar || "")}"
+       role="img"
+       aria-label="${escapeHtml(story.name)} avatar"
       ></div>
 
 
@@ -1021,10 +1056,10 @@ function createStoryCard(story) {
         story.banner
           ? `
             <div
-              class="story-banner"
-              style="background-image: url('${escapeHtml(story.banner)}');"
-              role="img"
-              aria-label="${escapeHtml(story.name)} banner"
+             class="story-banner"
+             data-image="${escapeHtml(story.banner || "")}"
+             role="img"
+             aria-label="${escapeHtml(story.name)} banner"
             ></div>
           `
           : ""
@@ -1042,7 +1077,29 @@ function createStoryCard(story) {
     </div>
 
   `
+const avatar =
+  card.querySelector(".story-avatar")
 
+if (avatar) {
+
+  addImageFallback(
+    avatar,
+    `https://placehold.co/240x240?text=${encodeURIComponent(story.name)}`
+  )
+
+}
+
+const banner =
+  card.querySelector(".story-banner")
+
+if (banner) {
+
+  addImageFallback(
+    banner,
+    `https://placehold.co/1200x400?text=${encodeURIComponent(story.name)}`
+  )
+
+}
 
   return card
 

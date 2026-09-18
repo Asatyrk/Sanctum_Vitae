@@ -12,6 +12,9 @@
   --color-primary-darker: #6b5032;
   --color-accent: #a27d5f;
   --color-accent-light: #f7f3e8;
+  --color-box-1: #c7ac8d;
+  --color-box-2: #dbcab6;
+
 
   --color-light: #f4efe6;
   --color-bg-light: #f3f1ec;
@@ -2441,7 +2444,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
   overflow: hidden;
 
-  background: var(--color-bg-light);
+  background: var(--color-box-2);
   color: var(--color-text-dark);
 }
 
@@ -2454,7 +2457,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
   padding: var(--space-6);
 
-  background: var(--color-light);
+  background: var(--color-box-1);
   color: var(--color-text-muted);
 
   text-align: center;
@@ -2528,7 +2531,7 @@ body.character-profile-page .site-nav a:focus-visible {
     var(--space-1)
     var(--space-2);
 
-  background: #fdfcf6;
+  background: var(--color-box-2);
 
   border:
     1px solid
@@ -2602,7 +2605,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
   min-width: 0;
 
-  background: var(--color-bg-light);
+  background: var(--color-box-2);
 
   color: var(--color-text-muted);
 }
@@ -2614,7 +2617,7 @@ body.character-profile-page .site-nav a:focus-visible {
   width: 100%;
   height: 180px;
 
-  background-color: var(--color-light);
+  background-color: var(--color-box-1);
 
   background-size: cover;
   background-position: center;
@@ -2661,6 +2664,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
   font-style: italic;
 }
+
 
 /* =========================================================
    37. RESPONSIVE
