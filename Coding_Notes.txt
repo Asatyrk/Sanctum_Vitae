@@ -8,7 +8,7 @@ Image key:
 Headshot [1:1] = polaroid 
 Avatar [1:1] = circle image 
 Banner [3:1] = splash image 
-Fullbody [2:1] = body ref 
+Fullbody [2:1] = body ref (1:1 for pets)
 Decor [~10:1] = other splash images
 
 Particle shapes:
@@ -35,8 +35,13 @@ To do:
   - Story
   - ID box
 - Mockup and code factions 
+  - Factions index
+  - Faction page
 - Mockup and code stories
+  - Factions index
+  - Faction page
 - Mockup and code lore
+- Code main page
 - Ensure page base is setup correctly
-- Add animations to the tag boxes (pulling down, closing up)?
+- General cleanup + code revisions
 - Other pages, but maybe just that for now

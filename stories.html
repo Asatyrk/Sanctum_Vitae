@@ -9,32 +9,146 @@
 <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
 
 <link rel="stylesheet" href="css/style.css">
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap"
+  rel="stylesheet"
+>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap"
+  rel="stylesheet"
+>
+
+<script defer src="js/layout.js"></script>
+<script defer src="js/page-title.js"></script>
 <script defer src="js/stories.js"></script>
 
 </head>
 
-<body data-page="stories">
+<body data-page="Stories" class="page-stories">
 
-<h1>Stories</h1>
+<div id="site-header"></div>
 
-<div class="list-controls">
-  <div class="list-search">
-    <label for="search-input">Search:</label>
-    <input id="search-input" type="search" placeholder="Search stories…" />
-  </div>
+<div class="stories-layout">
 
-  <div class="list-sort">
-    <label for="sort-select">Sort:</label>
-    <select id="sort-select">
-      <option value="name-asc" selected>Name A→Z</option>
-      <option value="name-desc">Name Z→A</option>
-    </select>
-  </div>
+  <!-- LEFT SIDEBAR -->
 
-  <button id="clear-filters" type="button">Clear filters</button>
+  <aside class="stories-sidebar">
+
+    <div class="sidebar-section">
+
+      <label class="sidebar-label">bio text here</label>
+
+    </div>
+
+
+    <div class="sidebar-section">
+
+      <label class="sidebar-label">Other Indexes</label>
+
+      <button
+        onclick="window.location.href='character.html';"
+        class="sidebar-button"
+      >
+        View Character Index
+      </button>
+
+      <button
+        onclick="window.location.href='pets.html';"
+        class="sidebar-button"
+      >
+        View Pet Index
+      </button>
+
+      <button
+        onclick="window.location.href='otherly-owned.html';"
+        class="sidebar-button"
+      >
+        View Otherly-Owned Index
+      </button>
+
+    </div>
+
+
+    <div class="sidebar-section">
+
+      <label class="sidebar-label">Search</label>
+
+      <input
+        id="story-search-input"
+        type="search"
+        placeholder="Search stories…"
+      />
+
+    </div>
+
+
+    <div class="sidebar-section">
+
+      <label class="sidebar-label">Sort</label>
+
+      <select id="story-sort-select">
+
+        <option value="name-asc" selected>
+          Name A→Z
+        </option>
+
+        <option value="name-desc">
+          Name Z→A
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="sidebar-section">
+
+      <label class="sidebar-label">Genre</label>
+
+      <div id="genre-filters" class="story-filter-list"></div>
+
+    </div>
+
+
+    <div class="sidebar-section">
+
+      <label class="sidebar-label">Age Range</label>
+
+      <div id="age-filters" class="story-filter-list"></div>
+
+    </div>
+
+
+    <div class="sidebar-section">
+
+      <label class="sidebar-label">Status</label>
+
+      <div id="status-filters" class="story-filter-list"></div>
+
+    </div>
+
+
+    <button
+      id="clear-story-filters"
+      class="sidebar-button"
+    >
+      Clear Filters
+    </button>
+
+  </aside>
+
+
+  <!-- STORY CONTENT -->
+
+  <main class="stories-board">
+
+    <div id="story-list"></div>
+
+  </main>
+
 </div>
-
-<div id="story-grid" class="card-grid"></div>
 
 </body>
 

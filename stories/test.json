@@ -1,8 +1,17 @@
 {
-  "name": "Test Story",
-  "logo": "https://f2.toyhou.se/file/f2-toyhou-se/characters/25942119?1720701138",
-  "summary": "This is a test story used for development.",
-  "characters": [
-    "characters/test.json"
+  "name": "The Example Story",
+  "image": "assets/stories/example.jpg",
+  "banner": "assets/stories/example-banner.jpg",
+  "tagline": "A short line that describes the story.",
+  "genre": [
+    "Fantasy",
+    "Drama"
+  ],
+  "age_range": "16+",
+  "status": "Ongoing",
+  "readUrl": "story.html?story=example",
+  "description": [
+    "This is the first paragraph of the story information. It can be as long as you need.",
+    "This is another paragraph containing additional information about the story."
   ]
 }
