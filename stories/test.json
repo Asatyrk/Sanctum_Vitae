@@ -2,8 +2,7 @@
   "name": "Story Title",
   "tagline": "A short line about the story.",
   "description": [
-    "First paragraph of the story description.",
-    "Second paragraph of the story description."
+    "First paragraph of the story description. Box supports multiple."
   ],
   
   "avatar": "assets/stories/story-title/avatar.jpg",
