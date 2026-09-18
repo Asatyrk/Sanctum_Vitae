@@ -1084,7 +1084,7 @@ if (avatar) {
 
   addImageFallback(
     avatar,
-    `https://placehold.co/240x240?text=${encodeURIComponent(story.name)}`
+    `https://placehold.co/240x240`
   )
 
 }
@@ -1096,7 +1096,7 @@ if (banner) {
 
   addImageFallback(
     banner,
-    `https://placehold.co/1200x400?text=${encodeURIComponent(story.name)}`
+    `https://placehold.co/1200x400`
   )
 
 }
