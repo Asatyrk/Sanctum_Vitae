@@ -1044,7 +1044,7 @@ function createStoryCard(story) {
         class="story-read-button"
         href="${escapeHtml(story.readUrl)}"
       >
-        Read Story
+        Read Story →
       </a>
 
     </div>
