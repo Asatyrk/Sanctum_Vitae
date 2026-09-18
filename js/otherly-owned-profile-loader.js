@@ -210,7 +210,7 @@ async function displayOtherlyOwned(character){
       profileNotes.innerHTML =
         character.profile_notes
           .map(
-            note => `<li>${note}</li>`
+            note => `<li><span>${note}</span></li>`
           )
           .join("")
 

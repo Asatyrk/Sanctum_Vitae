@@ -202,7 +202,7 @@ profileNotes.innerHTML =
   pet.profile_notes?.length
     ? pet.profile_notes
         .map(
-          note => `<li>${note}</li>`
+          note => `<li><span>${note}</span></li>`
         )
         .join("")
     : "<li>N/A</li>"
@@ -228,7 +228,7 @@ designNotes.innerHTML =
   notes?.length
     ? notes
         .map(
-          note => `<li>${note}</li>`
+          note => `<li><span>${note}</span></li>`
         )
         .join("")
     : "<li>N/A</li>"
