@@ -31,12 +31,9 @@ Particle shapes:
 
 To do:
 - Change favicon/icon (easy though, just replace files in assets folder)
-- Make gradient text work on pet/ooc pages
 - Character page, details, etc
   - Story
   - ID box
-  - Links
-  - Alt forms too? 
 - Mockup and code factions 
 - Mockup and code stories
 - Mockup and code lore
