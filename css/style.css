@@ -773,7 +773,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
 /* Sidebar controls */
 
-.characters-sidebar input,
+.characters-sidebar input:not([type="checkbox"]),
 .characters-sidebar select {
   box-sizing: border-box;
 
