@@ -2251,7 +2251,6 @@ body.character-profile-page .site-nav a:focus-visible {
   min-width: 0;
 
   padding:
-    var(--space-3)
     var(--space-4);
 
   background: var(--char-bg-1);
@@ -2388,7 +2387,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
 
 .link-label-prefix {
-  color: var(--char-secondary);
+  color: var(--char-primary);
 
   font-family: var(--font-body);
   font-size: 0.7em;
