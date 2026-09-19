@@ -2692,7 +2692,7 @@ body.character-profile-page .site-nav a:focus-visible {
   pointer-events: none;
 }
 
-.story-tagline {
+.story-page-tagline {
   margin: 0 0 1rem;
 
   font-family: "IM Fell English", serif;
