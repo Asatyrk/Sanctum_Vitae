@@ -2754,7 +2754,7 @@ body.character-profile-page .site-nav a:focus-visible {
 
 /* Right panel */
 
-.profile-card-right {
+.story-profile-card-right {
   display: flex;
   flex-direction: column;
 
