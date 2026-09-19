@@ -353,8 +353,6 @@ setText(
       "https://placehold.co/1200x400"
     )
 
-  }
-
   // =========================
   // DECOR IMAGE
   // =========================
@@ -368,12 +366,6 @@ setText(
   const boxes = [
     document.getElementById(
       "decor-image"
-    ),
-    document.getElementById(
-      "decor-image-2"
-    ),
-    document.getElementById(
-      "decor-image-3"
     )
   ].filter(Boolean)
 
@@ -427,6 +419,8 @@ setText(
 
     }
   )
+
+}
 
 
   /* -------------------------------------------------------
