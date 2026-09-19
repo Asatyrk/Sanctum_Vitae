@@ -32,6 +32,16 @@ const tagCategories = {
     "Completed",
     "Hiatus",
     "Cancelled"
+  ],
+
+  "Story Type": [
+    "Length Unknown",
+    "Poem",
+    "Micro Story",
+    "Short Story",
+    "Novelette",
+    "Novella",
+    "Novel"
   ]
 }
 

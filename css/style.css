@@ -2161,8 +2161,6 @@ body.character-profile-page .site-nav a:focus-visible {
   height: 300px;
 
   overflow: hidden;
-
-  background: var(--char-bg-2);
 }
 
 .pet-image-link {

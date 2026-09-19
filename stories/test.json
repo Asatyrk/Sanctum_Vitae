@@ -7,12 +7,14 @@
   
   "avatar": "assets/stories/story-title/avatar.jpg",
   "banner": "assets/stories/story-title/banner.jpg",
+  "background": "assets/stories/story-title/background.jpg",
 
   "readUrl": "stories/story-title.html",
 
   "tags": {
-    "Genre": ["Fantasy"],
+    "Genre": ["Fantasy", "Western"],
     "Age Range": ["Explicit [18+]"],
-    "Status": ["Ongoing"]
+    "Status": ["Ongoing"],
+    "Story Type": ["Short Story"]
   }
 }
