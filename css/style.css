@@ -2497,19 +2497,7 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 
-/* Story tagline */
-
-.story-tagline {
-  margin: 0 0 var(--space-5);
-
-  color: var(--color-text-muted-light);
-
-  font-size: var(--font-size-sm);
-
-  font-style: italic;
-
-  line-height: 1.5;
-}
+/* Story tags */
 
 .story-tags {
   display: flex;
@@ -2524,7 +2512,6 @@ body.character-profile-page .site-nav a:focus-visible {
 .story-tag-group {
   display: inline-block;
   white-space: nowrap;
-  box-sizing: border-box;
 
   padding: 0 var(--space-2);
   margin-bottom: var(--space-1);
@@ -2533,17 +2520,19 @@ body.character-profile-page .site-nav a:focus-visible {
 
   font-size: var(--font-size-xs);
   line-height: 1.2;
-
-  border-left: 1px solid var(--color-text-muted);
 }
 
-.story-tag-group:first-child {
-  border-left: none;
+.story-tag-group:not(:first-child)::before {
+  content: "•";
+  margin-right: var(--space-2);
+
+  color: var(--color-text-muted);
 }
 
 .story-tag {
   display: inline;
 }
+
 
 .story-read-button {
   display: inline-flex;
