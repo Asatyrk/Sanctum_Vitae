@@ -2514,10 +2514,7 @@ body.character-profile-page .site-nav a:focus-visible {
 .story-tags {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
-
-  gap: var(--space-1);
 
   width: 100%;
 
@@ -2527,24 +2524,25 @@ body.character-profile-page .site-nav a:focus-visible {
 .story-tag-group {
   display: inline-block;
   white-space: nowrap;
-  margin-right: 0.5rem;
-}
+  box-sizing: border-box;
 
-.story-tag-group + .story-tag-group {
-  border-left: 1px solid var(--color-text-muted);
-  padding-left: 0.5rem;
-}
-
-.story-tag {
-  padding:
-    var(--space-1)
-    var(--space-2);
+  padding: 0 var(--space-2);
+  margin-bottom: var(--space-1);
 
   color: var(--color-text-muted);
 
   font-size: var(--font-size-xs);
-
   line-height: 1.2;
+
+  border-left: 1px solid var(--color-text-muted);
+}
+
+.story-tag-group:first-child {
+  border-left: none;
+}
+
+.story-tag {
+  display: inline;
 }
 
 .story-read-button {
