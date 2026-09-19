@@ -936,37 +936,39 @@ function createStoryCard(story) {
     story.tags || {}
   ).forEach(([category, tags]) => {
 
-    if (!Array.isArray(tags)) {
+    if (!Array.isArray(tags) || !tags.length) {
       return
     }
 
-
-    tags.forEach(tag => {
-
-      storyTags.push({
-        category,
-        value: tag
-      })
-
+   storyTagGroups.push({
+      category,
+      tags
     })
 
   })
 
 
   const tagsHtml =
-    storyTags.length
-      ? storyTags
-          .map(({ category, value }) => `
+    storyTagGroups.length
+      ? storyTagGroups
+          .map(({ category, tags }) => `
             <span
-              class="story-tag"
+              class="story-tag-group"
               title="${escapeHtml(category)}"
             >
-              ${escapeHtml(value)}
+              ${tags
+                .map(tag => `
+                  <span class="story-tag">
+                    ${escapeHtml(tag)}
+                  </span>
+                `)
+                .join(" / ")
+              }
             </span>
           `)
-          .join('<span class="story-tag-separator">|</span>')
+          .join('<span class="story-tag-category-separator">|</span>')
       : ""
-
+      
 
   /* -------------------------------------------------------
      Story description

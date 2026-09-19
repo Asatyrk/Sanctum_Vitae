@@ -2511,10 +2511,10 @@ body.character-profile-page .site-nav a:focus-visible {
   line-height: 1.5;
 }
 
-
 .story-tags {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
 
   gap: var(--space-1);
@@ -2524,6 +2524,15 @@ body.character-profile-page .site-nav a:focus-visible {
   margin-bottom: var(--space-5);
 }
 
+
+.story-tag-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--space-1);
+}
 
 .story-tag {
   padding:
@@ -2537,9 +2546,10 @@ body.character-profile-page .site-nav a:focus-visible {
   line-height: 1.2;
 }
 
-.story-tag-separator {
-  color: var(--color-text-muted-light);
-  align-self: center;
+.story-tag-category-separator {
+  color: var(--color-text-muted);
+
+  user-select: none;
 }
 
 .story-read-button {
