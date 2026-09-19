@@ -2704,13 +2704,91 @@ body.character-profile-page .site-nav a:focus-visible {
     0
     var(--space-5);
 
-  color: var(--story-secondary);
+  color: var(--char-secondary);
 
   font-size: var(--font-size-md);
 
   font-style: italic;
 
   line-height: 1.5;
+}
+
+/* Make the story profile card use the existing 1/2 layout */
+.character-profile-card {
+  grid-template-columns: 1fr 2fr;
+}
+
+/* Story profile left panel */
+.story-profile-card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: var(--space-6);
+
+  background: var(--char-bg-1);
+  color: var(--char-primary);
+
+  text-align: center;
+}
+
+/* Story profile right panel */
+.story-profile-card-right {
+  display: flex;
+  flex-direction: column;
+
+  background: var(--char-bg-2);
+  color: var(--char-secondary);
+}
+
+/* Story-specific text */
+.story-profile-card-left .info-label,
+.story-profile-card-left .info-value {
+  color: var(--char-primary);
+}
+
+.story-profile-card-left .info-value {
+  max-width: 50%;
+  text-align: right;
+  word-break: break-word;
+}
+
+.story-profile-description {
+  flex-grow: 1;
+
+  padding: var(--space-6);
+
+  color: var(--char-secondary);
+
+  font-size: var(--font-size-sm);
+  line-height: 1.8;
+}
+
+.story-profile-description p {
+  margin: 0 0 var(--space-4);
+  color: var(--char-secondary);
+  line-height: 1.8;
+}
+
+.story-profile-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Story profile title */
+.story-profile-card-left .profile-name {
+  color: var(--char-primary);
+}
+
+/* Story page background should sit behind everything */
+.story-background {
+  z-index: 0;
+}
+
+/* Keep story content above the background */
+body.story-profile-page > #site-header,
+body.story-profile-page > .page-container {
+  position: relative;
+  z-index: 1;
 }
 
 
