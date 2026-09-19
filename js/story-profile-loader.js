@@ -597,22 +597,21 @@ async function displayStory(
 
 
   /* =========================
-   STORY CONTENT
-   ========================= */
+     CHARACTERS
+     ========================= */
 
-populateStoryContent(
-  story.story
-)
+  await populateCharacters(
+    story.characters
+  )
 
 
-/* =========================
-   CHARACTERS
-   ========================= */
+  /* =========================
+     STORY CONTENT
+     ========================= */
 
-await populateCharacters(
-  story.characters
-)
-
+  populateStoryContent(
+    story.story
+  )
 
 }
 

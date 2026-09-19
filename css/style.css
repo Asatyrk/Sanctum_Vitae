@@ -2692,8 +2692,14 @@ body.character-profile-page .site-nav a:focus-visible {
   background-repeat: no-repeat;
   background-size: cover;
 
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
+}
+
+#site-header,
+.page-container {
+  position: relative;
+  z-index: 1;
 }
 
 /* Tagline */
@@ -2778,19 +2784,6 @@ body.character-profile-page .site-nav a:focus-visible {
 .story-profile-card-left .profile-name {
   color: var(--char-primary);
 }
-
-/* Story page background should sit behind everything */
-.story-background {
-  z-index: 0;
-}
-
-/* Keep story content above the background */
-body.story-profile-page > #site-header,
-body.story-profile-page > .page-container {
-  position: relative;
-  z-index: 1;
-}
-
 
 /* =========================================================
    37. RESPONSIVE
