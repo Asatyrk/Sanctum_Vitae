@@ -490,7 +490,7 @@ async function displayStory(
 
   const storyTitle =
     document.querySelector(
-      ".story-detail-banner-header h2"
+      ".detail-banner-header h2"
     )
 
   if(storyTitle){
@@ -681,44 +681,6 @@ function populateStoryImages(
     )
 
   }
-
-
-  /* =========================
-     DECOR IMAGE
-     ========================= */
-
-  const fallbackDecor =
-    "https://placehold.co/1000x100"
-
-  const decorImage =
-    typeof story.decorImage === "string" &&
-    story.decorImage.trim() !== ""
-      ? story.decorImage.trim()
-      : fallbackDecor
-
-  const decorBoxes = [
-    document.getElementById(
-      "decor-image"
-    ),
-    document.getElementById(
-      "decor-image-2"
-    ),
-    document.getElementById(
-      "decor-image-3"
-    )
-  ].filter(Boolean)
-
-  decorBoxes.forEach(
-    box => {
-
-      setBackgroundImage(
-        box,
-        decorImage,
-        fallbackDecor
-      )
-
-    }
-  )
 
 }
 
@@ -1002,7 +964,7 @@ async function populateCharacters(
 
       const link =
         characterCard.querySelector(
-          ".story-relationship-avatar-link"
+          ".relationship-avatar-link"
         )
 
       if(link){
@@ -1021,7 +983,7 @@ async function populateCharacters(
 
       const avatar =
         characterCard.querySelector(
-          ".story-relationship-avatar"
+          ".relationship-avatar"
         )
 
       if(avatar){
@@ -1041,7 +1003,7 @@ async function populateCharacters(
 
       const name =
         characterCard.querySelector(
-          ".story-relationship-name"
+          ".relationship-name"
         )
 
       if(name){
@@ -1060,7 +1022,7 @@ async function populateCharacters(
 
       const type =
         characterCard.querySelector(
-          ".story-relationship-type"
+          ".relationship-type"
         )
 
       if(type){
