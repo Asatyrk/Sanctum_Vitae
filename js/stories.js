@@ -906,6 +906,29 @@ function addImageFallback(element, fallbackUrl) {
 }
 
 /* =========================================================
+   TAG SEPARATORS
+========================================================= */
+
+function updateTagSeparators(card) {
+
+  const groups =
+    card.querySelectorAll(".story-tag-group")
+
+  groups.forEach((group, index) => {
+
+    if (index === 0) {
+      return
+    }
+
+    group.classList.toggle(
+      "no-separator",
+      group.offsetTop !== groups[index - 1].offsetTop
+    )
+
+  })
+}
+
+/* =========================================================
    CREATE STORY CARD
 ========================================================= */
 
@@ -1095,6 +1118,8 @@ function createStoryCard(story) {
 
   }
 
+  updateTagSeparators(card)
+
   return card
 
 }
@@ -1160,7 +1185,7 @@ function renderStories() {
 
 
 /* =========================================================
-   BROWSER BACK/FORWARD
+   EVENT LISTENERS
 ========================================================= */
 
 window.addEventListener(
@@ -1173,6 +1198,13 @@ window.addEventListener(
 
   }
 )
+
+window.addEventListener("resize", () => {
+  document
+    .querySelectorAll(".story-card")
+    .forEach(updateTagSeparators)
+})
+
 
 /* =========================================================
    START

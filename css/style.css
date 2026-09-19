@@ -2505,7 +2505,6 @@ body.character-profile-page .site-nav a:focus-visible {
   justify-content: center;
 
   width: 100%;
-
   margin-bottom: var(--space-5);
 }
 
@@ -2523,15 +2522,18 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 .story-tag-group:not(:first-child)::before {
-  content: "•";
+  content: "|";
   margin-right: var(--space-2);
-
-  color: var(--color-text-muted);
 }
 
 .story-tag {
   display: inline;
 }
+
+.story-tag-group.no-separator::before {
+  display: none;
+}
+
 
 
 .story-read-button {
