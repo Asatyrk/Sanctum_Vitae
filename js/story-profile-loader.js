@@ -24,6 +24,23 @@ function text(value){
 }
 
 
+function list(value){
+
+  if(!value) return ""
+
+  if(Array.isArray(value)){
+
+    if(value.length === 0) return ""
+
+    return value.join(", ")
+
+  }
+
+  return value
+
+}
+
+
 function getStory(){
 
   const params =
@@ -70,6 +87,82 @@ function setText(id, value){
 
   element.textContent =
     text(value)
+
+}
+
+
+/* =========================================================
+   CHARACTER-STYLE COLOURS
+   =========================================================
+   Stories use the same colour format as characters.
+
+   Supported:
+   - colors.primary
+   - colors.secondary
+   - colors.accent
+   - colors.bg_1
+   - colors.bg_2
+   - colors.page_bg
+
+   No particle, text-gradient, or page-gradient rules are
+   applied here.
+   ========================================================= */
+
+function applyStoryColors(story){
+
+  const colors =
+    story?.colors || {}
+
+  const primary =
+    colors.primary || "#b99b78"
+
+  const secondary =
+    colors.secondary || "#a27d5f"
+
+  const accent =
+    colors.accent || "#8b6a4d"
+
+  const bg1 =
+    colors.bg_1 || "#f4efe6"
+
+  const bg2 =
+    colors.bg_2 || "#f3f1ec"
+
+  const pageBg =
+    colors.page_bg || "#f3f1ec"
+
+  const root =
+    document.documentElement
+
+  root.style.setProperty(
+    "--char-primary",
+    primary
+  )
+
+  root.style.setProperty(
+    "--char-secondary",
+    secondary
+  )
+
+  root.style.setProperty(
+    "--char-accent",
+    accent
+  )
+
+  root.style.setProperty(
+    "--char-bg-1",
+    bg1
+  )
+
+  root.style.setProperty(
+    "--char-bg-2",
+    bg2
+  )
+
+  root.style.setProperty(
+    "--char-page-bg",
+    pageBg
+  )
 
 }
 
@@ -206,7 +299,7 @@ function getCharacterProfileUrl(file){
 
 
 /* =========================================================
-   LOAD STORY
+   FETCH HELPERS
    ========================================================= */
 
 async function fetchStory(
@@ -231,6 +324,32 @@ async function fetchStory(
 
 }
 
+
+async function fetchStoryCharacter(
+  path
+){
+
+  const response =
+    await fetch(
+      path
+    )
+
+  if(!response.ok){
+
+    throw new Error(
+      `Character not found: ${path}`
+    )
+
+  }
+
+  return await response.json()
+
+}
+
+
+/* =========================================================
+   LOAD STORY
+   ========================================================= */
 
 async function loadStory(){
 
@@ -316,10 +435,14 @@ async function displayStory(
   story
 ){
 
-  applyCharacterColors({
-  colors:
-    story.colors || {}
-  })
+  /* =========================
+     COLOURS
+     ========================= */
+
+  applyStoryColors(
+    story
+  )
+
 
   const name =
     text(
@@ -327,9 +450,9 @@ async function displayStory(
     )
 
 
-  // =========================
-  // HEADER
-  // =========================
+  /* =========================
+     HEADER
+     ========================= */
 
   const headerLogoText =
     document.querySelector(
@@ -351,9 +474,9 @@ async function displayStory(
     slugify(name)
 
 
-  // =========================
-  // NAME
-  // =========================
+  /* =========================
+     NAME
+     ========================= */
 
   setText(
     "name",
@@ -361,9 +484,9 @@ async function displayStory(
   )
 
 
-  // =========================
-  // STORY BANNER TITLE
-  // =========================
+  /* =========================
+     STORY BANNER TITLE
+     ========================= */
 
   const storyTitle =
     document.querySelector(
@@ -378,9 +501,9 @@ async function displayStory(
   }
 
 
-  // =========================
-  // TAGLINE
-  // =========================
+  /* =========================
+     TAGLINE
+     ========================= */
 
   const tagline =
     document.querySelector(
@@ -389,11 +512,12 @@ async function displayStory(
 
   if(tagline){
 
-    if(
+    const hasTagline =
       story.tagline !== undefined &&
       story.tagline !== null &&
       story.tagline !== ""
-    ){
+
+    if(hasTagline){
 
       tagline.textContent =
         `"${story.tagline}"`
@@ -414,18 +538,18 @@ async function displayStory(
   }
 
 
-  // =========================
-  // IMAGES
-  // =========================
+  /* =========================
+     IMAGES
+     ========================= */
 
   populateStoryImages(
     story
   )
 
 
-  // =========================
-  // TAGS
-  // =========================
+  /* =========================
+     TAGS
+     ========================= */
 
   const tags =
     story.tags || {}
@@ -463,27 +587,27 @@ async function displayStory(
   )
 
 
-  // =========================
-  // DESCRIPTION
-  // =========================
+  /* =========================
+     DESCRIPTION
+     ========================= */
 
   populateDescription(
     story.description
   )
 
 
-  // =========================
-  // CHARACTERS
-  // =========================
+  /* =========================
+     CHARACTERS
+     ========================= */
 
   await populateCharacters(
     story.characters
   )
 
 
-  // =========================
-  // STORY CONTENT
-  // =========================
+  /* =========================
+     STORY CONTENT
+     ========================= */
 
   populateStoryContent(
     story.story
@@ -500,9 +624,9 @@ function populateStoryImages(
   story
 ){
 
-  // =========================
-  // AVATAR
-  // =========================
+  /* =========================
+     AVATAR
+     ========================= */
 
   const avatar =
     document.getElementById(
@@ -520,9 +644,9 @@ function populateStoryImages(
   }
 
 
-  // =========================
-  // BANNER
-  // =========================
+  /* =========================
+     BANNER
+     ========================= */
 
   const banner =
     document.getElementById(
@@ -540,9 +664,9 @@ function populateStoryImages(
   }
 
 
-  // =========================
-  // STORY BACKGROUND
-  // =========================
+  /* =========================
+     STORY BACKGROUND
+     ========================= */
 
   const storyBackground =
     document.getElementById(
@@ -559,9 +683,9 @@ function populateStoryImages(
   }
 
 
-  // =========================
-  // DECOR IMAGE
-  // =========================
+  /* =========================
+     DECOR IMAGE
+     ========================= */
 
   const fallbackDecor =
     "https://placehold.co/1000x100"
@@ -573,11 +697,15 @@ function populateStoryImages(
       : fallbackDecor
 
   const decorBoxes = [
-
     document.getElementById(
       "decor-image"
+    ),
+    document.getElementById(
+      "decor-image-2"
+    ),
+    document.getElementById(
+      "decor-image-3"
     )
-
   ].filter(Boolean)
 
   decorBoxes.forEach(
@@ -702,10 +830,12 @@ async function setupStoryNavigation(
   previousLink.textContent =
     "← Previous"
 
+
   const separator =
     document.createTextNode(
       " | "
     )
+
 
   const nextLink =
     document.createElement(
@@ -719,6 +849,7 @@ async function setupStoryNavigation(
 
   nextLink.textContent =
     "Next →"
+
 
   navigation.appendChild(
     previousLink
@@ -858,15 +989,16 @@ async function populateCharacters(
           character.url
         )
 
+
       const characterCard =
         template.content.cloneNode(
           true
         )
 
 
-      // =========================
-      // PROFILE LINK
-      // =========================
+      /* =========================
+         PROFILE LINK
+         ========================= */
 
       const link =
         characterCard.querySelector(
@@ -883,9 +1015,9 @@ async function populateCharacters(
       }
 
 
-      // =========================
-      // AVATAR
-      // =========================
+      /* =========================
+         AVATAR
+         ========================= */
 
       const avatar =
         characterCard.querySelector(
@@ -903,9 +1035,9 @@ async function populateCharacters(
       }
 
 
-      // =========================
-      // NAME
-      // =========================
+      /* =========================
+         NAME
+         ========================= */
 
       const name =
         characterCard.querySelector(
@@ -922,9 +1054,9 @@ async function populateCharacters(
       }
 
 
-      // =========================
-      // RELATIONSHIP LABEL
-      // =========================
+      /* =========================
+         RELATIONSHIP LABEL
+         ========================= */
 
       const type =
         characterCard.querySelector(
@@ -947,6 +1079,7 @@ async function populateCharacters(
 
       loadedCharacters++
 
+
     }catch(error){
 
       console.error(
@@ -961,28 +1094,6 @@ async function populateCharacters(
 
   section.hidden =
     loadedCharacters === 0
-
-}
-
-
-async function fetchStoryCharacter(
-  path
-){
-
-  const response =
-    await fetch(
-      path
-    )
-
-  if(!response.ok){
-
-    throw new Error(
-      `Character not found: ${path}`
-    )
-
-  }
-
-  return await response.json()
 
 }
 
@@ -1006,19 +1117,128 @@ function populateStoryContent(
 
   }
 
-  if(!Array.isArray(storyContent)){
+  container.innerHTML =
+    ""
 
-    container.innerHTML =
-      ""
+  if(!Array.isArray(storyContent)){
 
     return
 
   }
 
-  container.innerHTML =
-    storyContent
-      .filter(Boolean)
-      .join("\n")
+  storyContent
+    .filter(Boolean)
+    .forEach(
+      paragraph => {
+
+        const element =
+          document.createElement(
+            "p"
+          )
+
+        element.textContent =
+          paragraph
+
+        container.appendChild(
+          element
+        )
+
+      }
+    )
+
+}
+
+
+/* =========================================================
+   DETAIL TABS
+   ========================================================= */
+
+function setupDetailTabs(){
+
+  const detailTabs =
+    document.querySelectorAll(
+      ".detail-switcher-tab"
+    )
+
+  const detailPanels =
+    document.querySelectorAll(
+      ".detail-switcher-panel"
+    )
+
+  if(
+    !detailTabs.length ||
+    !detailPanels.length
+  ){
+
+    return
+
+  }
+
+
+  detailTabs.forEach(
+    tab => {
+
+      tab.addEventListener(
+        "click",
+        () => {
+
+          const targetId =
+            tab.getAttribute(
+              "aria-controls"
+            )
+
+          const targetPanel =
+            document.getElementById(
+              targetId
+            )
+
+          if(!targetPanel) return
+
+
+          detailTabs.forEach(
+            button => {
+
+              button.classList.remove(
+                "active"
+              )
+
+              button.setAttribute(
+                "aria-selected",
+                "false"
+              )
+
+            }
+          )
+
+
+          detailPanels.forEach(
+            panel => {
+
+              panel.hidden =
+                true
+
+            }
+          )
+
+
+          tab.classList.add(
+            "active"
+          )
+
+          tab.setAttribute(
+            "aria-selected",
+            "true"
+          )
+
+
+          targetPanel.hidden =
+            false
+
+        }
+      )
+
+    }
+  )
 
 }
 
@@ -1027,4 +1247,13 @@ function populateStoryContent(
    START
    ========================================================= */
 
-loadStory()
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    setupDetailTabs()
+
+    loadStory()
+
+  }
+)
