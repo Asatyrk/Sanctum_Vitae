@@ -2940,42 +2940,8 @@ body.character-profile-page .site-nav a:focus-visible {
 
 }
 
-/* DEBUG STORY CONTENT */
-
-.relationships-section {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  position: relative !important;
-  z-index: 100 !important;
-
-  background: red !important;
-  color: white !important;
-}
-
-.relationship-card {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-
-  background: blue !important;
-  color: white !important;
-}
-
+.relationships-section,
 .character-detail-card {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  position: relative !important;
-  z-index: 100 !important;
-
-  background: green !important;
-  color: white !important;
-}
-
-.character-detail-card *,
-.relationship-card * {
-  visibility: visible !important;
-  opacity: 1 !important;
-  color: white !important;
+  position: relative;
+  z-index: 2;
 }
