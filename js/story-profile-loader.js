@@ -7,32 +7,36 @@
    HELPERS
    ========================================================= */
 
-function getStory() {
+function text(value){
+
+  if(
+    value === undefined ||
+    value === null ||
+    value === ""
+  ){
+
+    return "N/A"
+
+  }
+
+  return value
+
+}
+
+
+function getStory(){
 
   const params =
     new URLSearchParams(
       window.location.search
     )
 
-  return params.get("story") || ""
+  return params.get("story")
 
 }
 
 
-function setText(id, value) {
-
-  const element =
-    document.getElementById(id)
-
-  if (!element) return
-
-  element.textContent =
-    value ?? ""
-
-}
-
-
-function setPageTitle(name) {
+function setPageTitle(name){
 
   const title =
     name || "Unknown Story"
@@ -42,7 +46,7 @@ function setPageTitle(name) {
       "page-title"
     )
 
-  if (pageTitle) {
+  if(pageTitle){
 
     pageTitle.textContent =
       title
@@ -55,66 +59,42 @@ function setPageTitle(name) {
 }
 
 
+function setText(id, value){
+
+  const element =
+    document.getElementById(
+      id
+    )
+
+  if(!element) return
+
+  element.textContent =
+    text(value)
+
+}
+
+
 /* =========================================================
    IMAGE HELPERS
    ========================================================= */
 
 function setBackgroundImage(
   element,
-  url,
-  fallback = ""
-) {
-
-  if (!element) return
-
-  if (!url) {
-
-    element.style.backgroundImage =
-      fallback
-        ? `url("${fallback}")`
-        : ""
-
-    return
-
-  }
-
-  const image =
-    new Image()
-
-  image.onload = () => {
-
-    element.style.backgroundImage =
-      `url("${url}")`
-
-  }
-
-  image.onerror = () => {
-
-    element.style.backgroundImage =
-      fallback
-        ? `url("${fallback}")`
-        : ""
-
-  }
-
-  image.src =
-    url
-
-}
-
-
-function addImageFallback(
-  element,
   imageUrl,
-  fallbackUrl
-) {
+  fallbackUrl = ""
+){
 
-  if (!element) return
+  if(!element) return
 
-  if (!imageUrl) {
+  if(
+    typeof imageUrl !== "string" ||
+    imageUrl.trim() === ""
+  ){
 
     element.style.backgroundImage =
-      `url("${fallbackUrl}")`
+      fallbackUrl
+        ? `url("${fallbackUrl}")`
+        : ""
 
     return
 
@@ -123,19 +103,23 @@ function addImageFallback(
   const image =
     new Image()
 
-  image.onload = () => {
+  image.onload =
+    () => {
 
-    element.style.backgroundImage =
-      `url("${imageUrl}")`
+      element.style.backgroundImage =
+        `url("${imageUrl}")`
 
-  }
+    }
 
-  image.onerror = () => {
+  image.onerror =
+    () => {
 
-    element.style.backgroundImage =
-      `url("${fallbackUrl}")`
+      element.style.backgroundImage =
+        fallbackUrl
+          ? `url("${fallbackUrl}")`
+          : ""
 
-  }
+    }
 
   image.src =
     imageUrl
@@ -150,16 +134,20 @@ function addImageFallback(
 function getTagValue(
   tags,
   category
-) {
+){
 
   const values =
     tags?.[category]
 
-  if (!Array.isArray(values)) {
+  if(!Array.isArray(values)){
+
     return ""
+
   }
 
-  return values.join(" / ")
+  return values.join(
+    " / "
+  )
 
 }
 
@@ -168,7 +156,7 @@ function getTagValue(
    SLUG HELPERS
    ========================================================= */
 
-function slugify(value) {
+function slugify(value){
 
   return String(value ?? "")
     .toLowerCase()
@@ -178,7 +166,7 @@ function slugify(value) {
 }
 
 
-function getStorySlug(file) {
+function getStorySlug(file){
 
   return String(file ?? "")
     .replace(/^stories\//, "")
@@ -189,13 +177,29 @@ function getStorySlug(file) {
 }
 
 
-function getStoryProfileUrl(file) {
+function getStoryProfileUrl(file){
 
   const slug =
-    getStorySlug(file)
+    getStorySlug(
+      file
+    )
 
   return (
     `story-profile.html?story=${encodeURIComponent(slug)}`
+  )
+
+}
+
+
+function getCharacterProfileUrl(file){
+
+  const slug =
+    String(file ?? "")
+      .replace(/^characters\//, "")
+      .replace(/\.json$/, "")
+
+  return (
+    `character-profile.html?char=${encodeURIComponent(slug)}`
   )
 
 }
@@ -205,13 +209,35 @@ function getStoryProfileUrl(file) {
    LOAD STORY
    ========================================================= */
 
-async function loadStory() {
+async function fetchStory(
+  path,
+  errorMessage = "Story not found"
+){
+
+  const response =
+    await fetch(
+      path
+    )
+
+  if(!response.ok){
+
+    throw new Error(
+      errorMessage
+    )
+
+  }
+
+  return await response.json()
+
+}
+
+
+async function loadStory(){
 
   const slug =
     getStory()
 
-
-  if (!slug) {
+  if(!slug){
 
     showStoryError(
       "No Story Selected",
@@ -222,49 +248,31 @@ async function loadStory() {
 
   }
 
-
-  try {
+  try{
 
     const storyPath =
       `stories/${slug}.json`
 
-
-    const response =
-      await fetch(
-        storyPath
-      )
-
-
-    if (!response.ok) {
-
-      throw new Error(
-        `Failed to load ${storyPath}`
-      )
-
-    }
-
-
     const story =
-      await response.json()
+      await fetchStory(
+        storyPath,
+        `Story not found: ${storyPath}`
+      )
 
-
-    populateStory(
+    await displayStory(
       story
     )
-
 
     await setupStoryNavigation(
       "stories/index.json"
     )
 
-
-  } catch (error) {
+  }catch(error){
 
     console.error(
       "Could not load story:",
       error
     )
-
 
     showStoryError(
       "Story Not Found",
@@ -283,61 +291,68 @@ async function loadStory() {
 function showStoryError(
   title,
   message
-) {
+){
 
   const page =
     document.querySelector(
       ".page-container"
     )
 
-  if (!page) return
+  if(!page) return
 
-  page.innerHTML =
-    `
-      <h1>${title}</h1>
-      <p>${message}</p>
-    `
+  page.innerHTML = `
+    <h1>${title}</h1>
+    <p>${message}</p>
+  `
 
 }
 
 
 /* =========================================================
-   POPULATE STORY
+   DISPLAY STORY
    ========================================================= */
 
-function populateStory(story) {
+async function displayStory(
+  story
+){
+
+  applyStoryColors(
+    story
+  )
 
   const name =
-    story.name ||
-    "Untitled Story"
+    text(
+      story.name
+    )
 
 
-  /* -------------------------------------------------------
-     HEADER / PAGE TITLE
-     ------------------------------------------------------- */
+  // =========================
+  // HEADER
+  // =========================
 
   const headerLogoText =
     document.querySelector(
       ".site-logo-text"
     )
 
-
-  if (headerLogoText) {
+  if(headerLogoText){
 
     headerLogoText.textContent =
       `Sanctum Vitae | ${name}`
 
   }
 
-
   setPageTitle(
     name
   )
 
-
   document.body.dataset.page =
     slugify(name)
 
+
+  // =========================
+  // NAME
+  // =========================
 
   setText(
     "name",
@@ -345,17 +360,16 @@ function populateStory(story) {
   )
 
 
-  /* -------------------------------------------------------
-     STORY DETAIL BANNER TITLE
-     ------------------------------------------------------- */
+  // =========================
+  // STORY BANNER TITLE
+  // =========================
 
   const storyTitle =
     document.querySelector(
       ".story-detail-banner-header h2"
     )
 
-
-  if (storyTitle) {
+  if(storyTitle){
 
     storyTitle.textContent =
       name
@@ -363,19 +377,22 @@ function populateStory(story) {
   }
 
 
-  /* -------------------------------------------------------
-     TAGLINE
-     ------------------------------------------------------- */
+  // =========================
+  // TAGLINE
+  // =========================
 
   const tagline =
     document.querySelector(
       ".story-page-tagline"
     )
 
+  if(tagline){
 
-  if (tagline) {
-
-    if (story.tagline) {
+    if(
+      story.tagline !== undefined &&
+      story.tagline !== null &&
+      story.tagline !== ""
+    ){
 
       tagline.textContent =
         `"${story.tagline}"`
@@ -383,7 +400,7 @@ function populateStory(story) {
       tagline.hidden =
         false
 
-    } else {
+    }else{
 
       tagline.textContent =
         ""
@@ -396,22 +413,21 @@ function populateStory(story) {
   }
 
 
-  /* -------------------------------------------------------
-     IMAGES
-     ------------------------------------------------------- */
+  // =========================
+  // IMAGES
+  // =========================
 
   populateStoryImages(
     story
   )
 
 
-  /* -------------------------------------------------------
-     TAGS
-     ------------------------------------------------------- */
+  // =========================
+  // TAGS
+  // =========================
 
   const tags =
     story.tags || {}
-
 
   setText(
     "genre",
@@ -421,7 +437,6 @@ function populateStory(story) {
     )
   )
 
-
   setText(
     "age-range",
     getTagValue(
@@ -430,7 +445,6 @@ function populateStory(story) {
     )
   )
 
-
   setText(
     "status",
     getTagValue(
@@ -438,7 +452,6 @@ function populateStory(story) {
       "Status"
     )
   )
-
 
   setText(
     "story-type",
@@ -449,39 +462,30 @@ function populateStory(story) {
   )
 
 
-  /* -------------------------------------------------------
-     DESCRIPTION
-     ------------------------------------------------------- */
+  // =========================
+  // DESCRIPTION
+  // =========================
 
   populateDescription(
     story.description
   )
 
 
-  /* -------------------------------------------------------
-     CHARACTERS
-     ------------------------------------------------------- */
+  // =========================
+  // CHARACTERS
+  // =========================
 
-  populateCharacters(
+  await populateCharacters(
     story.characters
   )
 
 
-  /* -------------------------------------------------------
-     STORY CONTENT
-     ------------------------------------------------------- */
+  // =========================
+  // STORY CONTENT
+  // =========================
 
   populateStoryContent(
     story.story
-  )
-
-
-  /* -------------------------------------------------------
-     COLOURS
-     ------------------------------------------------------- */
-
-  applyStoryColors(
-    story.colors
   )
 
 }
@@ -491,21 +495,22 @@ function populateStory(story) {
    STORY IMAGES
    ========================================================= */
 
-function populateStoryImages(story) {
+function populateStoryImages(
+  story
+){
 
-  /* -------------------------------------------------------
-     Avatar
-     ------------------------------------------------------- */
+  // =========================
+  // AVATAR
+  // =========================
 
   const avatar =
     document.getElementById(
       "avatar-image"
     )
 
+  if(avatar){
 
-  if (avatar) {
-
-    addImageFallback(
+    setBackgroundImage(
       avatar,
       story.avatar,
       "https://placehold.co/240x240"
@@ -514,19 +519,18 @@ function populateStoryImages(story) {
   }
 
 
-  /* -------------------------------------------------------
-     Banner
-     ------------------------------------------------------- */
+  // =========================
+  // BANNER
+  // =========================
 
   const banner =
     document.getElementById(
       "banner-image"
     )
 
+  if(banner){
 
-  if (banner) {
-
-    addImageFallback(
+    setBackgroundImage(
       banner,
       story.banner,
       "https://placehold.co/1200x400"
@@ -535,17 +539,16 @@ function populateStoryImages(story) {
   }
 
 
-  /* -------------------------------------------------------
-     Story background
-     ------------------------------------------------------- */
+  // =========================
+  // STORY BACKGROUND
+  // =========================
 
   const storyBackground =
     document.getElementById(
       "story-background"
     )
 
-
-  if (storyBackground) {
+  if(storyBackground){
 
     setBackgroundImage(
       storyBackground,
@@ -555,20 +558,18 @@ function populateStoryImages(story) {
   }
 
 
-  /* -------------------------------------------------------
-     Decor image
-     ------------------------------------------------------- */
+  // =========================
+  // DECOR IMAGE
+  // =========================
 
   const fallbackDecor =
     "https://placehold.co/1000x100"
-
 
   const decorImage =
     typeof story.decorImage === "string" &&
     story.decorImage.trim() !== ""
       ? story.decorImage.trim()
       : fallbackDecor
-
 
   const decorBoxes = [
 
@@ -577,7 +578,6 @@ function populateStoryImages(story) {
     )
 
   ].filter(Boolean)
-
 
   decorBoxes.forEach(
     box => {
@@ -600,182 +600,136 @@ function populateStoryImages(story) {
 
 async function setupStoryNavigation(
   indexPath
-) {
+){
+
+  const currentSlug =
+    getStory()
+
+  if(!currentSlug){
+
+    return
+
+  }
+
+  const response =
+    await fetch(
+      indexPath
+    )
+
+  if(!response.ok){
+
+    return
+
+  }
+
+  const index =
+    await response.json()
+
+  if(
+    !Array.isArray(index) ||
+    index.length === 0
+  ){
+
+    return
+
+  }
+
+  const currentIndex =
+    index.findIndex(
+      entry => {
+
+        const slug =
+          getStorySlug(
+            entry.path
+          )
+
+        return slug === currentSlug
+
+      }
+    )
+
+  if(currentIndex === -1){
+
+    return
+
+  }
+
+  const previousIndex =
+    (
+      currentIndex - 1 + index.length
+    ) % index.length
+
+  const nextIndex =
+    (
+      currentIndex + 1
+    ) % index.length
+
+  const previous =
+    index[
+      previousIndex
+    ]
+
+  const next =
+    index[
+      nextIndex
+    ]
 
   const navigation =
     document.getElementById(
       "story-navigation"
     )
 
+  if(!navigation){
 
-  if (!navigation) {
     return
-  }
 
+  }
 
   navigation.innerHTML =
     ""
 
-
-  try {
-
-    const response =
-      await fetch(
-        indexPath
-      )
-
-
-    if (!response.ok) {
-
-      throw new Error(
-        `Failed to load ${indexPath}`
-      )
-
-    }
-
-
-    const stories =
-      await response.json()
-
-
-    if (
-      !Array.isArray(stories) ||
-      stories.length === 0
-    ) {
-
-      return
-
-    }
-
-
-    const currentSlug =
-      getStory()
-
-
-    const currentIndex =
-      stories.findIndex(
-        entry => {
-
-          const storySlug =
-            getStorySlug(
-              entry.path
-            )
-
-          return storySlug === currentSlug
-
-        }
-      )
-
-
-    if (currentIndex === -1) {
-      return
-    }
-
-
-    /* -----------------------------------------------------
-       Previous / next
-       ----------------------------------------------------- */
-
-    const previousIndex =
-      (
-        currentIndex - 1 + stories.length
-      ) % stories.length
-
-
-    const nextIndex =
-      (
-        currentIndex + 1
-      ) % stories.length
-
-
-    const previous =
-      stories[
-        previousIndex
-      ]
-
-
-    const next =
-      stories[
-        nextIndex
-      ]
-
-
-    /* -----------------------------------------------------
-       Previous link
-       ----------------------------------------------------- */
-
-    const previousLink =
-      document.createElement(
-        "a"
-      )
-
-
-    previousLink.href =
-      getStoryProfileUrl(
-        previous.path
-      )
-
-
-    previousLink.textContent =
-      "← Previous"
-
-
-    /* -----------------------------------------------------
-       Separator
-       ----------------------------------------------------- */
-
-    const separator =
-      document.createTextNode(
-        " | "
-      )
-
-
-    /* -----------------------------------------------------
-       Next link
-       ----------------------------------------------------- */
-
-    const nextLink =
-      document.createElement(
-        "a"
-      )
-
-
-    nextLink.href =
-      getStoryProfileUrl(
-        next.path
-      )
-
-
-    nextLink.textContent =
-      "Next →"
-
-
-    /* -----------------------------------------------------
-       Insert navigation
-       ----------------------------------------------------- */
-
-    navigation.appendChild(
-      previousLink
+  const previousLink =
+    document.createElement(
+      "a"
     )
 
-
-    navigation.appendChild(
-      separator
+  previousLink.href =
+    getStoryProfileUrl(
+      previous.path
     )
 
+  previousLink.textContent =
+    "← Previous"
 
-    navigation.appendChild(
-      nextLink
+  const separator =
+    document.createTextNode(
+      " | "
     )
 
-  } catch (error) {
-
-    console.error(
-      "Could not setup story navigation:",
-      error
+  const nextLink =
+    document.createElement(
+      "a"
     )
 
-  }
+  nextLink.href =
+    getStoryProfileUrl(
+      next.path
+    )
+
+  nextLink.textContent =
+    "Next →"
+
+  navigation.appendChild(
+    previousLink
+  )
+
+  navigation.appendChild(
+    separator
+  )
+
+  navigation.appendChild(
+    nextLink
+  )
 
 }
 
@@ -786,27 +740,27 @@ async function setupStoryNavigation(
 
 function populateDescription(
   description
-) {
+){
 
   const container =
     document.getElementById(
       "description"
     )
 
+  if(!container){
 
-  if (!container) {
     return
-  }
 
+  }
 
   container.innerHTML =
     ""
 
+  if(!Array.isArray(description)){
 
-  if (!Array.isArray(description)) {
     return
-  }
 
+  }
 
   description
     .filter(Boolean)
@@ -818,10 +772,8 @@ function populateDescription(
             "p"
           )
 
-
         item.textContent =
           paragraph
-
 
         container.appendChild(
           item
@@ -839,239 +791,197 @@ function populateDescription(
 
 async function populateCharacters(
   characters
-) {
+){
 
   const section =
     document.getElementById(
       "relationships-section"
     )
 
-
   const container =
     document.getElementById(
       "relationships-container"
     )
-
 
   const template =
     document.getElementById(
       "relationship-template"
     )
 
-
-  if (
+  if(
     !section ||
     !container ||
     !template
-  ) {
+  ){
 
     return
 
   }
 
-
-  container.innerHTML =
-    ""
-
-
-  if (
+  if(
     !Array.isArray(characters) ||
     characters.length === 0
-  ) {
+  ){
 
     section.hidden =
       true
 
     return
+
+  }
+
+  container.innerHTML =
+    ""
+
+  let loadedCharacters =
+    0
+
+
+  for(
+    const character of characters
+  ){
+
+    if(
+      !character ||
+      !character.url
+    ){
+
+      continue
+
+    }
+
+    try{
+
+      const characterData =
+        await fetchStoryCharacter(
+          character.url
+        )
+
+      const characterCard =
+        template.content.cloneNode(
+          true
+        )
+
+
+      // =========================
+      // PROFILE LINK
+      // =========================
+
+      const link =
+        characterCard.querySelector(
+          ".story-relationship-avatar-link"
+        )
+
+      if(link){
+
+        link.href =
+          getCharacterProfileUrl(
+            character.url
+          )
+
+      }
+
+
+      // =========================
+      // AVATAR
+      // =========================
+
+      const avatar =
+        characterCard.querySelector(
+          ".story-relationship-avatar"
+        )
+
+      if(avatar){
+
+        setBackgroundImage(
+          avatar,
+          characterData.avatar,
+          "https://placehold.co/120"
+        )
+
+      }
+
+
+      // =========================
+      // NAME
+      // =========================
+
+      const name =
+        characterCard.querySelector(
+          ".story-relationship-name"
+        )
+
+      if(name){
+
+        name.textContent =
+          text(
+            characterData.name
+          )
+
+      }
+
+
+      // =========================
+      // RELATIONSHIP LABEL
+      // =========================
+
+      const type =
+        characterCard.querySelector(
+          ".story-relationship-type"
+        )
+
+      if(type){
+
+        type.textContent =
+          text(
+            character.label
+          )
+
+      }
+
+
+      container.appendChild(
+        characterCard
+      )
+
+      loadedCharacters++
+
+    }catch(error){
+
+      console.error(
+        `Could not load character: ${character.url}`,
+        error
+      )
+
+    }
 
   }
 
 
   section.hidden =
-    false
+    loadedCharacters === 0
+
+}
 
 
-  const characterResults =
-    await Promise.all(
+async function fetchStoryCharacter(
+  path
+){
 
-      characters.map(
-        async character => {
-
-          if (
-            !character ||
-            !character.url
-          ) {
-
-            return null
-
-          }
-
-
-          try {
-
-            const response =
-              await fetch(
-                character.url
-              )
-
-
-            if (!response.ok) {
-
-              throw new Error(
-                `Failed to load ${character.url}`
-              )
-
-            }
-
-
-            const data =
-              await response.json()
-
-
-            return {
-
-              ...data,
-
-              label:
-                character.label || "",
-
-              url:
-                character.url
-
-            }
-
-
-          } catch (error) {
-
-            console.error(
-              "Could not load character:",
-              character.url,
-              error
-            )
-
-            return null
-
-          }
-
-        }
-      )
-
+  const response =
+    await fetch(
+      path
     )
 
+  if(!response.ok){
 
-  characterResults
-    .filter(Boolean)
-    .forEach(
-      character => {
-
-        const fragment =
-          template.content.cloneNode(
-            true
-          )
-
-
-        const link =
-          fragment.querySelector(
-            ".story-relationship-avatar-link"
-          )
-
-
-        const avatar =
-          fragment.querySelector(
-            ".story-relationship-avatar"
-          )
-
-
-        const name =
-          fragment.querySelector(
-            ".story-relationship-name"
-          )
-
-
-        const type =
-          fragment.querySelector(
-            ".story-relationship-type"
-          )
-
-
-        /* -------------------------------------------------
-           Name
-           ------------------------------------------------- */
-
-        if (name) {
-
-          name.textContent =
-            character.name ||
-            "Unnamed Character"
-
-        }
-
-
-        /* -------------------------------------------------
-           Relationship label
-           ------------------------------------------------- */
-
-        if (type) {
-
-          type.textContent =
-            character.label
-
-        }
-
-
-        /* -------------------------------------------------
-           Avatar
-           ------------------------------------------------- */
-
-        if (avatar) {
-
-          setBackgroundImage(
-            avatar,
-            character.avatar,
-            "https://placehold.co/120"
-          )
-
-        }
-
-
-        /* -------------------------------------------------
-           Character profile link
-           ------------------------------------------------- */
-
-        if (link) {
-
-          const characterPath =
-            character.url
-
-
-          const characterSlug =
-            characterPath
-              .replace(/^characters\//, "")
-              .replace(/\.json$/, "")
-
-
-          link.href =
-            `character-profile.html?char=${encodeURIComponent(
-              characterSlug
-            )}`
-
-        }
-
-
-        container.appendChild(
-          fragment
-        )
-
-      }
+    throw new Error(
+      `Character not found: ${path}`
     )
-
-
-  if (!container.children.length) {
-
-    section.hidden =
-      true
 
   }
+
+  return await response.json()
 
 }
 
@@ -1082,20 +992,20 @@ async function populateCharacters(
 
 function populateStoryContent(
   storyContent
-) {
+){
 
   const container =
     document.getElementById(
       "backstory"
     )
 
+  if(!container){
 
-  if (!container) {
     return
+
   }
 
-
-  if (!Array.isArray(storyContent)) {
+  if(!Array.isArray(storyContent)){
 
     container.innerHTML =
       ""
@@ -1103,12 +1013,6 @@ function populateStoryContent(
     return
 
   }
-
-
-  /*
-    Story JSON contains HTML strings.
-    These are inserted directly.
-  */
 
   container.innerHTML =
     storyContent
@@ -1123,121 +1027,69 @@ function populateStoryContent(
    ========================================================= */
 
 function applyStoryColors(
-  colors
-) {
+  story
+){
 
   const root =
     document.documentElement
 
-
-  const storyColors =
-    colors || {}
-
+  const colors =
+    story?.colors || {}
 
   const primary =
-    storyColors.primary ||
+    colors.primary ||
     "#b99b78"
 
-
   const secondary =
-    storyColors.secondary ||
+    colors.secondary ||
     "#a27d5f"
 
-
   const accent =
-    storyColors.accent ||
+    colors.accent ||
     "#8b6a4d"
 
-
   const bg1 =
-    storyColors.bg_1 ||
+    colors.bg_1 ||
     "#f4efe6"
 
-
   const bg2 =
-    storyColors.bg_2 ||
+    colors.bg_2 ||
     "#f3f1ec"
-
 
   const pageBg =
-    storyColors.page_bg ||
+    colors.page_bg ||
     "#f3f1ec"
 
-
-  /* -------------------------------------------------------
-     CSS variables
-     ------------------------------------------------------- */
 
   root.style.setProperty(
     "--story-primary",
     primary
   )
 
-
   root.style.setProperty(
     "--story-secondary",
     secondary
   )
-
 
   root.style.setProperty(
     "--story-accent",
     accent
   )
 
-
   root.style.setProperty(
     "--story-bg-1",
     bg1
   )
-
 
   root.style.setProperty(
     "--story-bg-2",
     bg2
   )
 
-
   root.style.setProperty(
     "--story-page-bg",
     pageBg
   )
-
-
-  /* -------------------------------------------------------
-     Story navigation / header title colour
-     ------------------------------------------------------- */
-
-  const headerLogoText =
-    document.querySelector(
-      ".site-logo-text"
-    )
-
-
-  if (headerLogoText) {
-
-    headerLogoText.style.color =
-      primary
-
-  }
-
-
-  /* -------------------------------------------------------
-     Story detail banner title
-     ------------------------------------------------------- */
-
-  const storyTitle =
-    document.querySelector(
-      ".story-detail-banner-header h2"
-    )
-
-
-  if (storyTitle) {
-
-    storyTitle.style.color =
-      primary
-
-  }
 
 }
 
