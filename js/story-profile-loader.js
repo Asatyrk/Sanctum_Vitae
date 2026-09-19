@@ -935,75 +935,63 @@ function addImageFallback(
 
 function applyStoryColors(colors) {
 
-  if (!colors) {
-    return
-  }
-
-
   const root =
     document.documentElement
 
+  const storyColors =
+    colors || {}
 
-  if (colors.primary) {
+  const primary =
+    storyColors.primary || "#b99b78"
 
-    root.style.setProperty(
-      "--story-primary",
-      colors.primary
-    )
+  const secondary =
+    storyColors.secondary || "#a27d5f"
 
-  }
+  const accent =
+    storyColors.accent || "#8b6a4d"
 
+  const bg1 =
+    storyColors.bg_1 || "#f4efe6"
 
-  if (colors.secondary) {
+  const bg2 =
+    storyColors.bg_2 || "#f3f1ec"
 
-    root.style.setProperty(
-      "--story-secondary",
-      colors.secondary
-    )
-
-  }
-
-
-  if (colors.accent) {
-
-    root.style.setProperty(
-      "--story-accent",
-      colors.accent
-    )
-
-  }
+  const pageBg =
+    storyColors.page_bg || "#f3f1ec"
 
 
-  if (colors.bg_1) {
+  root.style.setProperty(
+    "--story-primary",
+    primary
+  )
 
-    root.style.setProperty(
-      "--story-bg-1",
-      colors.bg_1
-    )
+  root.style.setProperty(
+    "--story-secondary",
+    secondary
+  )
 
-  }
+  root.style.setProperty(
+    "--story-accent",
+    accent
+  )
 
+  root.style.setProperty(
+    "--story-bg-1",
+    bg1
+  )
 
-  if (colors.bg_2) {
+  root.style.setProperty(
+    "--story-bg-2",
+    bg2
+  )
 
-    root.style.setProperty(
-      "--story-bg-2",
-      colors.bg_2
-    )
-
-  }
-
-
-  if (colors.page_bg) {
-
-    root.style.setProperty(
-      "--story-page-bg",
-      colors.page_bg
-    )
-
-  }
+  root.style.setProperty(
+    "--story-page-bg",
+    pageBg
+  )
 
 }
+
 
 
 /* =========================================================
