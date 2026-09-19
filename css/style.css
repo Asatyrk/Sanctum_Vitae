@@ -2729,6 +2729,8 @@ body.character-profile-page .site-nav a:focus-visible {
 .story-page-tagline {
   margin: 0 0 1rem;
 
+  color: var(--story-primary);
+
   font-family: "IM Fell English", serif;
   font-size: 1.1rem;
   font-style: italic;
@@ -2750,6 +2752,17 @@ body.character-profile-page .site-nav a:focus-visible {
   text-align: right;
 
   word-break: break-word;
+}
+
+
+.story-info-divider {
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  border-top:
+    1px solid
+    var(--story-accent);
 }
 
 /* Right panel */

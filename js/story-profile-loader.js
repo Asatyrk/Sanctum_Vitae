@@ -591,7 +591,7 @@ function populateDescription(description) {
     .forEach(paragraph => {
 
       const item =
-        document.createElement("li")
+        document.createElement("p")
 
 
       item.textContent =
