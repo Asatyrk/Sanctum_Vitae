@@ -8,28 +8,30 @@ HELPERS
 
 function getStory() {
 
-const params =
-  new URLSearchParams(
-    window.location.search
-  )
+  const params =
+    new URLSearchParams(
+      window.location.search
+    )
 
-return params.get("story")
+  return params.get("story")
 
 }
+
 
 function setText(id, value) {
 
-const element =
-document.getElementById(id)
+  const element =
+    document.getElementById(id)
 
-if (!element) {
-return
+  if (!element) {
+    return
+  }
+
+  element.textContent =
+    value ?? ""
+
 }
 
-element.textContent =
-value ?? ""
-
-}
 
 function setBackgroundImage(element, url, fallback = "") {
 
@@ -37,11 +39,11 @@ function setBackgroundImage(element, url, fallback = "") {
     return
   }
 
-  // No image supplied
   if (!url) {
 
     if (fallback) {
-      element.style.backgroundImage = `url("${fallback}")`
+      element.style.backgroundImage =
+        `url("${fallback}")`
     } else {
       element.style.backgroundImage = ""
     }
@@ -49,7 +51,8 @@ function setBackgroundImage(element, url, fallback = "") {
     return
   }
 
-  const image = new Image()
+  const image =
+    new Image()
 
   image.onload = () => {
 
@@ -74,21 +77,23 @@ function setBackgroundImage(element, url, fallback = "") {
   }
 
   image.src = url
+
 }
 
 
 function getTagValue(tags, category) {
 
-const values =
-tags?.[category]
+  const values =
+    tags?.[category]
 
-if (!Array.isArray(values)) {
-return ""
+  if (!Array.isArray(values)) {
+    return ""
+  }
+
+  return values.join(" / ")
+
 }
 
-return values.join(" / ")
-
-}
 
 /* =========================================================
 LOAD STORY

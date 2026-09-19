@@ -993,7 +993,7 @@ function createStoryCard(story) {
   })
 
 
-    const tagsHtml =
+  const tagsHtml =
     storyTagGroups.length
       ? storyTagGroups
           .map(({ category, tags }) => `
@@ -1034,6 +1034,22 @@ function createStoryCard(story) {
         </p>
       `)
       .join("")
+
+
+  /* -------------------------------------------------------
+     Story profile URL
+  ------------------------------------------------------- */
+
+  const storySlug =
+    story.url
+      ?.replace(/^stories\//, "")
+      .replace(/\.json$/, "")
+
+
+  const storyProfileUrl =
+    storySlug
+      ? `story-profile.html?story=${encodeURIComponent(storySlug)}`
+      : "#"
 
 
   /* -------------------------------------------------------
@@ -1081,11 +1097,7 @@ function createStoryCard(story) {
 
       <a
         class="story-read-button"
-        href="story-profile.html?story=${encodeURIComponent(
-          story.url
-            .replace(/^stories\//, "")
-            .replace(/\.json$/, "")
-        )}"
+        href="${storyProfileUrl}"
       >
         Read Story →
       </a>
@@ -1096,10 +1108,10 @@ function createStoryCard(story) {
     <div class="story-card-right">
 
       <div
-         class="story-banner"
-         data-image="${escapeHtml(story.banner || "")}"
-         role="img"
-         aria-label="${escapeHtml(story.name)} banner"
+        class="story-banner"
+        data-image="${escapeHtml(story.banner || "")}"
+        role="img"
+        aria-label="${escapeHtml(story.name)} banner"
       ></div>
 
 
@@ -1116,6 +1128,10 @@ function createStoryCard(story) {
   `
 
 
+  /* -------------------------------------------------------
+     Avatar fallback
+  ------------------------------------------------------- */
+
   const avatar =
     card.querySelector(".story-avatar")
 
@@ -1130,6 +1146,10 @@ function createStoryCard(story) {
   }
 
 
+  /* -------------------------------------------------------
+     Banner fallback
+  ------------------------------------------------------- */
+
   const banner =
     card.querySelector(".story-banner")
 
@@ -1142,6 +1162,7 @@ function createStoryCard(story) {
     )
 
   }
+
 
   return card
 
