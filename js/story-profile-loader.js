@@ -1,9 +1,9 @@
 /* =========================================================
-STORY PROFILE LOADER
+   STORY PROFILE LOADER
 ========================================================= */
 
 /* =========================================================
-HELPERS
+   HELPERS
 ========================================================= */
 
 function getStory() {
@@ -13,7 +13,7 @@ function getStory() {
       window.location.search
     )
 
-  return params.get("story")
+  return params.get("story") || ""
 
 }
 
@@ -33,7 +33,11 @@ function setText(id, value) {
 }
 
 
-function setBackgroundImage(element, url, fallback = "") {
+function setBackgroundImage(
+  element,
+  url,
+  fallback = ""
+) {
 
   if (!element) {
     return
@@ -41,14 +45,13 @@ function setBackgroundImage(element, url, fallback = "") {
 
   if (!url) {
 
-    if (fallback) {
-      element.style.backgroundImage =
-        `url("${fallback}")`
-    } else {
-      element.style.backgroundImage = ""
-    }
+    element.style.backgroundImage =
+      fallback
+        ? `url("${fallback}")`
+        : ""
 
     return
+
   }
 
   const image =
@@ -63,20 +66,15 @@ function setBackgroundImage(element, url, fallback = "") {
 
   image.onerror = () => {
 
-    if (fallback) {
-
-      element.style.backgroundImage =
-        `url("${fallback}")`
-
-    } else {
-
-      element.style.backgroundImage = ""
-
-    }
+    element.style.backgroundImage =
+      fallback
+        ? `url("${fallback}")`
+        : ""
 
   }
 
-  image.src = url
+  image.src =
+    url
 
 }
 
@@ -96,7 +94,7 @@ function getTagValue(tags, category) {
 
 
 /* =========================================================
-LOAD STORY
+   LOAD STORY
 ========================================================= */
 
 async function loadStory() {
@@ -107,8 +105,18 @@ async function loadStory() {
 
   if (!slug) {
 
-    document.body.innerHTML =
-      "No story selected"
+    const page =
+      document.querySelector(
+        ".page-container"
+      )
+
+    if (page) {
+
+      page.innerHTML =
+        "<h1>No Story Selected</h1>" +
+        "<p>No story was specified.</p>"
+
+    }
 
     return
 
@@ -116,6 +124,16 @@ async function loadStory() {
 
 
   try {
+
+    /*
+      Universal story rule:
+
+      ?story=test
+
+      loads:
+
+      stories/test.json
+    */
 
     const response =
       await fetch(
@@ -144,6 +162,7 @@ async function loadStory() {
   } catch (error) {
 
     console.error(
+      "Could not load story:",
       error
     )
 
@@ -166,600 +185,660 @@ async function loadStory() {
 
 }
 
+
 /* =========================================================
-POPULATE STORY
+   POPULATE STORY
 ========================================================= */
 
 function populateStory(story) {
 
-/* -------------------------------------------------------
-Basic information
-------------------------------------------------------- */
+  /* -------------------------------------------------------
+     Basic information
+  ------------------------------------------------------- */
 
-const name =
-story.name || "Untitled Story"
-
-document.title =
-name
-
-document.body.dataset.page =
-slugify(name)
-
-setText(
-"name",
-name
-)
-
-setText(
-"story-navigation",
-name
-)
-
-/* -------------------------------------------------------
-Tagline
-------------------------------------------------------- */
-
-const tagline =
-document.querySelector(".story-page-tagline")
-
-if (tagline) {
-
-if (story.tagline) {
-
-  tagline.textContent =
-    `"${story.tagline}"`
-
-  tagline.hidden = false
-
-} else {
-
-  tagline.hidden = true
-
-}
+  const name =
+    story.name || "Untitled Story"
 
 
-}
+  document.title =
+    name
 
-/* -------------------------------------------------------
-Avatar
-------------------------------------------------------- */
 
-const avatar =
-  document.getElementById("avatar-image")
+  document.body.dataset.page =
+    slugify(name)
 
-if (avatar) {
 
-  avatar.dataset.image =
-    story.avatar || ""
+  setText(
+    "name",
+    name
+  )
 
-  addImageFallback(
-    avatar,
-    "https://placehold.co/240x240"
+
+  setText(
+    "story-navigation",
+    name
+  )
+
+
+  /* -------------------------------------------------------
+     Story title
+     
+     HTML only needs:
+
+     <h2></h2>
+
+     The JSON supplies the actual title.
+  ------------------------------------------------------- */
+
+  const storyTitle =
+    document.querySelector(
+      ".detail-banner-header h2"
+    )
+
+
+  if (storyTitle) {
+
+    storyTitle.textContent =
+      name
+
+  }
+
+
+  /* -------------------------------------------------------
+     Tagline
+  ------------------------------------------------------- */
+
+  const tagline =
+    document.querySelector(
+      ".story-page-tagline"
+    )
+
+
+  if (tagline) {
+
+    if (story.tagline) {
+
+      tagline.textContent =
+        `"${story.tagline}"`
+
+      tagline.hidden =
+        false
+
+    } else {
+
+      tagline.textContent =
+        ""
+
+      tagline.hidden =
+        true
+
+    }
+
+  }
+
+
+  /* -------------------------------------------------------
+     Avatar
+  ------------------------------------------------------- */
+
+  const avatar =
+    document.getElementById(
+      "avatar-image"
+    )
+
+
+  if (avatar) {
+
+    avatar.dataset.image =
+      story.avatar || ""
+
+    addImageFallback(
+      avatar,
+      "https://placehold.co/240x240"
+    )
+
+  }
+
+
+  /* -------------------------------------------------------
+     Banner
+  ------------------------------------------------------- */
+
+  const banner =
+    document.getElementById(
+      "banner-image"
+    )
+
+
+  if (banner) {
+
+    banner.dataset.image =
+      story.banner || ""
+
+    addImageFallback(
+      banner,
+      "https://placehold.co/1200x400"
+    )
+
+  }
+
+
+  /* -------------------------------------------------------
+     Story background
+  ------------------------------------------------------- */
+
+  const storyBackground =
+    document.getElementById(
+      "story-background"
+    )
+
+
+  if (storyBackground) {
+
+    setBackgroundImage(
+      storyBackground,
+      story.background
+    )
+
+  }
+
+
+  /* -------------------------------------------------------
+     Tags
+  ------------------------------------------------------- */
+
+  const tags =
+    story.tags || {}
+
+
+  setText(
+    "genre",
+    getTagValue(
+      tags,
+      "Genre"
+    )
+  )
+
+
+  setText(
+    "age-range",
+    getTagValue(
+      tags,
+      "Age Range"
+    )
+  )
+
+
+  setText(
+    "status",
+    getTagValue(
+      tags,
+      "Status"
+    )
+  )
+
+
+  setText(
+    "story-type",
+    getTagValue(
+      tags,
+      "Story Type"
+    )
+  )
+
+
+  /* -------------------------------------------------------
+     Description
+  ------------------------------------------------------- */
+
+  populateDescription(
+    story.description
+  )
+
+
+  /* -------------------------------------------------------
+     Characters
+  ------------------------------------------------------- */
+
+  populateCharacters(
+    story.characters
+  )
+
+
+  /* -------------------------------------------------------
+     Story content
+  ------------------------------------------------------- */
+
+  populateStoryContent(
+    story.story
+  )
+
+
+  /* -------------------------------------------------------
+     Colours
+  ------------------------------------------------------- */
+
+  applyStoryColors(
+    story.colors
   )
 
 }
 
-/* -------------------------------------------------------
-Banner
-------------------------------------------------------- */
-
-const banner =
-  document.getElementById("banner-image")
-
-if (banner) {
-
-  banner.dataset.image =
-    story.banner || ""
-
-  addImageFallback(
-    banner,
-    "https://placehold.co/1200x400"
-  )
-
-}
-
-/* -------------------------------------------------------
-Story background
-------------------------------------------------------- */
-
-const storyBackground =
-document.getElementById(
-"story-background"
-)
-
-if (storyBackground) {
-
-  setBackgroundImage(
-    storyBackground,
-    story.background
-  )
-
-}
-
-/* -------------------------------------------------------
-Tags
-------------------------------------------------------- */
-
-const tags =
-story.tags || {}
-
-setText(
-"genre",
-getTagValue(
-tags,
-"Genre"
-)
-)
-
-setText(
-"age-range",
-getTagValue(
-tags,
-"Age Range"
-)
-)
-
-setText(
-"status",
-getTagValue(
-tags,
-"Status"
-)
-)
-
-setText(
-"story-type",
-getTagValue(
-tags,
-"Story Type"
-)
-)
-
-/* -------------------------------------------------------
-Description
-------------------------------------------------------- */
-
-populateDescription(
-story.description
-)
-
-/* -------------------------------------------------------
-Characters
-------------------------------------------------------- */
-
-populateCharacters(
-story.characters
-)
-
-/* -------------------------------------------------------
-Story content
-------------------------------------------------------- */
-
-populateStoryContent(
-story.story,
-name
-)
-
-/* -------------------------------------------------------
-Optional colour variables
-------------------------------------------------------- */
-
-applyStoryColors(
-story.colors
-)
-
-}
 
 /* =========================================================
-DESCRIPTION
+   DESCRIPTION
 ========================================================= */
 
 function populateDescription(description) {
 
-const container =
-document.getElementById(
-"description"
-)
+  const container =
+    document.getElementById(
+      "description"
+    )
 
-if (!container) {
-return
+
+  if (!container) {
+    return
+  }
+
+
+  container.innerHTML =
+    ""
+
+
+  if (!Array.isArray(description)) {
+    return
+  }
+
+
+  description
+    .filter(Boolean)
+    .forEach(paragraph => {
+
+      const item =
+        document.createElement("li")
+
+
+      item.textContent =
+        paragraph
+
+
+      container.appendChild(
+        item
+      )
+
+    })
+
 }
 
-container.innerHTML = ""
-
-if (!Array.isArray(description)) {
-return
-}
-
-description
-.filter(Boolean)
-.forEach(paragraph => {
-
-  const item =
-    document.createElement("li")
-
-  item.textContent =
-    paragraph
-
-  container.appendChild(
-    item
-  )
-
-})
-
-
-}
 
 /* =========================================================
-CHARACTERS
+   CHARACTERS
 ========================================================= */
 
 async function populateCharacters(characters) {
 
-const section =
-document.getElementById(
-"relationships-section"
-)
-
-const container =
-document.getElementById(
-"relationships-container"
-)
-
-const template =
-document.getElementById(
-"relationship-template"
-)
-
-if (
-!section ||
-!container ||
-!template
-) {
-return
-}
-
-container.innerHTML = ""
-
-if (
-!Array.isArray(characters) ||
-!characters.length
-) {
-
-section.hidden = true
-
-return
+  const section =
+    document.getElementById(
+      "relationships-section"
+    )
 
 
-}
-
-section.hidden = false
-
-const characterResults =
-await Promise.all(
-
-  characters.map(
-    async character => {
-
-      try {
-
-        const response =
-          await fetch(
-            character.url
-          )
+  const container =
+    document.getElementById(
+      "relationships-container"
+    )
 
 
-        if (!response.ok) {
-          throw new Error(
-            `Failed to load ${character.url}`
-          )
+  const template =
+    document.getElementById(
+      "relationship-template"
+    )
+
+
+  if (
+    !section ||
+    !container ||
+    !template
+  ) {
+    return
+  }
+
+
+  container.innerHTML =
+    ""
+
+
+  if (
+    !Array.isArray(characters) ||
+    !characters.length
+  ) {
+
+    section.hidden =
+      true
+
+    return
+
+  }
+
+
+  section.hidden =
+    false
+
+
+  const characterResults =
+    await Promise.all(
+
+      characters.map(
+        async character => {
+
+          try {
+
+            /*
+              Universal character rule:
+
+              JSON contains:
+
+              "url": "characters/test.json"
+
+              We load that exact path.
+            */
+
+            const response =
+              await fetch(
+                character.url
+              )
+
+
+            if (!response.ok) {
+
+              throw new Error(
+                `Failed to load ${character.url}`
+              )
+
+            }
+
+
+            const data =
+              await response.json()
+
+
+            return {
+              ...data,
+              label:
+                character.label || "",
+              url:
+                character.url
+            }
+
+
+          } catch (error) {
+
+            console.error(
+              "Could not load character:",
+              character.url,
+              error
+            )
+
+
+            return null
+
+          }
+
         }
+      )
+
+    )
 
 
-        const data =
-          await response.json()
+  characterResults
+    .filter(Boolean)
+    .forEach(character => {
+
+      const fragment =
+        template.content.cloneNode(true)
 
 
-        return {
-          ...data,
-          label:
-            character.label || "",
-          url:
-            character.url
-        }
-
-      } catch (error) {
-
-        console.error(
-          "Could not load character:",
-          character.url,
-          error
+      const link =
+        fragment.querySelector(
+          ".relationship-avatar-link"
         )
 
-        return null
+
+      const avatar =
+        fragment.querySelector(
+          ".relationship-avatar"
+        )
+
+
+      const name =
+        fragment.querySelector(
+          ".relationship-name"
+        )
+
+
+      const type =
+        fragment.querySelector(
+          ".relationship-type"
+        )
+
+
+      /* ---------------------------------------------------
+         Name
+      --------------------------------------------------- */
+
+      if (name) {
+
+        name.textContent =
+          character.name ||
+          "Unnamed Character"
 
       }
 
-    }
-  )
 
-)
+      /* ---------------------------------------------------
+         Relationship label
+      --------------------------------------------------- */
 
+      if (type) {
 
-characterResults
-.filter(Boolean)
-.forEach(character => {
+        type.textContent =
+          character.label
 
-  const fragment =
-    template.content.cloneNode(true)
-
-
-  const link =
-    fragment.querySelector(
-      ".relationship-avatar-link"
-    )
+      }
 
 
-  const avatar =
-    fragment.querySelector(
-      ".relationship-avatar"
-    )
+      /* ---------------------------------------------------
+         Avatar
+      --------------------------------------------------- */
+
+      if (
+        avatar &&
+        character.avatar
+      ) {
+
+        setBackgroundImage(
+          avatar,
+          character.avatar
+        )
+
+      }
 
 
-  const name =
-    fragment.querySelector(
-      ".relationship-name"
-    )
+      /* ---------------------------------------------------
+         Character link
+         
+         characters/test.json
+         becomes:
+         character-profile.html?character=test
+      --------------------------------------------------- */
+
+      if (link) {
+
+        const characterSlug =
+          character.url
+            .replace(/^characters\//, "")
+            .replace(/\.json$/, "")
 
 
-  const type =
-    fragment.querySelector(
-      ".relationship-type"
-    )
+        link.href =
+          `character-profile.html?character=${encodeURIComponent(
+            characterSlug
+          )}`
+
+      }
 
 
-  const characterName =
-    character.name ||
-    "Unnamed Character"
+      container.appendChild(
+        fragment
+      )
+
+    })
 
 
-  /* Name */
+  if (!container.children.length) {
 
-  if (name) {
-
-    name.textContent =
-      characterName
-
-  }
-
-
-  /* Relationship label */
-
-  if (type) {
-
-    type.textContent =
-      character.label
-
-  }
-
-
-  /* Avatar */
-
-  if (
-    avatar &&
-    character.avatar
-  ) {
-
-    setBackgroundImage(
-      avatar,
-      character.avatar
-    )
+    section.hidden =
+      true
 
   }
-
-
-  /* Character link */
-
-  if (link) {
-
-    link.href =
-      character.url
-        .replace(/\.json$/, ".html")
-
-  }
-
-
-  container.appendChild(
-    fragment
-  )
-
-})
-
-
-if (!container.children.length) {
-
-section.hidden = true
-
 
 }
 
-}
 
 /* =========================================================
-STORY CONTENT
+   STORY CONTENT
 ========================================================= */
 
-function populateStoryContent(
-storyContent,
-storyName
-) {
+function populateStoryContent(storyContent) {
 
-const container =
-document.getElementById(
-"backstory"
-)
-
-if (!container) {
-return
-}
-
-/* -------------------------------------------------------
-Story title
-------------------------------------------------------- */
-
-const title =
-document.querySelector(
-".detail-banner-header h2"
-)
-
-if (title) {
-
-title.textContent =
-  storyName
+  const container =
+    document.getElementById(
+      "backstory"
+    )
 
 
-}
+  if (!container) {
+    return
+  }
 
-/* -------------------------------------------------------
-Story HTML
-------------------------------------------------------- */
 
-if (!Array.isArray(storyContent)) {
+  if (!Array.isArray(storyContent)) {
 
-container.innerHTML = ""
+    container.innerHTML =
+      ""
 
-return
+    return
 
+  }
+
+
+  /*
+    Story content is already HTML in the JSON,
+    so insert it directly.
+  */
+
+  container.innerHTML =
+    storyContent
+      .filter(Boolean)
+      .join("\n")
 
 }
 
-container.innerHTML =
-storyContent
-.filter(Boolean)
-.join("\n")
-
-}
 
 /* =========================================================
-STORY COLOURS
+   STORY COLOURS
 ========================================================= */
 
 function applyStoryColors(colors) {
 
-if (!colors) {
-return
+  if (!colors) {
+    return
+  }
+
+
+  const root =
+    document.documentElement
+
+
+  if (colors.primary) {
+
+    root.style.setProperty(
+      "--story-primary",
+      colors.primary
+    )
+
+  }
+
+
+  if (colors.secondary) {
+
+    root.style.setProperty(
+      "--story-secondary",
+      colors.secondary
+    )
+
+  }
+
+
+  if (colors.accent) {
+
+    root.style.setProperty(
+      "--story-accent",
+      colors.accent
+    )
+
+  }
+
+
+  if (colors.bg_1) {
+
+    root.style.setProperty(
+      "--story-bg-1",
+      colors.bg_1
+    )
+
+  }
+
+
+  if (colors.bg_2) {
+
+    root.style.setProperty(
+      "--story-bg-2",
+      colors.bg_2
+    )
+
+  }
+
+
+  if (colors.page_bg) {
+
+    root.style.setProperty(
+      "--story-page-bg",
+      colors.page_bg
+    )
+
+  }
+
 }
 
-const root =
-document.documentElement
-
-if (colors.primary) {
-
-root.style.setProperty(
-  "--story-primary",
-  colors.primary
-)
-
-
-}
-
-if (colors.secondary) {
-
-root.style.setProperty(
-  "--story-secondary",
-  colors.secondary
-)
-
-
-}
-
-if (colors.accent) {
-
-root.style.setProperty(
-  "--story-accent",
-  colors.accent
-)
-
-
-}
-
-if (colors.bg_1) {
-
-root.style.setProperty(
-  "--story-bg-1",
-  colors.bg_1
-)
-
-
-}
-
-if (colors.bg_2) {
-
-root.style.setProperty(
-  "--story-bg-2",
-  colors.bg_2
-)
-
-
-}
-
-if (colors.page_bg) {
-
-root.style.setProperty(
-  "--story-page-bg",
-  colors.page_bg
-)
-
-
-}
-
-}
 
 /* =========================================================
-ERROR STATE
-========================================================= */
-
-function showStoryError() {
-
-const main =
-document.querySelector(
-".page-container"
-)
-
-if (!main) {
-return
-}
-
-const message =
-document.createElement("p")
-
-message.className =
-"story-no-results"
-
-message.textContent =
-"The story could not be loaded."
-
-main.prepend(
-message
-)
-
-}
-
-/* =========================================================
-SLUGIFY
+   SLUGIFY
 ========================================================= */
 
 function slugify(value) {
 
-return String(value ?? "")
-.toLowerCase()
-.replace(/[^a-z0-9]+/g, "-")
-.replace(/^-+|-+$/g, "")
+  return String(value ?? "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
 
 }
 
+
 /* =========================================================
-START
+   START
 ========================================================= */
 
 loadStory()
