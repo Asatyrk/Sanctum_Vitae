@@ -6,15 +6,14 @@ STORY PROFILE LOADER
 HELPERS
 ========================================================= */
 
-function getStorySlug() {
+function getStory() {
 
-const filename =
-window.location.pathname
-.split("/")
-.pop()
+const params =
+  new URLSearchParams(
+    window.location.search
+  )
 
-return filename
-.replace(/.html$/, "")
+return params.get("story")
 
 }
 
@@ -97,50 +96,68 @@ LOAD STORY
 
 async function loadStory() {
 
-try {
-
-const slug =
-  getStorySlug()
+  const slug =
+    getStory()
 
 
-if (!slug) {
-  throw new Error("Could not determine story slug.")
-}
+  if (!slug) {
+
+    document.body.innerHTML =
+      "No story selected"
+
+    return
+
+  }
 
 
-const storyPath =
-  `stories/${slug}.json`
+  try {
+
+    const response =
+      await fetch(
+        `stories/${slug}.json`
+      )
 
 
-const response =
-  await fetch(storyPath)
+    if (!response.ok) {
+
+      throw new Error(
+        `Story not found: ${slug}`
+      )
+
+    }
 
 
-if (!response.ok) {
-  throw new Error(
-    `Failed to load ${storyPath}`
-  )
-}
+    const story =
+      await response.json()
 
 
-const story =
-  await response.json()
+    populateStory(
+      story
+    )
 
 
-populateStory(story)
+  } catch (error) {
+
+    console.error(
+      error
+    )
 
 
-} catch (error) {
-
-console.error(
-  "Could not load story:",
-  error
-)
-
-showStoryError()
+    const page =
+      document.querySelector(
+        ".page-container"
+      )
 
 
-}
+    if (page) {
+
+      page.innerHTML =
+        "<h1>Story Not Found</h1>" +
+        "<p>The requested story does not exist.</p>"
+
+    }
+
+  }
 
 }
 
@@ -178,7 +195,7 @@ Tagline
 ------------------------------------------------------- */
 
 const tagline =
-document.querySelector(".story-tagline")
+document.querySelector(".story-page-tagline")
 
 if (tagline) {
 

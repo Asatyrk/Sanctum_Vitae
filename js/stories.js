@@ -1081,7 +1081,11 @@ function createStoryCard(story) {
 
       <a
         class="story-read-button"
-        href="${escapeHtml(story.readUrl)}"
+        href="story-profile.html?story=${encodeURIComponent(
+          story.url
+            .replace(/^stories\//, "")
+            .replace(/\.json$/, "")
+        )}"
       >
         Read Story →
       </a>
