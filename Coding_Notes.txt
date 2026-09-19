@@ -1,8 +1,20 @@
-To add new character (/other):
-- Create new .json in characters (/other) folder with profile info (use base)
+To add new:
+
+Character:
+- Create new .json in characters folder with profile info (use base)
 - Tags can be found in characters.js
 - Add to index.json so it shows up in layout (inc. headshot). 
 - Try to keep index in alphabetical order (refer to google sheets, A-Z auto-sorts).
+
+Stories:
+- Create new .json in stories folder with story info (use base)
+- Tags can be found in stories.js
+- Add to index.json so it shows up in layout. 
+- Try to keep index in alphabetical order (not as needed)
+
+
+---
+
 
 Image key:
 Headshot [1:1] = polaroid 
@@ -31,17 +43,24 @@ Particle shapes:
 
 To do:
 - Change favicon/icon (easy though, just replace files in assets folder)
+- Story main page (checking)
+  - Synopsis at top
+  - Story itself
+  - Characters
+  - Image BG (static, stays still when scrolled)
+- Global nav + global styles for front page + lore page.
 - Character page, details, etc
   - Story
   - ID box
+  - Tags (at bottom of page)
 - Mockup and code factions 
-  - Factions index
-  - Faction page
-- Mockup and code stories
   - Factions index
   - Faction page
 - Mockup and code lore
 - Code main page
+- Footer 
+  - Pages for navigation/accesibility
+  - Contact, mainly for images/errors
 - Ensure page base is setup correctly
 - General cleanup + code revisions
 - Other pages, but maybe just that for now

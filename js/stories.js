@@ -892,16 +892,30 @@ function addImageFallback(element, fallbackUrl) {
   const image = new Image()
 
   image.onload = () => {
+
     element.style.backgroundImage =
       `url("${element.dataset.image}")`
+
   }
 
   image.onerror = () => {
+
     element.style.backgroundImage =
       `url("${fallbackUrl}")`
+
   }
 
-  image.src = element.dataset.image
+  if (!element.dataset.image) {
+
+    element.style.backgroundImage =
+      `url("${fallbackUrl}")`
+
+    return
+
+  }
+
+  image.src =
+    element.dataset.image
 
 }
 
@@ -1077,18 +1091,12 @@ function createStoryCard(story) {
 
     <div class="story-card-right">
 
-      ${
-        story.banner
-          ? `
-            <div
-              class="story-banner"
-              data-image="${escapeHtml(story.banner || "")}"
-              role="img"
-              aria-label="${escapeHtml(story.name)} banner"
-            ></div>
-          `
-          : ""
-      }
+      <div
+         class="story-banner"
+         data-image="${escapeHtml(story.banner || "")}"
+         role="img"
+         aria-label="${escapeHtml(story.name)} banner"
+      ></div>
 
 
       <div class="story-content">

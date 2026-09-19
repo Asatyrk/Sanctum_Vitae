@@ -7,12 +7,39 @@
   
   "avatar": "assets/stories/story-title/avatar.jpg",
   "banner": "assets/stories/story-title/banner.jpg",
-  "background": "assets/stories/story-title/background.jpg",
+  "background": "https://isorepublic.com/wp-content/uploads/2018/11/forest-trees.jpg",
 
   "readUrl": "stories/story-title.html",
 
+  "characters": [
+      {
+        "label": "Main character",
+        "url": "characters/test.json"
+      },
+      {
+        "label": "Background character",
+        "url": "characters/test_friend.json"
+      }
+    ],
+
+  "story":[
+    "<h2>Chapter One</h2>",
+    "<p>This is <strong>important</strong> and this is <em>emphasised</em>.</p>",
+    "<h2>Chapter Two</h2>",
+    "<p>More story...</p>"
+  ],
+
+  "colors": {
+  "primary": "#FF0000",
+  "secondary": "#0000FF",
+  "accent": "#00FF00",
+  "bg_1": "#000000",
+  "bg_2": "#FFFFFF",
+  "page_bg": "#800080"
+  },
+
   "tags": {
-    "Genre": ["Fantasy", "Western"],
+    "Genre": ["Fantasy"],
     "Age Range": ["Explicit [18+]"],
     "Status": ["Ongoing"],
     "Story Type": ["Short Story"]
