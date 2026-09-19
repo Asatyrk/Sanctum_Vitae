@@ -912,180 +912,201 @@ function addImageFallback(element, fallbackUrl) {
 }
 
 /* =========================================================
-16. CREATE STORY CARD
+   16. CREATE STORY CARD
 ========================================================= */
 
 function createStoryCard(story) {
 
-const card =
-document.createElement("article")
-
-card.className =
-"story-card"
-
-/* -------------------------------------------------------
-Story tags
-------------------------------------------------------- */
-
-const storyTagGroups = []
-
-Object.entries(
-story.tags || {}
-).forEach(([category, tags]) => {
-
-if (!Array.isArray(tags) || !tags.length) {
-  return
-}
+  const card =
+    document.createElement("article")
 
 
-storyTagGroups.push({
-  category,
-  tags
-})
+  card.className =
+    "story-card"
 
 
-})
+  /* -------------------------------------------------------
+     Story tags
+  ------------------------------------------------------- */
 
-const tagsHtml =
-storyTagGroups.length
-? storyTagGroups
-.map(({ category, tags }) => <span class="story-tag-group" title="${escapeHtml(category)}" > ${tags .map(tag =>
-<span class="story-tag">
-${escapeHtml(tag)}
-</span>
-) .join(" / ") } </span> )
-.join(
-'<span class="story-tag-category-separator">|</span>'
-)
-: ""
-
-/* -------------------------------------------------------
-Story description
-------------------------------------------------------- */
-
-const descriptions =
-Array.isArray(story.description)
-? story.description
-: [story.description]
-
-const descriptionHtml =
-descriptions
-.filter(Boolean)
-.map(paragraph => <p> ${escapeHtml(paragraph)} </p> )
-.join("")
-
-/* -------------------------------------------------------
-Card HTML
-------------------------------------------------------- */
-
-card.innerHTML = `
-
-<div class="story-card-left">
-
-  <div
-    class="story-avatar"
-    data-image="${escapeHtml(story.avatar || "")}"
-    role="img"
-    aria-label="${escapeHtml(story.name)} avatar"
-  ></div>
+  const storyTagGroups = []
 
 
-  <h2 class="story-title">
-    ${escapeHtml(story.name)}
-  </h2>
+  Object.entries(
+    story.tags || {}
+  ).forEach(([category, tags]) => {
+
+    if (!Array.isArray(tags) || !tags.length) {
+      return
+    }
 
 
-  ${
-    story.tagline
-      ? `
-        <p class="story-tagline">
-          "${escapeHtml(story.tagline)}"
+    storyTagGroups.push({
+      category,
+      tags
+    })
+
+  })
+
+
+  const tagsHtml =
+    storyTagGroups.length
+      ? storyTagGroups
+          .map(({ category, tags }) => `
+            <span
+              class="story-tag-group"
+              title="${escapeHtml(category)}"
+            >
+              ${tags
+                .map(tag => `
+                  <span class="story-tag">
+                    ${escapeHtml(tag)}
+                  </span>
+                `)
+                .join(" / ")
+              }
+            </span>
+          `)
+          .join(
+            '<span class="story-tag-category-separator">|</span>'
+          )
+      : ""
+
+
+  /* -------------------------------------------------------
+     Story description
+  ------------------------------------------------------- */
+
+  const descriptions =
+    Array.isArray(story.description)
+      ? story.description
+      : [story.description]
+
+
+  const descriptionHtml =
+    descriptions
+      .filter(Boolean)
+      .map(paragraph => `
+        <p>
+          ${escapeHtml(paragraph)}
         </p>
-      `
-      : ""
-  }
+      `)
+      .join("")
 
 
-  ${
-    tagsHtml
-      ? `
-        <div class="story-tags">
-          ${tagsHtml}
-        </div>
-      `
-      : ""
-  }
+  /* -------------------------------------------------------
+     Card HTML
+  ------------------------------------------------------- */
+
+  card.innerHTML = `
+
+    <div class="story-card-left">
+
+      <div
+        class="story-avatar"
+        data-image="${escapeHtml(story.avatar || "")}"
+        role="img"
+        aria-label="${escapeHtml(story.name)} avatar"
+      ></div>
 
 
-  <a
-    class="story-read-button"
-    href="${escapeHtml(story.readUrl)}"
-  >
-    Read Story →
-  </a>
-
-</div>
+      <h2 class="story-title">
+        ${escapeHtml(story.name)}
+      </h2>
 
 
-<div class="story-card-right">
-
-  ${
-    story.banner
-      ? `
-        <div
-          class="story-banner"
-          data-image="${escapeHtml(story.banner || "")}"
-          role="img"
-          aria-label="${escapeHtml(story.name)} banner"
-        ></div>
-      `
-      : ""
-  }
+      ${
+        story.tagline
+          ? `
+            <p class="story-tagline">
+              "${escapeHtml(story.tagline)}"
+            </p>
+          `
+          : ""
+      }
 
 
-  <div class="story-content">
+      ${
+        tagsHtml
+          ? `
+            <div class="story-tags">
+              ${tagsHtml}
+            </div>
+          `
+          : ""
+      }
 
-    <div class="story-description">
-      ${descriptionHtml}
+
+      <a
+        class="story-read-button"
+        href="${escapeHtml(story.readUrl)}"
+      >
+        Read Story →
+      </a>
+
     </div>
 
-  </div>
 
-</div>
+    <div class="story-card-right">
+
+      ${
+        story.banner
+          ? `
+            <div
+              class="story-banner"
+              data-image="${escapeHtml(story.banner || "")}"
+              role="img"
+              aria-label="${escapeHtml(story.name)} banner"
+            ></div>
+          `
+          : ""
+      }
 
 
-`
+      <div class="story-content">
 
-const avatar =
-card.querySelector(".story-avatar")
+        <div class="story-description">
+          ${descriptionHtml}
+        </div>
 
-if (avatar) {
+      </div>
 
-addImageFallback(
-  avatar,
-  "https://placehold.co/240x240"
-)
+    </div>
 
+  `
+
+
+  const avatar =
+    card.querySelector(".story-avatar")
+
+
+  if (avatar) {
+
+    addImageFallback(
+      avatar,
+      "https://placehold.co/240x240"
+    )
+
+  }
+
+
+  const banner =
+    card.querySelector(".story-banner")
+
+
+  if (banner) {
+
+    addImageFallback(
+      banner,
+      "https://placehold.co/1200x400"
+    )
+
+  }
+
+
+  return card
 
 }
-
-const banner =
-card.querySelector(".story-banner")
-
-if (banner) {
-
-addImageFallback(
-  banner,
-  "https://placehold.co/1200x400"
-)
-
-
-}
-
-return card
-
-}
-
 
 /* =========================================================
    17. RENDER STORIES
