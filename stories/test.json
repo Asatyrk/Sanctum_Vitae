@@ -9,7 +9,7 @@
   "banner": "assets/stories/story-title/banner.jpg",
   "background": "https://isorepublic.com/wp-content/uploads/2018/11/forest-trees.jpg",
 
-  "Url": "stories/test.html",
+  "url": "stories/test.html",
 
   "characters": [
       {
