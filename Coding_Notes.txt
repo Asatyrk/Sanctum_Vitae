@@ -46,6 +46,8 @@ To do:
 - Story main page (checking)
   - Synopsis at top
   - Story itself
+  - Decor image (need js)
+  - Nav (broken)
   - Characters
   - Image BG (static, stays still when scrolled)
 - Global nav + global styles for front page + lore page.

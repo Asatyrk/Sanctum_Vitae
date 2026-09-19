@@ -353,74 +353,7 @@ setText(
       "https://placehold.co/1200x400"
     )
 
-  // =========================
-  // DECOR IMAGE
-  // =========================
-
-  const decorImage =
-    character.decorImage
-
-  const fallbackImageUrl =
-    "https://placehold.co/1000x100"
-
-  const boxes = [
-    document.getElementById(
-      "decor-image"
-    )
-  ].filter(Boolean)
-
-
-  function setDecorImage(
-    box,
-    imageUrl
-  ){
-
-    if(!box) return
-
-    const testImage =
-      new Image()
-
-    testImage.onload =
-      () => {
-
-        box.style.backgroundImage =
-          `url("${imageUrl}")`
-
-      }
-
-    testImage.onerror =
-      () => {
-
-        box.style.backgroundImage =
-          `url("${fallbackImageUrl}")`
-
-      }
-
-    testImage.src =
-      imageUrl
-
   }
-
-
-  const finalImageUrl =
-    typeof decorImage === "string" &&
-    decorImage.trim() !== ""
-      ? decorImage.trim()
-      : fallbackImageUrl
-
-
-  boxes.forEach(
-    box => {
-
-      setDecorImage(
-        box,
-        finalImageUrl
-      )
-
-    }
-  )
-
-}
 
 
   /* -------------------------------------------------------
