@@ -781,70 +781,6 @@ function matchesTags(story) {
 }
 
 /* =========================================================
-    TAG SEPARATORS
-========================================================= */
-
-/* =========================================================
-   TAG SEPARATORS
-========================================================= */
-
-function updateTagSeparators(card) {
-
-  const groups =
-    Array.from(
-      card.querySelectorAll(".story-tag-group")
-    )
-
-
-  groups.forEach((group, index) => {
-
-    const separator =
-      group.querySelector(
-        ".story-tag-category-separator"
-      )
-
-
-    if (!separator) {
-      return
-    }
-
-
-    if (index === groups.length - 1) {
-
-      separator.style.display = "none"
-
-      return
-
-    }
-
-
-    const next =
-      groups[index + 1]
-
-
-    const groupRect =
-      group.getBoundingClientRect()
-
-
-    const nextRect =
-      next.getBoundingClientRect()
-
-
-    const wrapped =
-      nextRect.top > groupRect.top + 1
-
-
-    separator.style.display =
-      wrapped
-        ? "none"
-        : "inline"
-
-  })
-
-}
-
-
-/* =========================================================
    SEARCH
 ========================================================= */
 
@@ -1007,16 +943,12 @@ function createStoryCard(story) {
   })
 
 
-  const tagsHtml =
-  storyTagGroups.length
-    ? storyTagGroups
-        .map(({ category, tags }, index) => `
-          <span
-            class="story-tag-group"
-            data-tag-group="${index}"
-          >
+    const tagsHtml =
+    storyTagGroups.length
+      ? storyTagGroups
+          .map(({ category, tags }) => `
             <span
-              class="story-tag-group-content"
+              class="story-tag-group"
               title="${escapeHtml(category)}"
             >
               ${tags
@@ -1028,16 +960,9 @@ function createStoryCard(story) {
                 .join(" / ")
               }
             </span>
-
-            ${
-              index < storyTagGroups.length - 1
-                ? '<span class="story-tag-category-separator">|</span>'
-                : ""
-            }
-          </span>
-        `)
-        .join("")
-    : ""
+          `)
+          .join("")
+      : ""
 
 
   /* -------------------------------------------------------
@@ -1170,8 +1095,6 @@ function createStoryCard(story) {
 
   }
 
-  updateTagSeparators(card)
-
   return card
 
 }
@@ -1247,34 +1170,6 @@ window.addEventListener(
     applyUrlStateToUI()
 
     renderStories()
-
-  }
-)
-
-/* =========================================================
-   TAG SEPARATOR RESIZE
-========================================================= */
-
-let tagSeparatorResizeTimer
-
-window.addEventListener(
-  "resize",
-  () => {
-
-    clearTimeout(tagSeparatorResizeTimer)
-
-    tagSeparatorResizeTimer =
-      setTimeout(() => {
-
-        document
-          .querySelectorAll(".story-card")
-          .forEach(card => {
-
-            updateTagSeparators(card)
-
-          })
-
-      }, 100)
 
   }
 )

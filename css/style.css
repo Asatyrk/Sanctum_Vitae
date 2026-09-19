@@ -2524,24 +2524,15 @@ body.character-profile-page .site-nav a:focus-visible {
   margin-bottom: var(--space-5);
 }
 
-
 .story-tag-group {
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   white-space: nowrap;
+  margin-right: 0.5rem;
 }
 
-.story-tag-group-content {
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-}
-
-
-.story-tag-category-separator {
-  color: var(--color-text-muted);
-  user-select: none;
-  margin: 0 0.35em;
+.story-tag-group + .story-tag-group {
+  border-left: 1px solid var(--color-text-muted);
+  padding-left: 0.5rem;
 }
 
 .story-tag {
