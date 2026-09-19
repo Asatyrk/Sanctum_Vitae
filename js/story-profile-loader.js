@@ -258,72 +258,6 @@ setText(
   name
 )
 
-const navigation =
-    document.getElementById(
-      "story-navigation"
-    )
-
-
-  if(!navigation){
-
-    return
-
-  }
-
-
-  navigation.innerHTML = ""
-
-
-  const previousLink =
-    document.createElement(
-      "a"
-    )
-
-
-  previousLink.href =
-    getProfileUrl(
-      previous.path
-    )
-
-
-  previousLink.textContent =
-    "← Previous"
-
-
-  const separator =
-    document.createTextNode(
-      " | "
-    )
-
-
-  const nextLink =
-    document.createElement(
-      "a"
-    )
-
-
-  nextLink.href =
-    getProfileUrl(
-      next.path
-    )
-
-
-  nextLink.textContent =
-    "Next →"
-
-
-  navigation.appendChild(
-    previousLink
-  )
-
-  navigation.appendChild(
-    separator
-  )
-
-  navigation.appendChild(
-    nextLink
-  )
-
 
   /* -------------------------------------------------------
      Story box title
@@ -485,7 +419,6 @@ const navigation =
     )
   )
 
-
   /* -------------------------------------------------------
      Description
   ------------------------------------------------------- */
@@ -521,6 +454,109 @@ const navigation =
     story.colors
   )
 
+}
+
+async function setupStoryNavigation(indexPath) {
+
+  const navigation =
+    document.getElementById("story-navigation")
+
+  if (!navigation) {
+    return
+  }
+
+  navigation.innerHTML = ""
+
+  try {
+
+    const response =
+      await fetch(indexPath)
+
+    if (!response.ok) {
+      throw new Error(
+        `Failed to load ${indexPath}`
+      )
+    }
+
+    const stories =
+      await response.json()
+
+    if (!Array.isArray(stories) || !stories.length) {
+      return
+    }
+
+    const currentSlug =
+      getStory()
+
+    const currentIndex =
+      stories.findIndex(story => {
+
+        const path =
+          story.path || ""
+
+        return path
+          .replace(/^stories\//, "")
+          .replace(/\.json$/, "") === currentSlug
+
+      })
+
+    if (currentIndex === -1) {
+      return
+    }
+
+    const previous =
+      stories[
+        (currentIndex - 1 + stories.length) %
+        stories.length
+      ]
+
+    const next =
+      stories[
+        (currentIndex + 1) %
+        stories.length
+      ]
+
+    const previousLink =
+      document.createElement("a")
+
+    previousLink.href =
+      getProfileUrl(previous.path)
+
+    previousLink.textContent =
+      "← Previous"
+
+    const separator =
+      document.createTextNode(" | ")
+
+    const nextLink =
+      document.createElement("a")
+
+    nextLink.href =
+      getProfileUrl(next.path)
+
+    nextLink.textContent =
+      "Next →"
+
+    navigation.appendChild(
+      previousLink
+    )
+
+    navigation.appendChild(
+      separator
+    )
+
+    navigation.appendChild(
+      nextLink
+    )
+
+  } catch (error) {
+
+    console.error(
+      "Could not setup story navigation:",
+      error
+    )
+
+  }
 }
 
 
