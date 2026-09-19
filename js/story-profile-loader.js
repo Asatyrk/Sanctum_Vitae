@@ -2,6 +2,7 @@
    STORY PROFILE LOADER
 ========================================================= */
 
+
 /* =========================================================
    HELPERS
 ========================================================= */
@@ -93,11 +94,34 @@ function getTagValue(tags, category) {
 }
 
 
+function slugify(value) {
+
+  return String(value ?? "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+
+}
+
+
 /* =========================================================
    LOAD STORY
 ========================================================= */
 
 async function loadStory() {
+
+  /*
+    Universal story URL:
+
+    story-profile.html?story=test
+
+    ALWAYS loads:
+
+    stories/test.json
+
+    The JSON "name" and "url" fields are NOT
+    used to find the JSON file.
+  */
 
   const slug =
     getStory()
@@ -125,26 +149,20 @@ async function loadStory() {
 
   try {
 
-    /*
-      Universal story rule:
+    const storyPath =
+      `stories/${slug}.json`
 
-      ?story=test
-
-      loads:
-
-      stories/test.json
-    */
 
     const response =
       await fetch(
-        `stories/${slug}.json`
+        storyPath
       )
 
 
     if (!response.ok) {
 
       throw new Error(
-        `Story not found: ${slug}`
+        `Failed to load ${storyPath}`
       )
 
     }
@@ -177,7 +195,7 @@ async function loadStory() {
 
       page.innerHTML =
         "<h1>Story Not Found</h1>" +
-        "<p>The requested story does not exist.</p>"
+        `<p>The requested story could not be loaded.</p>`
 
     }
 
@@ -192,27 +210,46 @@ async function loadStory() {
 
 function populateStory(story) {
 
-  /* -------------------------------------------------------
-     Basic information
-  ------------------------------------------------------- */
+  /*
+    "name" is display text only.
+
+    It does NOT determine the filename.
+  */
 
   const name =
-    story.name || "Untitled Story"
+    story.name ||
+    "Untitled Story"
 
+
+  /* -------------------------------------------------------
+     Browser title
+  ------------------------------------------------------- */
 
   document.title =
     name
 
 
+  /* -------------------------------------------------------
+     Page identifier
+  ------------------------------------------------------- */
+
   document.body.dataset.page =
     slugify(name)
 
+
+  /* -------------------------------------------------------
+     Main name
+  ------------------------------------------------------- */
 
   setText(
     "name",
     name
   )
 
+
+  /* -------------------------------------------------------
+     Navigation name
+  ------------------------------------------------------- */
 
   setText(
     "story-navigation",
@@ -221,13 +258,7 @@ function populateStory(story) {
 
 
   /* -------------------------------------------------------
-     Story title
-     
-     HTML only needs:
-
-     <h2></h2>
-
-     The JSON supplies the actual title.
+     Story box title
   ------------------------------------------------------- */
 
   const storyTitle =
@@ -324,7 +355,7 @@ function populateStory(story) {
 
 
   /* -------------------------------------------------------
-     Story background
+     Background
   ------------------------------------------------------- */
 
   const storyBackground =
@@ -537,11 +568,9 @@ async function populateCharacters(characters) {
             /*
               Universal character rule:
 
-              JSON contains:
-
               "url": "characters/test.json"
 
-              We load that exact path.
+              loads that exact JSON file.
             */
 
             const response =
@@ -579,7 +608,6 @@ async function populateCharacters(characters) {
               character.url,
               error
             )
-
 
             return null
 
@@ -669,14 +697,20 @@ async function populateCharacters(characters) {
          Character link
          
          characters/test.json
+
          becomes:
+
          character-profile.html?character=test
       --------------------------------------------------- */
 
       if (link) {
 
-        const characterSlug =
+        const characterPath =
           character.url
+
+
+        const characterSlug =
+          characterPath
             .replace(/^characters\//, "")
             .replace(/\.json$/, "")
 
@@ -734,14 +768,59 @@ function populateStoryContent(storyContent) {
 
 
   /*
-    Story content is already HTML in the JSON,
-    so insert it directly.
+    The JSON contains HTML strings,
+    so insert them directly.
   */
 
   container.innerHTML =
     storyContent
       .filter(Boolean)
       .join("\n")
+
+}
+
+
+/* =========================================================
+   IMAGE FALLBACK
+========================================================= */
+
+function addImageFallback(
+  element,
+  fallbackUrl
+) {
+
+  const image =
+    new Image()
+
+
+  image.onload = () => {
+
+    element.style.backgroundImage =
+      `url("${element.dataset.image}")`
+
+  }
+
+
+  image.onerror = () => {
+
+    element.style.backgroundImage =
+      `url("${fallbackUrl}")`
+
+  }
+
+
+  if (!element.dataset.image) {
+
+    element.style.backgroundImage =
+      `url("${fallbackUrl}")`
+
+    return
+
+  }
+
+
+  image.src =
+    element.dataset.image
 
 }
 
@@ -819,20 +898,6 @@ function applyStoryColors(colors) {
     )
 
   }
-
-}
-
-
-/* =========================================================
-   SLUGIFY
-========================================================= */
-
-function slugify(value) {
-
-  return String(value ?? "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
 
 }
 

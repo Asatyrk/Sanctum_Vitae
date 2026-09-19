@@ -1040,17 +1040,17 @@ function createStoryCard(story) {
      Story profile URL
   ------------------------------------------------------- */
 
-  const storySlug =
-    story.url
-      ?.replace(/^stories\//, "")
-      .replace(/\.json$/, "")
+const storySlug =
+  story.url
+    ?.replace(/^stories\//, "")
+    .replace(/\.html$/, "")
 
 
-  const storyProfileUrl =
-    storySlug
-      ? `story-profile.html?story=${encodeURIComponent(storySlug)}`
-      : "#"
-
+const storyProfileUrl =
+  storySlug
+    ? `story-profile.html?story=${encodeURIComponent(storySlug)}`
+    : "#"
+    
 
   /* -------------------------------------------------------
      Card HTML
