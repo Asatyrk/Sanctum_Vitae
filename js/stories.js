@@ -915,59 +915,45 @@ function addImageFallback(element, fallbackUrl) {
    16. CREATE STORY CARD
 ========================================================= */
 
-function createStoryCard(story) {
-
-  const card =
-    document.createElement("article")
+const storyTagGroups = []
 
 
-  card.className =
-    "story-card"
+Object.entries(
+  story.tags || {}
+).forEach(([category, tags]) => {
 
+  if (!Array.isArray(tags) || !tags.length) {
+    return
+  }
 
-  /* -------------------------------------------------------
-     Story tags
-  ------------------------------------------------------- */
-
-  const storyTagsGroups = []
-
-
-  Object.entries(
-    story.tags || {}
-  ).forEach(([category, tags]) => {
-
-    if (!Array.isArray(tags) || !tags.length) {
-      return
-    }
-
-   storyTagGroups.push({
-      category,
-      tags
-    })
-
+  storyTagGroups.push({
+    category,
+    tags
   })
 
+})
 
-  const tagsHtml =
-    storyTagGroups.length
-      ? storyTagGroups
-          .map(({ category, tags }) => `
-            <span
-              class="story-tag-group"
-              title="${escapeHtml(category)}"
-            >
-              ${tags
-                .map(tag => `
-                  <span class="story-tag">
-                    ${escapeHtml(tag)}
-                  </span>
-                `)
-                .join(" / ")
-              }
-            </span>
-          `)
-          .join('<span class="story-tag-category-separator">|</span>')
-      : ""
+
+const tagsHtml =
+  storyTagGroups.length
+    ? storyTagGroups
+        .map(({ category, tags }) => `
+          <span
+            class="story-tag-group"
+            title="${escapeHtml(category)}"
+          >
+            ${tags
+              .map(tag => `
+                <span class="story-tag">
+                  ${escapeHtml(tag)}
+                </span>
+              `)
+              .join(" / ")
+            }
+          </span>
+        `)
+        .join('<span class="story-tag-category-separator">|</span>')
+    : ""
 
 
   /* -------------------------------------------------------
