@@ -1131,8 +1131,6 @@ function createStoryCard(story) {
 
   }
 
-  updateTagSeparators(card)
-
   return card
 
 }
@@ -1193,6 +1191,10 @@ function renderStories() {
     )
 
   })
+
+  document
+    .querySelectorAll(".story-card")
+    .forEach(updateTagSeparators)
 
 }
 
