@@ -571,20 +571,16 @@ function populateDescription(description) {
       "description"
     )
 
-
   if (!container) {
     return
   }
 
-
   container.innerHTML =
     ""
-
 
   if (!Array.isArray(description)) {
     return
   }
-
 
   description
     .filter(Boolean)
@@ -593,10 +589,8 @@ function populateDescription(description) {
       const item =
         document.createElement("p")
 
-
       item.textContent =
         paragraph
-
 
       container.appendChild(
         item
@@ -733,25 +727,25 @@ async function populateCharacters(characters) {
 
       const link =
         fragment.querySelector(
-          ".relationship-avatar-link"
+          ".story-relationship-avatar-link"
         )
 
 
       const avatar =
         fragment.querySelector(
-          ".relationship-avatar"
+          ".story-relationship-avatar"
         )
 
 
       const name =
         fragment.querySelector(
-          ".relationship-name"
+          ".story-relationship-name"
         )
 
 
       const type =
         fragment.querySelector(
-          ".relationship-type"
+          ".story-relationship-type"
         )
 
 
