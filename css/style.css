@@ -130,24 +130,6 @@
   --char-particle-color: #b99b78;
   --char-particle-opacity: 0.18;
   --char-particle-blur: 0px;
-
-
-  /* -------------------------------------------------------
-     Story theme defaults
-
-     These are fallbacks only.
-     The JS/theme system can override them.
-  ------------------------------------------------------- */
-
-
-  --story-primary: #b99b78;
-  --story-secondary: #a27d5f;
-  --story-accent: #8b6a4d;
-
-  --story-bg-1: #f4efe6;
-  --story-bg-2: #f3f1ec;
-
-  --story-page-bg: #f3f1ec;
 }
 
 
@@ -2691,367 +2673,113 @@ body.character-profile-page .site-nav a:focus-visible {
   font-style: italic;
 }
 
-/* ---------------------------------------------------------
-   36. STORY PROFILE THEME
---------------------------------------------------------- */
+/* =========================================================
+   STORY PAGE
+========================================================= */
 
-body.story-profile-page {
-
-  background-color:
-    var(--story-page-bg);
-
-  color:
-    var(--story-secondary);
-
-}
-
-body.story-profile-page
 .story-background {
+  position: fixed;
+  inset: 0;
 
-  background-color:
-    var(--story-page-bg);
+  width: 100%;
+  height: 100%;
 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  z-index: -1;
+  pointer-events: none;
 }
 
-body.story-profile-page
-.site-header {
+.story-profile-card {
+  display: grid;
 
-  background:
-    var(--story-bg-1);
+  grid-template-columns: 1fr 2fr;
 
+  gap: 0;
+
+  overflow: hidden;
+
+  margin-bottom: var(--space-12);
 }
 
-body.story-profile-page
-.site-logo,
-body.story-profile-page
-.site-logo-text {
+.story-profile-card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  color:
-    var(--story-primary);
+  padding: var(--space-6);
 
+  background: var(--story-bg-1);
+
+  text-align: center;
 }
 
-body.story-profile-page
-#header-page-title {
+/* Name / Tagline */
 
-  color:
-    var(--story-primary);
+.story-profile-name {
+  margin: 0 0 var(--space-5);
 
+  color: var(--story-primary);
+
+  font-size: var(--font-size-lg);
 }
 
-body.story-profile-page
-.profile-navigation a {
-
-  color:
-    var(--story-primary);
-
-}
-
-body.story-profile-page
-.profile-navigation #story-navigation {
-
-  color:
-    var(--story-primary);
-
-}
-
-body.story-profile-page
-.profile-navigation #story-navigation a {
-
-  color:
-    var(--story-primary);
-
-}
-
-body.story-profile-page
-.character-profile-card {
-
-  color:
-    var(--story-secondary);
-
-}
-
-body.story-profile-page
-.profile-card-left {
-
-  background:
-    var(--story-bg-1);
-
-  color:
-    var(--story-primary);
-
-}
-
-body.story-profile-page
-.profile-name {
-
-  color:
-    var(--story-primary);
-
-}
-
-body.story-profile-page
-.profile-card-left
-.info-label,
-
-body.story-profile-page
-.profile-card-left
-.info-value {
-
-  color:
-    var(--story-primary);
-
-}
-
-body.story-profile-page
-.profile-card-right {
-
-  background:
-    var(--story-bg-2);
-
-  color:
-    var(--story-secondary);
-
-}
-
-body.story-profile-page
-.profile-card-right
-.info-label,
-
-body.story-profile-page
-.profile-card-right
-.info-value {
-
-  color:
-    var(--story-secondary);
-
-}
-
-body.story-profile-page
-.info-divider {
-
-  border-top-color:
-    var(--story-accent);
-
-}
-
-
-body.story-profile-page
 .story-page-tagline {
+  margin: 0 0 1rem;
 
-  color:
-    var(--story-secondary);
+  font-family: "IM Fell English", serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.5;
 
+  text-align: center;
 }
 
-body.story-profile-page
-.relationships-header {
+/* Left-panel text */
 
-  background:
-    var(--story-bg-1);
-
-  color:
-    var(--story-primary);
-
+.story-profile-card-left .info-label,
+.story-profile-card-left .info-value {
+  color: var(--story-primary);
 }
 
-body.story-profile-page
-.relationships-header h2 {
+.story-profile-card-left .info-value {
+  max-width: 50%;
 
-  color:
-    var(--story-primary);
+  text-align: right;
 
+  word-break: break-word;
 }
 
-body.story-profile-page
-.relationships-container {
+/* Right panel */
 
-  background:
-    var(--story-bg-2);
+.profile-card-right {
+  display: flex;
+  flex-direction: column;
 
+  background: var(--story-bg-2);
 }
 
-body.story-profile-page
-.relationship-card {
+/* Description */
 
-  background:
-    var(--story-bg-1);
+.story-profile-description {
+  display: flex;
+  flex-direction: column;
 
-  color:
-    var(--story-primary);
+  margin-top: var(--space-3);
+  padding: 0 0 0 var(--space-5);
 
-}
+  list-style: disc;
 
-body.story-profile-page
-.relationship-name,
-
-body.story-profile-page
-.relationship-type {
-
-  color:
-    var(--story-primary);
-
-}
-
-body.story-profile-page
-.relationship-avatar {
-
-  background-color:
-    var(--story-bg-2);
-
-}
-
-body.story-profile-page
-.character-detail-card {
-
-  color:
-    var(--story-secondary);
-
-}
-
-body.story-profile-page
-.detail-banner-header {
-
-  background:
-    var(--story-bg-1);
-
-  color:
-    var(--story-primary);
-
-}
-
-body.story-profile-page
-.detail-banner-header h2 {
-
-  color:
-    var(--story-primary);
-
-}
-
-body.story-profile-page
-.detail-banner-content {
-
-  background:
-    var(--story-bg-2);
-
-  color:
-    var(--story-secondary);
-
-}
-
-body.story-profile-page
-.detail-banner-content p,
-
-body.story-profile-page
-.detail-banner-content ul,
-
-body.story-profile-page
-.detail-banner-content li {
-
-  color:
-    var(--story-secondary);
-
-}
-
-body.story-profile-page
-#backstory {
-
-  color:
-    var(--story-secondary);
-
-}
-
-body.story-profile-page
-#backstory h1,
-
-body.story-profile-page
-#backstory h2,
-
-body.story-profile-page
-#backstory h3,
-
-body.story-profile-page
-#backstory h4,
-
-body.story-profile-page
-#backstory h5,
-
-body.story-profile-page
-#backstory h6 {
-
-  color:
-    var(--story-primary);
-
-}
-
-body.story-profile-page
-#backstory strong {
-
-  color:
-    var(--story-primary);
-
-}
-
-body.story-profile-page
-a {
-
-  color:
-    var(--story-primary);
-
-}
-
-body.story-profile-page
-a:hover {
-
-  color:
-    var(--story-secondary);
-
-}
-
-body.story-profile-page
-button {
-
-  background:
-    var(--story-bg-1);
-
-  color:
-    var(--story-primary);
-
-}
-
-body.story-profile-page
-button:hover {
-
-  background:
-    var(--story-bg-2);
-
-  color:
-    var(--story-secondary);
-
-}
-
-body.story-profile-page
-.profile-avatar,
-
-body.story-profile-page
-.relationship-avatar {
-
-  background-color:
-    var(--story-bg-2);
-
-}
-
-body.story-profile-page
-.story-background {
-
-  background-color:
-    var(--story-page-bg);
-
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  line-height: 1.2;
 }
 
 
 /* =========================================================
-   38. RESPONSIVE
+   37. RESPONSIVE
 ========================================================= */
 
 @media (max-width: 768px) {
