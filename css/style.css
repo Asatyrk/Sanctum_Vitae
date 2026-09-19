@@ -2497,6 +2497,21 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 
+/* Story tagline */
+
+.story-tagline {
+  margin: 0 0 var(--space-5);
+
+  color: var(--color-text-muted-light);
+
+  font-size: var(--font-size-sm);
+
+  font-style: italic;
+
+  line-height: 1.5;
+}
+
+
 /* Story tags */
 
 .story-tags {

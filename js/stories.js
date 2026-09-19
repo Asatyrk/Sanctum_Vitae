@@ -912,20 +912,33 @@ function addImageFallback(element, fallbackUrl) {
 function updateTagSeparators(card) {
 
   const groups =
-    card.querySelectorAll(".story-tag-group")
+    Array.from(
+      card.querySelectorAll(".story-tag-group")
+    )
 
   groups.forEach((group, index) => {
 
     if (index === 0) {
+      group.classList.remove("no-separator")
       return
     }
 
+    const previous =
+      groups[index - 1]
+
+    const groupTop =
+      group.getBoundingClientRect().top
+
+    const previousTop =
+      previous.getBoundingClientRect().top
+
     group.classList.toggle(
       "no-separator",
-      group.offsetTop !== groups[index - 1].offsetTop
+      Math.abs(groupTop - previousTop) > 2
     )
 
   })
+
 }
 
 /* =========================================================
