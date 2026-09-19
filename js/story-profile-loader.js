@@ -33,6 +33,28 @@ function setText(id, value) {
 
 }
 
+function setPageTitle(name) {
+
+  const title =
+    name || "Unknown Story"
+
+  const pageTitle =
+    document.getElementById(
+      "page-title"
+    )
+
+  if (pageTitle) {
+
+    pageTitle.textContent =
+      title
+
+  }
+
+  document.title =
+    "Sanctum Vitae | " + title
+
+}
+
 
 function setBackgroundImage(
   element,
@@ -110,19 +132,6 @@ function slugify(value) {
 
 async function loadStory() {
 
-  /*
-    Universal story URL:
-
-    story-profile.html?story=test
-
-    ALWAYS loads:
-
-    stories/test.json
-
-    The JSON "name" and "url" fields are NOT
-    used to find the JSON file.
-  */
-
   const slug =
     getStory()
 
@@ -176,6 +185,10 @@ async function loadStory() {
       story
     )
 
+    setupStoryNavigation(
+      "stories/index.json"
+    )
+
 
   } catch (error) {
 
@@ -210,50 +223,105 @@ async function loadStory() {
 
 function populateStory(story) {
 
-  /*
-    "name" is display text only.
-
-    It does NOT determine the filename.
-  */
-
   const name =
-    story.name ||
-    "Untitled Story"
+  story.name ||
+  "Untitled Story"
 
 
-  /* -------------------------------------------------------
-     Browser title
-  ------------------------------------------------------- */
+/* -------------------------------------------------------
+   Page title + header
+------------------------------------------------------- */
 
-  document.title =
-    name
-
-
-  /* -------------------------------------------------------
-     Page identifier
-  ------------------------------------------------------- */
-
-  document.body.dataset.page =
-    slugify(name)
-
-
-  /* -------------------------------------------------------
-     Main name
-  ------------------------------------------------------- */
-
-  setText(
-    "name",
-    name
+const headerLogoText =
+  document.querySelector(
+    ".site-logo-text"
   )
 
+if (headerLogoText) {
 
-  /* -------------------------------------------------------
-     Navigation name
-  ------------------------------------------------------- */
+  headerLogoText.textContent =
+    `Sanctum Vitae | ${name}`
 
-  setText(
-    "story-navigation",
-    name
+}
+
+setPageTitle(
+  name
+)
+
+
+document.body.dataset.page =
+  slugify(name)
+
+
+setText(
+  "name",
+  name
+)
+
+const navigation =
+    document.getElementById(
+      "story-navigation"
+    )
+
+
+  if(!navigation){
+
+    return
+
+  }
+
+
+  navigation.innerHTML = ""
+
+
+  const previousLink =
+    document.createElement(
+      "a"
+    )
+
+
+  previousLink.href =
+    getProfileUrl(
+      previous.path
+    )
+
+
+  previousLink.textContent =
+    "← Previous"
+
+
+  const separator =
+    document.createTextNode(
+      " | "
+    )
+
+
+  const nextLink =
+    document.createElement(
+      "a"
+    )
+
+
+  nextLink.href =
+    getProfileUrl(
+      next.path
+    )
+
+
+  nextLink.textContent =
+    "Next →"
+
+
+  navigation.appendChild(
+    previousLink
+  )
+
+  navigation.appendChild(
+    separator
+  )
+
+  navigation.appendChild(
+    nextLink
   )
 
 
