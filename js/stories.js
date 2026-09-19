@@ -27,7 +27,6 @@ const tagCategories = {
   ],
 
   "Status": [
-    "Not planned"
     "Not started",
     "Ongoing",
     "Completed",
@@ -881,24 +880,6 @@ function escapeHtml(value) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;")
-
-}
-
-function addImageFallback(element, fallbackUrl) {
-
-  const image = new Image()
-
-  image.onload = () => {
-    element.style.backgroundImage =
-      `url("${element.dataset.image}")`
-  }
-
-  image.onerror = () => {
-    element.style.backgroundImage =
-      `url("${fallbackUrl}")`
-  }
-
-  image.src = element.dataset.image
 
 }
 

@@ -2,7 +2,7 @@
   "name": "Story Title",
   "tagline": "A short line about the story.",
   "description": [
-    "First paragraph of the story description. Box supports multiple."
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in commodo lectus. Fusce pretium cursus ligula sed cursus. Proin imperdiet, lorem ut sollicitudin porttitor, arcu eros sagittis justo, id ullamcorper magna metus id nibh. Maecenas venenatis diam nec orci varius, quis rhoncus lectus commodo. Duis magna lectus, viverra sed viverra vitae, gravida eu ante. Mauris elit elit, consequat in tortor non, suscipit placerat ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In vitae sem vel enim consequat porta ut eu eros."
   ],
   
   "avatar": "assets/stories/story-title/avatar.jpg",
