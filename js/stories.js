@@ -929,7 +929,7 @@ function createStoryCard(story) {
      Story tags
   ------------------------------------------------------- */
 
-  const storyTags = []
+  const storyTagsGroups = []
 
 
   Object.entries(
@@ -968,7 +968,7 @@ function createStoryCard(story) {
           `)
           .join('<span class="story-tag-category-separator">|</span>')
       : ""
-      
+
 
   /* -------------------------------------------------------
      Story description
