@@ -27,6 +27,7 @@ const tagCategories = {
   ],
 
   "Status": [
+    "Not planned"
     "Not started",
     "Ongoing",
     "Completed",
@@ -972,7 +973,7 @@ function createStoryCard(story) {
               ${escapeHtml(value)}
             </span>
           `)
-          .join("")
+          .join('<span class="story-tag-separator">|</span>')
       : ""
 
 
