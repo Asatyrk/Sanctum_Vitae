@@ -316,9 +316,10 @@ async function displayStory(
   story
 ){
 
-  applyStoryColors(
-    story
-  )
+  applyCharacterColors({
+  colors:
+    story.colors || {}
+  })
 
   const name =
     text(
@@ -1018,78 +1019,6 @@ function populateStoryContent(
     storyContent
       .filter(Boolean)
       .join("\n")
-
-}
-
-
-/* =========================================================
-   STORY COLOURS
-   ========================================================= */
-
-function applyStoryColors(
-  story
-){
-
-  const root =
-    document.documentElement
-
-  const colors =
-    story?.colors || {}
-
-  const primary =
-    colors.primary ||
-    "#b99b78"
-
-  const secondary =
-    colors.secondary ||
-    "#a27d5f"
-
-  const accent =
-    colors.accent ||
-    "#8b6a4d"
-
-  const bg1 =
-    colors.bg_1 ||
-    "#f4efe6"
-
-  const bg2 =
-    colors.bg_2 ||
-    "#f3f1ec"
-
-  const pageBg =
-    colors.page_bg ||
-    "#f3f1ec"
-
-
-  root.style.setProperty(
-    "--story-primary",
-    primary
-  )
-
-  root.style.setProperty(
-    "--story-secondary",
-    secondary
-  )
-
-  root.style.setProperty(
-    "--story-accent",
-    accent
-  )
-
-  root.style.setProperty(
-    "--story-bg-1",
-    bg1
-  )
-
-  root.style.setProperty(
-    "--story-bg-2",
-    bg2
-  )
-
-  root.style.setProperty(
-    "--story-page-bg",
-    pageBg
-  )
 
 }
 

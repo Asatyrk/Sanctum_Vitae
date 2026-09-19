@@ -17,7 +17,7 @@
 
 </head>
 
-<body data-page="story" class="story-profile-page">
+<body data-page="story" class="character-profile-page">
 
 <div id="story-background" class="story-background" aria-hidden="true"></div>
 
@@ -35,99 +35,72 @@
 
 </div>
 
-<!-- STORY PROFILE CARD -->
-<div class="story-profile-card">
-
+<!-- PROFILE CARD -->
+<div class="character-profile-card">
+  
   <!-- Left Column: Avatar & Basic Info -->
-  <div class="story-profile-card-left">
-
-    <div class="story-profile-avatar" id="avatar-image"></div>
-
-    <h1 id="name" class="story-profile-name"></h1>
-
+  <div class="story-profile-card-left ">
+    <div class="profile-avatar" id="avatar-image"></div>
+    <h1 id="name" class="profile-name"></h1>
     <p class="story-page-tagline" hidden></p>
-
-    <div class="story-profile-info-section">
-
-      <div class="story-info-row">
-        <span class="story-info-label">GENRE</span>
-        <span class="story-info-value" id="genre"></span>
+    
+    <div class="profile-info-section">
+      <div class="info-row">
+        <span class="info-label">GENRE</span>
+        <span class="info-value" id="genre"></span>
       </div>
-
-      <hr class="story-info-divider">
-
-      <div class="story-info-row">
-        <span class="story-info-label">AGE RANGE</span>
-        <span class="story-info-value" id="age-range"></span>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">AGE RANGE</span>
+        <span class="info-value" id="age-range"></span>
       </div>
-
-      <hr class="story-info-divider">
-
-      <div class="story-info-row">
-        <span class="story-info-label">STATUS</span>
-        <span class="story-info-value" id="status"></span>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">STATUS</span>
+        <span class="info-value" id="status"></span>
       </div>
-
-      <hr class="story-info-divider">
-
-      <div class="story-info-row">
-        <span class="story-info-label">STORY TYPE</span>
-        <span class="story-info-value" id="story-type"></span>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">STORY TYPE</span>
+        <span class="info-value" id="story-type"></span>
       </div>
-
     </div>
-
   </div>
 
-  <!-- Right Column: Banner & Description -->
+  <!-- Right Column: Full Body Image & Details -->
   <div class="story-profile-card-right">
-
-    <div
-      class="story-profile-banner"
-      id="banner-image"
-    ></div>
-
-    <div
-      class="story-profile-content"
-      id="description"
-    ></div>
-
+    <div class="profile-banner" id="banner-image"></div>
+      
+      <div class="story-profile-description" id="description"></div>
+    </div>
   </div>
-
+  
 </div>
-<!-- END STORY PROFILE CARD -->
-
+<!-- END PROFILE CARD -->
 
 <!-- CHARACTERS BOX -->
-<div
-  id="relationships-section"
-  class="story-relationships-section"
-  hidden
->
+<div id="relationships-section" class="relationships-section" hidden>
 
-  <div class="story-relationships-header">
+  <div class="relationships-header">
     <h2>Characters</h2>
   </div>
 
-  <div
-    id="relationships-container"
-    class="story-relationships-container"
-  ></div>
+  <div id="relationships-container" class="relationships-container"></div>
 
   <template id="relationship-template">
 
-    <div class="story-relationship-card">
+    <div class="relationship-card">
 
-      <a
-        class="story-relationship-avatar-link"
-        target="_self"
-      >
-        <div class="story-relationship-avatar"></div>
+      <a class="relationship-avatar-link" target="_self">
+        <div class="relationship-avatar"></div>
       </a>
 
-      <h2 class="story-relationship-name"></h2>
+      <h2 class="relationship-name"></h2>
 
-      <p class="story-relationship-type"></p>
+      <p class="relationship-type"></p>
 
     </div>
 
@@ -136,31 +109,25 @@
 </div>
 <!-- END CHARACTERS BOX -->
 
-
 <!-- DECOR IMAGE BOX -->
-<div
-  class="story-decor-image-box"
-  id="decor-image"
-></div>
+<div class="decor-image-box" id="decor-image"></div>
 <!-- END DECOR IMAGE BOX -->
 
-
 <!-- STORY BOX -->
-<div class="story-detail-card story-detail-banner">
+<div class="character-detail-card character-detail-banner">
 
-  <div class="story-detail-banner-header">
+  <div class="detail-banner-header">
     <h2></h2>
   </div>
 
-  <div class="story-detail-banner-content">
+  <div class="detail-banner-content">
 
-    <div id="backstory"></div>
+    <div id="backstory"></div> <!-- Story goes here, can be replaced to be more intuitive -->
 
   </div>
 
 </div>
 <!-- END STORY BOX -->
-
 
 </div>
 
