@@ -1,11 +1,11 @@
 /* =========================================================
    STORY PROFILE LOADER
-========================================================= */
+   ========================================================= */
 
 
 /* =========================================================
    HELPERS
-========================================================= */
+   ========================================================= */
 
 function getStory() {
 
@@ -24,14 +24,13 @@ function setText(id, value) {
   const element =
     document.getElementById(id)
 
-  if (!element) {
-    return
-  }
+  if (!element) return
 
   element.textContent =
     value ?? ""
 
 }
+
 
 function setPageTitle(name) {
 
@@ -56,15 +55,17 @@ function setPageTitle(name) {
 }
 
 
+/* =========================================================
+   IMAGE HELPERS
+   ========================================================= */
+
 function setBackgroundImage(
   element,
   url,
   fallback = ""
 ) {
 
-  if (!element) {
-    return
-  }
+  if (!element) return
 
   if (!url) {
 
@@ -102,7 +103,54 @@ function setBackgroundImage(
 }
 
 
-function getTagValue(tags, category) {
+function addImageFallback(
+  element,
+  imageUrl,
+  fallbackUrl
+) {
+
+  if (!element) return
+
+  if (!imageUrl) {
+
+    element.style.backgroundImage =
+      `url("${fallbackUrl}")`
+
+    return
+
+  }
+
+  const image =
+    new Image()
+
+  image.onload = () => {
+
+    element.style.backgroundImage =
+      `url("${imageUrl}")`
+
+  }
+
+  image.onerror = () => {
+
+    element.style.backgroundImage =
+      `url("${fallbackUrl}")`
+
+  }
+
+  image.src =
+    imageUrl
+
+}
+
+
+/* =========================================================
+   TAG HELPERS
+   ========================================================= */
+
+function getTagValue(
+  tags,
+  category
+) {
 
   const values =
     tags?.[category]
@@ -116,6 +164,10 @@ function getTagValue(tags, category) {
 }
 
 
+/* =========================================================
+   SLUG HELPERS
+   ========================================================= */
+
 function slugify(value) {
 
   return String(value ?? "")
@@ -126,9 +178,32 @@ function slugify(value) {
 }
 
 
+function getStorySlug(file) {
+
+  return String(file ?? "")
+    .replace(/^stories\//, "")
+    .replace(/\.json$/, "")
+    .split("/")
+    .pop()
+
+}
+
+
+function getStoryProfileUrl(file) {
+
+  const slug =
+    getStorySlug(file)
+
+  return (
+    `story-profile.html?story=${encodeURIComponent(slug)}`
+  )
+
+}
+
+
 /* =========================================================
    LOAD STORY
-========================================================= */
+   ========================================================= */
 
 async function loadStory() {
 
@@ -138,18 +213,10 @@ async function loadStory() {
 
   if (!slug) {
 
-    const page =
-      document.querySelector(
-        ".page-container"
-      )
-
-    if (page) {
-
-      page.innerHTML =
-        "<h1>No Story Selected</h1>" +
-        "<p>No story was specified.</p>"
-
-    }
+    showStoryError(
+      "No Story Selected",
+      "No story was specified."
+    )
 
     return
 
@@ -185,7 +252,8 @@ async function loadStory() {
       story
     )
 
-    setupStoryNavigation(
+
+    await setupStoryNavigation(
       "stories/index.json"
     )
 
@@ -198,19 +266,10 @@ async function loadStory() {
     )
 
 
-    const page =
-      document.querySelector(
-        ".page-container"
-      )
-
-
-    if (page) {
-
-      page.innerHTML =
-        "<h1>Story Not Found</h1>" +
-        `<p>The requested story could not be loaded.</p>`
-
-    }
+    showStoryError(
+      "Story Not Found",
+      "The requested story could not be loaded."
+    )
 
   }
 
@@ -218,54 +277,81 @@ async function loadStory() {
 
 
 /* =========================================================
+   ERROR DISPLAY
+   ========================================================= */
+
+function showStoryError(
+  title,
+  message
+) {
+
+  const page =
+    document.querySelector(
+      ".page-container"
+    )
+
+  if (!page) return
+
+  page.innerHTML =
+    `
+      <h1>${title}</h1>
+      <p>${message}</p>
+    `
+
+}
+
+
+/* =========================================================
    POPULATE STORY
-========================================================= */
+   ========================================================= */
 
 function populateStory(story) {
 
   const name =
-  story.name ||
-  "Untitled Story"
-
-
-/* -------------------------------------------------------
-   Page title + header
-------------------------------------------------------- */
-
-const headerLogoText =
-  document.querySelector(
-    ".site-logo-text"
-  )
-
-if (headerLogoText) {
-
-  headerLogoText.textContent =
-    `Sanctum Vitae | ${name}`
-
-}
-
-setPageTitle(
-  name
-)
-
-
-document.body.dataset.page =
-  slugify(name)
-
-
-setText(
-  "name",
-  name
-)
+    story.name ||
+    "Untitled Story"
 
 
   /* -------------------------------------------------------
-     Story box title
-  ------------------------------------------------------- */
+     HEADER / PAGE TITLE
+     ------------------------------------------------------- */
+
+  const headerLogoText =
+    document.querySelector(
+      ".site-logo-text"
+    )
+
+
+  if (headerLogoText) {
+
+    headerLogoText.textContent =
+      `Sanctum Vitae | ${name}`
+
+  }
+
+
+  setPageTitle(
+    name
+  )
+
+
+  document.body.dataset.page =
+    slugify(name)
+
+
+  setText(
+    "name",
+    name
+  )
+
+
+  /* -------------------------------------------------------
+     STORY DETAIL BANNER TITLE
+     ------------------------------------------------------- */
 
   const storyTitle =
     document.querySelector(
-      ".detail-banner-header h2"
+      ".story-detail-banner-header h2"
     )
 
 
@@ -278,8 +364,8 @@ setText(
 
 
   /* -------------------------------------------------------
-     Tagline
-  ------------------------------------------------------- */
+     TAGLINE
+     ------------------------------------------------------- */
 
   const tagline =
     document.querySelector(
@@ -311,74 +397,17 @@ setText(
 
 
   /* -------------------------------------------------------
-     Avatar
-  ------------------------------------------------------- */
+     IMAGES
+     ------------------------------------------------------- */
 
-  const avatar =
-    document.getElementById(
-      "avatar-image"
-    )
-
-
-  if (avatar) {
-
-    avatar.dataset.image =
-      story.avatar || ""
-
-    addImageFallback(
-      avatar,
-      "https://placehold.co/240x240"
-    )
-
-  }
+  populateStoryImages(
+    story
+  )
 
 
   /* -------------------------------------------------------
-     Banner
-  ------------------------------------------------------- */
-
-  const banner =
-    document.getElementById(
-      "banner-image"
-    )
-
-
-  if (banner) {
-
-    banner.dataset.image =
-      story.banner || ""
-
-    addImageFallback(
-      banner,
-      "https://placehold.co/1200x400"
-    )
-
-  }
-
-
-  /* -------------------------------------------------------
-     Background
-  ------------------------------------------------------- */
-
-  const storyBackground =
-    document.getElementById(
-      "story-background"
-    )
-
-
-  if (storyBackground) {
-
-    setBackgroundImage(
-      storyBackground,
-      story.background
-    )
-
-  }
-
-
-  /* -------------------------------------------------------
-     Tags
-  ------------------------------------------------------- */
+     TAGS
+     ------------------------------------------------------- */
 
   const tags =
     story.tags || {}
@@ -419,9 +448,10 @@ setText(
     )
   )
 
+
   /* -------------------------------------------------------
-     Description
-  ------------------------------------------------------- */
+     DESCRIPTION
+     ------------------------------------------------------- */
 
   populateDescription(
     story.description
@@ -429,8 +459,8 @@ setText(
 
 
   /* -------------------------------------------------------
-     Characters
-  ------------------------------------------------------- */
+     CHARACTERS
+     ------------------------------------------------------- */
 
   populateCharacters(
     story.characters
@@ -438,8 +468,8 @@ setText(
 
 
   /* -------------------------------------------------------
-     Story content
-  ------------------------------------------------------- */
+     STORY CONTENT
+     ------------------------------------------------------- */
 
   populateStoryContent(
     story.story
@@ -447,8 +477,8 @@ setText(
 
 
   /* -------------------------------------------------------
-     Colours
-  ------------------------------------------------------- */
+     COLOURS
+     ------------------------------------------------------- */
 
   applyStoryColors(
     story.colors
@@ -456,94 +486,283 @@ setText(
 
 }
 
-async function setupStoryNavigation(indexPath) {
+
+/* =========================================================
+   STORY IMAGES
+   ========================================================= */
+
+function populateStoryImages(story) {
+
+  /* -------------------------------------------------------
+     Avatar
+     ------------------------------------------------------- */
+
+  const avatar =
+    document.getElementById(
+      "avatar-image"
+    )
+
+
+  if (avatar) {
+
+    addImageFallback(
+      avatar,
+      story.avatar,
+      "https://placehold.co/240x240"
+    )
+
+  }
+
+
+  /* -------------------------------------------------------
+     Banner
+     ------------------------------------------------------- */
+
+  const banner =
+    document.getElementById(
+      "banner-image"
+    )
+
+
+  if (banner) {
+
+    addImageFallback(
+      banner,
+      story.banner,
+      "https://placehold.co/1200x400"
+    )
+
+  }
+
+
+  /* -------------------------------------------------------
+     Story background
+     ------------------------------------------------------- */
+
+  const storyBackground =
+    document.getElementById(
+      "story-background"
+    )
+
+
+  if (storyBackground) {
+
+    setBackgroundImage(
+      storyBackground,
+      story.background
+    )
+
+  }
+
+
+  /* -------------------------------------------------------
+     Decor image
+     ------------------------------------------------------- */
+
+  const fallbackDecor =
+    "https://placehold.co/1000x100"
+
+
+  const decorImage =
+    typeof story.decorImage === "string" &&
+    story.decorImage.trim() !== ""
+      ? story.decorImage.trim()
+      : fallbackDecor
+
+
+  const decorBoxes = [
+
+    document.getElementById(
+      "decor-image"
+    )
+
+  ].filter(Boolean)
+
+
+  decorBoxes.forEach(
+    box => {
+
+      setBackgroundImage(
+        box,
+        decorImage,
+        fallbackDecor
+      )
+
+    }
+  )
+
+}
+
+
+/* =========================================================
+   STORY NAVIGATION
+   ========================================================= */
+
+async function setupStoryNavigation(
+  indexPath
+) {
 
   const navigation =
-    document.getElementById("story-navigation")
+    document.getElementById(
+      "story-navigation"
+    )
+
 
   if (!navigation) {
     return
   }
 
-  navigation.innerHTML = ""
+
+  navigation.innerHTML =
+    ""
+
 
   try {
 
     const response =
-      await fetch(indexPath)
+      await fetch(
+        indexPath
+      )
+
 
     if (!response.ok) {
+
       throw new Error(
         `Failed to load ${indexPath}`
       )
+
     }
+
 
     const stories =
       await response.json()
 
-    if (!Array.isArray(stories) || !stories.length) {
+
+    if (
+      !Array.isArray(stories) ||
+      stories.length === 0
+    ) {
+
       return
+
     }
+
 
     const currentSlug =
       getStory()
 
+
     const currentIndex =
-      stories.findIndex(story => {
+      stories.findIndex(
+        entry => {
 
-        const path =
-          story.path || ""
+          const storySlug =
+            getStorySlug(
+              entry.path
+            )
 
-        return path
-          .replace(/^stories\//, "")
-          .replace(/\.json$/, "") === currentSlug
+          return storySlug === currentSlug
 
-      })
+        }
+      )
+
 
     if (currentIndex === -1) {
       return
     }
 
+
+    /* -----------------------------------------------------
+       Previous / next
+       ----------------------------------------------------- */
+
+    const previousIndex =
+      (
+        currentIndex - 1 + stories.length
+      ) % stories.length
+
+
+    const nextIndex =
+      (
+        currentIndex + 1
+      ) % stories.length
+
+
     const previous =
       stories[
-        (currentIndex - 1 + stories.length) %
-        stories.length
+        previousIndex
       ]
+
 
     const next =
       stories[
-        (currentIndex + 1) %
-        stories.length
+        nextIndex
       ]
 
+
+    /* -----------------------------------------------------
+       Previous link
+       ----------------------------------------------------- */
+
     const previousLink =
-      document.createElement("a")
+      document.createElement(
+        "a"
+      )
+
 
     previousLink.href =
-      getProfileUrl(previous.path)
+      getStoryProfileUrl(
+        previous.path
+      )
+
 
     previousLink.textContent =
       "← Previous"
 
+
+    /* -----------------------------------------------------
+       Separator
+       ----------------------------------------------------- */
+
     const separator =
-      document.createTextNode(" | ")
+      document.createTextNode(
+        " | "
+      )
+
+
+    /* -----------------------------------------------------
+       Next link
+       ----------------------------------------------------- */
 
     const nextLink =
-      document.createElement("a")
+      document.createElement(
+        "a"
+      )
+
 
     nextLink.href =
-      getProfileUrl(next.path)
+      getStoryProfileUrl(
+        next.path
+      )
+
 
     nextLink.textContent =
       "Next →"
+
+
+    /* -----------------------------------------------------
+       Insert navigation
+       ----------------------------------------------------- */
 
     navigation.appendChild(
       previousLink
     )
 
+
     navigation.appendChild(
       separator
     )
+
 
     navigation.appendChild(
       nextLink
@@ -557,55 +776,70 @@ async function setupStoryNavigation(indexPath) {
     )
 
   }
+
 }
 
 
 /* =========================================================
    DESCRIPTION
-========================================================= */
+   ========================================================= */
 
-function populateDescription(description) {
+function populateDescription(
+  description
+) {
 
   const container =
     document.getElementById(
       "description"
     )
 
+
   if (!container) {
     return
   }
 
+
   container.innerHTML =
     ""
+
 
   if (!Array.isArray(description)) {
     return
   }
 
+
   description
     .filter(Boolean)
-    .forEach(paragraph => {
+    .forEach(
+      paragraph => {
 
-      const item =
-        document.createElement("p")
+        const item =
+          document.createElement(
+            "p"
+          )
 
-      item.textContent =
-        paragraph
 
-      container.appendChild(
-        item
-      )
+        item.textContent =
+          paragraph
 
-    })
+
+        container.appendChild(
+          item
+        )
+
+      }
+    )
 
 }
 
 
 /* =========================================================
    CHARACTERS
-========================================================= */
+   ========================================================= */
 
-async function populateCharacters(characters) {
+async function populateCharacters(
+  characters
+) {
 
   const section =
     document.getElementById(
@@ -630,7 +864,9 @@ async function populateCharacters(characters) {
     !container ||
     !template
   ) {
+
     return
+
   }
 
 
@@ -640,7 +876,7 @@ async function populateCharacters(characters) {
 
   if (
     !Array.isArray(characters) ||
-    !characters.length
+    characters.length === 0
   ) {
 
     section.hidden =
@@ -661,15 +897,17 @@ async function populateCharacters(characters) {
       characters.map(
         async character => {
 
+          if (
+            !character ||
+            !character.url
+          ) {
+
+            return null
+
+          }
+
+
           try {
-
-            /*
-              Universal character rule:
-
-              "url": "characters/test.json"
-
-              loads that exact JSON file.
-            */
 
             const response =
               await fetch(
@@ -691,11 +929,15 @@ async function populateCharacters(characters) {
 
 
             return {
+
               ...data,
+
               label:
                 character.label || "",
+
               url:
                 character.url
+
             }
 
 
@@ -719,113 +961,109 @@ async function populateCharacters(characters) {
 
   characterResults
     .filter(Boolean)
-    .forEach(character => {
+    .forEach(
+      character => {
 
-      const fragment =
-        template.content.cloneNode(true)
+        const fragment =
+          template.content.cloneNode(
+            true
+          )
 
 
-      const link =
-        fragment.querySelector(
-          ".story-relationship-avatar-link"
+        const link =
+          fragment.querySelector(
+            ".story-relationship-avatar-link"
+          )
+
+
+        const avatar =
+          fragment.querySelector(
+            ".story-relationship-avatar"
+          )
+
+
+        const name =
+          fragment.querySelector(
+            ".story-relationship-name"
+          )
+
+
+        const type =
+          fragment.querySelector(
+            ".story-relationship-type"
+          )
+
+
+        /* -------------------------------------------------
+           Name
+           ------------------------------------------------- */
+
+        if (name) {
+
+          name.textContent =
+            character.name ||
+            "Unnamed Character"
+
+        }
+
+
+        /* -------------------------------------------------
+           Relationship label
+           ------------------------------------------------- */
+
+        if (type) {
+
+          type.textContent =
+            character.label
+
+        }
+
+
+        /* -------------------------------------------------
+           Avatar
+           ------------------------------------------------- */
+
+        if (avatar) {
+
+          setBackgroundImage(
+            avatar,
+            character.avatar,
+            "https://placehold.co/120"
+          )
+
+        }
+
+
+        /* -------------------------------------------------
+           Character profile link
+           ------------------------------------------------- */
+
+        if (link) {
+
+          const characterPath =
+            character.url
+
+
+          const characterSlug =
+            characterPath
+              .replace(/^characters\//, "")
+              .replace(/\.json$/, "")
+
+
+          link.href =
+            `character-profile.html?char=${encodeURIComponent(
+              characterSlug
+            )}`
+
+        }
+
+
+        container.appendChild(
+          fragment
         )
-
-
-      const avatar =
-        fragment.querySelector(
-          ".story-relationship-avatar"
-        )
-
-
-      const name =
-        fragment.querySelector(
-          ".story-relationship-name"
-        )
-
-
-      const type =
-        fragment.querySelector(
-          ".story-relationship-type"
-        )
-
-
-      /* ---------------------------------------------------
-         Name
-      --------------------------------------------------- */
-
-      if (name) {
-
-        name.textContent =
-          character.name ||
-          "Unnamed Character"
 
       }
-
-
-      /* ---------------------------------------------------
-         Relationship label
-      --------------------------------------------------- */
-
-      if (type) {
-
-        type.textContent =
-          character.label
-
-      }
-
-
-      /* ---------------------------------------------------
-         Avatar
-      --------------------------------------------------- */
-
-      if (
-        avatar &&
-        character.avatar
-      ) {
-
-        setBackgroundImage(
-          avatar,
-          character.avatar
-        )
-
-      }
-
-
-      /* ---------------------------------------------------
-         Character link
-         
-         characters/test.json
-
-         becomes:
-
-         character-profile.html?character=test
-      --------------------------------------------------- */
-
-      if (link) {
-
-        const characterPath =
-          character.url
-
-
-        const characterSlug =
-          characterPath
-            .replace(/^characters\//, "")
-            .replace(/\.json$/, "")
-
-
-        link.href =
-          `character-profile.html?character=${encodeURIComponent(
-            characterSlug
-          )}`
-
-      }
-
-
-      container.appendChild(
-        fragment
-      )
-
-    })
+    )
 
 
   if (!container.children.length) {
@@ -840,9 +1078,11 @@ async function populateCharacters(characters) {
 
 /* =========================================================
    STORY CONTENT
-========================================================= */
+   ========================================================= */
 
-function populateStoryContent(storyContent) {
+function populateStoryContent(
+  storyContent
+) {
 
   const container =
     document.getElementById(
@@ -866,8 +1106,8 @@ function populateStoryContent(storyContent) {
 
 
   /*
-    The JSON contains HTML strings,
-    so insert them directly.
+    Story JSON contains HTML strings.
+    These are inserted directly.
   */
 
   container.innerHTML =
@@ -879,117 +1119,131 @@ function populateStoryContent(storyContent) {
 
 
 /* =========================================================
-   IMAGE FALLBACK
-========================================================= */
-
-function addImageFallback(
-  element,
-  fallbackUrl
-) {
-
-  const image =
-    new Image()
-
-
-  image.onload = () => {
-
-    element.style.backgroundImage =
-      `url("${element.dataset.image}")`
-
-  }
-
-
-  image.onerror = () => {
-
-    element.style.backgroundImage =
-      `url("${fallbackUrl}")`
-
-  }
-
-
-  if (!element.dataset.image) {
-
-    element.style.backgroundImage =
-      `url("${fallbackUrl}")`
-
-    return
-
-  }
-
-
-  image.src =
-    element.dataset.image
-
-}
-
-
-/* =========================================================
    STORY COLOURS
-========================================================= */
+   ========================================================= */
 
-function applyStoryColors(colors) {
+function applyStoryColors(
+  colors
+) {
 
   const root =
     document.documentElement
 
+
   const storyColors =
     colors || {}
 
+
   const primary =
-    storyColors.primary || "#b99b78"
+    storyColors.primary ||
+    "#b99b78"
+
 
   const secondary =
-    storyColors.secondary || "#a27d5f"
+    storyColors.secondary ||
+    "#a27d5f"
+
 
   const accent =
-    storyColors.accent || "#8b6a4d"
+    storyColors.accent ||
+    "#8b6a4d"
+
 
   const bg1 =
-    storyColors.bg_1 || "#f4efe6"
+    storyColors.bg_1 ||
+    "#f4efe6"
+
 
   const bg2 =
-    storyColors.bg_2 || "#f3f1ec"
+    storyColors.bg_2 ||
+    "#f3f1ec"
+
 
   const pageBg =
-    storyColors.page_bg || "#f3f1ec"
+    storyColors.page_bg ||
+    "#f3f1ec"
 
+
+  /* -------------------------------------------------------
+     CSS variables
+     ------------------------------------------------------- */
 
   root.style.setProperty(
     "--story-primary",
     primary
   )
 
+
   root.style.setProperty(
     "--story-secondary",
     secondary
   )
+
 
   root.style.setProperty(
     "--story-accent",
     accent
   )
 
+
   root.style.setProperty(
     "--story-bg-1",
     bg1
   )
+
 
   root.style.setProperty(
     "--story-bg-2",
     bg2
   )
 
+
   root.style.setProperty(
     "--story-page-bg",
     pageBg
   )
 
-}
 
+  /* -------------------------------------------------------
+     Story navigation / header title colour
+     ------------------------------------------------------- */
+
+  const headerLogoText =
+    document.querySelector(
+      ".site-logo-text"
+    )
+
+
+  if (headerLogoText) {
+
+    headerLogoText.style.color =
+      primary
+
+  }
+
+
+  /* -------------------------------------------------------
+     Story detail banner title
+     ------------------------------------------------------- */
+
+  const storyTitle =
+    document.querySelector(
+      ".story-detail-banner-header h2"
+    )
+
+
+  if (storyTitle) {
+
+    storyTitle.style.color =
+      primary
+
+  }
+
+}
 
 
 /* =========================================================
    START
-========================================================= */
+   ========================================================= */
 
 loadStory()
