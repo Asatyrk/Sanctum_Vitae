@@ -1,10 +1,5 @@
 /* =========================================================
-   STORY INDEX
-========================================================= */
-
-
-/* =========================================================
-   1. TAG CATEGORIES
+   TAG CATEGORIES
 ========================================================= */
 
 const tagCategories = {
@@ -47,7 +42,7 @@ const tagCategories = {
 
 
 /* =========================================================
-   2. STATE
+   STATE
 ========================================================= */
 
 let allStories = []
@@ -58,7 +53,7 @@ let matchMode = "and"
 
 
 /* =========================================================
-   3. LOAD STORIES
+   LOAD STORIES
 ========================================================= */
 
 async function loadStories() {
@@ -135,7 +130,7 @@ async function loadStories() {
 
 
 /* =========================================================
-   4. URL STATE
+   URL STATE
 ========================================================= */
 
 function getUrlState() {
@@ -209,7 +204,7 @@ function getUrlState() {
 
 
 /* =========================================================
-   5. UPDATE URL
+   UPDATE URL
 ========================================================= */
 
 function updateUrlStateInHistory(replace = false) {
@@ -317,7 +312,7 @@ function updateUrlStateInHistory(replace = false) {
 
 
 /* =========================================================
-   6. APPLY URL STATE
+   APPLY URL STATE
 ========================================================= */
 
 function applyUrlStateToUI() {
@@ -374,7 +369,7 @@ function applyUrlStateToUI() {
 
 
 /* =========================================================
-   7. RESET FILTERS
+   RESET FILTERS
 ========================================================= */
 
 function resetFilters() {
@@ -412,7 +407,7 @@ function resetFilters() {
 
 
 /* =========================================================
-   8. CONTROLS
+   CONTROLS
 ========================================================= */
 
 function setupControls() {
@@ -490,7 +485,7 @@ function setupControls() {
 
 
 /* =========================================================
-   9. TAG FILTER UI
+   TAG FILTER UI
 ========================================================= */
 
 function buildTagFilterUI() {
@@ -676,7 +671,7 @@ function buildTagFilterUI() {
 
 
 /* =========================================================
-   10. SLUGIFY
+   SLUGIFY
 ========================================================= */
 
 function slugify(value) {
@@ -690,7 +685,7 @@ function slugify(value) {
 
 
 /* =========================================================
-   11. SELECTED TAGS
+   SELECTED TAGS
 ========================================================= */
 
 function updateSelectedTags() {
@@ -727,7 +722,7 @@ function updateSelectedTags() {
 
 
 /* =========================================================
-   12. TAG MATCHING
+   TAG MATCHING
 ========================================================= */
 
 function matchesTags(story) {
@@ -785,9 +780,72 @@ function matchesTags(story) {
 
 }
 
+/* =========================================================
+    TAG SEPARATORS
+========================================================= */
 
 /* =========================================================
-   13. SEARCH
+   TAG SEPARATORS
+========================================================= */
+
+function updateTagSeparators(card) {
+
+  const groups =
+    Array.from(
+      card.querySelectorAll(".story-tag-group")
+    )
+
+
+  groups.forEach((group, index) => {
+
+    const separator =
+      group.querySelector(
+        ".story-tag-category-separator"
+      )
+
+
+    if (!separator) {
+      return
+    }
+
+
+    if (index === groups.length - 1) {
+
+      separator.style.display = "none"
+
+      return
+
+    }
+
+
+    const next =
+      groups[index + 1]
+
+
+    const groupRect =
+      group.getBoundingClientRect()
+
+
+    const nextRect =
+      next.getBoundingClientRect()
+
+
+    const wrapped =
+      nextRect.top > groupRect.top + 1
+
+
+    separator.style.display =
+      wrapped
+        ? "none"
+        : "inline"
+
+  })
+
+}
+
+
+/* =========================================================
+   SEARCH
 ========================================================= */
 
 function matchesSearch(story) {
@@ -839,7 +897,7 @@ function matchesSearch(story) {
 
 
 /* =========================================================
-   14. SORT STORIES
+   SORT STORIES
 ========================================================= */
 
 function sortStories(stories) {
@@ -879,7 +937,7 @@ function sortStories(stories) {
 
 
 /* =========================================================
-   15. ESCAPE HTML / IMAGE FALLBACK
+   ESCAPE HTML / IMAGE FALLBACK
 ========================================================= */
 
 function escapeHtml(value) {
@@ -912,7 +970,7 @@ function addImageFallback(element, fallbackUrl) {
 }
 
 /* =========================================================
-   16. CREATE STORY CARD
+   CREATE STORY CARD
 ========================================================= */
 
 function createStoryCard(story) {
@@ -950,11 +1008,15 @@ function createStoryCard(story) {
 
 
   const tagsHtml =
-    storyTagGroups.length
-      ? storyTagGroups
-          .map(({ category, tags }) => `
+  storyTagGroups.length
+    ? storyTagGroups
+        .map(({ category, tags }, index) => `
+          <span
+            class="story-tag-group"
+            data-tag-group="${index}"
+          >
             <span
-              class="story-tag-group"
+              class="story-tag-group-content"
               title="${escapeHtml(category)}"
             >
               ${tags
@@ -966,11 +1028,16 @@ function createStoryCard(story) {
                 .join(" / ")
               }
             </span>
-          `)
-          .join(
-            '<span class="story-tag-category-separator">|</span>'
-          )
-      : ""
+
+            ${
+              index < storyTagGroups.length - 1
+                ? '<span class="story-tag-category-separator">|</span>'
+                : ""
+            }
+          </span>
+        `)
+        .join("")
+    : ""
 
 
   /* -------------------------------------------------------
@@ -1103,13 +1170,14 @@ function createStoryCard(story) {
 
   }
 
+  updateTagSeparators(card)
 
   return card
 
 }
 
 /* =========================================================
-   17. RENDER STORIES
+   RENDER STORIES
 ========================================================= */
 
 function renderStories() {
@@ -1169,7 +1237,7 @@ function renderStories() {
 
 
 /* =========================================================
-   18. BROWSER BACK/FORWARD
+   BROWSER BACK/FORWARD
 ========================================================= */
 
 window.addEventListener(
@@ -1183,9 +1251,36 @@ window.addEventListener(
   }
 )
 
+/* =========================================================
+   TAG SEPARATOR RESIZE
+========================================================= */
+
+let tagSeparatorResizeTimer
+
+window.addEventListener(
+  "resize",
+  () => {
+
+    clearTimeout(tagSeparatorResizeTimer)
+
+    tagSeparatorResizeTimer =
+      setTimeout(() => {
+
+        document
+          .querySelectorAll(".story-card")
+          .forEach(card => {
+
+            updateTagSeparators(card)
+
+          })
+
+      }, 100)
+
+  }
+)
 
 /* =========================================================
-   19. START
+   START
 ========================================================= */
 
 loadStories()

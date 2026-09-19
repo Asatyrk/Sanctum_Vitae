@@ -2527,11 +2527,21 @@ body.character-profile-page .site-nav a:focus-visible {
 
 .story-tag-group {
   display: inline-flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  white-space: nowrap;
+}
 
-  gap: var(--space-1);
+.story-tag-group-content {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+
+.story-tag-category-separator {
+  color: var(--color-text-muted);
+  user-select: none;
+  margin: 0 0.35em;
 }
 
 .story-tag {
@@ -2544,12 +2554,6 @@ body.character-profile-page .site-nav a:focus-visible {
   font-size: var(--font-size-xs);
 
   line-height: 1.2;
-}
-
-.story-tag-category-separator {
-  color: var(--color-text-muted);
-
-  user-select: none;
 }
 
 .story-read-button {
