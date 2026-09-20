@@ -1,30 +1,24 @@
 /* Breadcrumb */
 
-async function loadBreadcrumb() {
+/* =========================================================
+   BREADCRUMB
+   ========================================================= */
+
+function updateBreadcrumb(){
 
   const container =
-    document.getElementById("site-breadcrumb")
+    document.querySelector(
+      ".breadcrumb-container"
+    )
 
-  if (!container) return
-
-  const response =
-    await fetch("partials/breadcrumb.html")
-
-  if (!response.ok) return
-
-  container.innerHTML =
-    await response.text()
-
-  updateBreadcrumb()
-}
+  if(!container){
+    return
+  }
 
 
-function updateBreadcrumb() {
-
-  const breadcrumb =
-    document.querySelector(".breadcrumb")
-
-  if (!breadcrumb) return
+  /* =======================================================
+     PAGE INFORMATION
+     ======================================================= */
 
   const pageName =
     document.body.dataset.page?.trim()
@@ -32,92 +26,162 @@ function updateBreadcrumb() {
   const parent =
     document.body.dataset.breadcrumbParent?.trim()
 
-  if (!pageName) return
+
+  if(!pageName){
+    return
+  }
+
+
+  /* =======================================================
+     PARENT PAGE LINKS
+     ======================================================= */
 
   const parentPages = {
-    Characters: "characters.html",
-    Factions: "factions.html",
-    Stories: "stories.html",
-    Lore: "lore.html"
+
+    Characters:
+      "characters.html",
+
+    Factions:
+      "factions.html",
+
+    Stories:
+      "stories.html",
+
+    Lore:
+      "lore.html"
+
   }
+
+
+  /* =======================================================
+     BUILD TRAIL
+     ======================================================= */
 
   let trail = []
 
-  if (
-    pageName.toLowerCase() === "home"
-  ) {
+
+  /* =========================
+     HOME
+     ========================= */
+
+  if(
+    pageName.toLowerCase() ===
+    "home"
+  ){
 
     trail = [
+
       {
         name: "Home",
         href: "index.html"
       }
+
     ]
 
   }
 
-  else if (
+
+  /* =========================
+     PROFILE / CHILD PAGE
+     ========================= */
+
+  else if(
     parent &&
     parentPages[parent]
-  ) {
+  ){
 
     trail = [
+
       {
         name: "Home",
         href: "index.html"
       },
+
       {
         name: parent,
         href: parentPages[parent]
       },
+
       {
         name: pageName
       }
+
     ]
 
   }
+
+
+  /* =========================
+     NORMAL TOP-LEVEL PAGE
+     ========================= */
 
   else {
 
     trail = [
+
       {
         name: "Home",
         href: "index.html"
       },
+
       {
         name: pageName
       }
+
     ]
 
   }
 
-  breadcrumb.innerHTML =
-    trail.map(
-      (item, index) => {
 
-        const isCurrent =
-          index === trail.length - 1
+  /* =======================================================
+     RENDER
+     ======================================================= */
 
-        return `
-          ${
+  container.innerHTML =
+    trail
+      .map(
+        (item, index) => {
+
+          const isCurrent =
+            index ===
+            trail.length - 1
+
+
+          const separator =
             index > 0
-              ? '<span class="breadcrumb-separator">/</span>'
-              : ''
-          }
+              ? `<span class="breadcrumb-separator">/</span>`
+              : ""
 
-          ${
+
+          const content =
             isCurrent
-              ? `<span class="breadcrumb-current">${item.name}</span>`
-              : `<a href="${item.href}">${item.name}</a>`
-          }
-        `
 
-      }
-    ).join("")
+              ? `<span class="breadcrumb-current">${item.name}</span>`
+
+              : `<a href="${item.href}">${item.name}</a>`
+
+
+          return (
+            separator +
+            content
+          )
+
+        }
+      )
+      .join("")
+
 }
 
 
+/* =========================================================
+   INITIAL LOAD
+   ========================================================= */
+
 document.addEventListener(
   "DOMContentLoaded",
-  loadBreadcrumb
+  () => {
+
+    updateBreadcrumb()
+
+  }
 )
