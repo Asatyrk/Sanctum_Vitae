@@ -9,32 +9,68 @@
 <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
 
 <link rel="stylesheet" href="css/style.css">
-<script defer src="js/factions.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  
+<script defer src="js/layout.js"></script>
+<script defer src="js/page-title.js"></script>
+<script defer src="js/faction.js"></script>
 
 </head>
 
-<body data-page="faction">
+<body data-page="Factions" class="page-factions">
 
-<h1>Factions</h1>
+<div id="site-header"></div>
 
-<div class="list-controls">
-  <div class="list-search">
-    <label for="search-input">Search:</label>
-    <input id="search-input" type="search" placeholder="Search factions…" />
-  </div>
+<div class="characters-layout">
 
-  <div class="list-sort">
-    <label for="sort-select">Sort:</label>
-    <select id="sort-select">
-      <option value="name-asc" selected>Name A→Z</option>
-      <option value="name-desc">Name Z→A</option>
-    </select>
-  </div>
+<!-- LEFT SIDEBAR -->
+<aside class="characters-sidebar">
 
-  <button id="clear-filters" type="button">Clear filters</button>
+<div class="sidebar-section">
+    <label class="sidebar-label">Welcome to the Faction Index.</label> 
 </div>
 
-<div id="faction-grid" class="card-grid"></div>
+<div class="sidebar-section">
+
+<label class="sidebar-label">Search</label>
+<input id="search-input" type="search" placeholder="Search faction…" />
+
+</div>
+
+<div class="sidebar-section">
+
+<label class="sidebar-label">Sort</label>
+
+<select id="sort-select">
+<option value="name-asc" selected>Name A→Z</option>
+<option value="name-desc">Name Z→A</option>
+</select>
+
+</div>
+
+<div class="sidebar-section">
+
+<label class="sidebar-label">Match Mode</label>
+
+<select id="match-mode">
+<option value="and" selected>All selected tags</option>
+<option value="or">Any selected tag</option>
+</select>
+
+</div>
+
+<button id="clear-filters" class="sidebar-button">Clear Filters</button>
+
+<div id="tag-filters" class="tag-filters"></div>
+
+</aside>
+
+<main class="faction-board">
+    <div id="faction-grid"></div>
+</main>
+
+</div>
 
 </body>
 
