@@ -1,3 +1,5 @@
+ /* Title */
+
  document.addEventListener("DOMContentLoaded", () => {
   const pageName = document.body.dataset.page?.trim() || "Untitled";
 
@@ -37,6 +39,10 @@
     })
     .catch(err => console.warn(err));
 });
+
+
+
+/* Breadcrumb */
 
 document.addEventListener("DOMContentLoaded", () => {
   const breadcrumb = document.getElementById("breadcrumb");
