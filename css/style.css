@@ -199,11 +199,6 @@ body.character-profile-page {
   font-style: italic;
 }
 
-body.character-profile-page .breadcrumb-separator .breadcrumb-container{
-  color: var(--char-primary);
-}
-
-
 /* Global Styles */
 
 
@@ -2915,10 +2910,6 @@ body.story-profile-page .detail-banner-content {
   color: var(--char-primary);
 }
 
-body.story-profile-page .breadcrumb-separator .breadcrumb-container{
-  color: var(--char-primary);
-}
-
 /* =========================================================
    38. FACTION INDEX
 ========================================================= */
@@ -3323,17 +3314,46 @@ body.faction-profile-page .relationship-type {
   margin-bottom: var(--space-3);
 }
 
-/* Nav*/
+/* Breadcrumb Nav */
 
-.profile-navigation #faction-navigation {
-  color: var(--char-primary);
+.breadcrumb-container {
+  padding: var(--space-3);
+  margin: var(--space-5);
+  padding-bottom: 0;
+  margin-bottom: 0;
+
+  color: var(--color-text-muted, #5a432e);
+  font-size: 0.9rem;
+
+  position: relative;
+  z-index: 9999;
 }
 
-.profile-navigation #faction-navigation a {
-  color: var(--char-primary);
+.breadcrumb-container a {
+  color: inherit;
+  text-decoration: none;
 }
 
-body.story-profile-page .breadcrumb-separator .breadcrumb-container{
+.breadcrumb-container a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.breadcrumb-separator {
+  margin: 0 8px;
+  color: inherit;
+}
+
+.breadcrumb-current {
+  font-style: italic;
+}
+
+
+/* Profile colours */
+
+body.character-profile-page .breadcrumb-container,
+body.story-profile-page .breadcrumb-container,
+body.faction-profile-page .breadcrumb-container {
   color: var(--char-primary);
 }
 

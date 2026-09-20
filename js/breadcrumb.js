@@ -1,5 +1,3 @@
-/* Breadcrumb */
-
 /* =========================================================
    BREADCRUMB
    ========================================================= */
@@ -17,7 +15,7 @@ function updateBreadcrumb(){
 
 
   /* =======================================================
-     PAGE INFORMATION
+     PAGE NAME
      ======================================================= */
 
   const pageName =
@@ -29,59 +27,75 @@ function updateBreadcrumb(){
 
 
   /* =======================================================
-     DETERMINE PROFILE TYPE
+     DETERMINE PAGE TYPE FROM URL
      ======================================================= */
+
+  const pathname =
+    window.location.pathname
+      .split("/")
+      .pop()
+      .toLowerCase()
+
 
   let parent = ""
-
-  if(
-    document.body.classList.contains(
-      "character-profile-page"
-    )
-  ){
-
-    parent = "Characters"
-
-  }
-
-  else if(
-    document.body.classList.contains(
-      "story-profile-page"
-    )
-  ){
-
-    parent = "Stories"
-
-  }
-
-  else if(
-    document.body.classList.contains(
-      "faction-profile-page"
-    )
-  ){
-
-    parent = "Factions"
-
-  }
+  let parentHref = ""
 
 
-  /* =======================================================
-     PARENT PAGE LINKS
-     ======================================================= */
+  switch(pathname){
 
-  const parentPages = {
+    case "character-profile.html":
 
-    Characters:
-      "characters.html",
+      parent =
+        "Characters"
 
-    Factions:
-      "factions.html",
+      parentHref =
+        "characters.html"
 
-    Stories:
-      "stories.html",
+      break
 
-    Lore:
-      "lore.html"
+
+    case "pet-profile.html":
+
+      parent =
+        "Pets"
+
+      parentHref =
+        "pets.html"
+
+      break
+
+
+    case "otherly-owned-profile.html":
+
+      parent =
+        "Otherly-Owned"
+
+      parentHref =
+        "otherly-owned.html"
+
+      break
+
+
+    case "story-profile.html":
+
+      parent =
+        "Stories"
+
+      parentHref =
+        "stories.html"
+
+      break
+
+
+    case "faction-profile.html":
+
+      parent =
+        "Factions"
+
+      parentHref =
+        "factions.html"
+
+      break
 
   }
 
@@ -118,10 +132,7 @@ function updateBreadcrumb(){
      PROFILE PAGE
      ========================= */
 
-  else if(
-    parent &&
-    parentPages[parent]
-  ){
+  else if(parent){
 
     trail = [
 
@@ -132,7 +143,7 @@ function updateBreadcrumb(){
 
       {
         name: parent,
-        href: parentPages[parent]
+        href: parentHref
       },
 
       {
