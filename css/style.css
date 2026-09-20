@@ -3231,7 +3231,7 @@ body.faction-profile-page .faction-profile-description p {
 }
 
 body.faction-profile-page .faction-profile-description p:last-child {
-  margin-bottom: 0;
+  margin-bottom: var(--space-3);
 }
 
 
@@ -3246,6 +3246,25 @@ body.faction-profile-page .relationships-section {
   box-sizing: border-box;
 }
 
+body.faction-profile-page .relationships-container {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(300px, 1fr)
+    );
+
+  gap: var(--space-4);
+
+  padding: var(--space-5);
+
+  background: var(--char-bg-2);
+}
+
+body.faction-profile-page .relationship-type {
+  margin-bottom: 0;
+}
 
 /* =========================================================
     40. RESPONSIVE
