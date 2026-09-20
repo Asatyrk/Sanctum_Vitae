@@ -3263,7 +3263,7 @@ body.faction-profile-page .relationships-container {
 }
 
 body.faction-profile-page .relationship-type {
-  margin-bottom: 0;
+  margin-bottom: var(--space-3);
 }
 
 /* =========================================================

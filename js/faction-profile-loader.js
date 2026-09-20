@@ -517,7 +517,7 @@ async function displayFaction(
     faction.tags || {}
 
   setText(
-    "Parent Faction(s)",
+   "parent_faction(s)",
     getTagValue(
       tags,
       "parent_faction(s)"
