@@ -165,7 +165,57 @@ body.character-profile-page {
   color: var(--char-secondary);
 }
 
-/* Global Nav */
+.breadcrumb-container {
+  padding: 10px 0;
+}
+
+#breadcrumb {
+  color: var(--color-text-muted, #5a432e);
+  font-size: 0.9rem;
+}
+
+body.character-profile-page #breadcrumb {
+  color: var(--char-primary);
+}
+
+body.story-profile-page #breadcrumb {
+  color: var(--char-primary);
+}
+
+body.faction-profile-page #breadcrumb {
+  color: var(--char-primary);
+}
+
+#breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  margin: 0 8px;
+  color: var(--color-text-muted, #5a432e);
+}
+
+body.character-profile-page .breadcrumb-separator {
+  color: var(--char-primary);
+}
+
+body.story-profile-page .breadcrumb-separator {
+  color: var(--char-primary);
+}
+
+body.faction-profile-page .breadcrumb-separator {
+  color: var(--char-primary);
+}
+
+.breadcrumb-current {
+  font-style: italic;
+}
+
 
 /* Global Styles */
 
