@@ -2785,6 +2785,15 @@ body.character-profile-page .site-nav a:focus-visible {
   color: var(--char-primary);
 }
 
+body.story-profile-page .relationships-section,
+body.story-profile-page .character-detail-card {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  box-sizing: border-box;
+}
+
 /* =========================================================
    37. RESPONSIVE
 ========================================================= */
@@ -2938,10 +2947,4 @@ body.character-profile-page .site-nav a:focus-visible {
     padding: var(--space-4);
   }
 
-}
-
-.relationships-section,
-.character-detail-card {
-  position: relative;
-  z-index: 2;
 }
