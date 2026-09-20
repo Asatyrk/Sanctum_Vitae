@@ -43,13 +43,6 @@ Particle shapes:
 
 To do:
 - Change favicon/icon (easy though, just replace files in assets folder)
-- Story main page (checking)
-  - Synopsis at top
-  - Story itself
-  - Decor image (need js)
-  - Nav (broken)
-  - Characters
-  - Image BG (static, stays still when scrolled)
 - Global nav + global styles for front page + lore page.
 - Character page, details, etc
   - Story

@@ -1254,11 +1254,6 @@ body.character-profile-page .site-nav a:focus-visible {
   color: var(--char-primary);
 }
 
-.profile-navigation #story-navigation {
-  color: var(--story-primary);
-}
-
-
 /* =========================================================
    21. MAIN CHARACTER PROFILE CARD
 ========================================================= */
@@ -3028,6 +3023,14 @@ body.story-profile-page .character-detail-card {
 body.story-profile-page .detail-banner-content {
   min-width: 0;
   box-sizing: border-box;
+}
+
+.profile-navigation #story-navigation {
+  color: var(--char-primary);
+}
+
+.profile-navigation #story-navigation a {
+  color: var(--char-primary);
 }
 
 
