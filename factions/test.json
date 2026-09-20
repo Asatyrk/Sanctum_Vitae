@@ -21,11 +21,11 @@
       },
       {
         "label": "Background character",
-        "url": "characters/otherly_owned_characters/test.json"
+        "url": "characters/otherly_owned_characters/test_otherly_owned.json"
       },
       {
         "label": "Background character",
-        "url": "characters/pets/test.json"
+        "url": "characters/pets/test_pet.json"
       }
     ],
 
