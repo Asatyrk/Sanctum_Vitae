@@ -2884,7 +2884,7 @@ body.story-profile-page .story-page-tagline {
     0
     var(--space-5);
 
-  color: var(--char-secondary);
+  color: var(--char-accent);
 
   font-size: var(--font-size-md);
 
