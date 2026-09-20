@@ -2849,9 +2849,8 @@ body.story-profile-page .character-detail-card {
 }
 
 /* =========================================================
-   37. STORY PAGE
+   38. STORY PAGE
 ========================================================= */
-
 
 /* Story background */
 
@@ -2869,9 +2868,6 @@ body.story-profile-page .story-background {
   z-index: 0;
   pointer-events: none;
 }
-
-
-/* Story page stacking */
 
 body.story-profile-page #site-header,
 body.story-profile-page .page-container {
@@ -2905,7 +2901,7 @@ body.story-profile-page .character-profile-card {
 }
 
 
-/* Story profile — left panel */
+/* Story profile left panel */
 
 body.story-profile-page .story-profile-card-left {
   display: flex;
@@ -2923,7 +2919,20 @@ body.story-profile-page .story-profile-card-left {
 }
 
 
-/* Story-specific text */
+/* Story profile right panel */
+
+body.story-profile-page .story-profile-card-right {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  background: var(--char-bg-2);
+  color: var(--char-secondary);
+}
+
+
+/* Story profile text */
 
 body.story-profile-page .story-profile-card-left .info-label,
 body.story-profile-page .story-profile-card-left .info-value {
@@ -2946,30 +2955,18 @@ body.story-profile-page .story-profile-card-left .profile-name {
 }
 
 
-/* Story profile — right panel */
-
-body.story-profile-page .story-profile-card-right {
-  display: flex;
-  flex-direction: column;
-
-  min-width: 0;
-
-  background: var(--char-bg-2);
-  color: var(--char-secondary);
-}
-
-
-/* Story description */
+/* Story profile description */
 
 body.story-profile-page .story-profile-description {
   flex-grow: 1;
+
+  min-width: 0;
 
   padding: var(--space-6);
 
   color: var(--char-secondary);
 
   font-size: var(--font-size-sm);
-
   line-height: 1.8;
 }
 
@@ -2986,32 +2983,56 @@ body.story-profile-page .story-profile-description p:last-child {
 }
 
 
-/* Story — Characters box */
+/* Story characters */
 
 body.story-profile-page .relationships-section {
-  position: relative;
-  z-index: 2;
-
   width: 100%;
+  max-width: 100%;
 
+  box-sizing: border-box;
+
+  margin-bottom: var(--space-12);
+}
+
+
+/* Story character grid */
+
+body.story-profile-page .relationships-container {
+  width: 100%;
   box-sizing: border-box;
 }
 
 
-/* Story — Story/detail box */
+/* Story character cards */
+
+body.story-profile-page .relationship-card {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+
+/* Story detail box */
 
 body.story-profile-page .character-detail-card {
-  position: relative;
-  z-index: 2;
-
   width: 100%;
+  max-width: 100%;
 
+  box-sizing: border-box;
+
+  margin-bottom: var(--space-12);
+}
+
+
+/* Story detail content */
+
+body.story-profile-page .detail-banner-content {
+  min-width: 0;
   box-sizing: border-box;
 }
 
 
 /* =========================================================
-   38. RESPONSIVE
+   39. RESPONSIVE
 ========================================================= */
 
 @media (max-width: 768px) {
