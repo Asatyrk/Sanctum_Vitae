@@ -291,7 +291,7 @@ function applyCharacterTextGradient(character) {
         td,
         figcaption,
         blockquote,
-        .breadcrumb-container,
+        .breadcrumb-link
         ):not(.link-arrow)
     `)
 

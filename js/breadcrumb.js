@@ -202,7 +202,7 @@ function updateBreadcrumb(){
 
               ? `<span class="breadcrumb-current">${item.name}</span>`
 
-              : `<a href="${item.href}">${item.name}</a>`
+              : `<a class="breadcrumb-link" href="${item.href}">${item.name}</a>`
 
 
           return (
