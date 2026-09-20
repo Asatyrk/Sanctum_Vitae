@@ -170,6 +170,8 @@ body.character-profile-page {
 .breadcrumb-container {
   padding: var(--space-3);
   margin: var(--space-5);
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 #breadcrumb {

@@ -515,7 +515,14 @@ async function displayStory(
   )
 
   document.body.dataset.page =
-    slugify(name)
+  name
+
+  document.body.dataset.breadcrumbParent =
+    "Factions"
+
+  if (typeof updateBreadcrumb === "function") {
+    updateBreadcrumb()
+  }
 
 
   /* =========================
