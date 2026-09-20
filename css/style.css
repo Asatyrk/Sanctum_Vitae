@@ -3264,7 +3264,7 @@ body.faction-profile-page .relationships-container {
   grid-template-columns:
     repeat(
       auto-fill,
-      minmax(150px, 1fr)
+      minmax(200px, 1fr)
     );
 
   gap: var(--space-4);
