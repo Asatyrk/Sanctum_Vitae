@@ -2854,6 +2854,8 @@ body.story-profile-page .detail-banner-content {
   box-sizing: border-box;
 }
 
+/* Nav*/
+
 .profile-navigation #story-navigation {
   color: var(--char-primary);
 }
@@ -3105,6 +3107,16 @@ body.story-profile-page .detail-banner-content {
   font-style: italic;
 }
 
+/* Nav*/
+
+.profile-navigation #faction-navigation {
+  color: var(--char-primary);
+}
+
+.profile-navigation #faction-navigation a {
+  color: var(--char-primary);
+}
+
 /* =========================================================
    39. FACTION PAGE
 ========================================================= */
@@ -3252,7 +3264,7 @@ body.faction-profile-page .relationships-container {
   grid-template-columns:
     repeat(
       auto-fill,
-      minmax(180px, 1fr)
+      minmax(150px, 1fr)
     );
 
   gap: var(--space-4);

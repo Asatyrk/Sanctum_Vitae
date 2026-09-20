@@ -48,9 +48,6 @@ To do:
   - Story
   - ID box
   - Tags (at bottom of page)
-- Mockup and code factions 
-  - Factions index
-  - Faction page
 - Mockup and code lore
 - Code main page
 - Footer 
