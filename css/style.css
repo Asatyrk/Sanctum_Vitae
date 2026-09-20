@@ -2678,10 +2678,13 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 /* =========================================================
-   STORY PAGE
+   37. STORY PAGE
 ========================================================= */
 
-.story-background {
+
+/* Story background */
+
+body.story-profile-page .story-background {
   position: fixed;
   inset: 0;
 
@@ -2696,15 +2699,19 @@ body.character-profile-page .site-nav a:focus-visible {
   pointer-events: none;
 }
 
-#site-header,
-.page-container {
+
+/* Story page stacking */
+
+body.story-profile-page #site-header,
+body.story-profile-page .page-container {
   position: relative;
   z-index: 1;
 }
 
-/* Tagline */
 
-.story-page-tagline {
+/* Story tagline */
+
+body.story-profile-page .story-page-tagline {
   margin:
     calc(var(--space-5) * -1)
     0
@@ -2719,16 +2726,22 @@ body.character-profile-page .site-nav a:focus-visible {
   line-height: 1.5;
 }
 
-/* Make the story profile card use the existing 1/2 layout */
-.character-profile-card {
+
+/* Story profile card */
+
+body.story-profile-page .character-profile-card {
   grid-template-columns: 1fr 2fr;
 }
 
-/* Story profile left panel */
-.story-profile-card-left {
+
+/* Story profile — left panel */
+
+body.story-profile-page .story-profile-card-left {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  min-width: 0;
 
   padding: var(--space-6);
 
@@ -2738,28 +2751,46 @@ body.character-profile-page .site-nav a:focus-visible {
   text-align: center;
 }
 
-/* Story profile right panel */
-.story-profile-card-right {
+
+/* Story-specific text */
+
+body.story-profile-page .story-profile-card-left .info-label,
+body.story-profile-page .story-profile-card-left .info-value {
+  color: var(--char-primary);
+}
+
+body.story-profile-page .story-profile-card-left .info-value {
+  max-width: 50%;
+
+  text-align: right;
+
+  word-break: break-word;
+}
+
+
+/* Story profile title */
+
+body.story-profile-page .story-profile-card-left .profile-name {
+  color: var(--char-primary);
+}
+
+
+/* Story profile — right panel */
+
+body.story-profile-page .story-profile-card-right {
   display: flex;
   flex-direction: column;
+
+  min-width: 0;
 
   background: var(--char-bg-2);
   color: var(--char-secondary);
 }
 
-/* Story-specific text */
-.story-profile-card-left .info-label,
-.story-profile-card-left .info-value {
-  color: var(--char-primary);
-}
 
-.story-profile-card-left .info-value {
-  max-width: 50%;
-  text-align: right;
-  word-break: break-word;
-}
+/* Story description */
 
-.story-profile-description {
+body.story-profile-page .story-profile-description {
   flex-grow: 1;
 
   padding: var(--space-6);
@@ -2767,35 +2798,49 @@ body.character-profile-page .site-nav a:focus-visible {
   color: var(--char-secondary);
 
   font-size: var(--font-size-sm);
+
   line-height: 1.8;
 }
 
-.story-profile-description p {
+body.story-profile-page .story-profile-description p {
   margin: 0 0 var(--space-4);
+
   color: var(--char-secondary);
+
   line-height: 1.8;
 }
 
-.story-profile-description p:last-child {
+body.story-profile-page .story-profile-description p:last-child {
   margin-bottom: 0;
 }
 
-/* Story profile title */
-.story-profile-card-left .profile-name {
-  color: var(--char-primary);
+
+/* Story — Characters box */
+
+body.story-profile-page .relationships-section {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+
+  box-sizing: border-box;
 }
 
-body.story-profile-page .relationships-section,
+
+/* Story — Story/detail box */
+
 body.story-profile-page .character-detail-card {
   position: relative;
   z-index: 2;
 
   width: 100%;
+
   box-sizing: border-box;
 }
 
+
 /* =========================================================
-   37. RESPONSIVE
+   38. RESPONSIVE
 ========================================================= */
 
 @media (max-width: 768px) {
@@ -2945,6 +2990,10 @@ body.story-profile-page .character-detail-card {
 
   .story-content {
     padding: var(--space-4);
+  }
+
+  body.story-profile-page .character-profile-card {
+    grid-template-columns: 1fr;
   }
 
 }
