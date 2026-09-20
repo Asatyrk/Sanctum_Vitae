@@ -23,12 +23,45 @@ function updateBreadcrumb(){
   const pageName =
     document.body.dataset.page?.trim()
 
-  const parent =
-    document.body.dataset.breadcrumbParent?.trim()
-
-
   if(!pageName){
     return
+  }
+
+
+  /* =======================================================
+     DETERMINE PROFILE TYPE
+     ======================================================= */
+
+  let parent = ""
+
+  if(
+    document.body.classList.contains(
+      "character-profile-page"
+    )
+  ){
+
+    parent = "Characters"
+
+  }
+
+  else if(
+    document.body.classList.contains(
+      "story-profile-page"
+    )
+  ){
+
+    parent = "Stories"
+
+  }
+
+  else if(
+    document.body.classList.contains(
+      "faction-profile-page"
+    )
+  ){
+
+    parent = "Factions"
+
   }
 
 
@@ -82,7 +115,7 @@ function updateBreadcrumb(){
 
 
   /* =========================
-     PROFILE / CHILD PAGE
+     PROFILE PAGE
      ========================= */
 
   else if(
