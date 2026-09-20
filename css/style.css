@@ -3348,7 +3348,6 @@ body.faction-profile-page .relationship-type {
   font-style: italic;
 }
 
-
 /* Profile colours */
 
 body.character-profile-page .breadcrumb-container,
@@ -3356,6 +3355,24 @@ body.story-profile-page .breadcrumb-container,
 body.faction-profile-page .breadcrumb-container {
   color: var(--char-primary);
 }
+
+.breadcrumb-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.breadcrumb-home-icon {
+  width: 0.9em;
+  height: 0.9em;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+body.character-profile-page .breadcrumb-home-icon {
+  color: var(--char-secondary);
+}
+
 
 /* =========================================================
     40. RESPONSIVE

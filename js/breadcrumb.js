@@ -200,9 +200,20 @@ function updateBreadcrumb(){
           const content =
             isCurrent
 
-              ? `<span class="breadcrumb-current">${item.name}</span>`
+            ? `<span class="breadcrumb-current">${item.name}</span>`
 
-              : `<a class="breadcrumb-link" href="${item.href}">${item.name}</a>`
+                : item.name === "Home"
+
+                  ? `
+                    <a class="breadcrumb-link breadcrumb-home" href="${item.href}">
+                      <svg class="breadcrumb-home-icon" aria-hidden="true">
+                        <use href="#icon-home"></use>
+                      </svg>
+                      <span>Home</span>
+                    </a>
+                  `
+
+                  : `<a class="breadcrumb-link" href="${item.href}">${item.name}</a>`
 
 
           return (
