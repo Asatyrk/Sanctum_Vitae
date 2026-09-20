@@ -172,6 +172,9 @@ body.character-profile-page {
   margin: var(--space-5);
   padding-bottom: 0px;
   margin-bottom: 0px;
+
+  position: relative;
+  z-index: 9999;
 }
 
 #breadcrumb {
@@ -191,7 +194,8 @@ body.faction-profile-page #breadcrumb {
   color: var(--char-primary);
 }
 
-#breadcrumb a {
+#breadcrumb a,
+#breadcrumb a:visited {
   color: inherit;
   text-decoration: none;
 }
@@ -796,6 +800,13 @@ body.character-profile-page .site-nav a:focus-visible {
       5vw,
       var(--space-20)
     );
+
+  padding-top:
+    clamp(
+      var(--space-6),
+      3vw,
+      var(--space-10)
+    );
 }
 
 
@@ -1276,6 +1287,13 @@ body.character-profile-page .site-nav a:focus-visible {
       var(--space-10),
       5vw,
       var(--space-12)
+    );
+
+  padding-top:
+    clamp(
+      var(--space-6),
+      3vw,
+      var(--space-10)
     );
 }
 
