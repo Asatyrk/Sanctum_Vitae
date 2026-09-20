@@ -1064,50 +1064,16 @@ async function populateCharacters(
    STORY CONTENT
    ========================================================= */
 
-function populateStoryContent(
-  storyContent
-){
+function populateStoryContent(storyContent) {
+  const container = document.getElementById("backstory");
 
-  const container =
-    document.getElementById(
-      "backstory"
-    )
-
-  if(!container){
-
-    return
-
+  if (!container || !Array.isArray(storyContent)) {
+    return;
   }
 
-  container.innerHTML =
-    ""
-
-  if(!Array.isArray(storyContent)){
-
-    return
-
-  }
-
-  storyContent
+  container.innerHTML = storyContent
     .filter(Boolean)
-    .forEach(
-      paragraph => {
-
-        const element =
-          document.createElement(
-            "p"
-          )
-
-        element.textContent =
-          paragraph
-
-        container.appendChild(
-          element
-        )
-
-      }
-    )
-
+    .join("");
 }
 
 
