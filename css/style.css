@@ -2993,6 +2993,12 @@ body.story-profile-page .relationships-section {
 /* Story character grid */
 
 body.story-profile-page .relationships-container {
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(200px, 1fr)
+    );
+
   width: 100%;
   box-sizing: border-box;
 }
@@ -3417,18 +3423,6 @@ body.faction-profile-page .relationships-section {
   box-sizing: border-box;
 }
 
-
-/* Faction — Faction box */
-
-body.faction-profile-page .character-detail-card {
-  position: relative;
-  z-index: 2;
-
-  width: 100%;
-
-  box-sizing: border-box;
-}
-
 /* =========================================================
    38. FACTION PAGE
 ========================================================= */
@@ -3570,26 +3564,6 @@ body.faction-profile-page .relationships-container {
 /* Faction character cards */
 
 body.faction-profile-page .relationship-card {
-  min-width: 0;
-  box-sizing: border-box;
-}
-
-
-/* Faction detail box */
-
-body.faction-profile-page .character-detail-card {
-  width: 100%;
-  max-width: 100%;
-
-  box-sizing: border-box;
-
-  margin-bottom: var(--space-12);
-}
-
-
-/* Faction detail content */
-
-body.faction-profile-page .detail-banner-content {
   min-width: 0;
   box-sizing: border-box;
 }

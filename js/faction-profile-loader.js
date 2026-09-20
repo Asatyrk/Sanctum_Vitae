@@ -517,34 +517,18 @@ async function displayFaction(
     faction.tags || {}
 
   setText(
-    "genre",
+    "Parent Faction(s)",
     getTagValue(
       tags,
-      "Genre"
+      "parent_faction(s)"
     )
   )
 
   setText(
-    "age-range",
+    "type",
     getTagValue(
       tags,
-      "Age Range"
-    )
-  )
-
-  setText(
-    "status",
-    getTagValue(
-      tags,
-      "Status"
-    )
-  )
-
-  setText(
-    "faction-type",
-    getTagValue(
-      tags,
-      "Faction Type"
+      "Type"
     )
   )
 
@@ -564,15 +548,6 @@ async function displayFaction(
 
   await populateCharacters(
     faction.characters
-  )
-
-
-  /* =========================
-     FACTION CONTENT
-     ========================= */
-
-  populateFactionContent(
-    faction.faction
   )
 
 }
@@ -604,27 +579,6 @@ function populateFactionImages(
     )
 
   }
-
-
-  /* =========================
-     BANNER
-     ========================= */
-
-  const banner =
-    document.getElementById(
-      "banner-image"
-    )
-
-  if(banner){
-
-    setBackgroundImage(
-      banner,
-      faction.banner,
-      "https://placehold.co/1200x400"
-    )
-
-  }
-
 
   /* =========================
      FACTION BACKGROUND
@@ -979,6 +933,62 @@ async function populateCharacters(
 
 
       /* =========================
+         AGE
+         ========================= */
+
+      const age =
+        characterCard.querySelector(
+          ".relationship-age"
+        )
+
+      if(age){
+
+        age.textContent =
+          text(
+            characterData.age
+          )
+
+      }
+
+
+      /* =========================
+         PRONOUNS
+         ========================= */
+
+      const pronouns =
+        characterCard.querySelector(
+          ".relationship-pronouns"
+        )
+
+      if(pronouns){
+
+        pronouns.textContent =
+          text(
+            characterData.pronouns
+          )
+
+      }
+
+
+      /* =========================
+         SPECIES
+         ========================= */
+
+      const species =
+        characterCard.querySelector(
+          ".relationship-species"
+        )
+
+      if(species){
+
+        species.textContent =
+          text(
+            characterData.species
+          )
+
+      }
+
+      /* =========================
          RELATIONSHIP LABEL
          ========================= */
 
@@ -1020,24 +1030,6 @@ async function populateCharacters(
     loadedCharacters === 0
 
 }
-
-
-/* =========================================================
-   FACTION CONTENT
-   ========================================================= */
-
-function populateFactionContent(factionContent) {
-  const container = document.getElementById("backfaction");
-
-  if (!container || !Array.isArray(factionContent)) {
-    return;
-  }
-
-  container.innerHTML = factionContent
-    .filter(Boolean)
-    .join("");
-}
-
 
 /* =========================================================
    DETAIL TABS
