@@ -2993,12 +2993,6 @@ body.story-profile-page .relationships-section {
 /* Story character grid */
 
 body.story-profile-page .relationships-container {
-  grid-template-columns:
-    repeat(
-      auto-fill,
-      minmax(200px, 1fr)
-    );
-
   width: 100%;
   box-sizing: border-box;
 }
@@ -3329,7 +3323,7 @@ body.faction-profile-page .page-container {
 /* Faction profile card */
 
 body.faction-profile-page .character-profile-card {
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1.5fr 2fr;
 
   width: 100%;
 
@@ -3556,6 +3550,12 @@ body.faction-profile-page .relationships-section {
 /* Faction character grid */
 
 body.faction-profile-page .relationships-container {
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(180px, 1fr)
+    );
+
   width: 100%;
   box-sizing: border-box;
 }
