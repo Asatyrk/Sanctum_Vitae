@@ -300,11 +300,12 @@ function getCharacterProfileUrl(file){
       .replace(/\.json$/i, "")
 
   /* =========================
-     PROFILE TYPE
+     PETS
+     characters/pets/*.json
      ========================= */
 
   if(
-    path.startsWith("pets/")
+    path.startsWith("characters/pets/")
   ){
 
     return (
@@ -313,8 +314,13 @@ function getCharacterProfileUrl(file){
 
   }
 
+  /* =========================
+     OTHERLY OWNED
+     characters/otherly_owned/*.json
+     ========================= */
+
   if(
-    path.startsWith("otherly_owned_characters/")
+    path.startsWith("characters/otherly_owned/")
   ){
 
     return (
@@ -324,7 +330,8 @@ function getCharacterProfileUrl(file){
   }
 
   /* =========================
-     DEFAULT
+     NORMAL CHARACTERS
+     characters/*.json
      ========================= */
 
   return (
