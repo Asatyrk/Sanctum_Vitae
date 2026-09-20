@@ -286,16 +286,53 @@ function getStoryProfileUrl(file){
 
 function getCharacterProfileUrl(file){
 
-  const slug =
+  const path =
     String(file ?? "")
-      .replace(/^characters\//, "")
-      .replace(/\.json$/, "")
+      .replace(/^\/+/, "")
+
+  const filename =
+    path
+      .split("/")
+      .pop()
+
+  const slug =
+    filename
+      .replace(/\.json$/i, "")
+
+  /* =========================
+     PROFILE TYPE
+     ========================= */
+
+  if(
+    path.startsWith("pets/")
+  ){
+
+    return (
+      `pet-profile.html?char=${encodeURIComponent(slug)}`
+    )
+
+  }
+
+  if(
+    path.startsWith("otherly_owned_characters/")
+  ){
+
+    return (
+      `otherly-owned-profile.html?char=${encodeURIComponent(slug)}`
+    )
+
+  }
+
+  /* =========================
+     DEFAULT
+     ========================= */
 
   return (
     `character-profile.html?char=${encodeURIComponent(slug)}`
   )
 
 }
+
 
 
 /* =========================================================
