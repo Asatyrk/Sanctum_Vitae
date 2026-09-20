@@ -207,7 +207,7 @@ function getUrlState() {
    UPDATE URL
 ========================================================= */
 
-function updateUrlStateInHifaction(replace = false) {
+function updateUrlStateInHistory(replace = false) {
 
   const params =
     new URLSearchParams()
@@ -292,7 +292,7 @@ function updateUrlStateInHifaction(replace = false) {
 
   if (replace) {
 
-    window.hifaction.replaceState(
+    window.history.replaceState(
       {},
       "",
       newUrl
@@ -300,7 +300,7 @@ function updateUrlStateInHifaction(replace = false) {
 
   } else {
 
-    window.hifaction.pushState(
+    window.history.pushState(
       {},
       "",
       newUrl
@@ -434,7 +434,7 @@ function setupControls() {
 
       renderFactions()
 
-      updateUrlStateInHifaction(true)
+      updateUrlStateInHistory(true)
 
     }
   )
@@ -446,7 +446,7 @@ function setupControls() {
 
       renderFactions()
 
-      updateUrlStateInHifaction(true)
+      updateUrlStateInHistory(true)
 
     }
   )
@@ -462,7 +462,7 @@ function setupControls() {
 
       renderFactions()
 
-      updateUrlStateInHifaction(true)
+      updateUrlStateInHistory(true)
 
     }
   )
@@ -476,7 +476,7 @@ function setupControls() {
 
       renderFactions()
 
-      updateUrlStateInHifaction(true)
+      updateUrlStateInHistory(true)
 
     }
   )
@@ -608,7 +608,7 @@ function buildTagFilterUI() {
 
             renderFactions()
 
-            updateUrlStateInHifaction(true)
+            updateUrlStateInHistory(true)
 
           }
         )
