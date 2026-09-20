@@ -520,7 +520,7 @@ async function displayFaction(
    "parent_faction(s)",
     getTagValue(
       tags,
-      "parent_faction(s)"
+      "Parent Faction(s)"
     )
   )
 
@@ -964,7 +964,7 @@ async function populateCharacters(
 
         pronouns.textContent =
           text(
-            characterData.pronouns
+            characterData.identity?.pronouns
           )
 
       }
