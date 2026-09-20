@@ -3,40 +3,22 @@
 ========================================================= */
 
 const tagCategories = {
-  "Genre": [
-    "Fantasy",
-    "Sci-fi",
-    "Romance",
-    "Mystery",
-    "Thriller",
-    "Horror",
-    "Western"
+  "Parent Faction(s)": [
+    "PTO Government",
+    "Kristian-Brauwn Society",
+    "PTOGASA",
+    "OKKO Industries",
+    "The Council of Crowns",
+    "The Theives Guild"
   ],
 
-  "Age Range": [
-    "Unrated",
-    "All ages",
-    "Teen [13+]",
-    "Mature [16+]",
-    "Explicit [18+]"
-  ],
-
-  "Status": [
-    "Not started",
-    "Ongoing",
-    "Completed",
-    "Hiatus",
-    "Cancelled"
-  ],
-
-  "Faction Type": [
-    "Length Unknown",
-    "Poem",
-    "Micro Faction",
-    "Short Faction",
-    "Novelette",
-    "Novella",
-    "Novel"
+  "Type": [
+    "Criminal",
+    "Political",
+    "Tribal",
+    "Occupational",
+    "Religious",
+    "Occult"
   ]
 }
 
@@ -815,8 +797,6 @@ function matchesSearch(faction) {
 
     faction.name,
 
-    faction.tagline,
-
     ...descriptions,
 
     ...factionTags
@@ -1071,17 +1051,6 @@ const factionProfileUrl =
       <h2 class="faction-title">
         ${escapeHtml(faction.name)}
       </h2>
-
-
-      ${
-        faction.tagline
-          ? `
-            <p class="faction-tagline">
-              "${escapeHtml(faction.tagline)}"
-            </p>
-          `
-          : ""
-      }
 
 
       ${

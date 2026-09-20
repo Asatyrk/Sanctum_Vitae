@@ -500,44 +500,6 @@ async function displayFaction(
 
   }
 
-
-  /* =========================
-     TAGLINE
-     ========================= */
-
-  const tagline =
-    document.querySelector(
-      ".faction-page-tagline"
-    )
-
-  if(tagline){
-
-    const hasTagline =
-      faction.tagline !== undefined &&
-      faction.tagline !== null &&
-      faction.tagline !== ""
-
-    if(hasTagline){
-
-      tagline.textContent =
-        `"${faction.tagline}"`
-
-      tagline.hidden =
-        false
-
-    }else{
-
-      tagline.textContent =
-        ""
-
-      tagline.hidden =
-        true
-
-    }
-
-  }
-
-
   /* =========================
      IMAGES
      ========================= */

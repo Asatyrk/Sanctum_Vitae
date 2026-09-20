@@ -3119,21 +3119,6 @@ body.story-profile-page .detail-banner-content {
 }
 
 
-/* Faction tagline */
-
-.faction-tagline {
-  margin: 0 0 var(--space-5);
-
-  color: var(--color-text-muted-light);
-
-  font-size: var(--font-size-sm);
-
-  font-style: italic;
-
-  line-height: 1.5;
-}
-
-
 /* Faction tags */
 
 .faction-tags {
@@ -3335,24 +3320,6 @@ body.faction-profile-page .page-container {
 }
 
 
-/* Faction tagline */
-
-body.faction-profile-page .faction-page-tagline {
-  margin:
-    calc(var(--space-5) * -1)
-    0
-    var(--space-5);
-
-  color: var(--char-secondary);
-
-  font-size: var(--font-size-md);
-
-  font-style: italic;
-
-  line-height: 1.5;
-}
-
-
 /* Faction profile card */
 
 body.faction-profile-page .character-profile-card {
@@ -3489,23 +3456,6 @@ body.faction-profile-page .page-container {
   z-index: 1;
 }
 
-
-/* Faction tagline */
-
-body.faction-profile-page .faction-page-tagline {
-  margin:
-    calc(var(--space-5) * -1)
-    0
-    var(--space-5);
-
-  color: var(--char-accent);
-
-  font-size: var(--font-size-md);
-
-  font-style: italic;
-
-  line-height: 1.5;
-}
 
 
 /* Faction profile card */
