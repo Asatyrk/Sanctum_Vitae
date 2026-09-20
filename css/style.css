@@ -165,8 +165,11 @@ body.character-profile-page {
   color: var(--char-secondary);
 }
 
+/* Breadcrumb Nav */
+
 .breadcrumb-container {
-  padding: 10px 0;
+  padding: var(--space-3);
+  margin: var(--space-5);
 }
 
 #breadcrumb {
