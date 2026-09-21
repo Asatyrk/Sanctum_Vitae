@@ -44,12 +44,11 @@ Particle shapes:
 
 To do:
 - Change favicon/icon (easy though, just replace files in assets folder)
+|
 - Global styles for front page + lore page.
 - Mockup and code lore
 - Code main page
-- Footer 
-  - Pages for navigation/accesibility
-  - Contact, mainly for images/errors
+|
 - Ensure page base is setup correctly
 - General cleanup + code revisions
 - Other pages, but maybe just that for now

@@ -337,7 +337,170 @@
 </div> 
 <!-- END PETS BOX -->
 
-<!-- Add story box -->
+<!-- STORY BOX -->
+<div id="stories-section" class="stories-section" hidden>
+
+  <div id="stories-container"></div>
+
+  <template id="story-template">
+
+    <div class="character-profile-card story-card">
+
+      <!-- Left Column: Story Information -->
+      <div class="profile-card-left">
+
+        <a class="story-avatar-link" target="_self">
+          <div class="profile-avatar story-avatar"></div>
+        </a>
+
+        <h2 class="profile-name story-title"></h2>
+
+        <p class="story-tagline"></p>
+
+        <div class="profile-info-section">
+
+          <div class="info-row">
+            <span class="info-label">GENRE</span>
+            <span class="info-value story-genre"></span>
+          </div>
+
+          <hr class="info-divider">
+
+          <div class="info-row">
+            <span class="info-label">AGE RANGE</span>
+            <span class="info-value story-age-range"></span>
+          </div>
+
+          <hr class="info-divider">
+
+          <div class="info-row">
+            <span class="info-label">STATUS</span>
+            <span class="info-value story-status"></span>
+          </div>
+
+          <hr class="info-divider">
+
+          <div class="info-row">
+            <span class="info-label">STORY TYPE</span>
+            <span class="info-value story-type"></span>
+          </div>
+
+        </div>
+
+        <a class="character-page-button" target="_self">
+          <span>Read Story →</span>
+        </a>
+
+      </div>
+
+
+      <!-- Right Column: Story Banner & Description -->
+      <div class="profile-card-right">
+
+        <div class="profile-banner story-banner"></div>
+
+        <div class="profile-content">
+
+          <p class="story-description profile-description"></p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </template>
+
+</div>
+<!-- END STORY BOX -->
+
+<!-- FACTION BOX -->
+<div id="factions-section" class="factions-section" hidden>
+
+  <div id="factions-container"></div>
+
+  <template id="faction-template">
+
+    <div class="character-profile-card faction-card">
+
+      <!-- Left Column: Faction Information -->
+      <div class="profile-card-left">
+
+        <a class="faction-avatar-link" target="_self">
+          <div class="profile-avatar faction-avatar"></div>
+        </a>
+
+        <h2 class="profile-name faction-title"></h2>
+
+        <a class="character-page-button" target="_self">
+          <span>About Faction →</span>
+        </a>
+
+      </div>
+
+
+      <!-- Right Column: Faction Banner & Description -->
+      <div class="profile-card-right">
+
+        <div class="profile-content">
+
+          <div class="info-row">
+            <span class="info-label">PARENT FACTION(S)</span>
+            <span class="info-value faction-parent-factions"></span>
+          </div>
+
+          <hr class="info-divider">
+
+          <div class="info-row">
+            <span class="info-label">TYPE</span>
+            <span class="info-value faction-type"></span>
+          </div>
+
+          <hr class="info-divider">
+
+          <p class="faction-description profile-description"></p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </template>
+
+</div>
+<!-- END FACTION BOX -->
+
+<!-- LINKS BOX -->
+<div id="links-section" class="links-section" hidden>
+
+  <div class="links-header">
+    <h2>Links</h2>
+  </div>
+
+  <div id="links-container" class="links-container"></div>
+
+  <template id="link-template">
+
+    <a class="link-card" target="_blank" rel="noopener noreferrer">
+
+       <div class="link-icon">
+         <svg aria-hidden="true" viewBox="0 0 640 640">
+           <use></use>
+         </svg>
+       </div>
+
+      <div class="link-content">
+        <span class="link-label"></span>
+        <span class="link-arrow">→</span>
+      </div>
+
+    </a>
+
+  </template>
+
+</div>
+<!-- END LINKS BOX -->
 
 </div>
 

@@ -199,7 +199,242 @@ body.character-profile-page {
   font-style: italic;
 }
 
-/* Global Styles */
+/* GENERAL STYLES */
+
+/* Text */
+
+.text-box {
+  width: 100%;
+  color: var(--color-text-dark);
+}
+
+.text-box__title {
+  margin: 0 0 var(--space-2);
+
+  font-family: var(--font-display);
+  font-size: var(--font-size-lg);
+  font-weight: normal;
+  line-height: 1.15;
+  color: var(--color-primary-dark);
+}
+
+.text-box__text {
+  margin: 0;
+
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--color-text-dark);
+}
+
+.text-box__text + .text-box__text {
+  margin-top: var(--space-3);
+}
+
+
+/* Image Banner */
+
+.image-banner {
+  width: 100%;
+  height: clamp(300px, 45vw, 550px);
+  overflow: hidden;
+}
+
+.image-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+
+/* Contents Dropdown */
+
+.contents {
+  width: 100%;
+  margin: var(--space-6) 0;
+  font-family: var(--font-body);
+  color: var(--color-text-dark);
+}
+
+.contents__toggle {
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--font-size-md);
+  color: var(--color-primary-dark);
+  padding: var(--space-2) 0;
+}
+
+.contents__list {
+  margin: var(--space-3) 0 0;
+  padding-left: var(--space-5);
+}
+
+.contents__list li {
+  margin-bottom: var(--space-2);
+}
+
+.contents__list a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.contents__list a:hover {
+  color: var(--color-primary-darker);
+  text-decoration: underline;
+}
+
+
+/* Section Headers */
+
+.section-header {
+  scroll-margin-top: var(--space-5);
+}
+
+.section-header a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.section-header a:hover {
+  color: var(--color-primary-dark);
+}
+
+/* Boxes */
+
+.box {
+  display: flex;
+  gap: var(--space-5);
+  width: 100%;
+  color: var(--color-text-dark);
+}
+
+.box__image {
+  flex: 0 0 var(--card-width);
+  width: var(--card-width);
+  height: var(--card-width);
+  min-width: var(--card-width);
+  min-height: var(--card-width);
+
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.box__content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.box__title {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--font-size-lg);
+  font-weight: normal;
+  line-height: 1.15;
+  color: var(--color-primary-dark);
+}
+
+.box__text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--color-text-dark);
+}
+
+
+/* Plain Image Box */
+
+.box--image {
+  display: block;
+}
+
+.box--image .box__image {
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* Image Left, Text Right */
+
+.box--image-left {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+
+/* Text Left, Image Right */
+
+.box--image-right {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.box--image-right .box__content {
+  order: 1;
+}
+
+.box--image-right .box__image {
+  order: 2;
+}
+
+
+/* Image Above, Text Below */
+
+.box--image-top {
+  flex-direction: column;
+  align-items: center;
+}
+
+.box--image-top .box__content {
+  width: 100%;
+}
+
+
+/* Double Image Box (two ways) */
+
+.box--double-image {
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.box--double-image .box__image {
+  flex: 0 0 var(--card-width);
+}
+
+.box--double-image {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--card-gap);
+  width: 100%;
+}
+
+.box--double-image .box__image {
+  flex: 0 0 var(--card-width);
+  width: var(--card-width);
+  height: var(--card-width);
+  min-width: var(--card-width);
+  min-height: var(--card-width);
+  object-fit: contain;
+  display: block;
+}
+
+
+/* General HR line */
+
+.line {
+  width: 100%;
+  margin: var(--space-6) 0;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  height: 0;
+}
+
 
 
 /* =========================================================
@@ -657,6 +892,10 @@ body.character-profile-page {
   cursor: pointer;
 }
 
+.site-footer-nav a:hover {
+  text-decoration: underline;
+}
+
 .footer-text {
   color: var(--color-white);
 }
@@ -695,6 +934,10 @@ body.character-profile-page .footer-text {
 }
 
 body.character-profile-page .site-footer-nav a {
+  color: var(--char-primary);
+}
+
+body.character-profile-page .footer-spacer {
   color: var(--char-primary);
 }
 
