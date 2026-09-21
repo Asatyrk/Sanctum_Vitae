@@ -1394,99 +1394,82 @@ async function displayCharacter(character){
     extrasPalette.innerHTML =
       ""
 
-    const addPaletteRow =
-      (
-        label,
-        colour
-      ) => {
-
-        if(
-          typeof colour !== "string" ||
-          colour.trim() === ""
-        ){
-
-          return
-
-        }
-
-        const row =
-  document.createElement(
-    "div"
-  )
-
-row.className =
-  "extras-palette-row"
-
-const colourGroup =
-  document.createElement(
-    "span"
-  )
-
-colourGroup.className =
-  "extras-palette-colour"
-
-const swatch =
-  document.createElement(
-    "span"
-  )
-
-swatch.className =
-  "extras-palette-swatch"
-
-swatch.style.setProperty(
-  "background-color",
-  colour.trim(),
-  "important"
-)
-
-swatch.setAttribute(
-  "aria-hidden",
-  "true"
-)
-
-const value =
-  document.createElement(
-    "span"
-  )
-
-value.className =
-  "extras-palette-value"
-
-value.textContent =
+    const addPaletteRow = (
+  label,
   colour
+) => {
 
-const labelElement =
-  document.createElement(
-    "span"
+  if (
+    typeof colour !== "string" ||
+    colour.trim() === ""
+  ) {
+    return
+  }
+
+  const row =
+    document.createElement("div")
+
+  row.className =
+    "extras-palette-row"
+
+
+  const labelElement =
+    document.createElement("span")
+
+  labelElement.className =
+    "extras-palette-label"
+
+  labelElement.textContent =
+    label
+
+
+  const colourGroup =
+    document.createElement("span")
+
+  colourGroup.className =
+    "extras-palette-colour"
+
+
+  const colourSwatch =
+    document.createElement("span")
+
+  colourSwatch.className =
+    "extras-palette-swatch"
+
+  colourSwatch.style.backgroundColor =
+    colour.trim()
+
+
+  const colourValue =
+    document.createElement("span")
+
+  colourValue.className =
+    "extras-palette-value"
+
+  colourValue.textContent =
+    colour
+
+
+  colourGroup.appendChild(
+    colourSwatch
   )
 
-labelElement.className =
-  "extras-palette-label"
+  colourGroup.appendChild(
+    colourValue
+  )
 
-labelElement.textContent =
-  label
+  row.appendChild(
+    labelElement
+  )
 
-colourGroup.appendChild(
-  swatch
-)
+  row.appendChild(
+    colourGroup
+  )
 
-colourGroup.appendChild(
-  value
-)
-
-row.appendChild(
-  labelElement
-)
-
-row.appendChild(
-  colourGroup
-)
-
-extrasPalette.appendChild(
-  row
-)
-
-      }
+  extrasPalette.appendChild(
+    row
+  )
+}
 
 
     // =========================

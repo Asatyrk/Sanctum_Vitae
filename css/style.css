@@ -1967,6 +1967,7 @@ body.character-profile-page .site-nav a:focus-visible {
   color: var(--char-primary);
 }
 
+
 .extras-palette {
   display: flex;
   flex-direction: column;
@@ -1991,8 +1992,6 @@ body.character-profile-page .site-nav a:focus-visible {
 
 
 .extras-palette-label {
-  flex: 0 0 auto;
-
   color: var(--char-primary);
 
   font-weight: 600;
@@ -2003,8 +2002,6 @@ body.character-profile-page .site-nav a:focus-visible {
   display: flex;
   align-items: center;
 
-  flex: 0 0 auto;
-
   gap: var(--space-2);
 
   color: var(--char-primary);
@@ -2014,25 +2011,20 @@ body.character-profile-page .site-nav a:focus-visible {
 .extras-palette-swatch {
   display: block;
 
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
 
-  min-width: 16px;
-  min-height: 16px;
+  flex: 0 0 18px;
 
-  flex: 0 0 16px;
+  border-radius: 2px;
+
+  border: 1px solid var(--char-primary);
 
   box-sizing: border-box;
-
-  border: 0;
-
-  outline: none;
 }
 
 
 .extras-palette-value {
-  display: inline-block;
-
   color: var(--char-primary);
 }
 
