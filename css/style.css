@@ -657,11 +657,7 @@ body.character-profile-page {
   cursor: pointer;
 }
 
-.footer-text {
-  color: var(--color-light);
-}
-
-.footer-spacer {
+.footer-text .footer-spacer {
   color: var(--color-light);
 }
 
@@ -687,16 +683,8 @@ body.character-profile-page #header-page-title {
 
 body.character-profile-page .site-footer {
   background: var(--char-bg-1);
+  color: var(--char-primary);
 }
-
-body.character-profile-page .footer-text {
-  color: var(--color-primary);
-}
-
-body.character-profile-page .footer-spacer {
-  color: var(--color-primary);
-}
-
 
 /* =========================================================
    9. NAVIGATION
