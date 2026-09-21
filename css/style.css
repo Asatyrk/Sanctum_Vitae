@@ -582,7 +582,7 @@ body.character-profile-page {
 
 
 /* =========================================================
-   8. SITE HEADER
+   8. SITE HEADER/FOOTER
 ========================================================= */
 
 .site-header {
@@ -625,8 +625,39 @@ body.character-profile-page {
   color: var(--color-light);
 }
 
+/* Footer */
 
-/* Character header */
+.site-footer {
+  width: 100%;
+  background: var(--color-primary);
+}
+
+.site-footer-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.site-footer-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  color: var(--color-light);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* Character header/footer */
 
 body.character-profile-page .site-header {
   background: var(--char-bg-1);
@@ -639,6 +670,10 @@ body.character-profile-page .site-logo-text {
 
 body.character-profile-page #header-page-title {
   color: var(--char-primary);
+}
+
+body.character-profile-page .site-footer {
+  background: var(--char-bg-1);
 }
 
 
@@ -663,9 +698,6 @@ body.character-profile-page #header-page-title {
 
   color: var(--color-light);
   background: var(--color-primary-dark);
-
-  border: 1px solid transparent;
-  border-radius: var(--border-radius-sm);
 
   font-family: inherit;
   font-size: var(--font-size-base);

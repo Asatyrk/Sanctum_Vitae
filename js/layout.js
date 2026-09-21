@@ -11,6 +11,17 @@ headerContainer.innerHTML = html;
 
 }
 
+const footerContainer = document.getElementById("site-footer");
+
+if(footerContainer){
+
+const res = await fetch("partials/footer.html");
+const html = await res.text();
+
+footerContainer.innerHTML = html;
+
+}
+
 }
 
 loadLayout();

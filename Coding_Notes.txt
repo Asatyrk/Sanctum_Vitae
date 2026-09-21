@@ -44,7 +44,6 @@ Particle shapes:
 
 To do:
 - Change favicon/icon (easy though, just replace files in assets folder)
-- Change all - to _ in html names
 - Global styles for front page + lore page.
 - Mockup and code lore
 - Code main page
