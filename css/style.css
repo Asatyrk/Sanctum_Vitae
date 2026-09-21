@@ -3372,7 +3372,7 @@ body.faction-profile-page .breadcrumb-container {
   width: 100%;
   max-width: 300px;
 
-  margin-top: auto;
+  margin-top: var(--space-3);
 
   padding:
     var(--space-2)
