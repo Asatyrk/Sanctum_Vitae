@@ -665,6 +665,11 @@ body.character-profile-page {
   color: var(--color-light);
 }
 
+#site-footer {
+  position: relative;
+  z-index: 1;
+}
+
 /* Character header/footer */
 
 body.character-profile-page .site-header {
