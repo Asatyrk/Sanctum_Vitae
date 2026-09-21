@@ -1338,43 +1338,6 @@ async function displayCharacter(character){
 
   }
 
-
-  // =========================
-  // PALETTE
-  // =========================
-
-  const palette =
-    document.getElementById(
-      "palette"
-    )
-
-  if(palette){
-
-    if(!character.palette){
-
-      palette.innerHTML =
-        "N/A"
-
-    }else{
-
-      palette.innerHTML =
-        Object.values(
-          character.palette
-        )
-        .filter(
-          value => value
-        )
-        .map(
-          color =>
-            `<span style="display:inline-block;width:40px;height:40px;background:${color};margin-right:6px;"></span>`
-        )
-        .join("")
-
-    }
-
-  }
-
-
   // =========================
   // SHARED PROFILE SECTIONS
   // =========================
@@ -2462,14 +2425,26 @@ async function setupStories(character){
 
 
       // =========================
-      // STORY URL
+      // STORY PROFILE URL
       // =========================
 
+      const storyName =
+        storyData.name ||
+        storyData.title ||
+        story.name ||
+        story.title ||
+        ""
+
+
       const storyUrl =
-        storyData.url ||
-        storyData.link ||
-        story.url ||
-        story.file
+  `story-profile.html?story=${
+    encodeURIComponent(
+      storyData.url
+        .split("/")
+        .pop()
+        .replace(/\.html$/, "")
+    )
+  }`
 
 
       // =========================
@@ -2483,10 +2458,39 @@ async function setupStories(character){
 
       if(avatar){
 
-        avatar.style.backgroundImage =
-          storyData.avatar
-            ? `url("${storyData.avatar}")`
-            : `url("https://placehold.co/120")`
+        const fallback =
+          "https://placehold.co/120"
+
+
+        const imageUrl =
+          storyData.avatar ||
+          fallback
+
+
+        const testImage =
+          new Image()
+
+
+        testImage.onload =
+          () => {
+
+            avatar.style.backgroundImage =
+              `url("${imageUrl}")`
+
+          }
+
+
+        testImage.onerror =
+          () => {
+
+            avatar.style.backgroundImage =
+              `url("${fallback}")`
+
+          }
+
+
+        testImage.src =
+          imageUrl
 
       }
 
@@ -2521,8 +2525,7 @@ async function setupStories(character){
 
         title.textContent =
           text(
-            storyData.title ||
-            storyData.name
+            storyName
           )
 
       }
@@ -2558,10 +2561,39 @@ async function setupStories(character){
 
       if(banner){
 
-        banner.style.backgroundImage =
-          storyData.banner
-            ? `url("${storyData.banner}")`
-            : `url("https://placehold.co/600x200")`
+        const fallback =
+          "https://placehold.co/600x200"
+
+
+        const imageUrl =
+          storyData.banner ||
+          fallback
+
+
+        const testImage =
+          new Image()
+
+
+        testImage.onload =
+          () => {
+
+            banner.style.backgroundImage =
+              `url("${imageUrl}")`
+
+          }
+
+
+        testImage.onerror =
+          () => {
+
+            banner.style.backgroundImage =
+              `url("${fallback}")`
+
+          }
+
+
+        testImage.src =
+          imageUrl
 
       }
 
@@ -2583,6 +2615,7 @@ async function setupStories(character){
           )
             ? storyData.description.join("\n\n")
             : storyData.description
+
 
         description.textContent =
           text(
@@ -2785,14 +2818,27 @@ async function setupFactions(character){
 
 
       // =========================
-      // FACTION URL
+      // FACTION PROFILE URL
       // =========================
 
+      const factionName =
+        factionData.name ||
+        factionData.title ||
+        faction.name ||
+        faction.title ||
+        ""
+
+
       const factionUrl =
-        factionData.url ||
-        factionData.link ||
-        faction.url ||
-        faction.file
+   `faction-profile.html?faction=${
+    encodeURIComponent(
+      factionData.url
+        .split("/")
+        .pop()
+        .replace(/\.html$/, "")
+    )
+  }`
+
 
 
       // =========================
@@ -2806,10 +2852,39 @@ async function setupFactions(character){
 
       if(avatar){
 
-        avatar.style.backgroundImage =
-          factionData.avatar
-            ? `url("${factionData.avatar}")`
-            : `url("https://placehold.co/120")`
+        const fallback =
+          "https://placehold.co/120"
+
+
+        const imageUrl =
+          factionData.avatar ||
+          fallback
+
+
+        const testImage =
+          new Image()
+
+
+        testImage.onload =
+          () => {
+
+            avatar.style.backgroundImage =
+              `url("${imageUrl}")`
+
+          }
+
+
+        testImage.onerror =
+          () => {
+
+            avatar.style.backgroundImage =
+              `url("${fallback}")`
+
+          }
+
+
+        testImage.src =
+          imageUrl
 
       }
 
@@ -2844,8 +2919,7 @@ async function setupFactions(character){
 
         title.textContent =
           text(
-            factionData.title ||
-            factionData.name
+            factionName
           )
 
       }
@@ -2862,10 +2936,39 @@ async function setupFactions(character){
 
       if(banner){
 
-        banner.style.backgroundImage =
-          factionData.banner
-            ? `url("${factionData.banner}")`
-            : `url("https://placehold.co/600x200")`
+        const fallback =
+          "https://placehold.co/600x200"
+
+
+        const imageUrl =
+          factionData.banner ||
+          fallback
+
+
+        const testImage =
+          new Image()
+
+
+        testImage.onload =
+          () => {
+
+            banner.style.backgroundImage =
+              `url("${imageUrl}")`
+
+          }
+
+
+        testImage.onerror =
+          () => {
+
+            banner.style.backgroundImage =
+              `url("${fallback}")`
+
+          }
+
+
+        testImage.src =
+          imageUrl
 
       }
 
@@ -2887,6 +2990,7 @@ async function setupFactions(character){
           )
             ? factionData.description.join("\n\n")
             : factionData.description
+
 
         description.textContent =
           text(
