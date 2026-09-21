@@ -145,6 +145,9 @@ body {
   margin: 0;
   min-height: 100vh;
 
+  display: flex;
+  flex-direction: column;
+
   font-family: var(--font-body);
   color: var(--color-text-dark);
   background: var(--color-bg-light);
@@ -629,6 +632,7 @@ body.character-profile-page {
 
 .site-footer {
   width: 100%;
+  margin-top: auto;
   background: var(--color-primary);
 }
 
@@ -656,6 +660,13 @@ body.character-profile-page {
   cursor: pointer;
 }
 
+.footer-text {
+  color: var(--color-light);
+}
+
+.footer-spacer {
+  color: var(--color-light);
+}
 
 /* Character header/footer */
 
@@ -674,6 +685,14 @@ body.character-profile-page #header-page-title {
 
 body.character-profile-page .site-footer {
   background: var(--char-bg-1);
+}
+
+body.character-profile-page .footer-text {
+  color: var(--color-primary);
+}
+
+body.character-profile-page .footer-spacer {
+  color: var(--color-primary);
 }
 
 
