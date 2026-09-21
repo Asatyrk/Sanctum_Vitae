@@ -1068,7 +1068,7 @@ const factionProfileUrl =
         class="faction-read-button"
         href="${factionProfileUrl}"
       >
-        Read Faction →
+        About Faction →
       </a>
 
     </div>

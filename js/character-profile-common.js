@@ -1284,17 +1284,6 @@ async function displayCharacter(character){
 
   }
 
-
-  // =========================
-  // STORIES
-  // =========================
-
-  listLinks(
-    character.stories,
-    "stories"
-  )
-
-
   // =========================
   // BACKSTORY
   // =========================
@@ -1399,6 +1388,14 @@ async function displayCharacter(character){
   )
 
   await setupPets(
+    character
+  )
+
+  await setupStories(
+    character
+  )
+
+  await setupFactions(
     character
   )
 
@@ -2351,6 +2348,632 @@ async function setupPets(character){
 
   section.hidden =
     loadedPets === 0
+
+}
+
+function tagValue(tags, key){
+
+  const value =
+    tags?.[key]
+
+  if(
+    value === undefined ||
+    value === null ||
+    value === ""
+  ){
+
+    return "N/A"
+
+  }
+
+  if(Array.isArray(value)){
+
+    if(value.length === 0){
+
+      return "N/A"
+
+    }
+
+    return value.join(", ")
+
+  }
+
+  return value
+
+}
+
+
+// =================================================
+// STORIES
+// =================================================
+
+async function setupStories(character){
+
+  const section =
+    document.getElementById(
+      "stories-section"
+    )
+
+  const container =
+    document.getElementById(
+      "stories-container"
+    )
+
+  const template =
+    document.getElementById(
+      "story-template"
+    )
+
+  if(
+    !section ||
+    !container ||
+    !template
+  ){
+
+    return
+
+  }
+
+  if(
+    !Array.isArray(character.stories) ||
+    character.stories.length === 0
+  ){
+
+    section.hidden =
+      true
+
+    return
+
+  }
+
+  container.innerHTML =
+    ""
+
+  let loadedStories =
+    0
+
+
+  for(
+    const story of character.stories
+  ){
+
+    if(
+      !story ||
+      !story.file
+    ){
+
+      continue
+
+    }
+
+    try{
+
+      const storyData =
+        await fetchCharacter(
+          story.file,
+          `Story not found: ${story.file}`
+        )
+
+
+      const storyCard =
+        template.content.cloneNode(
+          true
+        )
+
+
+      // =========================
+      // STORY URL
+      // =========================
+
+      const storyUrl =
+        storyData.url ||
+        storyData.link ||
+        story.url ||
+        story.file
+
+
+      // =========================
+      // AVATAR
+      // =========================
+
+      const avatar =
+        storyCard.querySelector(
+          ".story-avatar"
+        )
+
+      if(avatar){
+
+        avatar.style.backgroundImage =
+          storyData.avatar
+            ? `url("${storyData.avatar}")`
+            : `url("https://placehold.co/120")`
+
+      }
+
+
+      // =========================
+      // AVATAR LINK
+      // =========================
+
+      const avatarLink =
+        storyCard.querySelector(
+          ".story-avatar-link"
+        )
+
+      if(avatarLink){
+
+        avatarLink.href =
+          storyUrl
+
+      }
+
+
+      // =========================
+      // TITLE
+      // =========================
+
+      const title =
+        storyCard.querySelector(
+          ".story-title"
+        )
+
+      if(title){
+
+        title.textContent =
+          text(
+            storyData.title ||
+            storyData.name
+          )
+
+      }
+
+
+      // =========================
+      // TAGLINE
+      // =========================
+
+      const tagline =
+        storyCard.querySelector(
+          ".story-tagline"
+        )
+
+      if(tagline){
+
+        tagline.textContent =
+          text(
+            storyData.tagline
+          )
+
+      }
+
+
+      // =========================
+      // BANNER
+      // =========================
+
+      const banner =
+        storyCard.querySelector(
+          ".story-banner"
+        )
+
+      if(banner){
+
+        banner.style.backgroundImage =
+          storyData.banner
+            ? `url("${storyData.banner}")`
+            : `url("https://placehold.co/600x200")`
+
+      }
+
+
+      // =========================
+      // DESCRIPTION
+      // =========================
+
+      const description =
+        storyCard.querySelector(
+          ".story-description"
+        )
+
+      if(description){
+
+        const descriptionText =
+          Array.isArray(
+            storyData.description
+          )
+            ? storyData.description.join("\n\n")
+            : storyData.description
+
+        description.textContent =
+          text(
+            descriptionText
+          )
+
+      }
+
+
+      // =========================
+      // TAGS
+      // =========================
+
+      const tags =
+        storyData.tags || {}
+
+
+      const genre =
+        storyCard.querySelector(
+          ".story-genre"
+        )
+
+      if(genre){
+
+        genre.textContent =
+          tagValue(
+            tags,
+            "Genre"
+          )
+
+      }
+
+
+      const ageRange =
+        storyCard.querySelector(
+          ".story-age-range"
+        )
+
+      if(ageRange){
+
+        ageRange.textContent =
+          tagValue(
+            tags,
+            "Age Range"
+          )
+
+      }
+
+
+      const status =
+        storyCard.querySelector(
+          ".story-status"
+        )
+
+      if(status){
+
+        status.textContent =
+          tagValue(
+            tags,
+            "Status"
+          )
+
+      }
+
+
+      const storyType =
+        storyCard.querySelector(
+          ".story-type"
+        )
+
+      if(storyType){
+
+        storyType.textContent =
+          tagValue(
+            tags,
+            "Story Type"
+          )
+
+      }
+
+
+      // =========================
+      // READ STORY BUTTON
+      // =========================
+
+      const readButton =
+        storyCard.querySelector(
+          ".story-read-button"
+        )
+
+      if(readButton){
+
+        readButton.href =
+          storyUrl
+
+      }
+
+
+      container.appendChild(
+        storyCard
+      )
+
+      loadedStories++
+
+
+    }catch(err){
+
+      console.error(
+        `Could not load story: ${story.file}`,
+        err
+      )
+
+    }
+
+  }
+
+
+  section.hidden =
+    loadedStories === 0
+
+}
+
+
+// =================================================
+// FACTIONS
+// =================================================
+
+async function setupFactions(character){
+
+  const section =
+    document.getElementById(
+      "factions-section"
+    )
+
+  const container =
+    document.getElementById(
+      "factions-container"
+    )
+
+  const template =
+    document.getElementById(
+      "faction-template"
+    )
+
+  if(
+    !section ||
+    !container ||
+    !template
+  ){
+
+    return
+
+  }
+
+  if(
+    !Array.isArray(character.factions) ||
+    character.factions.length === 0
+  ){
+
+    section.hidden =
+      true
+
+    return
+
+  }
+
+  container.innerHTML =
+    ""
+
+  let loadedFactions =
+    0
+
+
+  for(
+    const faction of character.factions
+  ){
+
+    if(
+      !faction ||
+      !faction.file
+    ){
+
+      continue
+
+    }
+
+    try{
+
+      const factionData =
+        await fetchCharacter(
+          faction.file,
+          `Faction not found: ${faction.file}`
+        )
+
+
+      const factionCard =
+        template.content.cloneNode(
+          true
+        )
+
+
+      // =========================
+      // FACTION URL
+      // =========================
+
+      const factionUrl =
+        factionData.url ||
+        factionData.link ||
+        faction.url ||
+        faction.file
+
+
+      // =========================
+      // AVATAR
+      // =========================
+
+      const avatar =
+        factionCard.querySelector(
+          ".faction-avatar"
+        )
+
+      if(avatar){
+
+        avatar.style.backgroundImage =
+          factionData.avatar
+            ? `url("${factionData.avatar}")`
+            : `url("https://placehold.co/120")`
+
+      }
+
+
+      // =========================
+      // AVATAR LINK
+      // =========================
+
+      const avatarLink =
+        factionCard.querySelector(
+          ".faction-avatar-link"
+        )
+
+      if(avatarLink){
+
+        avatarLink.href =
+          factionUrl
+
+      }
+
+
+      // =========================
+      // TITLE
+      // =========================
+
+      const title =
+        factionCard.querySelector(
+          ".faction-title"
+        )
+
+      if(title){
+
+        title.textContent =
+          text(
+            factionData.title ||
+            factionData.name
+          )
+
+      }
+
+
+      // =========================
+      // BANNER
+      // =========================
+
+      const banner =
+        factionCard.querySelector(
+          ".faction-banner"
+        )
+
+      if(banner){
+
+        banner.style.backgroundImage =
+          factionData.banner
+            ? `url("${factionData.banner}")`
+            : `url("https://placehold.co/600x200")`
+
+      }
+
+
+      // =========================
+      // DESCRIPTION
+      // =========================
+
+      const description =
+        factionCard.querySelector(
+          ".faction-description"
+        )
+
+      if(description){
+
+        const descriptionText =
+          Array.isArray(
+            factionData.description
+          )
+            ? factionData.description.join("\n\n")
+            : factionData.description
+
+        description.textContent =
+          text(
+            descriptionText
+          )
+
+      }
+
+
+      // =========================
+      // TAGS
+      // =========================
+
+      const tags =
+        factionData.tags || {}
+
+
+      const parentFactions =
+        factionCard.querySelector(
+          ".faction-parent-factions"
+        )
+
+      if(parentFactions){
+
+        parentFactions.textContent =
+          tagValue(
+            tags,
+            "Parent Faction(s)"
+          )
+
+      }
+
+
+      const type =
+        factionCard.querySelector(
+          ".faction-type"
+        )
+
+      if(type){
+
+        type.textContent =
+          tagValue(
+            tags,
+            "Type"
+          )
+
+      }
+
+
+      // =========================
+      // READ STORY BUTTON
+      // =========================
+
+      const readButton =
+        factionCard.querySelector(
+          ".faction-read-button"
+        )
+
+      if(readButton){
+
+        readButton.href =
+          factionUrl
+
+      }
+
+
+      container.appendChild(
+        factionCard
+      )
+
+      loadedFactions++
+
+
+    }catch(err){
+
+      console.error(
+        `Could not load faction: ${faction.file}`,
+        err
+      )
+
+    }
+
+  }
+
+
+  section.hidden =
+    loadedFactions === 0
 
 }
 

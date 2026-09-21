@@ -245,6 +245,14 @@ async function displayOtherlyOwned(character){
     character
   )
 
+  await setupStories(
+    character
+  )
+
+  await setupFactions(
+    character
+  )
+
   await setupLinks(
     character
   )

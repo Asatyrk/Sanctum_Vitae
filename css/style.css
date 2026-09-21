@@ -2560,6 +2560,10 @@ body.character-profile-page .site-nav a:focus-visible {
   line-height: 1.5;
 }
 
+body.character-profile-page .story-tagline {
+  color: var(--char-primary)
+}
+
 
 /* Story tags */
 

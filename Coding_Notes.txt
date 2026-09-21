@@ -6,11 +6,11 @@ Character:
 - Add to index.json so it shows up in layout (inc. headshot). 
 - Try to keep index in alphabetical order (refer to google sheets, A-Z auto-sorts).
 
-Stories:
-- Create new .json in stories folder with story info (use base)
-- Tags can be found in stories.js
+Stories/Factions:
+- Create new .json in stories/faction folder with story/faction info (use base)
+- Tags can be found in stories.js/factions.js
 - Add to index.json so it shows up in layout. 
-- Try to keep index in alphabetical order (not as needed)
+- Try to keep index in alphabetical order (not as needed).
 
 
 ---
@@ -43,11 +43,12 @@ Particle shapes:
 
 To do:
 - Change favicon/icon (easy though, just replace files in assets folder)
-- Global nav + global styles for front page + lore page.
+- Global styles for front page + lore page.
 - Character page, details, etc
-  - Story
+  - Story/Faction boxes
   - ID box
-  - Tags (at bottom of page)
+  - Colour key ???
+  - Tags (at bottom of page?)
 - Mockup and code lore
 - Code main page
 - Footer 

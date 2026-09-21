@@ -258,6 +258,14 @@ await setupRelationships(
   pet
 )
 
+await setupStories(
+  character
+)
+
+await setupFactions(
+  character
+)
+
 await setupLinks(
   pet
 )

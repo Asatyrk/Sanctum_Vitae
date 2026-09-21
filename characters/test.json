@@ -159,8 +159,12 @@
 
   "stories": [
     {
-      "title": "Story Name",
-      "file": "stories/story-name.json"
+      "file": "stories/test.json"
+    }
+  ],
+  "factions": [
+    {
+      "file": "factions/test.json"
     }
   ],
 
