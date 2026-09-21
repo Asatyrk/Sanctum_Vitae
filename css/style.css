@@ -686,6 +686,10 @@ body.character-profile-page .site-footer {
   color: var(--char-primary);
 }
 
+body.character-profile-page .footer-text .site-footer-nav a {
+  color: var(--char-primary);
+}
+
 /* =========================================================
    9. NAVIGATION
 ========================================================= */
