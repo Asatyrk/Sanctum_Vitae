@@ -3361,7 +3361,71 @@ body.faction-profile-page .breadcrumb-container {
 }
 
 /* =========================================================
-    40. RESPONSIVE
+    40. CHARACTER PAGE BUTTON
+========================================================= */
+
+.character-page-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 300px;
+
+  margin-top: auto;
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  box-sizing: border-box;
+
+  background: var(--char-bg-2);
+
+  border: none;
+  border-radius: var(--border-radius-md);
+
+  color: var(--char-secondary);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+
+.character-page-button:hover {
+
+  background-image: none;
+
+  background-color:
+    color-mix(
+      in srgb,
+      var(--char-bg-1) 80%,
+      black 20%
+    );
+
+  color: var(--char-primary);
+}
+
+
+.faction-read-button:focus-visible {
+
+  outline:
+    2px solid
+    var(--char-primary);
+
+  outline-offset: 2px;
+}
+
+/* =========================================================
+    41. RESPONSIVE
 ========================================================= */
 
 @media (max-width: 768px) {

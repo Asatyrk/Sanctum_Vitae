@@ -47,7 +47,6 @@ To do:
 - Change all - to _ in html names
 - Global styles for front page + lore page.
 - Character page, details, etc
-  - Story/Faction boxes
   - ID box
   - Colour key ???
   - Tags (at bottom of page?)
