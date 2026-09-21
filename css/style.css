@@ -64,6 +64,7 @@
   ------------------------------------------------------- */
 
   --card-width: 140px;
+  --gen-image-width: 400px;
   --card-gap: 32px;
   --sidebar-width: 240px;
 
@@ -289,16 +290,12 @@ body.character-profile-page {
 
 /* Section Headers */
 
-.section-header {
-  scroll-margin-top: var(--space-5);
-}
-
-.section-header a {
+.text-box__title a {
   color: inherit;
   text-decoration: none;
 }
 
-.section-header a:hover {
+.text-box__title a:hover {
   color: var(--color-primary-dark);
 }
 
@@ -308,15 +305,16 @@ body.character-profile-page {
   display: flex;
   gap: var(--space-5);
   width: 100%;
+  margin: var(--space-2) 0;
   color: var(--color-text-dark);
 }
 
 .box__image {
-  flex: 0 0 var(--card-width);
-  width: var(--card-width);
-  height: var(--card-width);
-  min-width: var(--card-width);
-  min-height: var(--card-width);
+  flex: 0 0 var(--gen-image-width);
+  width: var(--gen-image-width);
+  height: var(--gen-image-width);
+  min-width: var(--gen-image-width);
+  min-height: var(--gen-image-width);
 
   object-fit: contain;
   object-position: center;
@@ -403,7 +401,7 @@ body.character-profile-page {
 }
 
 .box--double-image .box__image {
-  flex: 0 0 var(--card-width);
+  flex: 0 0 var(--gen-image-width);
 }
 
 .box--double-image {
@@ -415,11 +413,11 @@ body.character-profile-page {
 }
 
 .box--double-image .box__image {
-  flex: 0 0 var(--card-width);
-  width: var(--card-width);
-  height: var(--card-width);
-  min-width: var(--card-width);
-  min-height: var(--card-width);
+  flex: 0 0 var(--gen-image-width);
+  width: var(--gen-image-width);
+  height: var(--gen-image-width);
+  min-width: var(--gen-image-width);
+  min-height: var(--gen-image-width);
   object-fit: contain;
   display: block;
 }
@@ -434,7 +432,6 @@ body.character-profile-page {
   border-top: 1px solid var(--color-border);
   height: 0;
 }
-
 
 
 /* =========================================================
