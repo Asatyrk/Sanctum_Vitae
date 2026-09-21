@@ -1431,13 +1431,14 @@ async function displayCharacter(character){
 
 
   const colourSwatch =
-  document.createElement("div")
+    document.createElement("span")
 
-colourSwatch.className =
-  "palette-colour-preview"
+  colourSwatch.className =
+    "extras-palette-swatch"
 
-colourSwatch.style.backgroundColor =
-  colour.trim()
+  colourSwatch.style.backgroundColor =
+    colour.trim()
+
 
   const colourValue =
     document.createElement("span")
