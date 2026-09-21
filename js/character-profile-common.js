@@ -2924,55 +2924,6 @@ async function setupFactions(character){
 
       }
 
-
-      // =========================
-      // BANNER
-      // =========================
-
-      const banner =
-        factionCard.querySelector(
-          ".faction-banner"
-        )
-
-      if(banner){
-
-        const fallback =
-          "https://placehold.co/300x100"
-
-
-        const imageUrl =
-          factionData.banner ||
-          fallback
-
-
-        const testImage =
-          new Image()
-
-
-        testImage.onload =
-          () => {
-
-            banner.style.backgroundImage =
-              `url("${imageUrl}")`
-
-          }
-
-
-        testImage.onerror =
-          () => {
-
-            banner.style.backgroundImage =
-              `url("${fallback}")`
-
-          }
-
-
-        testImage.src =
-          imageUrl
-
-      }
-
-
       // =========================
       // DESCRIPTION
       // =========================
