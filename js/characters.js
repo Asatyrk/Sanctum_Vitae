@@ -188,9 +188,9 @@ const tagCategories = {
     "Female",
     "Nonbinary",
     "Nongendered",
-    "Genderapathetic",
+    "Gender Apathetic",
     "Genderfluid",
-    "Unlabelledgender",
+    "Unlabelled Gender",
     "Intersex",
     "Bigender",
     "Demiboy",
@@ -208,7 +208,7 @@ const tagCategories = {
     "Queerromantic",
     "Cupioromantic",
     "Omniromantic",
-    "Unlabelledromantic",
+    "Unlabelled -Romantic",
     "Technoromantic",
     "Autoromantic"
   ],
@@ -223,30 +223,33 @@ const tagCategories = {
     "Demisexual",
     "Queersexual",
     "Omnisexual",
-    "Unlabelledsexual",
+    "Unlabelled -Sexual",
     "Technosexual",
     "Autosexual"
   ],
   "Other Identities": [
     "Crossdresser",
     "Transgender",
-    "Mascpresenting",
-    "Fempresenting",
+    "Masc Presenting",
+    "Fem Presenting",
     "Genderfuck",
-    "Bicurious"
+    "Bicurious",
+    "Polyamorous",
+    "Ambiamorous"
   ],
   "Relationship Status": [
     "Taken",
     "Single",
-    "It's Complicated",
-    "Polyamorous"
+    "It's Complicated"
   ],
   "Age": [
     "Adult (18+)",
     "Young (Under 18)",
     "Elder (65+ / Or Equivalent)"
   ],
-  "Family": [],
+  "Family": [
+
+  ],
   "Location (Basic)": [
     "Space",
     "Sea",
@@ -265,7 +268,9 @@ const tagCategories = {
     "Cloud 9",
     "Tesga"
   ],
-  "Location (Specific)": [],
+  "Location (Specific)": [
+
+  ],
   "Element": [
     "Lochor (Water)",
     "Embara (Fire)",
@@ -287,13 +292,21 @@ const tagCategories = {
     "Godhood Member",
     "High God",
     "God",
+    "Lord",
     "Avatar",
     "Patron",
+    "Lich Patron",
     "Deity",
+    "Talisman God",
+    "Demigod",
     "Semigod"
   ],
-  "Stories": [],
-  "Special": []
+  "Stories": [
+
+  ],
+  "Special": [
+
+  ]
 }
 
 let allCharacters = []
@@ -568,7 +581,7 @@ function renderCharacters(){
   const slug = char.path.replace(".json","").split("/").pop()
 
   const card = document.createElement("a")
-  card.href = `character-profile.html?char=${slug}`
+  card.href = `character_profile.html?char=${slug}`
   card.className = "char-card"
 
   card.innerHTML = `

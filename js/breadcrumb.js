@@ -43,7 +43,7 @@ function updateBreadcrumb(){
 
   switch(pathname){
 
-    case "character-profile.html":
+    case "character_profile.html":
 
       parent =
         "Characters"
@@ -54,7 +54,7 @@ function updateBreadcrumb(){
       break
 
 
-    case "pet-profile.html":
+    case "pet_profile.html":
 
       parent =
         "Pets"
@@ -65,18 +65,18 @@ function updateBreadcrumb(){
       break
 
 
-    case "otherly-owned-profile.html":
+    case "otherly_owned_profile.html":
 
       parent =
         "Otherly-Owned"
 
       parentHref =
-        "otherly-owned.html"
+        "otherly_owned.html"
 
       break
 
 
-    case "story-profile.html":
+    case "story_profile.html":
 
       parent =
         "Stories"
@@ -87,7 +87,7 @@ function updateBreadcrumb(){
       break
 
 
-    case "faction-profile.html":
+    case "faction_profile.html":
 
       parent =
         "Factions"

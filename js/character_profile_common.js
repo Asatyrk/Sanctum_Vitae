@@ -545,7 +545,7 @@ function listLinks(list, id){
 
         return `
           <li>
-            <a href="character-profile.html?char=${slug}">
+            <a href="character_profile.html?char=${slug}">
               ${item.name || item.title}
             </a>
           </li>
@@ -2110,7 +2110,7 @@ function getProfileUrl(file){
       .pop()
 
   let profilePage =
-    "character-profile.html"
+    "character_profile.html"
 
 
   if(
@@ -2120,7 +2120,7 @@ function getProfileUrl(file){
   ){
 
     profilePage =
-      "pet-profile.html"
+      "pet_profile.html"
 
   }else if(
     file.startsWith(
@@ -2129,7 +2129,7 @@ function getProfileUrl(file){
   ){
 
     profilePage =
-      "otherly-owned-profile.html"
+      "otherly_owned_profile.html"
 
   }
 
@@ -2389,7 +2389,7 @@ async function setupPets(character){
           .pop()
 
       const petProfileUrl =
-        `pet-profile.html?char=${petSlug}`
+        `pet_profile.html?char=${petSlug}`
 
 
       // Pet avatar
@@ -2688,7 +2688,7 @@ async function setupStories(character){
 
 
       const storyUrl =
-  `story-profile.html?story=${
+  `story_profile.html?story=${
     encodeURIComponent(
       storyData.url
         .split("/")
@@ -3081,7 +3081,7 @@ async function setupFactions(character){
 
 
       const factionUrl =
-   `faction-profile.html?faction=${
+   `faction_profile.html?faction=${
     encodeURIComponent(
       factionData.url
         .split("/")

@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 
-<title>Pet</title>
+<title>Otherly-Owned Character</title>
 <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
 
 <link rel="stylesheet" href="css/style.css">
@@ -14,12 +14,12 @@
 
 <script defer src="js/layout.js"></script>
 <script defer src="js/breadcrumb.js"></script>
-<script defer src="js/character-profile-common.js"></script>
-<script defer src="js/pet-profile-loader.js"></script>
+<script defer src="js/character_profile_common.js"></script>
+<script defer src="js/otherly_owned_profile_loader.js"></script>
 
 </head>
 
-<body data-page="pet" class="character-profile-page">
+<body data-page="ooc" class="character-profile-page">
 
 <div id="character-background" class="character-background" aria-hidden="true">
   <div id="character-particles" class="character-particles"></div>
@@ -59,8 +59,8 @@
 
 <div class="profile-navigation">
 
-  <a href="pets.html">
-    <span>← Back to Pets</span>
+  <a href="otherly_owned.html">
+    <span>← Back to Otherly-Owned Characters</span>
   </a>
 
   <span id="character-navigation"></span>
@@ -101,10 +101,21 @@
       <hr class="info-divider">
       
       <div class="info-row">
+        <span class="info-label">ORIENTATION</span>
+        <span class="info-value" id="orientation"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
         <span class="info-label">ELEMENTS</span>
         <span class="info-value" id="elements"></span>
       </div>
-    
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">ETHNICITY</span>
+        <span class="info-value" id="ethnicity"></span>
+      </div>
     </div>
   </div>
 
@@ -113,6 +124,12 @@
     <div class="profile-banner" id="banner-image"></div>
     
     <div class="profile-content">
+      <div class="info-row">
+        <span class="info-label">FULL NAME</span>
+        <span class="info-value" id="full_name"></span>
+      </div>
+      <hr class="info-divider">
+      
       <div class="info-row">
         <span class="info-label">ALIASES</span>
         <span class="info-value" id="aliases"></span>
@@ -132,70 +149,6 @@
 </div>
 <!-- END CHARACTER PROFILE CARD -->
 
-<!-- DESIGN DETAIL BOX -->
-<div class="design-details-layout-pet">
-
-  <div class="design-details-left">
-
-    <div class="character-detail-card design-info-box">
-
-      <div class="detail-split-left">
-
-        <div class="info-row">
-          <span class="info-label">SIZE</span>
-          <span class="info-value" id="size"></span>
-        </div>
-
-        <hr class="info-divider">
-
-        <div class="info-row">
-          <span class="info-label">BUILD</span>
-          <span class="info-value" id="build"></span>
-        </div>
-
-        <hr class="info-divider">
-
-        <div class="info-row">
-          <span class="info-label">EYES</span>
-          <span class="info-value" id="eye_colour"></span>
-        </div>
-
-        <hr class="info-divider">
-
-        <div class="info-row">
-          <span class="info-label">COLOUR</span>
-          <span class="info-value" id="body_colour"></span>
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="character-detail-card design-notes-box">
-
-      <div class="detail-banner-header">
-        <h2>Design Notes</h2>
-      </div>
-
-      <div class="detail-banner-content">
-
-        <ul class="profile-traits" id="design-notes"></ul>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="design-image-box-pet" id="design-image">
-
-  </div>
-
-</div>
-<!-- END DESIGN DETAIL BOX -->
-
 <!-- PARTNERS BOX -->
 <div id="partners-section" class="partners-section" hidden>
 
@@ -210,7 +163,33 @@
 
       <div class="profile-content">
 
-          <h2>OWNER</h2>
+          <h2>PARTNER</h2>
+
+        <div class="info-row">
+          <span class="info-label">RELATIONSHIP</span>
+          <span class="info-value partner-relationship"></span>
+        </div>
+
+        <hr class="info-divider">
+
+        <div class="info-row">
+          <span class="info-label">STATUS</span>
+          <span class="info-value partner-status"></span>
+        </div>
+
+        <hr class="info-divider">
+
+        <div class="info-row">
+          <span class="info-label">DYNAMIC</span>
+          <span class="info-value partner-dynamic"></span>
+        </div>
+
+        <hr class="info-divider">
+
+        <div class="info-row">
+          <span class="info-label">SINCE</span>
+          <span class="info-value partner-since"></span>
+        </div>
 
         <ul class="profile-traits partner-notes"></ul>
 
@@ -294,6 +273,69 @@
 
 </div>
 <!-- END RELATIONSHIPS BOX -->
+
+<!-- PETS BOX --> 
+ <div id="pets-section" class="pets-section" hidden> 
+  <div id="pets-container"></div> 
+  <template id="pet-template">
+  <div class="pet-layout">
+
+    <!-- Pet Information -->
+    <div class="character-profile-card pet-card">
+
+      <div class="profile-card-left">
+
+        <a class="pet-avatar-link" target="_self">
+          <div class="profile-avatar pet-avatar"></div>
+        </a>
+
+        <h2 class="profile-name pet-name"></h2>
+
+        <div class="profile-info-section">
+
+          <div class="info-row">
+            <span class="info-label">SPECIES</span>
+            <span class="info-value pet-species"></span>
+          </div>
+
+          <hr class="info-divider">
+
+          <div class="info-row">
+            <span class="info-label">GENDER</span>
+            <span class="info-value pet-gender"></span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="profile-card-right">
+
+        <div class="profile-content">
+
+          <h2>PET</h2>
+
+          <ul class="profile-traits pet-notes"></ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  <!-- Pet Fullbody -->
+  <div class="pet-image-box">
+    <a class="pet-image-link" target="_self">
+      <div class="pet-fullbody"></div>
+    </a>
+  </div>
+
+</div>
+
+</template> 
+
+</div> 
+<!-- END PETS BOX -->
 
 <!-- Add story box -->
 

@@ -1028,7 +1028,7 @@ const factionSlug =
 
 const factionProfileUrl =
   factionSlug
-    ? `faction-profile.html?faction=${encodeURIComponent(factionSlug)}`
+    ? `faction_profile.html?faction=${encodeURIComponent(factionSlug)}`
     : "#"
     
 

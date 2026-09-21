@@ -349,7 +349,7 @@ function renderCharacters(){
 
 
       card.href =
-        `pet-profile.html?char=${character.slug}`
+        `pet_profile.html?char=${character.slug}`
 
 
       card.className =

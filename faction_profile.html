@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 
-<title>Story</title>
+<title>Faction</title>
 <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
 
 <link rel="stylesheet" href="css/style.css">
@@ -14,13 +14,13 @@
 
 <script defer src="js/layout.js"></script>
 <script defer src="js/breadcrumb.js"></script>
-<script defer src="js/story-profile-loader.js"></script>
+<script defer src="js/faction_profile_loader.js"></script>
 
 </head>
 
-<body data-page="story" class="character-profile-page story-profile-page">
+<body data-page="faction" class="character-profile-page faction-profile-page">
 
-<div id="story-background" class="story-background" aria-hidden="true"></div>
+<div id="faction-background" class="faction-background" aria-hidden="true"></div>
 
 <div id="site-header"></div>
 
@@ -30,11 +30,11 @@
 
 <div class="profile-navigation">
 
-  <a href="stories.html">
-    <span>← Back to Stories</span>
+  <a href="factions.html">
+    <span>← Back to Factions</span>
   </a>
 
-  <span id="story-navigation"></span>
+  <span id="faction-navigation"></span>
 
 </div>
 
@@ -42,42 +42,27 @@
 <div class="character-profile-card">
   
   <!-- Left Column: Avatar & Basic Info -->
-  <div class="story-profile-card-left ">
+  <div class="faction-profile-card-left ">
     <div class="profile-avatar" id="avatar-image"></div>
     <h1 id="name" class="profile-name"></h1>
-    <p class="story-page-tagline" hidden></p>
     
     <div class="profile-info-section">
       <div class="info-row">
-        <span class="info-label">GENRE</span>
-        <span class="info-value" id="genre"></span>
+        <span class="info-label">PARENT FACTION(s)</span>
+        <span class="info-value" id="parent_faction(s)"></span>
       </div>
       <hr class="info-divider">
       
       <div class="info-row">
-        <span class="info-label">AGE RANGE</span>
-        <span class="info-value" id="age-range"></span>
-      </div>
-      <hr class="info-divider">
-      
-      <div class="info-row">
-        <span class="info-label">STATUS</span>
-        <span class="info-value" id="status"></span>
-      </div>
-      <hr class="info-divider">
-      
-      <div class="info-row">
-        <span class="info-label">STORY TYPE</span>
-        <span class="info-value" id="story-type"></span>
+        <span class="info-label">TYPE</span>
+        <span class="info-value" id="type"></span>
       </div>
     </div>
   </div>
 
   <!-- Right Column: Full Body Image & Details -->
-  <div class="story-profile-card-right">
-    <div class="profile-banner" id="banner-image"></div>
-      
-    <div class="story-profile-description" id="description"></div>
+  <div class="faction-profile-card-right">
+    <div class="faction-profile-description" id="description"></div>
   </div>
   
 </div>
@@ -87,7 +72,7 @@
 <div id="relationships-section" class="relationships-section" hidden>
 
   <div class="relationships-header">
-    <h2>Characters</h2>
+    <h2>Members</h2>
   </div>
 
   <div id="relationships-container" class="relationships-container"></div>
@@ -102,7 +87,25 @@
 
       <h2 class="relationship-name"></h2>
 
-      <p class="relationship-type"></p>
+      <p class="relationship-type"></p><div class="profile-info-section">
+
+      <div class="info-row">
+        <span class="info-label">AGE</span>
+        <span class="info-value relationship-age"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">PRONOUNS</span>
+        <span class="info-value relationship-pronouns"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">SPECIES</span>
+        <span class="info-value relationship-species"></span>
+      </div>
+    </div>
 
     </div>
 
@@ -110,22 +113,6 @@
 
 </div>
 <!-- END CHARACTERS BOX -->
-
-<!-- STORY BOX -->
-<div class="character-detail-card character-detail-banner">
-
-  <div class="detail-banner-header">
-    <h2></h2>
-  </div>
-
-  <div class="detail-banner-content">
-
-    <div id="backstory"></div>
-
-  </div>
-
-</div>
-<!-- END STORY BOX -->
 
 </div>
 

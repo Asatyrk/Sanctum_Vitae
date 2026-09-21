@@ -278,7 +278,7 @@ function getStoryProfileUrl(file){
     )
 
   return (
-    `story-profile.html?story=${encodeURIComponent(slug)}`
+    `story_profile.html?story=${encodeURIComponent(slug)}`
   )
 
 }
@@ -309,7 +309,7 @@ function getCharacterProfileUrl(file){
   ){
 
     return (
-      `pet-profile.html?char=${encodeURIComponent(slug)}`
+      `pet_profile.html?char=${encodeURIComponent(slug)}`
     )
 
   }
@@ -324,7 +324,7 @@ function getCharacterProfileUrl(file){
   ){
 
     return (
-      `otherly-owned-profile.html?char=${encodeURIComponent(slug)}`
+      `otherly_owned_profile.html?char=${encodeURIComponent(slug)}`
     )
 
   }
@@ -335,7 +335,7 @@ function getCharacterProfileUrl(file){
      ========================= */
 
   return (
-    `character-profile.html?char=${encodeURIComponent(slug)}`
+    `character_profile.html?char=${encodeURIComponent(slug)}`
   )
 
 }

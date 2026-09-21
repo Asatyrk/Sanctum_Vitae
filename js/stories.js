@@ -1048,7 +1048,7 @@ const storySlug =
 
 const storyProfileUrl =
   storySlug
-    ? `story-profile.html?story=${encodeURIComponent(storySlug)}`
+    ? `story_profile.html?story=${encodeURIComponent(storySlug)}`
     : "#"
     
 

@@ -349,7 +349,7 @@ function renderCharacters(){
 
 
       card.href =
-        `otherly-owned-profile.html?char=${character.slug}`
+        `otherly_owned_profile.html?char=${character.slug}`
 
 
       card.className =
