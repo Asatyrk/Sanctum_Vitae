@@ -1338,6 +1338,226 @@ async function displayCharacter(character){
 
   }
 
+    // =========================
+  // EXTRAS
+  // =========================
+
+  const extrasImage =
+    document.getElementById(
+      "extras-image"
+    )
+
+  if(extrasImage){
+
+    const fallback =
+      "https://placehold.co/600x380"
+
+    const imageUrl =
+      character.IDImage ||
+      fallback
+
+    const testImage =
+      new Image()
+
+    testImage.onload =
+      () => {
+
+        extrasImage.src =
+          imageUrl
+
+      }
+
+    testImage.onerror =
+      () => {
+
+        extrasImage.src =
+          fallback
+
+      }
+
+    testImage.src =
+      imageUrl
+
+  }
+
+
+  const extrasPalette =
+    document.getElementById(
+      "extras-palette"
+    )
+
+  if(extrasPalette){
+
+    const palette =
+      character.palette || {}
+
+    extrasPalette.innerHTML =
+      ""
+
+    const addPaletteRow =
+      (
+        label,
+        colour
+      ) => {
+
+        if(
+          typeof colour !== "string" ||
+          colour.trim() === ""
+        ){
+
+          return
+
+        }
+
+        const row =
+          document.createElement(
+            "div"
+          )
+
+        row.className =
+          "extras-palette-row"
+
+        row.innerHTML = `
+          <span class="extras-palette-label">
+            ${label}
+          </span>
+
+          <span
+            class="extras-palette-swatch"
+            style="background-color:${colour}"
+            aria-hidden="true"
+          ></span>
+
+          <span class="extras-palette-value">
+            ${colour}
+          </span>
+        `
+
+        extrasPalette.appendChild(
+          row
+        )
+
+      }
+
+
+    // =========================
+    // SKIN
+    // =========================
+
+    if(
+      Array.isArray(palette.skin)
+    ){
+
+      palette.skin.forEach(
+        colour => {
+
+          addPaletteRow(
+            "Skin",
+            colour
+          )
+
+        }
+      )
+
+    }
+
+
+    // =========================
+    // HAIR
+    // =========================
+
+    if(
+      Array.isArray(palette.hair)
+    ){
+
+      palette.hair.forEach(
+        colour => {
+
+          addPaletteRow(
+            "Hair",
+            colour
+          )
+
+        }
+      )
+
+    }
+
+
+    // =========================
+    // EYES
+    // =========================
+
+    if(
+      Array.isArray(palette.eyes)
+    ){
+
+      palette.eyes.forEach(
+        colour => {
+
+          addPaletteRow(
+            "Eyes",
+            colour
+          )
+
+        }
+      )
+
+    }
+
+
+    // =========================
+    // OTHER
+    // =========================
+
+    if(
+      Array.isArray(palette.other)
+    ){
+
+      palette.other.forEach(
+        item => {
+
+          if(
+            !item ||
+            !Array.isArray(item.colour)
+          ){
+
+            return
+
+          }
+
+          item.colour.forEach(
+            colour => {
+
+              addPaletteRow(
+                item.label || "Other",
+                colour
+              )
+
+            }
+          )
+
+        }
+      )
+
+    }
+
+
+    // =========================
+    // EMPTY PALETTE
+    // =========================
+
+    if(
+      extrasPalette.children.length === 0
+    ){
+
+      extrasPalette.innerHTML =
+        `<span class="info-value">N/A</span>`
+
+    }
+
+  }
+
   // =========================
   // SHARED PROFILE SECTIONS
   // =========================

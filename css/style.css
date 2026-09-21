@@ -1918,6 +1918,117 @@ body.character-profile-page .site-nav a:focus-visible {
   display: none;
 }
 
+.extras-layout {
+  display: grid;
+  grid-template-columns: 600px 1fr;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+
+.extras-image-box {
+
+  width: 600px;
+  height: 380px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: transparent;
+}
+
+
+.extras-image-box img {
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+
+.extras-palette-box {
+
+  padding: var(--space-4);
+
+  background-color: var(--char-bg-1);
+  color: var(--char-primary);
+}
+
+
+.extras-palette-box h2 {
+
+  margin:
+    0
+    0
+    var(--space-4);
+
+  color: var(--char-primary);
+}
+
+
+.extras-palette {
+
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-2);
+}
+
+
+.extras-palette-row {
+
+  display: flex;
+  align-items: center;
+
+  gap: var(--space-2);
+}
+
+
+.extras-palette-label {
+
+  min-width: 80px;
+
+  color: var(--char-primary);
+
+  font-weight: 600;
+}
+
+
+.extras-palette-colours {
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: var(--space-2);
+}
+
+
+.extras-colour {
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: var(--space-1);
+
+  color: var(--char-primary);
+}
+
+
+.extras-colour-swatch {
+
+  width: 16px;
+  height: 16px;
+
+  flex-shrink: 0;
+}
+
 /* =========================================================
    32. PARTNER PROFILE
 ========================================================= */
@@ -3529,6 +3640,21 @@ body.faction-profile-page .breadcrumb-container {
     flex: 1 1 auto;
 
     text-align: center;
+  }
+
+  .extras-layout {
+    grid-template-columns: 1fr;
+  }
+
+
+  .extras-image-box {
+
+    width: 100%;
+    max-width: 600px;
+
+    height: auto;
+
+    aspect-ratio: 600 / 380;
   }
 
 

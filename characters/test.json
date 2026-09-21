@@ -172,7 +172,16 @@
     "skin": ["#000000"],
     "hair": ["#ffffff"],
     "eyes": ["#ff0000"],
-    "extra": []
+    "other": [
+      {
+        "label": "Wings/Tail/Etc",
+        "colour": ["#ff0000"]
+      },
+      {
+        "label": "Wings/Tail/Etc",
+        "colour": ["#ff0000"]
+      }
+    ]
   },
 
   "backstory": [
@@ -212,6 +221,7 @@
   "banner": "",
   "fullbody": "",
   "decorImage": "",
+  "IDImage": "",
 
   "colors": {
   "primary": "#FF0000",
