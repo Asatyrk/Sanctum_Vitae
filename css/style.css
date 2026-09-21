@@ -1920,14 +1920,18 @@ body.character-profile-page .site-nav a:focus-visible {
 
 .extras-layout {
   display: grid;
-  grid-template-columns: 600px minmax(0, 1fr);
+
+  grid-template-columns:
+    600px
+    minmax(0, 1fr);
+
   gap: var(--space-4);
+
   width: 100%;
 }
 
 
 .extras-image-box {
-
   width: 600px;
   height: 380px;
 
@@ -1942,7 +1946,6 @@ body.character-profile-page .site-nav a:focus-visible {
 
 
 .extras-image-box img {
-
   display: block;
 
   width: 100%;
@@ -1953,7 +1956,6 @@ body.character-profile-page .site-nav a:focus-visible {
 
 
 .extras-palette-box {
-
   width: 100%;
   min-width: 0;
 
@@ -1961,11 +1963,12 @@ body.character-profile-page .site-nav a:focus-visible {
 
   background-color: var(--char-bg-1);
   color: var(--char-primary);
+
+  box-sizing: border-box;
 }
 
 
 .extras-palette-box h2 {
-
   margin:
     0
     0
@@ -1976,16 +1979,16 @@ body.character-profile-page .site-nav a:focus-visible {
 
 
 .extras-palette {
-
   display: flex;
   flex-direction: column;
 
   gap: var(--space-2);
+
+  width: 100%;
 }
 
 
 .extras-palette-row {
-
   display: flex;
   align-items: center;
 
@@ -1994,7 +1997,6 @@ body.character-profile-page .site-nav a:focus-visible {
 
 
 .extras-palette-label {
-
   min-width: 80px;
 
   color: var(--char-primary);
@@ -2003,35 +2005,20 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 
-.extras-palette-colours {
-
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-
-  gap: var(--space-2);
-}
-
-
-.extras-colour {
-
-  display: inline-flex;
-  align-items: center;
-
-  gap: var(--space-1);
-
-  color: var(--char-primary);
-}
-
-
 .extras-palette-swatch {
-
   width: 16px;
   height: 16px;
 
-  flex-shrink: 0;
+  flex: 0 0 16px;
 
   display: inline-block;
+
+  background-color: transparent;
+}
+
+
+.extras-palette-value {
+  color: var(--char-primary);
 }
 
 /* =========================================================
