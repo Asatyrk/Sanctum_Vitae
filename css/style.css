@@ -1998,34 +1998,15 @@ body.character-profile-page .site-nav a:focus-visible {
 }
 
 
-.extras-palette-colour {
-  display: flex;
-  align-items: center;
+.palette-colour-preview {
+  width: 16px;
+  height: 16px;
 
-  gap: var(--space-2);
+  flex: 0 0 16px;
 
-  color: var(--char-primary);
-}
-
-
-.extras-palette-swatch {
   display: block;
 
-  width: 18px;
-  height: 18px;
-
-  flex: 0 0 18px;
-
-  border-radius: 2px;
-
-  border: 1px solid var(--char-primary);
-
   box-sizing: border-box;
-}
-
-
-.extras-palette-value {
-  color: var(--char-primary);
 }
 
 /* =========================================================
