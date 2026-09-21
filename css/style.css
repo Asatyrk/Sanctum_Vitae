@@ -1437,6 +1437,13 @@ body.character-profile-page .site-nav a:focus-visible {
   background-position: center;
 }
 
+.profile-faction-banner {
+  height: 100px;
+
+  background-size: cover;
+  background-position: center;
+}
+
 
 /* Content */
 
@@ -3393,10 +3400,6 @@ body.faction-profile-page .breadcrumb-container {
   text-decoration: none;
 
   cursor: pointer;
-
-  transition:
-    background var(--transition-fast),
-    transform var(--transition-fast);
 }
 
 
@@ -3407,7 +3410,7 @@ body.faction-profile-page .breadcrumb-container {
   background-color:
     color-mix(
       in srgb,
-      var(--char-bg-1) 80%,
+      var(--char-bg-2) 80%,
       black 20%
     );
 

@@ -2937,7 +2937,7 @@ async function setupFactions(character){
       if(banner){
 
         const fallback =
-          "https://placehold.co/600x200"
+          "https://placehold.co/300x100"
 
 
         const imageUrl =
