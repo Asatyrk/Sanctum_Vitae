@@ -1418,20 +1418,23 @@ async function displayCharacter(character){
           "extras-palette-row"
 
         row.innerHTML = `
-          <span class="extras-palette-label">
-            ${label}
-          </span>
+  <span class="extras-palette-label">
+    ${label}
+  </span>
 
-          <span
-            class="extras-palette-swatch"
-            style="background-color:${colour}"
-            aria-hidden="true"
-          ></span>
+  <span class="extras-palette-colour">
+    <span
+      class="extras-palette-swatch"
+      style="background-color: ${colour} !important;"
+      aria-hidden="true"
+    ></span>
 
-          <span class="extras-palette-value">
-            ${colour}
-          </span>
-        `
+    <span class="extras-palette-value">
+      ${colour}
+    </span>
+  </span>
+`
+
 
         extrasPalette.appendChild(
           row
