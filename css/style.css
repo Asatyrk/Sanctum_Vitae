@@ -2021,8 +2021,11 @@ body.character-profile-page .site-nav a:focus-visible {
   border-radius: 2px;
   border: 1px solid var(--char-primary);
 
-  position: relative;
-  z-index: 10;
+  background-image: none;
+  background-blend-mode: normal;
+
+  filter: none;
+  opacity: 1;
 }
 
 
