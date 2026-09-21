@@ -1410,35 +1410,81 @@ async function displayCharacter(character){
         }
 
         const row =
-          document.createElement(
-            "div"
-          )
+  document.createElement(
+    "div"
+  )
 
-        row.className =
-          "extras-palette-row"
+row.className =
+  "extras-palette-row"
 
-        row.innerHTML = `
-  <span class="extras-palette-label">
-    ${label}
-  </span>
+const colourGroup =
+  document.createElement(
+    "span"
+  )
 
-  <span class="extras-palette-colour">
-    <span
-      class="extras-palette-swatch"
-      style="background-color: ${colour} !important;"
-      aria-hidden="true"
-    ></span>
+colourGroup.className =
+  "extras-palette-colour"
 
-    <span class="extras-palette-value">
-      ${colour}
-    </span>
-  </span>
-`
+const swatch =
+  document.createElement(
+    "span"
+  )
 
+swatch.className =
+  "extras-palette-swatch"
 
-        extrasPalette.appendChild(
-          row
-        )
+swatch.style.setProperty(
+  "background-color",
+  colour.trim(),
+  "important"
+)
+
+swatch.setAttribute(
+  "aria-hidden",
+  "true"
+)
+
+const value =
+  document.createElement(
+    "span"
+  )
+
+value.className =
+  "extras-palette-value"
+
+value.textContent =
+  colour
+
+const labelElement =
+  document.createElement(
+    "span"
+  )
+
+labelElement.className =
+  "extras-palette-label"
+
+labelElement.textContent =
+  label
+
+colourGroup.appendChild(
+  swatch
+)
+
+colourGroup.appendChild(
+  value
+)
+
+row.appendChild(
+  labelElement
+)
+
+row.appendChild(
+  colourGroup
+)
+
+extrasPalette.appendChild(
+  row
+)
 
       }
 
