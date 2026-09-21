@@ -1920,16 +1920,23 @@ body.character-profile-page .site-nav a:focus-visible {
 
 .extras-layout {
   display: grid;
-  grid-template-columns: 600px 1fr;
-  gap: var(--space-4);
+
+  grid-template-columns:
+    minmax(0, 600px)
+    minmax(0, 1fr);
+
+  gap: var(--space-6);
+
   width: 100%;
+
+  align-items: stretch;
 }
 
-
 .extras-image-box {
+  width: 100%;
+  min-width: 0;
 
-  width: 600px;
-  height: 380px;
+  min-height: 380px;
 
   display: flex;
   align-items: center;
@@ -1937,12 +1944,11 @@ body.character-profile-page .site-nav a:focus-visible {
 
   overflow: hidden;
 
-  background: transparent;
+  background: var(--char-bg-1);
 }
 
 
 .extras-image-box img {
-
   display: block;
 
   width: 100%;
@@ -1951,48 +1957,53 @@ body.character-profile-page .site-nav a:focus-visible {
   object-fit: contain;
 }
 
-
 .extras-palette-box {
+  width: 100%;
+  min-width: 0;
 
-  padding: var(--space-4);
+  box-sizing: border-box;
 
-  background-color: var(--char-bg-1);
-  color: var(--char-primary);
+  padding: var(--space-6);
+
+  background: var(--char-bg-2);
+
+  color: var(--char-secondary);
 }
 
 
 .extras-palette-box h2 {
-
   margin:
     0
     0
     var(--space-4);
 
   color: var(--char-primary);
+
+  font-size: var(--font-size-lg);
 }
 
-
 .extras-palette {
-
   display: flex;
   flex-direction: column;
 
-  gap: var(--space-2);
+  gap: var(--space-3);
+
+  width: 100%;
 }
 
 
 .extras-palette-row {
-
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 
-  gap: var(--space-2);
+  width: 100%;
+
+  gap: var(--space-3);
 }
 
 
 .extras-palette-label {
-
-  min-width: 80px;
+  flex: 0 0 80px;
 
   color: var(--char-primary);
 
@@ -2001,32 +2012,35 @@ body.character-profile-page .site-nav a:focus-visible {
 
 
 .extras-palette-colours {
-
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 
+  min-width: 0;
+
   gap: var(--space-2);
+
+  flex: 1;
 }
 
 
 .extras-colour {
-
   display: inline-flex;
   align-items: center;
 
   gap: var(--space-1);
 
-  color: var(--char-primary);
+  color: var(--char-secondary);
 }
 
 
 .extras-colour-swatch {
-
   width: 16px;
   height: 16px;
 
   flex-shrink: 0;
+
+  background: var(--char-primary);
 }
 
 /* =========================================================
