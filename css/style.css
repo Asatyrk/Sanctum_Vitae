@@ -3368,7 +3368,7 @@ body.faction-profile-page .breadcrumb-container {
 }
 
 /* =========================================================
-    40. CHARACTER PAGE BUTTON
+    40. STORY/FACTION ON CHAR PAGE
 ========================================================= */
 
 .character-page-button {
@@ -3425,6 +3425,10 @@ body.faction-profile-page .breadcrumb-container {
     var(--char-primary);
 
   outline-offset: 2px;
+}
+
+.profile-description {
+  margin-top: var(--space-3)
 }
 
 /* =========================================================
