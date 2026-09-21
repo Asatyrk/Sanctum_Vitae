@@ -63,7 +63,7 @@ async function displayOtherlyOwned(character){
   name
 
   document.body.dataset.breadcrumbParent =
-    "Factions"
+    "Otherly-Owned Characters"
 
   if (typeof updateBreadcrumb === "function") {
     updateBreadcrumb()

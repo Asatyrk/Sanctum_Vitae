@@ -38,7 +38,7 @@ name
   name
 
   document.body.dataset.breadcrumbParent =
-    "Factions"
+    "Pets"
 
   if (typeof updateBreadcrumb === "function") {
     updateBreadcrumb()
@@ -259,11 +259,11 @@ await setupRelationships(
 )
 
 await setupStories(
-  character
+  pet
 )
 
 await setupFactions(
-  character
+  pet
 )
 
 await setupLinks(

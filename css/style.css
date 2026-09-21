@@ -648,7 +648,7 @@ body.character-profile-page {
     var(--space-2)
     var(--space-3);
 
-  color: var(--color-light);
+  color: var(--color-white);
 
   font-family: inherit;
   font-size: var(--font-size-base);
@@ -657,8 +657,12 @@ body.character-profile-page {
   cursor: pointer;
 }
 
-.footer-text .footer-spacer {
-  color: var(--color-light);
+.footer-text {
+  color: var(--color-white);
+}
+
+.footer-spacer {
+  color: var(--color-white);
 }
 
 #site-footer {
@@ -686,7 +690,11 @@ body.character-profile-page .site-footer {
   color: var(--char-primary);
 }
 
-body.character-profile-page .footer-text .site-footer-nav a {
+body.character-profile-page .footer-text {
+  color: var(--char-primary);
+}
+
+body.character-profile-page .site-footer-nav a {
   color: var(--char-primary);
 }
 
@@ -711,6 +719,8 @@ body.character-profile-page .footer-text .site-footer-nav a {
 
   color: var(--color-light);
   background: var(--color-primary-dark);
+
+  border-radius: var(--border-radius-sm);
 
   font-family: inherit;
   font-size: var(--font-size-base);

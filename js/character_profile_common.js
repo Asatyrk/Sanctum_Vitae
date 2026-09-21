@@ -598,7 +598,7 @@ async function displayCharacter(character){
   name
 
   document.body.dataset.breadcrumbParent =
-    "Factions"
+    "Characters"
 
   if (typeof updateBreadcrumb === "function") {
     updateBreadcrumb()

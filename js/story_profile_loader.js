@@ -518,7 +518,7 @@ async function displayStory(
   name
 
   document.body.dataset.breadcrumbParent =
-    "Factions"
+    "Pets"
 
   if (typeof updateBreadcrumb === "function") {
     updateBreadcrumb()
