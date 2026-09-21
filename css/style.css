@@ -2017,15 +2017,6 @@ body.character-profile-page .site-nav a:focus-visible {
   flex: 0 0 18px;
 
   box-sizing: border-box;
-
-  border-radius: 2px;
-  border: 1px solid var(--char-primary);
-
-  background-image: none;
-  background-blend-mode: normal;
-
-  filter: none;
-  opacity: 1;
 }
 
 

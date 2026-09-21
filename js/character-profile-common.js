@@ -282,7 +282,6 @@ function applyCharacterTextGradient(character) {
         strong,
         em,
         b,
-        i,
         small,
         summary,
         dt,
@@ -1431,7 +1430,7 @@ async function displayCharacter(character){
 
 
   const colourSwatch =
-    document.createElement("span")
+    document.createElement("i")
 
   colourSwatch.className =
     "extras-palette-swatch"
