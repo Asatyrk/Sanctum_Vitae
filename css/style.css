@@ -237,7 +237,7 @@ body.character-profile-page {
 
 .image-banner {
   width: 100%;
-  height: clamp(250px, 35vw, 450px);
+  height: clamp(200px, 30vw, 400px);
   overflow: hidden;
 }
 
