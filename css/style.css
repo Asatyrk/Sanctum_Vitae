@@ -3732,6 +3732,7 @@ body.faction-profile-page .relationship-type {
   padding: var(--space-3);
   margin: var(--space-5);
   padding-bottom: 0;
+  padding-top: 0;
   margin-bottom: 0;
 
   color: var(--color-text-muted, #5a432e);
