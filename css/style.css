@@ -996,32 +996,141 @@ body.character-profile-page .footer-spacer {
   overflow: hidden;
 }
 
-
 /* Navigation states */
 
-.site-nav a:hover {
+.site-nav a:hover,
+.nav-dropdown-toggle:hover {
   background: var(--color-primary-darker);
   border-color: rgba(255, 255, 255, 0.15);
 }
 
-.site-nav a:active {
+.site-nav a:active,
+.nav-dropdown-toggle:active {
   transform: translateY(1px);
 }
 
-.site-nav a:focus-visible {
+.site-nav a:focus-visible,
+.nav-dropdown-toggle:focus-visible {
   outline: 2px solid var(--color-light);
   outline-offset: 2px;
 }
 
 
-/* Character navigation */
+/* Navigation dropdowns */
 
-body.character-profile-page .site-nav a {
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  color: var(--color-light);
+  background: var(--color-primary-dark);
+
+  border: none;
+  border-radius: var(--border-radius-sm);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+
+/* Dropdown menu */
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + var(--space-1));
+  left: 0;
+
+  display: none;
+  min-width: 180px;
+
+  padding: var(--space-1);
+
+  background: var(--color-primary-dark);
+
+  border-radius: var(--border-radius-sm);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.2);
+
+  z-index: 100;
+}
+
+.nav-dropdown.open .nav-dropdown-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Dropdown links */
+
+.nav-dropdown-menu a {
+  display: flex;
+  align-items: center;
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  color: var(--color-light);
+  background: transparent;
+
+  border-radius: var(--border-radius-sm);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+
+  text-decoration: none;
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.nav-dropdown-menu a:hover {
+  color: var(--color-light);
+  background: var(--color-primary-darker);
+}
+
+.nav-dropdown-menu a:focus-visible {
+  outline: 2px solid var(--color-light);
+  outline-offset: -2px;
+}
+
+
+/* Profile page navigation */
+
+body.character-profile-page .site-nav a,
+body.character-profile-page .nav-dropdown-toggle,
+body.story-profile-page .site-nav a,
+body.story-profile-page .nav-dropdown-toggle,
+body.faction-profile-page .site-nav a,
+body.faction-profile-page .nav-dropdown-toggle {
   color: var(--char-secondary);
   background: var(--char-bg-2);
 }
 
-body.character-profile-page .site-nav a:hover {
+body.character-profile-page .site-nav a:hover,
+body.character-profile-page .nav-dropdown-toggle:hover,
+body.story-profile-page .site-nav a:hover,
+body.story-profile-page .nav-dropdown-toggle:hover,
+body.faction-profile-page .site-nav a:hover,
+body.faction-profile-page .nav-dropdown-toggle:hover {
   background-color:
     color-mix(
       in srgb,
@@ -1032,10 +1141,48 @@ body.character-profile-page .site-nav a:hover {
   color: var(--char-secondary);
 }
 
-body.character-profile-page .site-nav a:focus-visible {
+body.character-profile-page .site-nav a:focus-visible,
+body.character-profile-page .nav-dropdown-toggle:focus-visible,
+body.story-profile-page .site-nav a:focus-visible,
+body.story-profile-page .nav-dropdown-toggle:focus-visible,
+body.faction-profile-page .site-nav a:focus-visible,
+body.faction-profile-page .nav-dropdown-toggle:focus-visible {
   outline-color: var(--char-secondary);
 }
 
+
+/* Profile page dropdown */
+
+body.character-profile-page .nav-dropdown-menu,
+body.story-profile-page .nav-dropdown-menu,
+body.faction-profile-page .nav-dropdown-menu {
+  background: var(--char-bg-2);
+}
+
+body.character-profile-page .nav-dropdown-menu a,
+body.story-profile-page .nav-dropdown-menu a,
+body.faction-profile-page .nav-dropdown-menu a {
+  color: var(--char-secondary);
+}
+
+body.character-profile-page .nav-dropdown-menu a:hover,
+body.story-profile-page .nav-dropdown-menu a:hover,
+body.faction-profile-page .nav-dropdown-menu a:hover {
+  color: var(--char-secondary);
+
+  background-color:
+    color-mix(
+      in srgb,
+      var(--char-bg-2) 80%,
+      black 20%
+    );
+}
+
+body.character-profile-page .nav-dropdown-menu a:focus-visible,
+body.story-profile-page .nav-dropdown-menu a:focus-visible,
+body.faction-profile-page .nav-dropdown-menu a:focus-visible {
+  outline-color: var(--char-secondary);
+}
 
 /* =========================================================
    10. PAGE TITLE
