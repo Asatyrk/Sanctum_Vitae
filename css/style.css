@@ -178,7 +178,7 @@ body.character-profile-page {
   font-size: 0.9rem;
 
   position: relative;
-  z-index: 9999;
+  z-index: 99;
 }
 
 .breadcrumb-container a {
@@ -830,6 +830,8 @@ body.character-profile-page {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 1000;
 
   padding:
     var(--space-3)
@@ -950,6 +952,8 @@ body.character-profile-page .footer-spacer {
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  position: relative;
+  z-index: 1001;
 }
 
 .site-nav a {
@@ -1024,7 +1028,7 @@ body.character-profile-page .footer-spacer {
 
 .nav-dropdown {
   position: relative;
-  z-index: 1000;
+  z-index: 1002;
 }
 
 .nav-dropdown-toggle {
@@ -1074,7 +1078,8 @@ body.character-profile-page .footer-spacer {
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.2);
 
-  z-index: 9999;
+  position: relative;
+  z-index: 1003;
 }
 
 .nav-dropdown.open .nav-dropdown-menu {
