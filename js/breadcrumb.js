@@ -120,7 +120,7 @@ function updateBreadcrumb(){
 
       {
         name: "Home",
-        href: "index.html"
+        href: "home.html"
       }
 
     ]
@@ -138,7 +138,7 @@ function updateBreadcrumb(){
 
       {
         name: "Home",
-        href: "index.html"
+        href: "home.html"
       },
 
       {
@@ -165,7 +165,7 @@ function updateBreadcrumb(){
 
       {
         name: "Home",
-        href: "index.html"
+        href: "home.html"
       },
 
       {
