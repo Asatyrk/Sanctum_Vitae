@@ -818,9 +818,13 @@ body.character-profile-page {
 ========================================================= */
 
 .site-header {
+  position: relative;
+  z-index: 1000;
+
   width: 100%;
   background: var(--color-primary);
 }
+
 
 .site-banner {
   display: flex;
@@ -1020,6 +1024,7 @@ body.character-profile-page .footer-spacer {
 
 .nav-dropdown {
   position: relative;
+  z-index: 1000;
 }
 
 .nav-dropdown-toggle {
@@ -1058,6 +1063,7 @@ body.character-profile-page .footer-spacer {
 
   display: none;
   min-width: 180px;
+  max-width: min(300px, calc(100vw - var(--space-6)));
 
   padding: var(--space-1);
 
@@ -1068,7 +1074,7 @@ body.character-profile-page .footer-spacer {
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.2);
 
-  z-index: 100;
+  z-index: 9999;
 }
 
 .nav-dropdown.open .nav-dropdown-menu {
@@ -1076,6 +1082,10 @@ body.character-profile-page .footer-spacer {
   flex-direction: column;
 }
 
+.site-nav .nav-dropdown:last-child .nav-dropdown-menu {
+  left: auto;
+  right: 0;
+}
 
 /* Dropdown links */
 
