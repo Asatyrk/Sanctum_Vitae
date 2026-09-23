@@ -831,7 +831,6 @@ body.character-profile-page {
   align-items: center;
   justify-content: space-between;
   position: relative;
-  z-index: 1000;
 
   padding:
     var(--space-3)
@@ -1028,7 +1027,6 @@ body.character-profile-page .footer-spacer {
 
 .nav-dropdown {
   position: relative;
-  z-index: 1002;
 }
 
 .nav-dropdown-toggle {
@@ -1079,7 +1077,7 @@ body.character-profile-page .footer-spacer {
     0 4px 12px rgba(0, 0, 0, 0.2);
 
   position: relative;
-  z-index: 1003;
+  z-index: 9999;
 }
 
 .nav-dropdown.open .nav-dropdown-menu {
@@ -3313,7 +3311,6 @@ body.story-profile-page .story-background {
   pointer-events: none;
 }
 
-body.story-profile-page #site-header,
 body.story-profile-page .page-container {
   position: relative;
   z-index: 1;
