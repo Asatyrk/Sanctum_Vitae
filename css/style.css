@@ -4108,9 +4108,6 @@ body.faction-profile-page .breadcrumb-container {
 
   font-family: var(--font-display);
   font-size: var(--font-size-lg);
-  font-weight: normal;
-
-  line-height: 1.15;
 
   text-transform: uppercase;
 }
@@ -4119,8 +4116,6 @@ body.faction-profile-page .breadcrumb-container {
 /* Subtitle */
 
 .species-card__subtitle {
-  margin: 0 0 var(--space-3);
-
   color: var(--color-text-muted-light);
 
   font-family: var(--font-body);

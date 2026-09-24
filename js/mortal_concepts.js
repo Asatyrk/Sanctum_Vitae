@@ -1023,11 +1023,11 @@ function matchesSearch(species) {
 
     ...otherNames,
 
-    species.family,
+    species.quick_facts?.family,
 
-    species.rarity,
+    species.quick_facts?.rarity,
 
-    species.origin,
+    species.quick_facts?.origin,
 
     ...descriptions,
 
@@ -1258,7 +1258,7 @@ function createSpeciesCard(species) {
 
           <span class="info-value">
             ${escapeHtml(
-              species.family
+              species.quick_facts?.family
             )}
           </span>
 
@@ -1273,7 +1273,7 @@ function createSpeciesCard(species) {
 
           <span class="info-value">
             ${escapeHtml(
-              species.rarity
+              species.quick_facts?.rarity
             )}
           </span>
 
@@ -1288,7 +1288,7 @@ function createSpeciesCard(species) {
 
           <span class="info-value">
             ${escapeHtml(
-              species.origin
+              species.quick_facts?.origin
             )}
           </span>
 

@@ -2,12 +2,44 @@
   {
     "name": "Test",
     "other names": ["Namey","Nameson"],
+
     "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/images/128303846_OPKem5P8mwoFVoc.png",
-    "family": "Humanoid",
-    "rarity": "Common",
-    "origin": "Earth",
-    "gender ratio": "50% M/50% F",
+    "fullbody": "../assets/site_images/Newspaper_Background.png",
+    
     "description": "Info about them, aydayada",
+
+    "quick_facts": {
+      "family": "Humanoid",
+      "rarity": "Common",
+      "origin": "Earth",
+      "range/habitat": "",
+      "lifespan": "",
+      "height/build": "50% M/50% F",
+      "gender ratio": "50% M/50% F",
+      "diet": "50% M/50% F",
+      "native languages": "50% M/50% F"
+    },
+
+    "behavior": {
+      "disposition": "",
+      "social structure": "",
+      "communication": ""
+    },
+
+    "abilities": {
+      "strengths": "",
+      "weaknesses": "",
+      "notable skills": ""
+    },
+
+    "field_notes": {
+      "danger level": "",
+      "signs_of_Presence": "",
+      "approach_advice": ""
+    },
+
+    "extra_information": "",
+
     "tags": {
       "Family": "Humanoid",
       "Rarity": "Common",
