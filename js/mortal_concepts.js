@@ -1247,7 +1247,7 @@ function createSpeciesCard(species) {
       }
 
 
-      <hr class="info-divider">
+      <hr class="line">
 
 
       <div class="species-card__info">
@@ -1314,7 +1314,7 @@ function createSpeciesCard(species) {
       </div>
 
 
-      <hr class="info-divider">
+      <hr class="line">
 
 
       <div class="species-card__description">
