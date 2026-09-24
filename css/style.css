@@ -214,7 +214,6 @@ body.character-profile-page {
 
   font-family: var(--font-display);
   font-size: var(--font-size-lg);
-  font-weight: normal;
   line-height: 1.15;
   color: var(--color-primary-dark);
 }
@@ -226,6 +225,10 @@ body.character-profile-page {
   font-size: var(--font-size-base);
   line-height: 1.5;
   color: var(--color-text-dark);
+}
+
+.text-box__text a {
+  font-weight: bold;
 }
 
 .text-box__text + .text-box__text {

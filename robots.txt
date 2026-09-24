@@ -1,0 +1,25 @@
+# Block OpenAI (ChatGPT, DALL-E)
+User-agent: GPTBot
+Disallow: /
+User-agent: ChatGPT-User
+Disallow: /
+
+# Block Google's AI Crawler
+User-agent: Google-Extended
+Disallow: /
+
+# Block Anthropic (Claude)
+User-agent: AnthropicAI
+Disallow: /
+
+# Block Perplexity AI
+User-agent: PerplexityBot
+Disallow: /
+
+# Block Common Crawl (Used by many open-source models)
+User-agent: CCBot
+Disallow: /
+
+# Block Meta AI
+User-agent: FacebookBot
+Disallow: /
