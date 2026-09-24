@@ -1776,6 +1776,25 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
   color: var(--char-primary);
 }
 
+.profile-navigation-species {
+  align-items: left;
+
+  width: 100%;
+
+  margin-bottom: var(--space-4);
+}
+
+.profile-navigation-species a {
+  display: inline-flex;
+  align-items: center;
+
+  gap: var(--space-2);
+
+  color: var(--color-text-muted-light);
+
+  text-decoration: none;
+}
+
 /* =========================================================
    21. MAIN CHARACTER PROFILE CARD
 ========================================================= */
