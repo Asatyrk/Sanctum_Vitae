@@ -610,6 +610,7 @@ function populateBasicInformation(
 
     const imageUrl =
       concept.fullbody ||
+      concept.headshot ||
       ""
 
     image.alt =

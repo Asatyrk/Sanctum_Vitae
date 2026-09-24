@@ -45,9 +45,11 @@ async function loadSpecies() {
 
 
     if (!response.ok) {
+
       throw new Error(
         "Failed to load mortal_concepts/index.json"
       )
+
     }
 
 
@@ -56,13 +58,12 @@ async function loadSpecies() {
 
 
     /*
-       Each index entry points to a JSON file.
+       Each index entry points to one JSON file.
 
-       Each JSON file contains an ARRAY of species,
-       so we flatten the results into one array.
+       Each JSON file contains ONE species object.
     */
 
-    const speciesArrays =
+    const species =
       await Promise.all(
 
         index.map(async entry => {
@@ -84,30 +85,30 @@ async function loadSpecies() {
             await speciesResponse.json()
 
 
-          if (!Array.isArray(speciesData)) {
+          if (
+            !speciesData ||
+            typeof speciesData !== "object" ||
+            Array.isArray(speciesData)
+          ) {
 
             throw new Error(
-              `${entry.path} must contain an array`
+              `${entry.path} must contain a species object`
             )
 
           }
 
 
-          return speciesData.map(species => {
-
-            const slug =
-              species.name
-                ? slugify(species.name)
-                : ""
+          const slug =
+            speciesData.name
+              ? slugify(speciesData.name)
+              : ""
 
 
-            return {
-              ...species,
-              source: entry.path,
-              slug
-            }
-
-          })
+          return {
+            ...speciesData,
+            source: entry.path,
+            slug
+          }
 
         })
 
@@ -115,7 +116,7 @@ async function loadSpecies() {
 
 
     allSpecies =
-      speciesArrays.flat()
+      species
 
 
     buildTagFilterUI()
@@ -139,6 +140,11 @@ async function loadSpecies() {
       document.getElementById(
         "species-grid"
       )
+
+
+    if (!grid) {
+      return
+    }
 
 
     grid.innerHTML = ""
