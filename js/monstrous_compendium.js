@@ -1156,7 +1156,9 @@ function createSpeciesCard(species) {
       species["other names"]
     )
       ? species["other names"]
-      : []
+      : species["other names"]
+        ? [species["other names"]]
+        : []
 
 
   const otherNamesText =

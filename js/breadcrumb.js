@@ -100,7 +100,7 @@ function updateBreadcrumb(){
     case "mortal_concepts_profile.html":
 
       parent =
-        "Mortal Concept"
+        "Mortal Concepts"
 
       parentHref =
         "mortal_concepts.html"
