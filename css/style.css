@@ -4138,8 +4138,6 @@ body.faction-profile-page .breadcrumb-container {
 
   width: 100%;
 
-  margin: var(--space-3) 0;
-
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
 }
