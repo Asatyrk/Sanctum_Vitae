@@ -226,7 +226,7 @@ async function loadMortalConcept(){
 
     showConceptError(
       "No Species Selected",
-      "No mortal concept was specified."
+      "No species was specified."
     )
 
     return
@@ -235,42 +235,22 @@ async function loadMortalConcept(){
 
   try{
 
-    const conceptsPath =
-      "mortal_concepts/index.json"
-
-    const concepts =
-      await fetchConcepts(
-        conceptsPath
-      )
-
-    if(!Array.isArray(concepts)){
-
-      throw new Error(
-        "Mortal concepts JSON must be an array."
-      )
-
-    }
+    const conceptPath =
+      `mortal_concepts/${slug}.json`
 
     const concept =
-      concepts.find(
-        entry => {
-
-          if(!entry) return false
-
-          const entrySlug =
-            slugify(
-              entry.name
-            )
-
-          return entrySlug === slug
-
-        }
+      await fetchConcepts(
+        conceptPath
       )
 
-    if(!concept){
+    if(
+      !concept ||
+      typeof concept !== "object" ||
+      Array.isArray(concept)
+    ){
 
       throw new Error(
-        `Mortal concept not found: ${slug}`
+        `Invalid species data: ${conceptPath}`
       )
 
     }
@@ -282,18 +262,19 @@ async function loadMortalConcept(){
   }catch(error){
 
     console.error(
-      "Could not load mortal concept:",
+      "Could not load species:",
       error
     )
 
     showConceptError(
-      "Concept Not Found",
-      "The requested mortal concept could not be loaded."
+      "Species Not Found",
+      "The requested species could not be loaded."
     )
 
   }
 
 }
+
 
 
 /* =========================================================
