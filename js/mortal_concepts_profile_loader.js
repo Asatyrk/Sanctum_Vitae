@@ -31,7 +31,7 @@ function getConcept(){
       window.location.search
     )
 
-  return params.get("concept")
+  return params.get("species")
 
 }
 
@@ -203,7 +203,7 @@ async function fetchConcepts(
   if(!response.ok){
 
     throw new Error(
-      `Mortal concepts not found: ${path}`
+      `Species not found: ${path}`
     )
 
   }
@@ -225,7 +225,7 @@ async function loadMortalConcept(){
   if(!slug){
 
     showConceptError(
-      "No Concept Selected",
+      "No Species Selected",
       "No mortal concept was specified."
     )
 
