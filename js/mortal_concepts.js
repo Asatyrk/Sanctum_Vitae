@@ -1029,8 +1029,6 @@ function matchesSearch(species) {
 
     species.origin,
 
-    species["gender ratio"],
-
     ...descriptions,
 
     ...speciesTags
@@ -1291,21 +1289,6 @@ function createSpeciesCard(species) {
           <span class="info-value">
             ${escapeHtml(
               species.origin
-            )}
-          </span>
-
-        </div>
-
-
-        <div class="info-row">
-
-          <span class="info-label">
-            <strong>Gender Ratio</strong>
-          </span>
-
-          <span class="info-value">
-            ${escapeHtml(
-              species["gender ratio"]
             )}
           </span>
 
