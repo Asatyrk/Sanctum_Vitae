@@ -97,6 +97,27 @@ function updateBreadcrumb(){
 
       break
 
+    case "mortal_concepts_profile.html":
+
+      parent =
+        "Mortal Concept"
+
+      parentHref =
+        "mortal_concepts.html"
+
+      break
+
+    case "monstrous_compendium_profile.html":
+
+      parent =
+        "Monstrous Compendium"
+
+      parentHref =
+        "monstrous_compendium.html"
+
+      break
+
+
   }
 
 
