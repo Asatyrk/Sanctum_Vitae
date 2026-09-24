@@ -1,17 +1,59 @@
-[
-  {
-    "name": "Test",
-    "other names": ["Namey","Nameson"],
-    "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/images/128303846_OPKem5P8mwoFVoc.png",
+{
+  "name": "Test",
+  "other names": ["Namey","Nameson"],
+  "latin name": "Humanus Personus",
+
+  "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/images/128303846_OPKem5P8mwoFVoc.png",
+  "fullbody": "../assets/site_images/Newspaper_Background.png",
+
+  "description": "Info about them, aydayada",
+
+  "quick_facts": {
     "family": "Humanoid",
     "rarity": "Common",
     "origin": "Earth",
+    "range/habitat": "All climates",
+    "lifespan": "60-100 years",
+    "height/build": "5-6ft, build varies",
     "gender ratio": "50% M/50% F",
-    "description": "Info about them, aydayada",
-    "tags": {
-      "Family": "Humanoid",
-      "Rarity": "Common",
-      "Origin": "Earth"
+    "diet": "Omnivore",
+    "native languages": "Common"
+  },
+
+  "behaviour": {
+    "disposition": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in commodo lectus. Fusce pretium cursus ligula sed cursus. Proin imperdiet, lorem ut sollicitudin porttitor, arcu eros sagittis justo, id ullamcorper magna metus id nibh. Maecenas venenatis diam nec orci varius, quis rhoncus lectus commodo. Duis magna lectus, viverra sed viverra vitae, gravida eu ante. Mauris elit elit, consequat in tortor non, suscipit placerat ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In vitae sem vel enim consequat porta ut eu eros.",
+    "social structure": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in commodo lectus. Fusce pretium cursus ligula sed cursus. Proin imperdiet, lorem ut sollicitudin porttitor, arcu eros sagittis justo, id ullamcorper magna metus id nibh. Maecenas venenatis diam nec orci varius, quis rhoncus lectus commodo. Duis magna lectus, viverra sed viverra vitae, gravida eu ante. Mauris elit elit, consequat in tortor non, suscipit placerat ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In vitae sem vel enim consequat porta ut eu eros.",
+    "communication": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in commodo lectus. Fusce pretium cursus ligula sed cursus. Proin imperdiet, lorem ut sollicitudin porttitor, arcu eros sagittis justo, id ullamcorper magna metus id nibh. Maecenas venenatis diam nec orci varius, quis rhoncus lectus commodo. Duis magna lectus, viverra sed viverra vitae, gravida eu ante. Mauris elit elit, consequat in tortor non, suscipit placerat ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In vitae sem vel enim consequat porta ut eu eros."
+  },
+
+  "abilities": {
+    "strengths": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in commodo lectus. Fusce pretium cursus ligula sed cursus. Proin imperdiet, lorem ut sollicitudin porttitor, arcu eros sagittis justo, id ullamcorper magna metus id nibh. Maecenas venenatis diam nec orci varius, quis rhoncus lectus commodo. Duis magna lectus, viverra sed viverra vitae, gravida eu ante. Mauris elit elit, consequat in tortor non, suscipit placerat ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In vitae sem vel enim consequat porta ut eu eros.",
+    "weaknesses": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in commodo lectus. Fusce pretium cursus ligula sed cursus. Proin imperdiet, lorem ut sollicitudin porttitor, arcu eros sagittis justo, id ullamcorper magna metus id nibh. Maecenas venenatis diam nec orci varius, quis rhoncus lectus commodo. Duis magna lectus, viverra sed viverra vitae, gravida eu ante. Mauris elit elit, consequat in tortor non, suscipit placerat ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In vitae sem vel enim consequat porta ut eu eros.",
+    "notable skills": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in commodo lectus. Fusce pretium cursus ligula sed cursus. Proin imperdiet, lorem ut sollicitudin porttitor, arcu eros sagittis justo, id ullamcorper magna metus id nibh. Maecenas venenatis diam nec orci varius, quis rhoncus lectus commodo. Duis magna lectus, viverra sed viverra vitae, gravida eu ante. Mauris elit elit, consequat in tortor non, suscipit placerat ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In vitae sem vel enim consequat porta ut eu eros."
+  },
+
+  "field notes": {
+    "danger level": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in commodo lectus. Fusce pretium cursus ligula sed cursus. Proin imperdiet, lorem ut sollicitudin porttitor, arcu eros sagittis justo, id ullamcorper magna metus id nibh. Maecenas venenatis diam nec orci varius, quis rhoncus lectus commodo. Duis magna lectus, viverra sed viverra vitae, gravida eu ante. Mauris elit elit, consequat in tortor non, suscipit placerat ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In vitae sem vel enim consequat porta ut eu eros.",
+    "signs of presence": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in commodo lectus. Fusce pretium cursus ligula sed cursus. Proin imperdiet, lorem ut sollicitudin porttitor, arcu eros sagittis justo, id ullamcorper magna metus id nibh. Maecenas venenatis diam nec orci varius, quis rhoncus lectus commodo. Duis magna lectus, viverra sed viverra vitae, gravida eu ante. Mauris elit elit, consequat in tortor non, suscipit placerat ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In vitae sem vel enim consequat porta ut eu eros.",
+    "approach advice": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in commodo lectus. Fusce pretium cursus ligula sed cursus. Proin imperdiet, lorem ut sollicitudin porttitor, arcu eros sagittis justo, id ullamcorper magna metus id nibh. Maecenas venenatis diam nec orci varius, quis rhoncus lectus commodo. Duis magna lectus, viverra sed viverra vitae, gravida eu ante. Mauris elit elit, consequat in tortor non, suscipit placerat ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In vitae sem vel enim consequat porta ut eu eros."
+  },
+
+  "extra information": [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in commodo lectus. Fusce pretium cursus ligula sed cursus. Proin imperdiet, lorem ut sollicitudin porttitor, arcu eros sagittis justo, id ullamcorper magna metus id nibh. Maecenas venenatis diam nec orci varius, quis rhoncus lectus commodo. Duis magna lectus, viverra sed viverra vitae, gravida eu ante. Mauris elit elit, consequat in tortor non, suscipit placerat ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In vitae sem vel enim consequat porta ut eu eros.",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in commodo lectus. Fusce pretium cursus ligula sed cursus. Proin imperdiet, lorem ut sollicitudin porttitor, arcu eros sagittis justo, id ullamcorper magna metus id nibh. Maecenas venenatis diam nec orci varius, quis rhoncus lectus commodo. Duis magna lectus, viverra sed viverra vitae, gravida eu ante. Mauris elit elit, consequat in tortor non, suscipit placerat ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In vitae sem vel enim consequat porta ut eu eros."
+  ],
+
+  "subspecies": [
+    {
+      "name": "Blorbo",
+      "latin name": "Blingus",
+      "description": ""
     }
+  ],
+
+  "tags": {
+    "Family": "Humanoid",
+    "Rarity": "Common",
+    "Origin": "Earth"
   }
-]
+}
