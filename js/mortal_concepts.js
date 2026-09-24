@@ -1195,7 +1195,7 @@ function createSpeciesCard(species) {
 
   const speciesPageUrl =
     speciesSlug
-      ? `mortal_concepts.html?species=${encodeURIComponent(speciesSlug)}`
+      ? `mortal_concepts_profile.html?species=${encodeURIComponent(speciesSlug)}`
       : "#"
 
   /* -------------------------------------------------------
