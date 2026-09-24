@@ -27,19 +27,19 @@
 
 <div class="page-container">
 
-    <h2 class="box__title_large">Species name</h2>
-    <h2 class="box__title">AKA names</h2>
-    <h2 class="box__title_small"><i>[Latin name]</i></h2>
+    <h2 id="concept-name" class="box__title_large"></h2>
+    <h2 id="aka-names" class="box__title"></h2>
+    <h2 id="latin-name" class="box__title_small"><i></i></h2>
 
-    <p class="box__text">
-      Descripton goes here
-    </p>
+    <p id="description" class="box__text"></p>
 
     <hr class="line_thin">
 
+
 <!-- Image + Quick facts -->
-<div class="box box--image-left">
-  <img class="box__image" src="https://placehold.co/400" alt="Description">
+<div id="quick-facts-section" class="box box--image-left">
+
+  <img id="concept-image" class="box__image" src="" alt="">
 
   <div class="box__content">
 
@@ -48,7 +48,7 @@
               <strong>Family</strong>
             </span>
 
-            <span class="info-value"></span>
+            <span id="quick-family" class="info-value"></span>
           </div>
 
         <hr class="line_thin">
@@ -58,7 +58,7 @@
               <strong>Rarity</strong>
             </span>
 
-            <span class="info-value"></span>
+            <span id="quick-rarity" class="info-value"></span>
           </div>
 
         <hr class="line_thin">
@@ -68,7 +68,7 @@
               <strong>Origin</strong>
             </span>
 
-            <span class="info-value"></span>
+            <span id="quick-origin" class="info-value"></span>
           </div>
 
         <hr class="line_thin">
@@ -78,7 +78,7 @@
               <strong>Range/Habitat</strong>
             </span>
 
-            <span class="info-value"></span>
+            <span id="quick-range" class="info-value"></span>
           </div>
 
         <hr class="line_thin">
@@ -88,7 +88,7 @@
               <strong>Lifespan</strong>
             </span>
 
-            <span class="info-value"></span>
+            <span id="quick-lifespan" class="info-value"></span>
           </div>
 
         <hr class="line_thin">
@@ -98,7 +98,7 @@
               <strong>Height/Build</strong>
             </span>
 
-            <span class="info-value"></span>
+            <span id="quick-height" class="info-value"></span>
           </div>
 
         <hr class="line_thin">
@@ -108,7 +108,7 @@
               <strong>Gender Ratio</strong>
             </span>
 
-            <span class="info-value"></span>
+            <span id="quick-gender" class="info-value"></span>
           </div>
 
         <hr class="line_thin">
@@ -118,7 +118,7 @@
               <strong>Diet</strong>
             </span>
 
-            <span class="info-value"></span>
+            <span id="quick-diet" class="info-value"></span>
           </div>
 
         <hr class="line_thin">
@@ -128,92 +128,81 @@
               <strong>Native Languages</strong>
             </span>
 
-            <span class="info-value"></span>
+            <span id="quick-languages" class="info-value"></span>
           </div>
 
   </div>
 </div>
 
+
 <!-- Behaviour -->
- <div class="text-box">
+<div id="behaviour-section" class="text-box">
+
   <h2 class="box__title">Behaviour</h2>
   
   <h2 class="box__title_small">Disposition</h2>
-  <p class="text-box__text">
-    Text
-  </p>
+  <p id="behaviour-disposition" class="text-box__text"></p>
   
   <h2 class="box__title_small">Social Structure</h2>
-  <p class="text-box__text">
-    Text
-  </p>
+  <p id="behaviour-social-structure" class="text-box__text"></p>
   
   <h2 class="box__title_small">Communication</h2>
-  <p class="text-box__text">
-    Text
-  </p>
+  <p id="behaviour-communication" class="text-box__text"></p>
+
 </div>
 
+
 <!-- Abilities -->
- <div class="text-box">
+<div id="abilities-section" class="text-box">
+
   <h2 class="box__title">Abilities</h2>
   
   <h2 class="box__title_small">Strengths</h2>
-  <p class="text-box__text">
-    Text
-  </p>
+  <p id="abilities-strengths" class="text-box__text"></p>
   
   <h2 class="box__title_small">Weaknesses</h2>
-  <p class="text-box__text">
-    Text
-  </p>
+  <p id="abilities-weaknesses" class="text-box__text"></p>
   
   <h2 class="box__title_small">Notable Skills</h2>
-  <p class="text-box__text">
-    Text
-  </p>
+  <p id="abilities-notable-skills" class="text-box__text"></p>
+
 </div>
 
-<!-- Field Notes-->
- <div class="text-box">
+
+<!-- Field Notes -->
+<div id="field-notes-section" class="text-box">
+
   <h2 class="box__title">Field Notes</h2>
   
   <h2 class="box__title_small">Danger Level</h2>
-  <p class="text-box__text">
-    Text
-  </p>
+  <p id="field-danger-level" class="text-box__text"></p>
   
   <h2 class="box__title_small">Signs Of Presence</h2>
-  <p class="text-box__text">
-    Text
-  </p>
+  <p id="field-signs-of-presence" class="text-box__text"></p>
   
   <h2 class="box__title_small">Approach Advice</h2>
-  <p class="text-box__text">
-    Text
-  </p>
+  <p id="field-approach-advice" class="text-box__text"></p>
+
 </div>
+
 
 <!-- Extra Information -->
- <div class="text-box">
-  <h2 class="box__title">Extra Information</h2>
+<div id="extra-information-section" class="text-box">
 
-  <p class="text-box__text">
-    Text
-  </p>
+  <h2 class="box__title">Extra Information</h2>
+  <div id="extra-information"></div>
+
 </div>
+
 
 <!-- Subspecies (optional) -->
- <div class="text-box">
-  <h2 class="box__title">Subspecies</h2>
+<div id="subspecies-section" class="text-box">
 
-    <h2 class="box__title_small">Name</h2>
-    <p class="text-box__text"><i>[Latin name]</i></p>
-    <p class="text-box__text">
-      Text
-    </p>
+  <h2 class="box__title">Subspecies</h2>
+  <div id="subspecies-container"></div>
 
 </div>
+
 
 </div>
 
