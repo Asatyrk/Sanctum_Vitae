@@ -4196,6 +4196,27 @@ body.faction-profile-page .breadcrumb-container {
   color: var(--color-text-muted);
 }
 
+#species-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: var(--space-5);
+
+  width: 100%;
+}
+
+.species-view-button {
+  display: block;
+
+  margin-top: var(--space-5);
+
+  flex-shrink: 0;
+
+  text-decoration: none;
+}
+
 /* =========================================================
     42. RESPONSIVE
 ========================================================= */
@@ -4390,6 +4411,11 @@ body.faction-profile-page .breadcrumb-container {
 
   .species-card__info .info-value {
     max-width: 50%;
+  }
+
+  #species-grid {
+    grid-template-columns:
+      1fr;
   }
 
 }

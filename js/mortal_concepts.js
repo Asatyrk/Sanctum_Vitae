@@ -1185,6 +1185,21 @@ function createSpeciesCard(species) {
       )
       .join("")
 
+
+  /* -------------------------------------------------------
+     Species URL
+  ------------------------------------------------------- */
+
+  const speciesSlug =
+    species.slug ||
+    slugify(species.name)
+
+
+  const speciesPageUrl =
+    speciesSlug
+      ? `mortal_concepts.html?species=${encodeURIComponent(speciesSlug)}`
+      : "#"
+
   /* -------------------------------------------------------
      Card HTML
   ------------------------------------------------------- */
@@ -1240,7 +1255,7 @@ function createSpeciesCard(species) {
         <div class="info-row">
 
           <span class="info-label">
-            Family
+            <strong>Family</strong>
           </span>
 
           <span class="info-value">
@@ -1255,7 +1270,7 @@ function createSpeciesCard(species) {
         <div class="info-row">
 
           <span class="info-label">
-            Rarity
+            <strong>Rarity</strong>
           </span>
 
           <span class="info-value">
@@ -1270,7 +1285,7 @@ function createSpeciesCard(species) {
         <div class="info-row">
 
           <span class="info-label">
-            Origin
+            <strong>Origin</strong>
           </span>
 
           <span class="info-value">
@@ -1285,7 +1300,7 @@ function createSpeciesCard(species) {
         <div class="info-row">
 
           <span class="info-label">
-            Gender Ratio
+            <strong>Gender Ratio</strong>
           </span>
 
           <span class="info-value">
@@ -1308,6 +1323,14 @@ function createSpeciesCard(species) {
 
       </div>
 
+
+      <a
+        class="story-read-button species-view-button"
+        href="${speciesPageUrl}"
+      >
+        View Species →
+      </a>
+
     </div>
 
   `
@@ -1316,6 +1339,7 @@ function createSpeciesCard(species) {
   return card
 
 }
+
 
 
 /* =========================================================

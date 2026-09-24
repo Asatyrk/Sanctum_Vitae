@@ -9,9 +9,17 @@
 <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
 
 <link rel="stylesheet" href="css/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
-  
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap"
+  rel="stylesheet"
+>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap"
+  rel="stylesheet"
+>
+
 <script defer src="js/layout.js"></script>
 <script defer src="js/breadcrumb.js"></script>
 <script defer src="js/page-title.js"></script>
@@ -19,59 +27,130 @@
 
 </head>
 
-<body data-page="Mortal Concepts" class="page-mortal-concepts">
+
+<body
+  data-page="Mortal_Concepts"
+  class="page-mortal-concepts"
+>
 
 <div id="site-header"></div>
 
-<div class="breadcrumb-container" aria-label="Breadcrumb"></div>
+<div
+  class="breadcrumb-container"
+  aria-label="Breadcrumb"
+></div>
+
 
 <div class="characters-layout">
 
-<!-- LEFT SIDEBAR -->
-<aside class="characters-sidebar">
+  <!-- LEFT SIDEBAR -->
 
-<div class="sidebar-section">
-    <label class="sidebar-label">Welcome to the humanoid species index, Mortal Concepts.</label> 
-</div>
+  <aside class="characters-sidebar">
 
-<div class="sidebar-section">
+    <div class="sidebar-section">
 
-<label class="sidebar-label">Search</label>
-<input id="search-input" type="search" placeholder="Search species…" />
+      <label class="sidebar-label">
+        Welcome to the humanoid species index, Mortal Concepts.
+      </label>
 
-</div>
+    </div>
 
-<div class="sidebar-section">
 
-<label class="sidebar-label">Sort</label>
+    <div class="sidebar-section">
 
-<select id="sort-select">
-<option value="name-asc" selected>Name A→Z</option>
-<option value="name-desc">Name Z→A</option>
-</select>
+      <label
+        class="sidebar-label"
+        for="search-input"
+      >
+        Search
+      </label>
 
-</div>
+      <input
+        id="search-input"
+        type="search"
+        placeholder="Search species…"
+      >
 
-<div class="sidebar-section">
+    </div>
 
-<label class="sidebar-label">Match Mode</label>
 
-<select id="match-mode">
-<option value="and" selected>All selected tags</option>
-<option value="or">Any selected tag</option>
-</select>
+    <div class="sidebar-section">
 
-</div>
+      <label
+        class="sidebar-label"
+        for="sort-select"
+      >
+        Sort
+      </label>
 
-<button id="clear-filters" class="sidebar-button">Clear Filters</button>
+      <select id="sort-select">
 
-<div id="tag-filters" class="tag-filters"></div>
+        <option
+          value="name-asc"
+          selected
+        >
+          Name A→Z
+        </option>
 
-</aside>
+        <option value="name-desc">
+          Name Z→A
+        </option>
 
-<main class="species-board">
+      </select>
+
+    </div>
+
+
+    <div class="sidebar-section">
+
+      <label
+        class="sidebar-label"
+        for="match-mode"
+      >
+        Match Mode
+      </label>
+
+      <select id="match-mode">
+
+        <option
+          value="and"
+          selected
+        >
+          All selected tags
+        </option>
+
+        <option value="or">
+          Any selected tag
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <button
+      id="clear-filters"
+      class="sidebar-button"
+    >
+      Clear Filters
+    </button>
+
+
+    <div
+      id="tag-filters"
+      class="tag-filters"
+    ></div>
+
+  </aside>
+
+
+  <!-- SPECIES BOARD -->
+
+  <main class="species-board">
+
     <div id="species-grid"></div>
-</main>
+
+  </main>
 
 </div>
 
