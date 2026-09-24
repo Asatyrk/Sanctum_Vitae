@@ -609,7 +609,6 @@ function populateBasicInformation(
   if(image){
 
     const imageUrl =
-      concept.headshot ||
       concept.fullbody ||
       ""
 
@@ -774,13 +773,6 @@ function populateQuickFacts(
 
     }
   )
-
-
-  /*
-   * The image is part of this same box.
-   * Keep the box if either an image or
-   * at least one quick fact exists.
-   */
 
   const image =
     document.getElementById(
