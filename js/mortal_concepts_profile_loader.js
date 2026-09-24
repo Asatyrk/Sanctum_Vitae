@@ -24,7 +24,7 @@ function text(value){
 }
 
 
-function getConcept(){
+function getSpecies(){
 
   const params =
     new URLSearchParams(
@@ -191,7 +191,7 @@ function slugify(value){
    FETCH
    ========================================================= */
 
-async function fetchConcepts(
+async function fetchSpecies(
   path
 ){
 
@@ -214,17 +214,17 @@ async function fetchConcepts(
 
 
 /* =========================================================
-   LOAD CONCEPT
+   LOAD SPECIES
    ========================================================= */
 
 async function loadMortalConcept(){
 
   const slug =
-    getConcept()
+    getSpecies()
 
   if(!slug){
 
-    showConceptError(
+    showSpeciesError(
       "No Species Selected",
       "No species was specified."
     )
@@ -235,28 +235,28 @@ async function loadMortalConcept(){
 
   try{
 
-    const conceptPath =
-      `mortal_concepts/${slug}.json`
+    const speciesPath =
+      `mortal_speciess/${slug}.json`
 
-    const concept =
-      await fetchConcepts(
-        conceptPath
+    const species =
+      await fetchSpecies(
+        speciesPath
       )
 
     if(
-      !concept ||
-      typeof concept !== "object" ||
-      Array.isArray(concept)
+      !species ||
+      typeof species !== "object" ||
+      Array.isArray(species)
     ){
 
       throw new Error(
-        `Invalid species data: ${conceptPath}`
+        `Invalid species data: ${speciesPath}`
       )
 
     }
 
     displayMortalConcept(
-      concept
+      species
     )
 
   }catch(error){
@@ -266,7 +266,7 @@ async function loadMortalConcept(){
       error
     )
 
-    showConceptError(
+    showSpeciesError(
       "Species Not Found",
       "The requested species could not be loaded."
     )
@@ -281,7 +281,7 @@ async function loadMortalConcept(){
    ERROR DISPLAY
    ========================================================= */
 
-function showConceptError(
+function showSpeciesError(
   title,
   message
 ){
@@ -302,14 +302,14 @@ function showConceptError(
 
 
 /* =========================================================
-   DISPLAY CONCEPT
+   DISPLAY SPECIES
    ========================================================= */
 
 function displayMortalConcept(
-  concept
+  species
 ){
 
-  if(!concept){
+  if(!species){
 
     return
 
@@ -318,7 +318,7 @@ function displayMortalConcept(
 
   const name =
     text(
-      concept.name
+      species.name
     )
 
 
@@ -376,7 +376,7 @@ function displayMortalConcept(
      ========================= */
 
   populateBasicInformation(
-    concept
+    species
   )
 
 
@@ -385,7 +385,7 @@ function displayMortalConcept(
      ========================= */
 
   populateQuickFacts(
-    concept.quick_facts
+    species.quick_facts
   )
 
 
@@ -394,7 +394,7 @@ function displayMortalConcept(
      ========================= */
 
   populateBehaviour(
-    concept.behaviour
+    species.behaviour
   )
 
 
@@ -403,7 +403,7 @@ function displayMortalConcept(
      ========================= */
 
   populateAbilities(
-    concept.abilities
+    species.abilities
   )
 
 
@@ -412,7 +412,7 @@ function displayMortalConcept(
      ========================= */
 
   populateFieldNotes(
-    concept["field notes"]
+    species["field notes"]
   )
 
 
@@ -421,7 +421,7 @@ function displayMortalConcept(
      ========================= */
 
   populateExtraInformation(
-    concept["extra information"]
+    species["extra information"]
   )
 
 
@@ -430,7 +430,7 @@ function displayMortalConcept(
      ========================= */
 
   populateSubspecies(
-    concept.subspecies
+    species.subspecies
   )
 
 }
@@ -441,7 +441,7 @@ function displayMortalConcept(
    ========================================================= */
 
 function populateBasicInformation(
-  concept
+  species
 ){
 
   /* =========================
@@ -450,19 +450,19 @@ function populateBasicInformation(
 
   const nameElement =
     document.getElementById(
-      "concept-name"
+      "species-name"
     )
 
   if(nameElement){
 
     nameElement.textContent =
       text(
-        concept.name
+        species.name
       )
 
     nameElement.hidden =
       !hasValue(
-        concept.name
+        species.name
       )
 
   }
@@ -479,9 +479,9 @@ function populateBasicInformation(
 
   const otherNames =
     Array.isArray(
-      concept["other names"]
+      species["other names"]
     )
-      ? concept["other names"].filter(
+      ? species["other names"].filter(
           Boolean
         )
       : []
@@ -524,7 +524,7 @@ function populateBasicInformation(
 
     if(
       hasValue(
-        concept["latin name"]
+        species["latin name"]
       )
     ){
 
@@ -536,12 +536,12 @@ function populateBasicInformation(
       if(italic){
 
         italic.textContent =
-          concept["latin name"]
+          species["latin name"]
 
       }else{
 
         latinElement.textContent =
-          concept["latin name"]
+          species["latin name"]
 
       }
 
@@ -574,12 +574,12 @@ function populateBasicInformation(
 
     if(
       hasValue(
-        concept.description
+        species.description
       )
     ){
 
       description.textContent =
-        concept.description
+        species.description
 
       description.hidden =
         false
@@ -603,21 +603,21 @@ function populateBasicInformation(
 
   const image =
     document.getElementById(
-      "concept-image"
+      "species-image"
     )
 
   if(image){
 
     const imageUrl =
-      concept.fullbody ||
-      concept.headshot ||
+      species.fullbody ||
+      species.headshot ||
       ""
 
     image.alt =
       hasValue(
-        concept.name
+        species.name
       )
-        ? `${concept.name} image`
+        ? `${species.name} image`
         : ""
 
     setImage(
@@ -777,7 +777,7 @@ function populateQuickFacts(
 
   const image =
     document.getElementById(
-      "concept-image"
+      "species-image"
     )
 
   const hasImage =

@@ -4,7 +4,7 @@
   "latin name": "Humanus Personus",
 
   "headshot": "https://f2.toyhou.se/file/f2-toyhou-se/images/128303846_OPKem5P8mwoFVoc.png",
-  "fullbody": "../assets/site_images/Newspaper_Background.png",
+  "fullbody": "assets/site_images/Newspaper_Background.png",
 
   "description": "Info about them, aydayada",
 
@@ -47,7 +47,7 @@
     {
       "name": "Blorbo",
       "latin name": "Blingus",
-      "description": ""
+      "description": "Yahoooo talkingtalking wpaapappa Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in commodo lectus. Fusce pretium cursus ligula sed cursus. Proin imperdiet, lorem ut sollicitudin porttitor, arcu eros sagittis justo, id ullamcorper magna metus id nibh. Maecenas venenatis diam nec orci varius, quis rhoncus lectus commodo. Duis magna lectus, viverra sed viverra vitae, gravida eu ante. Mauris elit elit, consequat in tortor non, suscipit placerat ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In vitae sem vel enim consequat porta ut eu eros."
     }
   ],
 
