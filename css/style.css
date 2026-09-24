@@ -4116,6 +4116,8 @@ body.faction-profile-page .breadcrumb-container {
 /* Subtitle */
 
 .species-card__subtitle {
+  margin: 0;
+
   color: var(--color-text-muted-light);
 
   font-family: var(--font-body);
