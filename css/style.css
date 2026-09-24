@@ -2443,8 +2443,6 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 
 .extras-palette-label {
   color: var(--char-primary);
-
-  font-weight: 600;
 }
 
 
@@ -3987,7 +3985,7 @@ body.faction-profile-page .breadcrumb-container {
 }
 
 /* =========================================================
-   SPECIES CARD
+   41. SPECIES CARD
 ========================================================= */
 
 .species-card {
@@ -3999,12 +3997,8 @@ body.faction-profile-page .breadcrumb-container {
 
   overflow: hidden;
 
-  background: var(--char-bg-2);
-  color: var(--char-secondary);
-
-  border:
-    1px solid
-    var(--char-accent);
+  background: var(--color-box-1);
+  color: var(--color-text-muted);
 
   border-radius: var(--border-radius-lg);
 
@@ -4012,9 +4006,7 @@ body.faction-profile-page .breadcrumb-container {
 }
 
 
-/* =========================================================
-   BANNER
-========================================================= */
+/* BANNER */
 
 .species-card__banner {
   position: relative;
@@ -4024,17 +4016,13 @@ body.faction-profile-page .breadcrumb-container {
 
   overflow: hidden;
 
-  background-color: var(--char-bg-1);
+  background-color: var(--color-box-2);
 
   background-image:
-    url("https://imgur.com/doRLRKk.png");
+    url("assets/site_images/Newspaper_Background.png");
 
   background-size: cover;
   background-position: center;
-
-  border-bottom:
-    1px solid
-    var(--char-accent);
 
   text-align: center;
 }
@@ -4078,9 +4066,7 @@ body.faction-profile-page .breadcrumb-container {
 }
 
 
-/* =========================================================
-   CONTENT
-========================================================= */
+/* CONTENT */
 
 .species-card__content {
   display: flex;
@@ -4091,20 +4077,18 @@ body.faction-profile-page .breadcrumb-container {
 
   padding: var(--space-5);
 
-  color: var(--char-secondary);
+  color: var(--color-text-muted);
 
   text-align: center;
 }
 
 
-/* =========================================================
-   TITLE
-========================================================= */
+/* TITLE */
 
 .species-card__title {
   margin: 0 0 var(--space-2);
 
-  color: var(--char-primary);
+  color: var(--color-text-dark);
 
   font-family: var(--font-display);
   font-size: var(--font-size-lg);
@@ -4116,27 +4100,21 @@ body.faction-profile-page .breadcrumb-container {
 }
 
 
-/* =========================================================
-   SUBTITLE
-========================================================= */
+/* SUBTITLE */
 
 .species-card__subtitle {
   margin: 0 0 var(--space-3);
 
-  color: var(--char-primary);
+  color: var(--color-text-muted-light);
 
   font-family: var(--font-body);
-  font-size: var(--font-size-base);
-
-  font-weight: bold;
+  font-size: var(--font-size-md);
 
   text-transform: uppercase;
 }
 
 
-/* =========================================================
-   INFORMATION
-========================================================= */
+/* INFORMATION */
 
 .species-card__info {
   display: flex;
@@ -4146,7 +4124,8 @@ body.faction-profile-page .breadcrumb-container {
 
   margin: var(--space-3) 0;
 
-  color: var(--char-primary);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
 }
 
 .species-card__info .info-row {
@@ -4169,7 +4148,7 @@ body.faction-profile-page .breadcrumb-container {
 .species-card__info .info-label {
   flex: 0 0 auto;
 
-  color: var(--char-primary);
+  color: var(--color-text-muted);
 
   text-transform: uppercase;
 }
@@ -4180,7 +4159,7 @@ body.faction-profile-page .breadcrumb-container {
 .species-card__info .info-value {
   max-width: 55%;
 
-  color: var(--char-primary);
+  color: var(--color-text-muted);
 
   text-align: right;
 
@@ -4188,9 +4167,7 @@ body.faction-profile-page .breadcrumb-container {
 }
 
 
-/* =========================================================
-   DESCRIPTION
-========================================================= */
+/* DESCRIPTION */
 
 .species-card__description {
   flex: 1;
@@ -4203,7 +4180,7 @@ body.faction-profile-page .breadcrumb-container {
 
   overflow-y: auto;
 
-  color: var(--char-secondary);
+  color: var(--color-text-muted);
 
   font-family: var(--font-body);
   font-size: var(--font-size-sm);
@@ -4216,11 +4193,11 @@ body.faction-profile-page .breadcrumb-container {
 .species-card__description p {
   margin: 0;
 
-  color: var(--char-secondary);
+  color: var(--color-text-muted);
 }
 
 /* =========================================================
-    41. RESPONSIVE
+    42. RESPONSIVE
 ========================================================= */
 
 @media (max-width: 768px) {

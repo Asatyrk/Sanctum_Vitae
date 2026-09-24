@@ -1185,19 +1185,6 @@ function createSpeciesCard(species) {
       )
       .join("")
 
-
-  /* -------------------------------------------------------
-     Banner
-     
-     You said the actual background will eventually
-     come from CSS, so this is deliberately just a
-     placeholder for now.
-  ------------------------------------------------------- */
-
-  const bannerPlaceholder =
-    "https://placehold.co/1200x400"
-
-
   /* -------------------------------------------------------
      Card HTML
   ------------------------------------------------------- */
@@ -1213,7 +1200,7 @@ function createSpeciesCard(species) {
       <img
         class="species-card__image"
         src="${escapeHtml(
-          species.headshot || bannerPlaceholder
+          species.headshot
         )}"
         alt="${escapeHtml(
           species.name
@@ -1253,7 +1240,7 @@ function createSpeciesCard(species) {
         <div class="info-row">
 
           <span class="info-label">
-            <strong>Family</strong>
+            Family
           </span>
 
           <span class="info-value">
@@ -1268,7 +1255,7 @@ function createSpeciesCard(species) {
         <div class="info-row">
 
           <span class="info-label">
-            <strong>Rarity</strong>
+            Rarity
           </span>
 
           <span class="info-value">
@@ -1283,7 +1270,7 @@ function createSpeciesCard(species) {
         <div class="info-row">
 
           <span class="info-label">
-            <strong>Origin</strong>
+            Origin
           </span>
 
           <span class="info-value">
@@ -1298,7 +1285,7 @@ function createSpeciesCard(species) {
         <div class="info-row">
 
           <span class="info-label">
-            <strong>Gender Ratio</strong>
+            Gender Ratio
           </span>
 
           <span class="info-value">
