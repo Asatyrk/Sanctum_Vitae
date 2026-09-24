@@ -4013,7 +4013,7 @@ body.faction-profile-page .breadcrumb-container {
 }
 
 
-/* BANNER */
+/* Banner */
 
 .species-card__banner {
   position: relative;
@@ -4030,12 +4030,15 @@ body.faction-profile-page .breadcrumb-container {
 
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 
   text-align: center;
+
+  flex-shrink: 0;
 }
 
 
-/* Semi-transparent strip behind character */
+/* Banner overlay */
 
 .species-card__banner-overlay {
   position: absolute;
@@ -4055,25 +4058,31 @@ body.faction-profile-page .breadcrumb-container {
 }
 
 
-/* Character image */
+/* Headshot */
 
 .species-card__image {
-  position: relative;
+  position: absolute;
+
   z-index: 2;
 
   display: block;
 
-  width: 75%;
-  height: 145px;
+  width: 65%;
+  height: 135px;
 
-  margin: 25px auto 0;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  margin: 0;
 
   object-fit: contain;
   object-position: center;
 }
 
 
-/* CONTENT */
+/* Content */
 
 .species-card__content {
   display: flex;
@@ -4090,7 +4099,7 @@ body.faction-profile-page .breadcrumb-container {
 }
 
 
-/* TITLE */
+/* Title */
 
 .species-card__title {
   margin: 0 0 var(--space-2);
@@ -4107,7 +4116,7 @@ body.faction-profile-page .breadcrumb-container {
 }
 
 
-/* SUBTITLE */
+/* Subtitle */
 
 .species-card__subtitle {
   margin: 0 0 var(--space-3);
@@ -4121,7 +4130,7 @@ body.faction-profile-page .breadcrumb-container {
 }
 
 
-/* INFORMATION */
+/* Information */
 
 .species-card__info {
   display: flex;
@@ -4134,6 +4143,7 @@ body.faction-profile-page .breadcrumb-container {
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
 }
+
 
 .species-card__info .info-row {
   display: flex;
@@ -4174,7 +4184,7 @@ body.faction-profile-page .breadcrumb-container {
 }
 
 
-/* DESCRIPTION */
+/* Description */
 
 .species-card__description {
   flex: 1;
@@ -4197,11 +4207,15 @@ body.faction-profile-page .breadcrumb-container {
   text-align: left;
 }
 
+
 .species-card__description p {
   margin: 0;
 
   color: var(--color-text-muted);
 }
+
+
+/* Species grid */
 
 #species-grid {
   display: flex;
@@ -4214,6 +4228,9 @@ body.faction-profile-page .breadcrumb-container {
 
   width: 100%;
 }
+
+
+/* Species button */
 
 .species-view-button {
   display: block;
