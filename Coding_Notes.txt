@@ -48,7 +48,7 @@ To do:
 - Global styles for front page + lore page.
 - Mockup and code lore
 - Code main page
-- Code: about, glossary, lore_hub, monstrous compendium, mortal concepts, nagivation, ora's guide.
+- Code: about, glossary, lore_hub, nagivation, ora's guide.
 |
 - Ensure page base is setup correctly
 - General cleanup + code revisions
