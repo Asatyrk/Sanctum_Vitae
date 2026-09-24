@@ -236,7 +236,7 @@ async function loadMortalConcept(){
   try{
 
     const speciesPath =
-      `mortal_speciess/${slug}.json`
+      `mortal_concepts/${slug}.json`
 
     const species =
       await fetchSpecies(
