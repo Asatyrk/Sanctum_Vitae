@@ -45,11 +45,24 @@ Particle shapes:
 To do:
 - Change favicon/icon (easy though, just replace files in assets folder)
 |
-- Global styles for front page + lore page.
 - Mockup and code lore
 - Code main page
-- Code: about, glossary, lore_hub, nagivation, ora's guide.
+- Code: glossary, lore_hub, nagivation, ora's guide.
 |
 - Ensure page base is setup correctly
 - General cleanup + code revisions
 - Other pages, but maybe just that for now
+
+---
+
+Future plans:
+- Host through cloudflare pages 
+    - Set up anti-ai scraping (and bots, generally)
+- Use cloudflare r2 for images
+    - Turn on hotlink protection
+    - Add a custom cache control header to make people store image for longer
+    - Billing alarm?
+    - Add _redirects to repo to make images automatically relative?
+- Custom domain
+    - Double check all paths are relative and not absolute
+    - Buy as a treatttt
