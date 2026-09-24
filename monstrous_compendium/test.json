@@ -7,6 +7,11 @@
     "rarity": "Common",
     "origin": "Earth",
     "gender ratio": "50% M/50% F",
-    "description": "Info about them, aydayada"
+    "description": "Info about them, aydayada",
+    "tags": {
+      "Family": "Humanoid",
+      "Rarity": "Common",
+      "Origin": "Earth"
+    }
   }
 ]

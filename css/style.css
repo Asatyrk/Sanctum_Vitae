@@ -3987,6 +3987,239 @@ body.faction-profile-page .breadcrumb-container {
 }
 
 /* =========================================================
+   SPECIES CARD
+========================================================= */
+
+.species-card {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  background: var(--char-bg-2);
+  color: var(--char-secondary);
+
+  border:
+    1px solid
+    var(--char-accent);
+
+  border-radius: var(--border-radius-lg);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BANNER
+========================================================= */
+
+.species-card__banner {
+  position: relative;
+
+  width: 100%;
+  height: 200px;
+
+  overflow: hidden;
+
+  background-color: var(--char-bg-1);
+
+  background-image:
+    url("https://imgur.com/doRLRKk.png");
+
+  background-size: cover;
+  background-position: center;
+
+  border-bottom:
+    1px solid
+    var(--char-accent);
+
+  text-align: center;
+}
+
+
+/* Semi-transparent strip behind character */
+
+.species-card__banner-overlay {
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  width: 100%;
+  height: 75px;
+
+  transform: translateY(-50%);
+
+  background: var(--color-white);
+
+  opacity: 0.5;
+
+  z-index: 1;
+}
+
+
+/* Character image */
+
+.species-card__image {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  width: 100%;
+  height: 175px;
+
+  margin-top: 12px;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.species-card__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  min-height: 0;
+
+  padding: var(--space-5);
+
+  color: var(--char-secondary);
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.species-card__title {
+  margin: 0 0 var(--space-2);
+
+  color: var(--char-primary);
+
+  font-family: var(--font-display);
+  font-size: var(--font-size-lg);
+  font-weight: normal;
+
+  line-height: 1.15;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.species-card__subtitle {
+  margin: 0 0 var(--space-3);
+
+  color: var(--char-primary);
+
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+
+  font-weight: bold;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   INFORMATION
+========================================================= */
+
+.species-card__info {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  margin: var(--space-3) 0;
+
+  color: var(--char-primary);
+}
+
+.species-card__info .info-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: var(--space-4);
+
+  width: 100%;
+
+  padding: var(--space-2) 0;
+
+  text-align: left;
+}
+
+
+/* Labels */
+
+.species-card__info .info-label {
+  flex: 0 0 auto;
+
+  color: var(--char-primary);
+
+  text-transform: uppercase;
+}
+
+
+/* Values */
+
+.species-card__info .info-value {
+  max-width: 55%;
+
+  color: var(--char-primary);
+
+  text-align: right;
+
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.species-card__description {
+  flex: 1;
+
+  min-height: 0;
+
+  padding:
+    0
+    var(--space-2);
+
+  overflow-y: auto;
+
+  color: var(--char-secondary);
+
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+
+  line-height: 1.8;
+
+  text-align: left;
+}
+
+.species-card__description p {
+  margin: 0;
+
+  color: var(--char-secondary);
+}
+
+/* =========================================================
     41. RESPONSIVE
 ========================================================= */
 
@@ -4156,6 +4389,30 @@ body.faction-profile-page .breadcrumb-container {
 
   body.story-profile-page .character-profile-card {
     grid-template-columns: 1fr;
+  }
+
+  /* -------------------------------------------------------
+     Species page
+  ------------------------------------------------------- */
+
+  .species-card__banner {
+    height: 180px;
+  }
+
+  .species-card__image {
+    height: 160px;
+  }
+
+  .species-card__content {
+    padding: var(--space-4);
+  }
+
+  .species-card__info .info-row {
+    gap: var(--space-3);
+  }
+
+  .species-card__info .info-value {
+    max-width: 50%;
   }
 
 }
