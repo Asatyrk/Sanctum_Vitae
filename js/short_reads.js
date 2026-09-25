@@ -60,10 +60,10 @@ async function loadStories() {
 
   try {
 
-    const response = await fetch("stories/index.json")
+    const response = await fetch("short_reads/index.json")
 
     if (!response.ok) {
-      throw new Error(`Failed to load stories/index.json`)
+      throw new Error(`Failed to load short_reads/index.json`)
     }
 
     const index = await response.json()
