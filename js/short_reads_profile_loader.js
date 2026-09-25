@@ -414,7 +414,7 @@ async function loadStory(){
   try{
 
     const storyPath =
-      `stories/${slug}.json`
+      `short_reads/${slug}.json`
 
     const story =
       await fetchStory(
@@ -427,7 +427,7 @@ async function loadStory(){
     )
 
     await setupStoryNavigation(
-      "stories/index.json"
+      "short_reads/index.json"
     )
 
   }catch(error){
