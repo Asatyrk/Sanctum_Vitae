@@ -1,21 +1,37 @@
 To add new:
 
 Character:
-- Create new .json in characters folder with profile info (use base)
-- Tags can be found in characters.js
+- Create new .json in characters folder with profile info (use base).
+- Tags can be found in characters.js.
 - Add to index.json so it shows up in layout (inc. headshot). 
 - Try to keep index in alphabetical order (refer to google sheets, A-Z auto-sorts).
 
-Stories/Factions:
-- Create new .json in stories/faction folder with story/faction info (use base)
-- Tags can be found in stories.js/factions.js
+Pet/Otherly-Owned:
+- Create new .json in pets/other-owned folder with profile info (use base).
+- Tags not needed.
+- Add to index.json so it shows up in layout (inc. headshot). 
+- Try to keep index in alphabetical order (not as needed).
+
+Stories/Factions/Short Reads:
+- Create new .json in stories/faction/short reads folder with story/faction/short reads info (use base).
+- Tags can be found in stories.js/factions.js/short_reads.js.
 - Add to index.json so it shows up in layout. 
 - Try to keep index in alphabetical order (not as needed).
 
+Species (mortal concept/monstrous compendium)
+- Create new .json in mortal concept/monstrous compendium folder with profile info (use base).
+- Tags can be found in mortal_concepts.js or monstrous_compendium.js.
+- Add to index.json so it shows up in layout. 
+- Add to character.js 'species' tag.
+- Try to keep index in order of tags in character.js (will A-Z autosort, but helps keep track).
+
+Page:
+- Make sure to add to header.html and navigation.html.
 
 ---
 
-Names should use _ for spaces
+Other Notes:
+- Names should use _ for spaces
 
 Image key:
 Headshot [1:1] = polaroid 
@@ -56,6 +72,7 @@ To do:
 ---
 
 Future plans:
+- New email?
 - Host through cloudflare pages 
     - Set up anti-ai scraping (and bots, generally)
 - Use cloudflare r2 for images
