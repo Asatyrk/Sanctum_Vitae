@@ -54,6 +54,13 @@
   "tags": {
     "Family": "Humanoid",
     "Rarity": "Common",
-    "Origin": "Earth"
+    "Origin": "Earth",
+    "Range/Habitat": ["Multiple Climates", "Arid", "Tropical", "Temperate", "Continental", "Mountainous", "Caverns/Caves", "Polar", "Wetland"],
+    "Lifespan": "Up to 100 years",
+    "Height":  ["~5ft","5-6ft","~6ft"],
+    "Build":  ["Various Builds", "Ectomorphic", "Mesomorphic", "Endomorphic", "Ecto-Mesomorphic [lean athletic]", "Meso-Endomorphic [stocky strong]", "Endo-Ectomorphic [skinny fat]"],
+    "Gender Ratio": ["50% M","50% F","0% I"],
+    "Diet": "Omnivore",
+    "Native Languages": ["Common (all variants)"]
   }
 }

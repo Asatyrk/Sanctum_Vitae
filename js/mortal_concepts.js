@@ -4,19 +4,179 @@
 
 const tagCategories = {
   "Family": [
-    "Humanoid"
+    "Humanoid",
+    "Elven",
+    "Orcish",
+    "Giantoid",
+    "Dwarfen",
+    "Goblinoid",
+    "Sealic",
+    "Mammilia",
+    "Scavid",
+    "Undead",
+    "Duokardie",
+    "Demonoid",
+    "Angeloid",
+    "Feliafluid",
+    "Unlabelled"
   ],
 
   "Rarity": [
+    "Extremely Common",
+    "Very Common",
     "Common",
+    "Fairly Common",
     "Uncommon",
+    "Fairly Uncommon",
     "Rare",
     "Very Rare",
-    "Extremely Rare"
+    "Extremely Rare",
+    "Believed Extinct"
   ],
 
   "Origin": [
-    "Earth"
+    "Baron",
+    "Earth",
+    "Stanton",
+    "Purgatory",
+    "Heather",
+    "Cloud 9",
+    "Tesga",
+    "Unknown"
+  ],
+
+  "Range/Habitat": [
+    "Multiple Climates",
+    "Arid",
+    "Tropical",
+    "Temperate",
+    "Continental",
+    "Mountainous",
+    "Caverns/Caves",
+    "Polar",
+    "Wetland"
+  ],
+
+  "Lifespan": [
+    "< 50 years",
+    "Up to 50 years",
+    "Up to 60 years",
+    "Up to 70 years",
+    "Up to 80 years",
+    "Up to 90 years",
+    "Up to 100 years",
+    "Up to 150 years",
+    "Up to 200 years",
+    "Up to 250 years",
+    "Up to 500 years",
+    "Up to 1000 years",
+    "> 1000 years",
+    "Immortal",
+    "Unknown"
+  ],
+
+  "Height": [
+    "Under 1ft",
+    "~1ft",
+    "1-2ft",
+    "~2ft",
+    "2-3ft",
+    "~3ft",
+    "3-4ft",
+    "~4ft",
+    "4-5ft",
+    "~5ft",
+    "5-6ft",
+    "~6ft",
+    "6-7ft",
+    "~7ft",
+    "7-8ft",
+    "~8ft",
+    "8-9ft",
+    "~9ft",
+    "9-10ft",
+    "~10ft",
+    "10-11ft",
+    "~11ft",
+    "11-12ft",
+    "~12ft",
+    "12-13ft",
+    "~13ft",
+    "13-14ft",
+    "~14ft",
+    "14-15ft",
+    "~15ft",
+    "15-20ft",
+    "~20ft",
+    "20-30ft",
+    "~30ft",
+    "Over 30ft",
+  ],
+
+  "Build": [
+    "Various Builds",
+    "Only Thinner Builds",
+    "Only Stocky Builds",
+    "Only Athletic Builds",
+    "Ectomorphic [thin]",
+    "Mesomorphic [athletic]",
+    "Endomorphic [stocky]",
+    "Ecto-Mesomorphic [lean athletic]",
+    "Meso-Endomorphic [stocky strong]",
+    "Endo-Ectomorphic [skinny fat]",
+  ],
+
+  "Gender Ratio": [
+    "0% M",
+    "10% M",
+    "20% M",
+    "30% M",
+    "40% M",
+    "50% M",
+    "60% M",
+    "70% M",
+    "80% M",
+    "90% M",
+    "100% M",
+    "0% F",
+    "10% F",
+    "20% F",
+    "30% F",
+    "40% F",
+    "50% F",
+    "60% F",
+    "70% F",
+    "80% F",
+    "90% F",
+    "100% F",
+    "0% I",
+    "10% I",
+    "20% I",
+    "30% I",
+    "40% I",
+    "50% I",
+    "60% I",
+    "70% I",
+    "80% I",
+    "90% I",
+    "100% I"
+  ],
+
+  "Diet": [
+    "Carnivore",
+    "Herbivore",
+    "Omnivore",
+    "Geophagia [Earth/Mud/Clay]",
+    "Keratophagy [Keratin]",
+    "Sanguivore [Blood]",
+    "Cannibalistic [Humanoid species]",
+    "Autocannibalistic [Own self]",
+    "Mordullavorous [Plasma/Life energy]"
+  ],
+
+  "Native Languages": [
+    "Common (all variants)",
+    "Common (specific variants"
   ]
 }
 

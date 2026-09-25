@@ -262,6 +262,7 @@ const tagCategories = {
     "Rotaur",
     "Veronix",
     "Aestrou",
+    "Earth",
     "Stanton",
     "Purgatory",
     "Heather",

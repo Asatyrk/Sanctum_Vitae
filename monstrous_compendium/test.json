@@ -52,8 +52,12 @@
   ],
 
   "tags": {
-    "Family": "Humanoid",
+    "Family": "Duokardie",
     "Rarity": "Common",
-    "Origin": "Earth"
+    "Origin": "Earth",
+    "Range/Habitat": ["Multiple Climates", "Arid", "Tropical", "Temperate", "Continental", "Mountainous", "Caverns/Caves", "Polar", "Wetland"],
+    "Lifespan": "Up to 100 years",
+    "Gender Ratio": ["50% M","50% F","0% I"],
+    "Diet": "Omnivore"
   }
 }
