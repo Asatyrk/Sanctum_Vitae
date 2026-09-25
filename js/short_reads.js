@@ -1042,7 +1042,7 @@ function createStoryCard(story) {
 
 const storySlug =
   story.url
-    ?.replace(/^short_read\//, "")
+    ?.replace(/^short_reads\//, "")
     .replace(/\.html$/, "")
 
 
