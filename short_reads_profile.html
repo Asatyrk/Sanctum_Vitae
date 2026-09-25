@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Short Read</title>
+<link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
+
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+
+<script defer src="js/layout.js"></script>
+<script defer src="js/breadcrumb.js"></script>
+<script defer src="js/short_reads_profile_loader.js"></script>
+
+</head>
+
+<body data-page="short read" class="character-profile-page story-profile-page">
+
+<div id="story-background" class="story-background" aria-hidden="true"></div>
+
+<div id="site-header"></div>
+
+<div class="breadcrumb-container" aria-label="Breadcrumb"></div>
+
+<div class="page-container">
+
+<div class="profile-navigation">
+
+  <a href="short_reads.html">
+    <span>← Back to Short Reads</span>
+  </a>
+
+  <span id="story-navigation"></span>
+
+</div>
+
+<!-- PROFILE CARD -->
+<div class="character-profile-card">
+  
+  <!-- Left Column: Avatar & Basic Info -->
+  <div class="story-profile-card-left ">
+    <div class="profile-avatar" id="avatar-image"></div>
+    <h1 id="name" class="profile-name"></h1>
+    <p class="story-page-tagline" hidden></p>
+    
+    <div class="profile-info-section">
+      <div class="info-row">
+        <span class="info-label">GENRE</span>
+        <span class="info-value" id="genre"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">AGE RANGE</span>
+        <span class="info-value" id="age-range"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">STATUS</span>
+        <span class="info-value" id="status"></span>
+      </div>
+      <hr class="info-divider">
+      
+      <div class="info-row">
+        <span class="info-label">STORY TYPE</span>
+        <span class="info-value" id="story-type"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Column: Full Body Image & Details -->
+  <div class="story-profile-card-right">
+    <div class="profile-banner" id="banner-image"></div>
+      
+    <div class="story-profile-description" id="description"></div>
+  </div>
+  
+</div>
+<!-- END PROFILE CARD -->
+
+<!-- CHARACTERS BOX -->
+<div id="relationships-section" class="relationships-section" hidden>
+
+  <div class="relationships-header">
+    <h2>Characters</h2>
+  </div>
+
+  <div id="relationships-container" class="relationships-container"></div>
+
+  <template id="relationship-template">
+
+    <div class="relationship-card">
+
+      <a class="relationship-avatar-link" target="_self">
+        <div class="relationship-avatar"></div>
+      </a>
+
+      <h2 class="relationship-name"></h2>
+
+      <p class="relationship-type"></p>
+
+    </div>
+
+  </template>
+
+</div>
+<!-- END CHARACTERS BOX -->
+
+<!-- STORY BOX -->
+<div class="character-detail-card character-detail-banner">
+
+  <div class="detail-banner-header">
+    <h2></h2>
+  </div>
+
+  <div class="detail-banner-content">
+
+    <div id="backstory"></div>
+
+  </div>
+
+</div>
+<!-- END STORY BOX -->
+
+</div>
+
+<div id="site-footer"></div>
+
+</body>
+
+</html>
