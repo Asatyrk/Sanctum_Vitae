@@ -117,6 +117,16 @@ function updateBreadcrumb(){
 
       break
 
+    case "short_reads_profile.html":
+
+      parent =
+        "Short Reads"
+
+      parentHref =
+        "short_reads.html"
+
+      break
+
 
   }
 
