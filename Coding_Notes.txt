@@ -47,7 +47,7 @@ To do:
 |
 - Mockup and code lore
 - Code main page
-- Code: glossary, lore_hub, nagivation, ora's guide.
+- Code: glossary, lore_hub, ora's guide.
 |
 - Ensure page base is setup correctly
 - General cleanup + code revisions
