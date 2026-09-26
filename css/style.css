@@ -939,7 +939,7 @@ body.character-profile-page {
 }
 
 .site-logo-text {
-  line-height: 0.9;
+  line-height: -0.9;
 }
 
 #header-page-title {
