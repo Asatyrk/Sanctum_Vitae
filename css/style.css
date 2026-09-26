@@ -13,11 +13,11 @@
   --color-accent: #a27d5f;
   --color-accent-light: #f7f3e8;
 
-  --color-box-1: #e9dac8;
-  --color-box-2: #ece2d6;
+  --color-box-1: #e9ddc8; /*Originally #e9dac8*/
+  --color-box-2: #ece5d6; /*Originally #ece2d6*/
 
   --color-light: #f4efe6;
-  --color-bg-light: #f3f1ec; /*Might make it #fff8e7 but need to change box 1/2 first*/
+  --color-bg-light: #fff8e7; /*Originally #f3f1ec*/
 
   --color-text-dark: #2b2b2b;
   --color-text-muted: #5a432e;
