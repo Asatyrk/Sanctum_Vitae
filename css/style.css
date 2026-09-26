@@ -936,7 +936,7 @@ body.character-profile-page {
 .site-logo-img {
   width: auto;
   height: 32px;
-  margin-top: var(--space-1)
+  margin-bottom: var(--space-1)
 }
 
 .site-logo-text {
