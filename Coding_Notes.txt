@@ -65,8 +65,6 @@ To do:
 - Code main page
 - Code: glossary, lore_hub, ora's guide.
 |
-- Ensure page base is setup correctly
-- General cleanup + code revisions
 - Other pages, but maybe just that for now
 
 ---
