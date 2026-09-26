@@ -936,10 +936,11 @@ body.character-profile-page {
 .site-logo-img {
   width: auto;
   height: 32px;
+  margin-top: var(--space-1)
 }
 
 .site-logo-text {
-  line-height: -0.9;
+  line-height: 1;
 }
 
 #header-page-title {
