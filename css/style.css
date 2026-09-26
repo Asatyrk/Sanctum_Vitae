@@ -925,6 +925,7 @@ body.character-profile-page {
 .site-logo {
   display: flex;
   align-items: center;
+  vertical-align: middle;
 
   gap: var(--space-2);
 
@@ -940,7 +941,6 @@ body.character-profile-page {
 
 #header-page-title {
   display: inline-block;
-  align-items: center;
 
   margin-left: var(--space-3);
 
