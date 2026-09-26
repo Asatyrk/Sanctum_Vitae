@@ -934,9 +934,12 @@ body.character-profile-page {
 }
 
 .site-logo-img {
-  vertical-align: middle;
   width: auto;
   height: 32px;
+}
+
+.site-logo-text {
+  line-height: 0.9;
 }
 
 #header-page-title {
