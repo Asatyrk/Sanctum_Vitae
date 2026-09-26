@@ -63,7 +63,7 @@ To do:
 |
 - Mockup and code lore
 - Code main page
-- Code: glossary, lore_hub, ora's guide.
+- Code: lore_hub and ora's guide.
 |
 - Other pages, but maybe just that for now
 
