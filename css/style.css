@@ -4350,7 +4350,108 @@ body.faction-profile-page .breadcrumb-container {
 }
 
 /* =========================================================
-    42. RESPONSIVE
+   42. PANTHEON
+========================================================= */
+
+.pantheons-section {
+  width: 100%;
+
+  margin-bottom: var(--space-4);
+}
+
+/* Pantheon grid */
+
+.pantheons-container {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(150px, 1fr)
+    );
+
+  gap: var(--space-4);
+
+  padding: var(--space-5);
+}
+
+
+/* Pantheon card */
+
+.pantheon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: var(--space-4);
+
+  background: var(--color-box-1);
+  color: var(--color-text-dark);
+
+  text-align: center;
+}
+
+
+/* Avatar */
+
+.pantheon-avatar-link {
+  display: block;
+
+  width: 120px;
+  height: 120px;
+
+  margin-bottom: var(--space-3);
+}
+
+.pantheon-avatar {
+  width: 120px;
+  height: 120px;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  background-color: var(--color-box-2);
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.pantheon-avatar-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+
+/* Name */
+
+.pantheon-name {
+  margin: 0 0 var(--space-1);
+
+  color: var(--color-text-muted);
+
+  font-family: var(--font-display);
+  font-size: var(--font-size-md);
+}
+
+
+/* Pantheon type */
+
+.god-title {
+  margin: 0;
+
+  color: var(--color-text-dark);
+
+  font-size: var(--font-size-sm);
+}
+
+/* =========================================================
+    43. RESPONSIVE
 ========================================================= */
 
 @media (max-width: 768px) {

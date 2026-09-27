@@ -60,11 +60,10 @@ Particle shapes:
 
 To do:
 - Change favicon/icon (easy though, just replace files in assets folder)
-|
-- Mockup and code lore
-- Code main page
-- Code: lore_hub and ora's guide.
-|
+- Code: 
+    - main page
+    - lore_hub
+    - ora's guide.
 - Other pages, but maybe just that for now
 
 ---

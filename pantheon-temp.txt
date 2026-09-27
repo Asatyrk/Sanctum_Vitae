@@ -1,0 +1,23 @@
+<!-- PANTHEON BOX -->
+<div id="pantheons-section" class="pantheons-section">
+
+  <div id="pantheons-container" class="pantheons-container"></div>
+
+  <template id="pantheon-template">
+
+    <div class="pantheon-card">
+
+      <a class="pantheon-avatar-link" target="_self">
+        <div class="pantheon-avatar"></div>
+      </a>
+
+      <h2 class="pantheon-name"></h2>
+
+      <p class="god-title"></p>
+
+    </div>
+
+  </template>
+
+</div>
+<!-- END PANTHEON BOX -->
