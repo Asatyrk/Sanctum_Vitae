@@ -1,172 +1,81 @@
-/* =========================================================
-   BREADCRUMB
-   ========================================================= */
-
 function updateBreadcrumb(){
-
-  const container =
-    document.querySelector(
-      ".breadcrumb-container"
-    )
+  const container = document.querySelector(".breadcrumb-container");
 
   if(!container){
-    return
+    return;
   }
 
-
-  /* =======================================================
-     PAGE NAME
-     ======================================================= */
-
-  const pageName =
-    document.body.dataset.page?.trim()
+  const pageName = document.body.dataset.page?.trim();
 
   if(!pageName){
-    return
+    return;
   }
 
+  const pathname = window.location.pathname
+    .split("/")
+    .pop()
+    .toLowerCase();
 
-  /* =======================================================
-     DETERMINE PAGE TYPE FROM URL
-     ======================================================= */
-
-  const pathname =
-    window.location.pathname
-      .split("/")
-      .pop()
-      .toLowerCase()
-
-
-  let parent = ""
-  let parentHref = ""
-
+  let parent = "";
+  let parentHref = "";
 
   switch(pathname){
-
     case "character_profile.html":
-
-      parent =
-        "Characters"
-
-      parentHref =
-        "characters.html"
-
-      break
-
+      parent = "Characters";
+      parentHref = "characters.html";
+      break;
 
     case "pet_profile.html":
-
-      parent =
-        "Pets"
-
-      parentHref =
-        "pets.html"
-
-      break
-
+      parent = "Pets";
+      parentHref = "pets.html";
+      break;
 
     case "otherly_owned_profile.html":
-
-      parent =
-        "Otherly-Owned"
-
-      parentHref =
-        "otherly_owned.html"
-
-      break
-
+      parent = "Otherly-Owned";
+      parentHref = "otherly_owned.html";
+      break;
 
     case "story_profile.html":
-
-      parent =
-        "Stories"
-
-      parentHref =
-        "stories.html"
-
-      break
-
+      parent = "Stories";
+      parentHref = "stories.html";
+      break;
 
     case "faction_profile.html":
-
-      parent =
-        "Factions"
-
-      parentHref =
-        "factions.html"
-
-      break
+      parent = "Factions";
+      parentHref = "factions.html";
+      break;
 
     case "mortal_concepts_profile.html":
-
-      parent =
-        "Mortal Concepts"
-
-      parentHref =
-        "mortal_concepts.html"
-
-      break
+      parent = "Mortal Concepts";
+      parentHref = "mortal_concepts.html";
+      break;
 
     case "monstrous_compendium_profile.html":
-
-      parent =
-        "Monstrous Compendium"
-
-      parentHref =
-        "monstrous_compendium.html"
-
-      break
+      parent = "Monstrous Compendium";
+      parentHref = "monstrous_compendium.html";
+      break;
 
     case "short_reads_profile.html":
-
-      parent =
-        "Short Reads"
-
-      parentHref =
-        "short_reads.html"
-
-      break
-
-
+      parent = "Short Reads";
+      parentHref = "short_reads.html";
+      break;
   }
 
-
-  /* =======================================================
-     BUILD TRAIL
-     ======================================================= */
-
-  let trail = []
-
-
-  /* =========================
-     HOME
-     ========================= */
+  let trail = [];
 
   if(
-    pageName.toLowerCase() ===
-    "home"
+    pageName.toLowerCase() === "home"
   ){
-
     trail = [
-
       {
         name: "Home",
         href: "home.html"
       }
-
-    ]
-
+    ];
   }
 
-
-  /* =========================
-     PROFILE PAGE
-     ========================= */
-
   else if(parent){
-
     trail = [
-
       {
         name: "Home",
         href: "home.html"
@@ -180,20 +89,11 @@ function updateBreadcrumb(){
       {
         name: pageName
       }
-
-    ]
-
+    ];
   }
 
-
-  /* =========================
-     NORMAL TOP-LEVEL PAGE
-     ========================= */
-
   else {
-
     trail = [
-
       {
         name: "Home",
         href: "home.html"
@@ -202,61 +102,24 @@ function updateBreadcrumb(){
       {
         name: pageName
       }
-
-    ]
-
+    ];
   }
 
+  container.innerHTML = trail
+    .map((item, index) => {
+      const isCurrent = index === trail.length - 1;
 
-  /* =======================================================
-     RENDER
-     ======================================================= */
+      const separator = index > 0 ? `<span class="breadcrumb-separator">/</span>` : "";
 
-  container.innerHTML =
-    trail
-      .map(
-        (item, index) => {
+      const content = isCurrent
+        ? `<span class="breadcrumb-current">${item.name}</span>`
+        : `<a class="breadcrumb-link" href="${item.href}">${item.name}</a>`;
 
-          const isCurrent =
-            index ===
-            trail.length - 1
-
-
-          const separator =
-            index > 0
-              ? `<span class="breadcrumb-separator">/</span>`
-              : ""
-
-
-          const content =
-            isCurrent
-
-              ? `<span class="breadcrumb-current">${item.name}</span>`
-
-              : `<a class="breadcrumb-link" href="${item.href}">${item.name}</a>`
-
-
-          return (
-            separator +
-            content
-          )
-
-        }
-      )
-      .join("")
-
+      return separator + content;
+    })
+    .join("");
 }
 
-
-/* =========================================================
-   INITIAL LOAD
-   ========================================================= */
-
-document.addEventListener(
-  "DOMContentLoaded",
-  () => {
-
-    updateBreadcrumb()
-
-  }
-)
+document.addEventListener("DOMContentLoaded", () => {
+  updateBreadcrumb();
+});

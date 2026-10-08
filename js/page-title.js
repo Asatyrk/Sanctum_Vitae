@@ -1,9 +1,6 @@
- /* Title */
-
- document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const pageName = document.body.dataset.page?.trim() || "Untitled";
 
-  // Wait for the header to be injected and .site-logo-text to exist
   function waitForElement(selector, timeout = 5000) {
     return new Promise((resolve, reject) => {
       const el = document.querySelector(selector);
@@ -34,7 +31,6 @@
         logoTextEl.textContent = `Sanctum Vitae | ${pageName}`;
       }
 
-      // Also update the browser tab
       document.title = `Sanctum Vitae | ${pageName}`;
     })
     .catch(err => console.warn(err));

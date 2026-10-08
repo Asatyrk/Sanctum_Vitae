@@ -1,13 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-  /*
-   * ============================================================
-   * CHARACTER GROUPS
-   * ============================================================
-   */
-
   const characterGroups = {
-
     highGods: [
       "test",
       "test",
@@ -44,25 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
     retiredGods: [
       "test"
     ]
-
   };
-
-
-  /*
-   * ============================================================
-   * PATHS
-   * ============================================================
-   */
 
   const CHARACTER_JSON_PATH = "characters/";
   const CHARACTER_PROFILE_PAGE = "character_profile.html";
-
-
-  /*
-   * ============================================================
-   * GROUP CONTAINERS
-   * ============================================================
-   */
 
   const groupContainers = {
     highGods: document.getElementById("pantheon-high-gods"),
@@ -74,38 +51,15 @@ document.addEventListener("DOMContentLoaded", () => {
     retiredGods: document.getElementById("pantheon-retired-gods")
   };
 
-
-  /*
-   * ============================================================
-   * TEMPLATE
-   * ============================================================
-   */
-
   const template = document.getElementById("pantheon-template");
 
-
   if (!template) {
-    console.error(
-      "Pantheon JS: #pantheon-template was not found."
-    );
+    console.error("Pantheon JS: #pantheon-template was not found.");
     return;
   }
 
-
-  /*
-   * ============================================================
-   * CREATE CHARACTER CARD
-   * ============================================================
-   */
-
   async function createCharacterCard(characterId) {
-
     try {
-
-      /*
-       * Load the character JSON.
-       */
-
       const response = await fetch(
         `${CHARACTER_JSON_PATH}${encodeURIComponent(characterId)}.json`,
         {
@@ -113,23 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       );
 
-
       if (!response.ok) {
-        throw new Error(
-          `HTTP ${response.status} while loading ${characterId}.json`
-        );
+        throw new Error(`HTTP ${response.status} while loading ${characterId}.json`);
       }
-
 
       const data = await response.json();
 
-
-      /*
-       * Clone the HTML template.
-       */
-
       const card = template.content.cloneNode(true);
-
 
       const cardElement = card.querySelector(".pantheon-card");
       const avatarLink = card.querySelector(".pantheon-avatar-link");
@@ -137,21 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const nameElement = card.querySelector(".pantheon-name");
       const titleElement = card.querySelector(".god-title");
 
-
-      /*
-       * ========================================================
-       * NAME
-       * ========================================================
-       */
-
       nameElement.textContent = data.name;
-
-
-      /*
-       * ========================================================
-       * GOD TITLE
-       * ========================================================
-       */
 
       if (
         Array.isArray(data.occupation) &&
@@ -162,25 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
         titleElement.textContent = "";
       }
 
-
-      /*
-       * ========================================================
-       * PROFILE LINK
-       * ========================================================
-       */
-
-      avatarLink.href =
-        `${CHARACTER_PROFILE_PAGE}?char=${encodeURIComponent(characterId)}`;
-
-
-      /*
-       * ========================================================
-       * AVATAR
-       * ========================================================
-       */
+      avatarLink.href = `${CHARACTER_PROFILE_PAGE}?char=${encodeURIComponent(characterId)}`;
 
       if (data.avatar) {
-
         const image = document.createElement("img");
 
         image.src = data.avatar;
@@ -188,51 +102,24 @@ document.addEventListener("DOMContentLoaded", () => {
         image.loading = "lazy";
 
         avatarContainer.appendChild(image);
-
       }
-
-
-      /*
-       * Store the character ID on the card.
-       */
 
       cardElement.dataset.character = characterId;
 
-
       return card;
-
-
     } catch (error) {
-
-      console.error(
-        `Pantheon JS: Failed to load "${characterId}.json".`,
-        error
-      );
-
+      console.error(`Pantheon JS: Failed to load "${characterId}.json".`, error);
       return null;
-
     }
-
   }
 
-
-  /*
-   * ============================================================
-   * LOAD ONE GROUP
-   * ============================================================
-   */
-
   async function loadGroup(groupName) {
-
     const container = groupContainers[groupName];
 
     if (!container) {
-      console.error(
-        `Pantheon JS: Container for "${groupName}" was not found.`
-      );
+      console.error(`Pantheon JS: Container for "${groupName}" was not found.`);
       return;
     }
-
 
     const characters = characterGroups[groupName];
 
@@ -240,54 +127,24 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-
-    /*
-     * Load all characters in this group.
-     */
-
     const cards = await Promise.all(
       characters.map(characterId =>
         createCharacterCard(characterId)
       )
     );
 
-
-    /*
-     * Add cards in the same order as the character list.
-     */
-
     cards.forEach(card => {
-
       if (card) {
         container.appendChild(card);
       }
-
     });
-
   }
 
-
-  /*
-   * ============================================================
-   * LOAD ALL GROUPS
-   * ============================================================
-   */
-
   async function loadAllGroups() {
-
     for (const groupName of Object.keys(characterGroups)) {
       await loadGroup(groupName);
     }
-
   }
 
-
-  /*
-   * ============================================================
-   * START
-   * ============================================================
-   */
-
   loadAllGroups();
-
 });
