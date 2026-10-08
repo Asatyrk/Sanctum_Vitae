@@ -5,6 +5,7 @@ Character:
 - Tags can be found in characters.js.
 - Add to index.json so it shows up in layout (inc. headshot). 
 - Try to keep index in alphabetical order (refer to google sheets, A-Z auto-sorts).
+- For Gods: Make sure first occupation is 'God of x', and add to pantheons.js
 
 Pet/Otherly-Owned:
 - Create new .json in pets/other-owned folder with profile info (use base).

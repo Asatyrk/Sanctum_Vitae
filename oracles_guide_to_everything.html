@@ -15,6 +15,7 @@
 <script defer src="js/layout.js"></script>
 <script defer src="js/breadcrumb.js"></script>
 <script defer src="js/page-title.js"></script>
+<script defer src="js/pantheons.js"></script>
 
 </head>
 
@@ -71,6 +72,7 @@
         <li><a href="#LifeforceChronicles">Lifeforce Chronicles</a></li>
         <li><a href="#ArcanePrinciples">Arcane Principles</a></li>
     </ul>
+    <li><a href="#GodlyPantheon">Godly Pantheon</a></li>
     <!-- Add more here -->
   </ul>
 </details>
@@ -473,8 +475,68 @@
 
 <hr class="line">
 
+<!-- Godly Pantheon -->
+<h2 id="GodlyPantheon" class="text-box__title"><a href="#GodlyPantheon">Godly Pantheon</a></h2>
+<div id="pantheons-section" class="pantheons-section">
+
+  <section class="pantheon-group">
+    <h2 class="pantheon-group-title">High Gods</h2>
+    <div id="pantheon-high-gods" class="pantheons-container"></div>
+  </section>
+
+  <section class="pantheon-group">
+    <h2 class="pantheon-group-title">Core Gods</h2>
+    <div id="pantheon-core-gods" class="pantheons-container"></div>
+  </section>
+
+  <section class="pantheon-group">
+    <h2 class="pantheon-group-title">Primary Gods</h2>
+    <div id="pantheon-primary-gods" class="pantheons-container"></div>
+  </section>
+
+  <section class="pantheon-group">
+    <h2 class="pantheon-group-title">General Gods</h2>
+    <div id="pantheon-general-gods" class="pantheons-container"></div>
+  </section>
+
+  <section class="pantheon-group">
+    <h2 class="pantheon-group-title">Minor Gods</h2>
+    <div id="pantheon-minor-gods" class="pantheons-container"></div>
+  </section>
+
+  <section class="pantheon-group">
+    <h2 class="pantheon-group-title">Training Gods</h2>
+    <div id="pantheon-training-gods" class="pantheons-container"></div>
+  </section>
+
+  <section class="pantheon-group">
+    <h2 class="pantheon-group-title">Retired Gods</h2>
+    <div id="pantheon-retired-gods" class="pantheons-container"></div>
+  </section>
 
 
+  <!-- CARD TEMPLATE -->
+  <template id="pantheon-template">
+
+    <div class="pantheon-card">
+
+      <a class="pantheon-avatar-link" target="_self">
+        <div class="pantheon-avatar"></div>
+      </a>
+
+      <h2 class="pantheon-name"></h2>
+
+      <p class="god-title"></p>
+
+    </div>
+
+  </template>
+
+</div>
+
+<hr class="line">
+
+<!-- Next box here lol -->
 
 </div>
 

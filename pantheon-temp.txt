@@ -1,8 +1,43 @@
-<!-- PANTHEON BOX -->
+<!-- PANTHEONS SECTION -->
 <div id="pantheons-section" class="pantheons-section">
 
-  <div id="pantheons-container" class="pantheons-container"></div>
+  <section class="pantheon-group">
+    <h2 class="pantheon-group-title">High Gods</h2>
+    <div id="pantheon-high-gods" class="pantheons-container"></div>
+  </section>
 
+  <section class="pantheon-group">
+    <h2 class="pantheon-group-title">Core Gods</h2>
+    <div id="pantheon-core-gods" class="pantheons-container"></div>
+  </section>
+
+  <section class="pantheon-group">
+    <h2 class="pantheon-group-title">Primary Gods</h2>
+    <div id="pantheon-primary-gods" class="pantheons-container"></div>
+  </section>
+
+  <section class="pantheon-group">
+    <h2 class="pantheon-group-title">General Gods</h2>
+    <div id="pantheon-general-gods" class="pantheons-container"></div>
+  </section>
+
+  <section class="pantheon-group">
+    <h2 class="pantheon-group-title">Minor Gods</h2>
+    <div id="pantheon-minor-gods" class="pantheons-container"></div>
+  </section>
+
+  <section class="pantheon-group">
+    <h2 class="pantheon-group-title">Training Gods</h2>
+    <div id="pantheon-training-gods" class="pantheons-container"></div>
+  </section>
+
+  <section class="pantheon-group">
+    <h2 class="pantheon-group-title">Retired Gods</h2>
+    <div id="pantheon-retired-gods" class="pantheons-container"></div>
+  </section>
+
+
+  <!-- CARD TEMPLATE -->
   <template id="pantheon-template">
 
     <div class="pantheon-card">
@@ -20,4 +55,4 @@
   </template>
 
 </div>
-<!-- END PANTHEON BOX -->
+<!-- END PANTHEONS SECTION -->
