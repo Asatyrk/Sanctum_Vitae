@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     highGods: [
       "test",
-      "person"
+      "test_friend"
     ],
 
     coreGods: [
@@ -46,8 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
    * ============================================================
    */
 
-  const CHARACTER_JSON_PATH = "/characters/";
-  const CHARACTER_PROFILE_PAGE = "/character_profile.html";
+  const CHARACTER_JSON_PATH = "characters/";
+  const CHARACTER_PROFILE_PAGE = "character_profile.html";
 
 
   /*

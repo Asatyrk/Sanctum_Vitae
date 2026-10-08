@@ -4414,6 +4414,22 @@ body.faction-profile-page .breadcrumb-container {
   padding: var(--space-5);
 }
 
+/* Pantheon group */
+
+.pantheon-group{
+  padding: var(--space-2);
+}
+
+.pantheon-group-title{
+  margin: 0 0 var(--space-2);
+
+  font-family: var(--font-display);
+  font-size: var(--font-size-lg);
+  font-weight: normal;
+  line-height: 1.15;
+  color: var(--color-primary-dark);
+}
+
 
 /* Pantheon card */
 
