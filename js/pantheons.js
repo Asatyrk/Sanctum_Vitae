@@ -10,6 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     highGods: [
       "test",
+      "test",
+      "test",
+      "test",
+      "test",
+      "test",
+      "test",
+      "test",
+      "test",
       "test_friend"
     ],
 
