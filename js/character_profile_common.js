@@ -239,8 +239,6 @@ function applyCharacterTextGradient(character) {
       ? colors.text_gradient
       : null
 
-  // No text_gradient: leave the existing primary/secondary
-  // text colours alone and don't apply gradient classes.
   if (!textGradient) {
     root.classList.remove("has-text-gradient")
 
@@ -255,7 +253,6 @@ function applyCharacterTextGradient(character) {
     return
   }
 
-  // text_gradient exists and has at least 2 colours
   root.style.setProperty(
     "--char-text-gradient",
     `linear-gradient(
@@ -359,8 +356,6 @@ function setupCharacterBackground(character){
       shape
 
 
-    // Size
-
     let size
 
     if(randomSize){
@@ -375,8 +370,6 @@ function setupCharacterBackground(character){
 
     }
 
-
-    // Position and animation
 
     const left =
       Math.random() * 100
@@ -574,10 +567,6 @@ async function displayCharacter(character){
     text(character.name)
 
 
-  // =========================
-  // HEADER
-  // =========================
-
   const headerLogoText =
     document.querySelector(
       ".site-logo-text"
@@ -605,10 +594,6 @@ async function displayCharacter(character){
   }
 
 
-  // =========================
-  // NAME
-  // =========================
-
   const nameEl =
     document.getElementById(
       "name"
@@ -621,10 +606,6 @@ async function displayCharacter(character){
 
   }
 
-
-  // =========================
-  // AVATAR
-  // =========================
 
   const avatarImage =
     document.getElementById(
@@ -647,10 +628,6 @@ async function displayCharacter(character){
   }
 
 
-  // =========================
-  // BANNER
-  // =========================
-
   const bannerImage =
     document.getElementById(
       "banner-image"
@@ -672,10 +649,6 @@ async function displayCharacter(character){
   }
 
 
-  // =========================
-  // FULLBODY
-  // =========================
-
   const designImage =
     document.getElementById(
       "design-image"
@@ -696,10 +669,6 @@ async function displayCharacter(character){
 
   }
 
-
-    // =========================
-  // DECOR IMAGE
-  // =========================
 
   const decorImage =
     character.decorImage
@@ -770,10 +739,6 @@ async function displayCharacter(character){
     }
   )
 
-
-  // =========================
-  // BASIC / DETAIL INFORMATION
-  // =========================
 
   const map = {
 
@@ -1035,10 +1000,6 @@ async function displayCharacter(character){
   )
 
 
-  // =========================
-  // PROFILE NOTES
-  // =========================
-
   const profileNotes =
     document.getElementById(
       "profile-notes"
@@ -1067,10 +1028,6 @@ async function displayCharacter(character){
 
   }
 
-
-  // =========================
-  // DESIGN NOTES
-  // =========================
 
   const designNotes =
     document.getElementById(
@@ -1104,10 +1061,6 @@ async function displayCharacter(character){
   }
 
 
-  // =========================
-  // PERSONALITY NOTES
-  // =========================
-
   const personalityNotes =
     document.getElementById(
       "personality-notes"
@@ -1139,10 +1092,6 @@ async function displayCharacter(character){
 
   }
 
-
-  // =========================
-  // LIKES
-  // =========================
 
   const likes =
     document.getElementById(
@@ -1176,10 +1125,6 @@ async function displayCharacter(character){
   }
 
 
-  // =========================
-  // DISLIKES
-  // =========================
-
   const dislikes =
     document.getElementById(
       "dislikes"
@@ -1211,10 +1156,6 @@ async function displayCharacter(character){
 
   }
 
-
-  // =========================
-  // HEALTH NOTES
-  // =========================
 
   const healthNotes =
     document.getElementById(
@@ -1248,10 +1189,6 @@ async function displayCharacter(character){
   }
 
 
-  // =========================
-  // BACKGROUND NOTES
-  // =========================
-
   const backgroundNotes =
     document.getElementById(
       "background-notes"
@@ -1283,10 +1220,6 @@ async function displayCharacter(character){
 
   }
 
-  // =========================
-  // BACKSTORY
-  // =========================
-
   const backstory =
     document.getElementById(
       "backstory"
@@ -1303,11 +1236,6 @@ async function displayCharacter(character){
       text(backstoryText)
 
   }
-
-
-  // =========================
-  // TRIVIA
-  // =========================
 
   const trivia =
     document.getElementById(
@@ -1336,10 +1264,6 @@ async function displayCharacter(character){
     }
 
   }
-
-    // =========================
-  // EXTRAS
-  // =========================
 
   const extrasImage =
     document.getElementById(
@@ -1471,10 +1395,6 @@ async function displayCharacter(character){
 }
 
 
-    // =========================
-    // SKIN
-    // =========================
-
     if(
       Array.isArray(palette.skin)
     ){
@@ -1491,11 +1411,6 @@ async function displayCharacter(character){
       )
 
     }
-
-
-    // =========================
-    // HAIR
-    // =========================
 
     if(
       Array.isArray(palette.hair)
@@ -1514,11 +1429,6 @@ async function displayCharacter(character){
 
     }
 
-
-    // =========================
-    // EYES
-    // =========================
-
     if(
       Array.isArray(palette.eyes)
     ){
@@ -1535,11 +1445,6 @@ async function displayCharacter(character){
       )
 
     }
-
-
-    // =========================
-    // OTHER
-    // =========================
 
     if(
       Array.isArray(palette.other)
@@ -1573,11 +1478,6 @@ async function displayCharacter(character){
 
     }
 
-
-    // =========================
-    // EMPTY PALETTE
-    // =========================
-
     if(
       extrasPalette.children.length === 0
     ){
@@ -1588,10 +1488,6 @@ async function displayCharacter(character){
     }
 
   }
-
-  // =========================
-  // SHARED PROFILE SECTIONS
-  // =========================
 
   await setupPartners(
     character
@@ -1853,8 +1749,6 @@ async function setupPartners(character){
         )
 
 
-      // Partner avatar
-
       const avatar =
         partnerCard.querySelector(
           ".partner-avatar"
@@ -1869,8 +1763,6 @@ async function setupPartners(character){
 
       }
 
-
-      // Partner link
 
 const avatarLink =
   partnerCard.querySelector(
@@ -1888,8 +1780,6 @@ if(avatarLink){
 
 
 
-      // Partner name
-
       const name =
         partnerCard.querySelector(
           ".partner-name"
@@ -1904,8 +1794,6 @@ if(avatarLink){
 
       }
 
-
-      // Partner age
 
       const age =
         partnerCard.querySelector(
@@ -1922,8 +1810,6 @@ if(avatarLink){
       }
 
 
-      // Partner species
-
       const species =
         partnerCard.querySelector(
           ".partner-species"
@@ -1938,8 +1824,6 @@ if(avatarLink){
 
       }
 
-
-      // Partner gender
 
       const gender =
         partnerCard.querySelector(
@@ -1956,8 +1840,6 @@ if(avatarLink){
       }
 
 
-      // Partner pronouns
-
       const pronouns =
         partnerCard.querySelector(
           ".partner-pronouns"
@@ -1972,8 +1854,6 @@ if(avatarLink){
 
       }
 
-
-      // Relationship
 
       const relationship =
         partnerCard.querySelector(
@@ -1990,8 +1870,6 @@ if(avatarLink){
       }
 
 
-      // Status
-
       const status =
         partnerCard.querySelector(
           ".partner-status"
@@ -2006,8 +1884,6 @@ if(avatarLink){
 
       }
 
-
-      // Dynamic
 
       const dynamic =
         partnerCard.querySelector(
@@ -2024,8 +1900,6 @@ if(avatarLink){
       }
 
 
-      // Since
-
       const since =
         partnerCard.querySelector(
           ".partner-since"
@@ -2040,8 +1914,6 @@ if(avatarLink){
 
       }
 
-
-      // Notes
 
       const notes =
         partnerCard.querySelector(
@@ -2212,8 +2084,6 @@ async function setupRelationships(character){
         )
 
 
-      // Profile link
-
 const characterLink =
   relationshipCard.querySelector(
     ".relationship-avatar-link"
@@ -2230,8 +2100,6 @@ if(characterLink){
 
 
 
-      // Avatar
-
       const avatar =
         relationshipCard.querySelector(
           ".relationship-avatar"
@@ -2247,8 +2115,6 @@ if(characterLink){
       }
 
 
-      // Name
-
       const name =
         relationshipCard.querySelector(
           ".relationship-name"
@@ -2263,8 +2129,6 @@ if(characterLink){
 
       }
 
-
-      // Relationship type
 
       const type =
         relationshipCard.querySelector(
@@ -2380,8 +2244,6 @@ async function setupPets(character){
         )
 
 
-      // Pet slug / profile link
-
       const petSlug =
         pet.file
           .replace(".json", "")
@@ -2391,8 +2253,6 @@ async function setupPets(character){
       const petProfileUrl =
         `pet_profile.html?char=${petSlug}`
 
-
-      // Pet avatar
 
       const avatar =
         petCard.querySelector(
@@ -2422,8 +2282,6 @@ async function setupPets(character){
       }
 
 
-      // Pet name
-
       const name =
         petCard.querySelector(
           ".pet-name"
@@ -2438,8 +2296,6 @@ async function setupPets(character){
 
       }
 
-
-      // Pet species
 
       const species =
         petCard.querySelector(
@@ -2456,8 +2312,6 @@ async function setupPets(character){
       }
 
 
-      // Pet gender
-
       const gender =
         petCard.querySelector(
           ".pet-gender"
@@ -2472,8 +2326,6 @@ async function setupPets(character){
 
       }
 
-
-      // Pet notes
 
       const notes =
         petCard.querySelector(
@@ -2509,8 +2361,6 @@ async function setupPets(character){
       }
 
 
-      // Pet fullbody
-
       const fullbody =
         petCard.querySelector(
           ".pet-fullbody"
@@ -2525,8 +2375,6 @@ async function setupPets(character){
 
       }
 
-
-      // Pet image link
 
       const imageLink =
         petCard.querySelector(
@@ -2597,9 +2445,6 @@ function tagValue(tags, key){
 }
 
 
-// =================================================
-// STORIES
-// =================================================
 
 async function setupStories(character){
 
@@ -2675,10 +2520,6 @@ async function setupStories(character){
         )
 
 
-      // =========================
-      // STORY PROFILE URL
-      // =========================
-
       const storyName =
         storyData.name ||
         storyData.title ||
@@ -2697,10 +2538,6 @@ async function setupStories(character){
     )
   }`
 
-
-      // =========================
-      // AVATAR
-      // =========================
 
       const avatar =
         storyCard.querySelector(
@@ -2746,10 +2583,6 @@ async function setupStories(character){
       }
 
 
-      // =========================
-      // AVATAR LINK
-      // =========================
-
       const avatarLink =
         storyCard.querySelector(
           ".story-avatar-link"
@@ -2762,10 +2595,6 @@ async function setupStories(character){
 
       }
 
-
-      // =========================
-      // TITLE
-      // =========================
 
       const title =
         storyCard.querySelector(
@@ -2782,10 +2611,6 @@ async function setupStories(character){
       }
 
 
-      // =========================
-      // TAGLINE
-      // =========================
-
       const tagline =
         storyCard.querySelector(
           ".story-tagline"
@@ -2800,10 +2625,6 @@ async function setupStories(character){
 
       }
 
-
-      // =========================
-      // BANNER
-      // =========================
 
       const banner =
         storyCard.querySelector(
@@ -2849,10 +2670,6 @@ async function setupStories(character){
       }
 
 
-      // =========================
-      // DESCRIPTION
-      // =========================
-
       const description =
         storyCard.querySelector(
           ".story-description"
@@ -2875,10 +2692,6 @@ async function setupStories(character){
 
       }
 
-
-      // =========================
-      // TAGS
-      // =========================
 
       const tags =
         storyData.tags || {}
@@ -2948,10 +2761,6 @@ async function setupStories(character){
       }
 
 
-      // =========================
-      // READ STORY BUTTON
-      // =========================
-
       const readButton =
         storyCard.querySelector(
           ".story-read-button"
@@ -2990,9 +2799,8 @@ async function setupStories(character){
 }
 
 
-// =================================================
-// FACTIONS
-// =================================================
+
+
 
 async function setupFactions(character){
 
@@ -3068,10 +2876,6 @@ async function setupFactions(character){
         )
 
 
-      // =========================
-      // FACTION PROFILE URL
-      // =========================
-
       const factionName =
         factionData.name ||
         factionData.title ||
@@ -3092,9 +2896,6 @@ async function setupFactions(character){
 
 
 
-      // =========================
-      // AVATAR
-      // =========================
 
       const avatar =
         factionCard.querySelector(
@@ -3140,10 +2941,6 @@ async function setupFactions(character){
       }
 
 
-      // =========================
-      // AVATAR LINK
-      // =========================
-
       const avatarLink =
         factionCard.querySelector(
           ".faction-avatar-link"
@@ -3156,10 +2953,6 @@ async function setupFactions(character){
 
       }
 
-
-      // =========================
-      // TITLE
-      // =========================
 
       const title =
         factionCard.querySelector(
@@ -3174,10 +2967,6 @@ async function setupFactions(character){
           )
 
       }
-
-      // =========================
-      // DESCRIPTION
-      // =========================
 
       const description =
         factionCard.querySelector(
@@ -3201,10 +2990,6 @@ async function setupFactions(character){
 
       }
 
-
-      // =========================
-      // TAGS
-      // =========================
 
       const tags =
         factionData.tags || {}
@@ -3241,10 +3026,6 @@ async function setupFactions(character){
 
       }
 
-
-      // =========================
-      // READ STORY BUTTON
-      // =========================
 
       const readButton =
         factionCard.querySelector(
@@ -3316,10 +3097,6 @@ async function setupLinks(character) {
   let loadedLinks =
     0;
 
-  // =========================
-  // CREATE LINK CARD
-  // =========================
-
   const createLinkCard =
     ({
       label,
@@ -3390,10 +3167,6 @@ async function setupLinks(character) {
 
     }
 
-      // =========================
-      // ICON
-      // =========================
-
       if (iconElement) {
         const use =
           iconElement.querySelector(
@@ -3406,7 +3179,6 @@ async function setupLinks(character) {
             icon
           );
         } else if (image) {
-          // Related character avatar
 
           iconElement.outerHTML = `
             <div
@@ -3429,10 +3201,6 @@ async function setupLinks(character) {
 
       loadedLinks++;
     };
-
-  // =========================
-  // STANDARD SOCIAL LINKS
-  // =========================
 
   const standardLinks = [
     {
@@ -3493,10 +3261,6 @@ async function setupLinks(character) {
     }
   )
 
-
-  // =========================
-  // RELATED CHARACTERS
-  // =========================
 
   if(
     Array.isArray(
@@ -3566,10 +3330,6 @@ async function setupLinks(character) {
   }
 
 
-    // =========================
-  // AU LINKS
-  // =========================
-
   if(
     Array.isArray(
       links["AU(s)"]
@@ -3612,10 +3372,6 @@ async function setupLinks(character) {
   }
 
 
-  // =========================
-  // OTHER LINKS
-  // =========================
-
   if(
     Array.isArray(
       links.other
@@ -3651,10 +3407,6 @@ async function setupLinks(character) {
 
   }
 
-
-  // =========================
-  // SHOW / HIDE SECTION
-  // =========================
 
   section.hidden =
     loadedLinks === 0
@@ -3704,8 +3456,6 @@ function setupDetailTabs(){
           if(!targetPanel) return
 
 
-          // Update buttons
-
           detailTabs.forEach(
             button => {
 
@@ -3722,8 +3472,6 @@ function setupDetailTabs(){
           )
 
 
-          // Hide panels
-
           detailPanels.forEach(
             panel => {
 
@@ -3734,8 +3482,6 @@ function setupDetailTabs(){
           )
 
 
-          // Activate selected tab
-
           tab.classList.add(
             "active"
           )
@@ -3745,8 +3491,6 @@ function setupDetailTabs(){
             "true"
           )
 
-
-          // Show selected panel
 
           targetPanel.hidden =
             false
