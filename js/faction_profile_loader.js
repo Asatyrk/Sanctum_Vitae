@@ -1,12 +1,3 @@
-/* =========================================================
-   FACTION PROFILE LOADER
-   ========================================================= */
-
-
-/* =========================================================
-   HELPERS
-   ========================================================= */
-
 function text(value){
 
   if(
@@ -22,7 +13,6 @@ function text(value){
   return value
 
 }
-
 
 function list(value){
 
@@ -40,7 +30,6 @@ function list(value){
 
 }
 
-
 function getFaction(){
 
   const params =
@@ -51,7 +40,6 @@ function getFaction(){
   return params.get("faction")
 
 }
-
 
 function setPageTitle(name){
 
@@ -75,7 +63,6 @@ function setPageTitle(name){
 
 }
 
-
 function setText(id, value){
 
   const element =
@@ -89,24 +76,6 @@ function setText(id, value){
     text(value)
 
 }
-
-
-/* =========================================================
-   CHARACTER-STYLE COLOURS
-   =========================================================
-   Factions use the same colour format as characters.
-
-   Supported:
-   - colors.primary
-   - colors.secondary
-   - colors.accent
-   - colors.bg_1
-   - colors.bg_2
-   - colors.page_bg
-
-   No particle, text-gradient, or page-gradient rules are
-   applied here.
-   ========================================================= */
 
 function applyFactionColors(faction){
 
@@ -166,11 +135,6 @@ function applyFactionColors(faction){
 
 }
 
-
-/* =========================================================
-   IMAGE HELPERS
-   ========================================================= */
-
 function setBackgroundImage(
   element,
   imageUrl,
@@ -219,11 +183,6 @@ function setBackgroundImage(
 
 }
 
-
-/* =========================================================
-   TAG HELPERS
-   ========================================================= */
-
 function getTagValue(
   tags,
   category
@@ -244,11 +203,6 @@ function getTagValue(
 
 }
 
-
-/* =========================================================
-   SLUG HELPERS
-   ========================================================= */
-
 function slugify(value){
 
   return String(value ?? "")
@@ -257,7 +211,6 @@ function slugify(value){
     .replace(/^-+|-+$/g, "")
 
 }
-
 
 function getFactionSlug(file){
 
@@ -268,7 +221,6 @@ function getFactionSlug(file){
     .pop()
 
 }
-
 
 function getFactionProfileUrl(file){
 
@@ -282,7 +234,6 @@ function getFactionProfileUrl(file){
   )
 
 }
-
 
 function getCharacterProfileUrl(file){
 
@@ -299,11 +250,6 @@ function getCharacterProfileUrl(file){
     filename
       .replace(/\.json$/i, "")
 
-  /* =========================
-     PETS
-     characters/pets/*.json
-     ========================= */
-
   if(
     path.startsWith("characters/pets/")
   ){
@@ -313,11 +259,6 @@ function getCharacterProfileUrl(file){
     )
 
   }
-
-  /* =========================
-     OTHERLY OWNED
-     characters/otherly_owned/*.json
-     ========================= */
 
   if(
     path.startsWith("characters/otherly_owned/")
@@ -329,21 +270,11 @@ function getCharacterProfileUrl(file){
 
   }
 
-  /* =========================
-     NORMAL CHARACTERS
-     characters/*.json
-     ========================= */
-
   return (
     `character_profile.html?char=${encodeURIComponent(slug)}`
   )
 
 }
-
-
-/* =========================================================
-   FETCH HELPERS
-   ========================================================= */
 
 async function fetchFaction(
   path,
@@ -367,7 +298,6 @@ async function fetchFaction(
 
 }
 
-
 async function fetchFactionCharacter(
   path
 ){
@@ -388,11 +318,6 @@ async function fetchFactionCharacter(
   return await response.json()
 
 }
-
-
-/* =========================================================
-   LOAD FACTION
-   ========================================================= */
 
 async function loadFaction(){
 
@@ -445,11 +370,6 @@ async function loadFaction(){
 
 }
 
-
-/* =========================================================
-   ERROR DISPLAY
-   ========================================================= */
-
 function showFactionError(
   title,
   message
@@ -469,33 +389,18 @@ function showFactionError(
 
 }
 
-
-/* =========================================================
-   DISPLAY FACTION
-   ========================================================= */
-
 async function displayFaction(
   faction
 ){
-
-  /* =========================
-     COLOURS
-     ========================= */
 
   applyFactionColors(
     faction
   )
 
-
   const name =
     text(
       faction.name
     )
-
-
-  /* =========================
-     HEADER
-     ========================= */
 
   const headerLogoText =
     document.querySelector(
@@ -523,20 +428,10 @@ async function displayFaction(
     updateBreadcrumb()
   }
 
-
-  /* =========================
-     NAME
-     ========================= */
-
   setText(
     "name",
     name
   )
-
-
-  /* =========================
-     FACTION BANNER TITLE
-     ========================= */
 
   const factionTitle =
     document.querySelector(
@@ -550,18 +445,9 @@ async function displayFaction(
 
   }
 
-  /* =========================
-     IMAGES
-     ========================= */
-
   populateFactionImages(
     faction
   )
-
-
-  /* =========================
-     TAGS
-     ========================= */
 
   const tags =
     faction.tags || {}
@@ -582,19 +468,9 @@ async function displayFaction(
     )
   )
 
-
-  /* =========================
-     DESCRIPTION
-     ========================= */
-
   populateDescription(
     faction.description
   )
-
-
-  /* =========================
-     CHARACTERS
-     ========================= */
 
   await populateCharacters(
     faction.characters
@@ -602,18 +478,9 @@ async function displayFaction(
 
 }
 
-
-/* =========================================================
-   FACTION IMAGES
-   ========================================================= */
-
 function populateFactionImages(
   faction
 ){
-
-  /* =========================
-     AVATAR
-     ========================= */
 
   const avatar =
     document.getElementById(
@@ -630,10 +497,6 @@ function populateFactionImages(
 
   }
 
-  /* =========================
-     FACTION BACKGROUND
-     ========================= */
-
   const factionBackground =
     document.getElementById(
       "faction-background"
@@ -649,11 +512,6 @@ function populateFactionImages(
   }
 
 }
-
-
-/* =========================================================
-   FACTION NAVIGATION
-   ========================================================= */
 
 async function setupFactionNavigation(
   indexPath
@@ -758,12 +616,10 @@ async function setupFactionNavigation(
   previousLink.textContent =
     "← Previous"
 
-
   const separator =
     document.createTextNode(
       " | "
     )
-
 
   const nextLink =
     document.createElement(
@@ -778,7 +634,6 @@ async function setupFactionNavigation(
   nextLink.textContent =
     "Next →"
 
-
   navigation.appendChild(
     previousLink
   )
@@ -792,11 +647,6 @@ async function setupFactionNavigation(
   )
 
 }
-
-
-/* =========================================================
-   DESCRIPTION
-   ========================================================= */
 
 function populateDescription(
   description
@@ -843,11 +693,6 @@ function populateDescription(
     )
 
 }
-
-
-/* =========================================================
-   CHARACTERS
-   ========================================================= */
 
 async function populateCharacters(
   characters
@@ -896,7 +741,6 @@ async function populateCharacters(
   let loadedCharacters =
     0
 
-
   for(
     const character of characters
   ){
@@ -917,16 +761,10 @@ async function populateCharacters(
           character.url
         )
 
-
       const characterCard =
         template.content.cloneNode(
           true
         )
-
-
-      /* =========================
-         PROFILE LINK
-         ========================= */
 
       const link =
         characterCard.querySelector(
@@ -941,11 +779,6 @@ async function populateCharacters(
           )
 
       }
-
-
-      /* =========================
-         AVATAR
-         ========================= */
 
       const avatar =
         characterCard.querySelector(
@@ -962,11 +795,6 @@ async function populateCharacters(
 
       }
 
-
-      /* =========================
-         NAME
-         ========================= */
-
       const name =
         characterCard.querySelector(
           ".relationship-name"
@@ -980,11 +808,6 @@ async function populateCharacters(
           )
 
       }
-
-
-      /* =========================
-         AGE
-         ========================= */
 
       const age =
         characterCard.querySelector(
@@ -1000,11 +823,6 @@ async function populateCharacters(
 
       }
 
-
-      /* =========================
-         PRONOUNS
-         ========================= */
-
       const pronouns =
         characterCard.querySelector(
           ".relationship-pronouns"
@@ -1018,11 +836,6 @@ async function populateCharacters(
           )
 
       }
-
-
-      /* =========================
-         SPECIES
-         ========================= */
 
       const species =
         characterCard.querySelector(
@@ -1038,10 +851,6 @@ async function populateCharacters(
 
       }
 
-      /* =========================
-         RELATIONSHIP LABEL
-         ========================= */
-
       const type =
         characterCard.querySelector(
           ".relationship-type"
@@ -1056,13 +865,11 @@ async function populateCharacters(
 
       }
 
-
       container.appendChild(
         characterCard
       )
 
       loadedCharacters++
-
 
     }catch(error){
 
@@ -1075,15 +882,10 @@ async function populateCharacters(
 
   }
 
-
   section.hidden =
     loadedCharacters === 0
 
 }
-
-/* =========================================================
-   DETAIL TABS
-   ========================================================= */
 
 function setupDetailTabs(){
 
@@ -1106,7 +908,6 @@ function setupDetailTabs(){
 
   }
 
-
   detailTabs.forEach(
     tab => {
 
@@ -1126,7 +927,6 @@ function setupDetailTabs(){
 
           if(!targetPanel) return
 
-
           detailTabs.forEach(
             button => {
 
@@ -1142,7 +942,6 @@ function setupDetailTabs(){
             }
           )
 
-
           detailPanels.forEach(
             panel => {
 
@@ -1152,7 +951,6 @@ function setupDetailTabs(){
             }
           )
 
-
           tab.classList.add(
             "active"
           )
@@ -1161,7 +959,6 @@ function setupDetailTabs(){
             "aria-selected",
             "true"
           )
-
 
           targetPanel.hidden =
             false
@@ -1173,11 +970,6 @@ function setupDetailTabs(){
   )
 
 }
-
-
-/* =========================================================
-   START
-   ========================================================= */
 
 document.addEventListener(
   "DOMContentLoaded",

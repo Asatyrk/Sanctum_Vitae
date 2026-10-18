@@ -1,12 +1,3 @@
-/* =========================================================
-   STORY PROFILE LOADER
-   ========================================================= */
-
-
-/* =========================================================
-   HELPERS
-   ========================================================= */
-
 function text(value){
 
   if(
@@ -91,23 +82,6 @@ function setText(id, value){
 }
 
 
-/* =========================================================
-   CHARACTER-STYLE COLOURS
-   =========================================================
-   Stories use the same colour format as characters.
-
-   Supported:
-   - colors.primary
-   - colors.secondary
-   - colors.accent
-   - colors.bg_1
-   - colors.bg_2
-   - colors.page_bg
-
-   No particle, text-gradient, or page-gradient rules are
-   applied here.
-   ========================================================= */
-
 function applyStoryColors(story){
 
   const colors =
@@ -167,10 +141,6 @@ function applyStoryColors(story){
 }
 
 
-/* =========================================================
-   IMAGE HELPERS
-   ========================================================= */
-
 function setBackgroundImage(
   element,
   imageUrl,
@@ -220,10 +190,6 @@ function setBackgroundImage(
 }
 
 
-/* =========================================================
-   TAG HELPERS
-   ========================================================= */
-
 function getTagValue(
   tags,
   category
@@ -244,10 +210,6 @@ function getTagValue(
 
 }
 
-
-/* =========================================================
-   SLUG HELPERS
-   ========================================================= */
 
 function slugify(value){
 
@@ -299,11 +261,6 @@ function getCharacterProfileUrl(file){
     filename
       .replace(/\.json$/i, "")
 
-  /* =========================
-     PETS
-     characters/pets/*.json
-     ========================= */
-
   if(
     path.startsWith("characters/pets/")
   ){
@@ -313,11 +270,6 @@ function getCharacterProfileUrl(file){
     )
 
   }
-
-  /* =========================
-     OTHERLY OWNED
-     characters/otherly_owned/*.json
-     ========================= */
 
   if(
     path.startsWith("characters/otherly_owned/")
@@ -329,22 +281,12 @@ function getCharacterProfileUrl(file){
 
   }
 
-  /* =========================
-     NORMAL CHARACTERS
-     characters/*.json
-     ========================= */
-
   return (
     `character_profile.html?char=${encodeURIComponent(slug)}`
   )
 
 }
 
-
-
-/* =========================================================
-   FETCH HELPERS
-   ========================================================= */
 
 async function fetchStory(
   path,
@@ -390,10 +332,6 @@ async function fetchStoryCharacter(
 
 }
 
-
-/* =========================================================
-   LOAD STORY
-   ========================================================= */
 
 async function loadStory(){
 
@@ -447,10 +385,6 @@ async function loadStory(){
 }
 
 
-/* =========================================================
-   ERROR DISPLAY
-   ========================================================= */
-
 function showStoryError(
   title,
   message
@@ -471,17 +405,9 @@ function showStoryError(
 }
 
 
-/* =========================================================
-   DISPLAY STORY
-   ========================================================= */
-
 async function displayStory(
   story
 ){
-
-  /* =========================
-     COLOURS
-     ========================= */
 
   applyStoryColors(
     story
@@ -493,10 +419,6 @@ async function displayStory(
       story.name
     )
 
-
-  /* =========================
-     HEADER
-     ========================= */
 
   const headerLogoText =
     document.querySelector(
@@ -525,19 +447,11 @@ async function displayStory(
   }
 
 
-  /* =========================
-     NAME
-     ========================= */
-
   setText(
     "name",
     name
   )
 
-
-  /* =========================
-     STORY BANNER TITLE
-     ========================= */
 
   const storyTitle =
     document.querySelector(
@@ -551,10 +465,6 @@ async function displayStory(
 
   }
 
-
-  /* =========================
-     TAGLINE
-     ========================= */
 
   const tagline =
     document.querySelector(
@@ -589,18 +499,10 @@ async function displayStory(
   }
 
 
-  /* =========================
-     IMAGES
-     ========================= */
-
   populateStoryImages(
     story
   )
 
-
-  /* =========================
-     TAGS
-     ========================= */
 
   const tags =
     story.tags || {}
@@ -638,27 +540,15 @@ async function displayStory(
   )
 
 
-  /* =========================
-     DESCRIPTION
-     ========================= */
-
   populateDescription(
     story.description
   )
 
 
-  /* =========================
-     CHARACTERS
-     ========================= */
-
   await populateCharacters(
     story.characters
   )
 
-
-  /* =========================
-     STORY CONTENT
-     ========================= */
 
   populateStoryContent(
     story.story
@@ -667,17 +557,9 @@ async function displayStory(
 }
 
 
-/* =========================================================
-   STORY IMAGES
-   ========================================================= */
-
 function populateStoryImages(
   story
 ){
-
-  /* =========================
-     AVATAR
-     ========================= */
 
   const avatar =
     document.getElementById(
@@ -695,10 +577,6 @@ function populateStoryImages(
   }
 
 
-  /* =========================
-     BANNER
-     ========================= */
-
   const banner =
     document.getElementById(
       "banner-image"
@@ -714,10 +592,6 @@ function populateStoryImages(
 
   }
 
-
-  /* =========================
-     STORY BACKGROUND
-     ========================= */
 
   const storyBackground =
     document.getElementById(
@@ -735,10 +609,6 @@ function populateStoryImages(
 
 }
 
-
-/* =========================================================
-   STORY NAVIGATION
-   ========================================================= */
 
 async function setupStoryNavigation(
   indexPath
@@ -879,10 +749,6 @@ async function setupStoryNavigation(
 }
 
 
-/* =========================================================
-   DESCRIPTION
-   ========================================================= */
-
 function populateDescription(
   description
 ){
@@ -929,10 +795,6 @@ function populateDescription(
 
 }
 
-
-/* =========================================================
-   CHARACTERS
-   ========================================================= */
 
 async function populateCharacters(
   characters
@@ -1009,10 +871,6 @@ async function populateCharacters(
         )
 
 
-      /* =========================
-         PROFILE LINK
-         ========================= */
-
       const link =
         characterCard.querySelector(
           ".relationship-avatar-link"
@@ -1027,10 +885,6 @@ async function populateCharacters(
 
       }
 
-
-      /* =========================
-         AVATAR
-         ========================= */
 
       const avatar =
         characterCard.querySelector(
@@ -1048,10 +902,6 @@ async function populateCharacters(
       }
 
 
-      /* =========================
-         NAME
-         ========================= */
-
       const name =
         characterCard.querySelector(
           ".relationship-name"
@@ -1066,10 +916,6 @@ async function populateCharacters(
 
       }
 
-
-      /* =========================
-         RELATIONSHIP LABEL
-         ========================= */
 
       const type =
         characterCard.querySelector(
@@ -1111,10 +957,6 @@ async function populateCharacters(
 }
 
 
-/* =========================================================
-   STORY CONTENT
-   ========================================================= */
-
 function populateStoryContent(storyContent) {
   const container = document.getElementById("backstory");
 
@@ -1127,10 +969,6 @@ function populateStoryContent(storyContent) {
     .join("");
 }
 
-
-/* =========================================================
-   DETAIL TABS
-   ========================================================= */
 
 function setupDetailTabs(){
 
@@ -1221,10 +1059,6 @@ function setupDetailTabs(){
 
 }
 
-
-/* =========================================================
-   START
-   ========================================================= */
 
 document.addEventListener(
   "DOMContentLoaded",

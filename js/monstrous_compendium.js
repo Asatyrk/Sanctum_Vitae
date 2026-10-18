@@ -1,7 +1,3 @@
-/* =========================================================
-   TAG CATEGORIES
-========================================================= */
-
 const tagCategories = {
   "Family": [
     "Duokardie"
@@ -110,21 +106,11 @@ const tagCategories = {
   ]
 }
 
-
-/* =========================================================
-   STATE
-========================================================= */
-
 let allSpecies = []
 
 let selectedTags = {}
 
 let matchMode = "and"
-
-
-/* =========================================================
-   LOAD SPECIES
-========================================================= */
 
 async function loadSpecies() {
 
@@ -132,7 +118,6 @@ async function loadSpecies() {
 
     const response =
       await fetch("monstrous_compendium/index.json")
-
 
     if (!response.ok) {
 
@@ -142,16 +127,8 @@ async function loadSpecies() {
 
     }
 
-
     const index =
       await response.json()
-
-
-    /*
-       Each index entry points to one JSON file.
-
-       Each JSON file contains ONE species object.
-    */
 
     const species =
       await Promise.all(
@@ -161,7 +138,6 @@ async function loadSpecies() {
           const speciesResponse =
             await fetch(entry.path)
 
-
           if (!speciesResponse.ok) {
 
             throw new Error(
@@ -170,10 +146,8 @@ async function loadSpecies() {
 
           }
 
-
           const speciesData =
             await speciesResponse.json()
-
 
           if (
             !speciesData ||
@@ -187,12 +161,10 @@ async function loadSpecies() {
 
           }
 
-
           const slug =
             speciesData.name
               ? slugify(speciesData.name)
               : ""
-
 
           return {
             ...speciesData,
@@ -204,10 +176,8 @@ async function loadSpecies() {
 
       )
 
-
     allSpecies =
       species
-
 
     buildTagFilterUI()
 
@@ -217,7 +187,6 @@ async function loadSpecies() {
 
     renderSpecies()
 
-
   } catch (error) {
 
     console.error(
@@ -225,32 +194,25 @@ async function loadSpecies() {
       error
     )
 
-
     const grid =
       document.getElementById(
         "species-grid"
       )
 
-
     if (!grid) {
       return
     }
 
-
     grid.innerHTML = ""
-
 
     const errorMessage =
       document.createElement("p")
 
-
     errorMessage.className =
       "species-no-results"
 
-
     errorMessage.textContent =
       "The species index could not be loaded."
-
 
     grid.appendChild(
       errorMessage
@@ -260,11 +222,6 @@ async function loadSpecies() {
 
 }
 
-
-/* =========================================================
-   URL STATE
-========================================================= */
-
 function getUrlState() {
 
   const params =
@@ -272,25 +229,19 @@ function getUrlState() {
       window.location.search
     )
 
-
   const search =
     params.get("search") || ""
-
 
   const sort =
     params.get("sort") || "name-asc"
 
-
   const mode =
     params.get("mode") || "and"
 
-
   const tags = []
-
 
   const tagsParam =
     params.get("tags") || ""
-
 
   if (tagsParam.trim()) {
 
@@ -302,11 +253,9 @@ function getUrlState() {
       const separatorIndex =
         part.indexOf("|")
 
-
       if (separatorIndex === -1) {
         continue
       }
-
 
       const category =
         part.slice(
@@ -314,12 +263,10 @@ function getUrlState() {
           separatorIndex
         )
 
-
       const value =
         part.slice(
           separatorIndex + 1
         )
-
 
       if (category && value) {
 
@@ -334,7 +281,6 @@ function getUrlState() {
 
   }
 
-
   return {
     search,
     sort,
@@ -344,11 +290,6 @@ function getUrlState() {
 
 }
 
-
-/* =========================================================
-   UPDATE URL
-========================================================= */
-
 function updateUrlStateInHistory(
   replace = false
 ) {
@@ -356,26 +297,21 @@ function updateUrlStateInHistory(
   const params =
     new URLSearchParams()
 
-
   const searchInput =
     document.getElementById(
       "search-input"
     )
-
 
   const sortSelect =
     document.getElementById(
       "sort-select"
     )
 
-
   const search =
     searchInput.value.trim()
 
-
   const sort =
     sortSelect.value
-
 
   if (search) {
     params.set(
@@ -383,7 +319,6 @@ function updateUrlStateInHistory(
       search
     )
   }
-
 
   if (
     sort &&
@@ -397,7 +332,6 @@ function updateUrlStateInHistory(
 
   }
 
-
   if (
     matchMode &&
     matchMode !== "and"
@@ -410,32 +344,26 @@ function updateUrlStateInHistory(
 
   }
 
-
   const tags = []
-
 
   const checked =
     document.querySelectorAll(
       "#tag-filters input[type=checkbox]:checked"
     )
 
-
   checked.forEach(input => {
 
     const category =
       input.dataset.category
 
-
     const value =
       input.value
-
 
     tags.push(
       `${category}|${value}`
     )
 
   })
-
 
   if (tags.length) {
 
@@ -446,16 +374,13 @@ function updateUrlStateInHistory(
 
   }
 
-
   const query =
     params.toString()
-
 
   const newUrl =
     query
       ? `${window.location.pathname}?${query}`
       : window.location.pathname
-
 
   if (replace) {
 
@@ -477,11 +402,6 @@ function updateUrlStateInHistory(
 
 }
 
-
-/* =========================================================
-   APPLY URL STATE
-========================================================= */
-
 function applyUrlStateToUI() {
 
   const {
@@ -492,28 +412,23 @@ function applyUrlStateToUI() {
   } =
     getUrlState()
 
-
   document.getElementById(
     "search-input"
   ).value =
     search
-
 
   document.getElementById(
     "sort-select"
   ).value =
     sort
 
-
   document.getElementById(
     "match-mode"
   ).value =
     mode
 
-
   matchMode =
     mode
-
 
   tags.forEach(
     ({ category, value }) => {
@@ -528,7 +443,6 @@ function applyUrlStateToUI() {
           input.value === value
         )
 
-
       if (checkbox) {
         checkbox.checked = true
       }
@@ -536,15 +450,9 @@ function applyUrlStateToUI() {
     }
   )
 
-
   updateSelectedTags()
 
 }
-
-
-/* =========================================================
-   RESET FILTERS
-========================================================= */
 
 function resetFilters() {
 
@@ -552,22 +460,18 @@ function resetFilters() {
     "search-input"
   ).value = ""
 
-
   document.getElementById(
     "sort-select"
   ).value =
     "name-asc"
-
 
   document.getElementById(
     "match-mode"
   ).value =
     "and"
 
-
   matchMode =
     "and"
-
 
   document
     .querySelectorAll(
@@ -580,15 +484,9 @@ function resetFilters() {
 
     })
 
-
   selectedTags = {}
 
 }
-
-
-/* =========================================================
-   CONTROLS
-========================================================= */
 
 function setupControls() {
 
@@ -597,24 +495,20 @@ function setupControls() {
       "search-input"
     )
 
-
   const sortSelect =
     document.getElementById(
       "sort-select"
     )
-
 
   const clearButton =
     document.getElementById(
       "clear-filters"
     )
 
-
   const matchModeSelect =
     document.getElementById(
       "match-mode"
     )
-
 
   searchInput.addEventListener(
     "input",
@@ -629,7 +523,6 @@ function setupControls() {
     }
   )
 
-
   sortSelect.addEventListener(
     "change",
     () => {
@@ -643,14 +536,12 @@ function setupControls() {
     }
   )
 
-
   matchModeSelect.addEventListener(
     "change",
     () => {
 
       matchMode =
         matchModeSelect.value
-
 
       renderSpecies()
 
@@ -660,7 +551,6 @@ function setupControls() {
 
     }
   )
-
 
   clearButton.addEventListener(
     "click",
@@ -679,11 +569,6 @@ function setupControls() {
 
 }
 
-
-/* =========================================================
-   TAG FILTER UI
-========================================================= */
-
 function buildTagFilterUI() {
 
   const container =
@@ -691,9 +576,7 @@ function buildTagFilterUI() {
       "tag-filters"
     )
 
-
   container.innerHTML = ""
-
 
   const hasTags =
     Object.values(
@@ -702,7 +585,6 @@ function buildTagFilterUI() {
       list => list.length
     )
 
-
   if (!hasTags) {
 
     const placeholder =
@@ -710,24 +592,19 @@ function buildTagFilterUI() {
         "div"
       )
 
-
     placeholder.className =
       "tag-placeholder"
 
-
     placeholder.textContent =
       "Tag filters will appear once tags are added to species."
-
 
     container.appendChild(
       placeholder
     )
 
-
     return
 
   }
-
 
   Object.entries(
     tagCategories
@@ -739,35 +616,28 @@ function buildTagFilterUI() {
           "details"
         )
 
-
       section.className =
         "tag-category"
-
 
       const summary =
         document.createElement(
           "summary"
         )
 
-
       summary.textContent =
         category
-
 
       section.appendChild(
         summary
       )
-
 
       const list =
         document.createElement(
           "div"
         )
 
-
       list.className =
         "tag-list"
-
 
       tagList.forEach(
         tag => {
@@ -775,54 +645,43 @@ function buildTagFilterUI() {
           const id =
             `tag-${slugify(category)}-${slugify(tag)}`
 
-
           const wrapper =
             document.createElement(
               "label"
             )
 
-
           wrapper.className =
             "tag-option"
-
 
           const checkbox =
             document.createElement(
               "input"
             )
 
-
           checkbox.type =
             "checkbox"
-
 
           checkbox.id =
             id
 
-
           checkbox.dataset.category =
             category
 
-
           checkbox.value =
             tag
-
 
           const text =
             document.createTextNode(
               tag
             )
 
-
           wrapper.appendChild(
             checkbox
           )
 
-
           wrapper.appendChild(
             text
           )
-
 
           checkbox.addEventListener(
             "change",
@@ -839,7 +698,6 @@ function buildTagFilterUI() {
             }
           )
 
-
           list.appendChild(
             wrapper
           )
@@ -847,11 +705,9 @@ function buildTagFilterUI() {
         }
       )
 
-
       section.appendChild(
         list
       )
-
 
       container.appendChild(
         section
@@ -860,16 +716,10 @@ function buildTagFilterUI() {
     }
   )
 
-
-  /* -------------------------------------------------------
-     Accordion behaviour
-  ------------------------------------------------------- */
-
   const details =
     container.querySelectorAll(
       "details"
     )
-
 
   details.forEach(
     detail => {
@@ -881,7 +731,6 @@ function buildTagFilterUI() {
           if (!detail.open) {
             return
           }
-
 
           details.forEach(
             other => {
@@ -901,11 +750,6 @@ function buildTagFilterUI() {
 
 }
 
-
-/* =========================================================
-   SLUGIFY
-========================================================= */
-
 function slugify(value) {
 
   return String(value ?? "")
@@ -920,28 +764,20 @@ function slugify(value) {
 
 }
 
-
-/* =========================================================
-   SELECTED TAGS
-========================================================= */
-
 function updateSelectedTags() {
 
   selectedTags = {}
-
 
   const checked =
     document.querySelectorAll(
       "#tag-filters input[type=checkbox]:checked"
     )
 
-
   checked.forEach(
     input => {
 
       const category =
         input.dataset.category
-
 
       if (!selectedTags[category]) {
 
@@ -950,7 +786,6 @@ function updateSelectedTags() {
 
       }
 
-
       selectedTags[category]
         .add(input.value)
 
@@ -958,11 +793,6 @@ function updateSelectedTags() {
   )
 
 }
-
-
-/* =========================================================
-   TAG MATCHING
-========================================================= */
 
 function matchesTags(species) {
 
@@ -976,23 +806,11 @@ function matchesTags(species) {
 
   }
 
-
-  /*
-     Supports both:
-
-       "Family": "Humanoid"
-
-     and:
-
-       "Family": ["Humanoid", "Other"]
-  */
-
   const categoryMatcher =
     (category, tags) => {
 
       let speciesTags =
         species.tags?.[category]
-
 
       if (
         speciesTags === undefined ||
@@ -1003,14 +821,12 @@ function matchesTags(species) {
 
       }
 
-
       if (!Array.isArray(speciesTags)) {
 
         speciesTags =
           [speciesTags]
 
       }
-
 
       if (matchMode === "and") {
 
@@ -1021,20 +837,12 @@ function matchesTags(species) {
 
       }
 
-
       return speciesTags
         .some(tag =>
           tags.has(tag)
         )
 
     }
-
-
-  /*
-     OR:
-     A species only needs to match
-     one selected category.
-  */
 
   if (matchMode === "or") {
 
@@ -1050,13 +858,6 @@ function matchesTags(species) {
 
   }
 
-
-  /*
-     AND:
-     A species must match
-     every selected category.
-  */
-
   return Object.entries(
     selectedTags
   ).every(
@@ -1069,11 +870,6 @@ function matchesTags(species) {
 
 }
 
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
 function matchesSearch(species) {
 
   const query =
@@ -1085,11 +881,9 @@ function matchesSearch(species) {
       .trim()
       .toLowerCase()
 
-
   if (!query) {
     return true
   }
-
 
   const descriptions =
     Array.isArray(
@@ -1098,7 +892,6 @@ function matchesSearch(species) {
       ? species.description
       : [species.description]
 
-
   const otherNames =
     Array.isArray(
       species["other names"]
@@ -1106,12 +899,10 @@ function matchesSearch(species) {
       ? species["other names"]
       : [species["other names"]]
 
-
   const speciesTags =
     Object.values(
       species.tags || {}
     ).flat()
-
 
   const haystack = [
 
@@ -1134,17 +925,11 @@ function matchesSearch(species) {
     .join(" ")
     .toLowerCase()
 
-
   return haystack.includes(
     query
   )
 
 }
-
-
-/* =========================================================
-   SORT SPECIES
-========================================================= */
 
 function sortSpecies(species) {
 
@@ -1155,10 +940,8 @@ function sortSpecies(species) {
       )
       .value
 
-
   const sorted =
     [...species]
-
 
   if (
     sortKey === "name-desc"
@@ -1184,15 +967,9 @@ function sortSpecies(species) {
 
   }
 
-
   return sorted
 
 }
-
-
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
 
 function escapeHtml(value) {
 
@@ -1220,11 +997,6 @@ function escapeHtml(value) {
 
 }
 
-
-/* =========================================================
-   CREATE SPECIES CARD
-========================================================= */
-
 function createSpeciesCard(species) {
 
   const card =
@@ -1232,14 +1004,8 @@ function createSpeciesCard(species) {
       "article"
     )
 
-
   card.className =
     "species-card"
-
-
-  /* -------------------------------------------------------
-     Other names
-  ------------------------------------------------------- */
 
   const otherNames =
     Array.isArray(
@@ -1250,16 +1016,10 @@ function createSpeciesCard(species) {
         ? [species["other names"]]
         : []
 
-
   const otherNamesText =
     otherNames.length
       ? otherNames.join(", ")
       : ""
-
-
-  /* -------------------------------------------------------
-     Description
-  ------------------------------------------------------- */
 
   const descriptions =
     Array.isArray(
@@ -1267,7 +1027,6 @@ function createSpeciesCard(species) {
     )
       ? species.description
       : [species.description]
-
 
   const descriptionHtml =
     descriptions
@@ -1281,24 +1040,14 @@ function createSpeciesCard(species) {
       )
       .join("")
 
-
-  /* -------------------------------------------------------
-     Species URL
-  ------------------------------------------------------- */
-
   const speciesSlug =
     species.slug ||
     slugify(species.name)
-
 
   const speciesPageUrl =
     speciesSlug
       ? `monstrous_compendium_profile.html?species=${encodeURIComponent(speciesSlug)}`
       : "#"
-
-  /* -------------------------------------------------------
-     Card HTML
-  ------------------------------------------------------- */
 
   card.innerHTML = `
 
@@ -1320,7 +1069,6 @@ function createSpeciesCard(species) {
 
     </div>
 
-
     <div class="species-card__content">
 
       <h2 class="species-card__title">
@@ -1328,7 +1076,6 @@ function createSpeciesCard(species) {
           species.name
         )}
       </h2>
-
 
       ${
         otherNamesText
@@ -1342,9 +1089,7 @@ function createSpeciesCard(species) {
           : ""
       }
 
-
       <hr class="line">
-
 
       <div class="species-card__info">
 
@@ -1362,7 +1107,6 @@ function createSpeciesCard(species) {
 
         </div>
 
-
         <div class="info-row">
 
           <span class="info-label">
@@ -1376,7 +1120,6 @@ function createSpeciesCard(species) {
           </span>
 
         </div>
-
 
         <div class="info-row">
 
@@ -1394,16 +1137,13 @@ function createSpeciesCard(species) {
 
       </div>
 
-
       <hr class="line">
-
 
       <div class="species-card__description">
 
         ${descriptionHtml}
 
       </div>
-
 
       <a
         class="story-read-button species-view-button"
@@ -1416,16 +1156,9 @@ function createSpeciesCard(species) {
 
   `
 
-
   return card
 
 }
-
-
-
-/* =========================================================
-   RENDER SPECIES
-========================================================= */
 
 function renderSpecies() {
 
@@ -1434,21 +1167,17 @@ function renderSpecies() {
       "species-grid"
     )
 
-
   grid.innerHTML = ""
-
 
   const filtered =
     allSpecies
       .filter(matchesSearch)
       .filter(matchesTags)
 
-
   const sorted =
     sortSpecies(
       filtered
     )
-
 
   if (!sorted.length) {
 
@@ -1457,24 +1186,19 @@ function renderSpecies() {
         "p"
       )
 
-
     empty.className =
       "species-no-results"
 
-
     empty.textContent =
       "No species match your filters."
-
 
     grid.appendChild(
       empty
     )
 
-
     return
 
   }
-
 
   sorted.forEach(
     species => {
@@ -1490,19 +1214,9 @@ function renderSpecies() {
 
 }
 
-
-/* =========================================================
-   EVENT LISTENERS
-========================================================= */
-
 window.addEventListener(
   "popstate",
   () => {
-
-    /*
-       Clear existing checkbox state
-       before applying the URL state.
-    */
 
     document
       .querySelectorAll(
@@ -1514,17 +1228,11 @@ window.addEventListener(
         }
       )
 
-
     applyUrlStateToUI()
 
     renderSpecies()
 
   }
 )
-
-
-/* =========================================================
-   START
-========================================================= */
 
 loadSpecies()

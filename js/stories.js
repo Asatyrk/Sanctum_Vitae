@@ -1,7 +1,3 @@
-/* =========================================================
-   TAG CATEGORIES
-========================================================= */
-
 const tagCategories = {
   "Genre": [
     "Fantasy",
@@ -40,21 +36,11 @@ const tagCategories = {
   ]
 }
 
-
-/* =========================================================
-   STATE
-========================================================= */
-
 let allStories = []
 
 let selectedTags = {}
 
 let matchMode = "and"
-
-
-/* =========================================================
-   LOAD STORIES
-========================================================= */
 
 async function loadStories() {
 
@@ -68,7 +54,6 @@ async function loadStories() {
 
     const index = await response.json()
 
-
     allStories = await Promise.all(
 
       index.map(async entry => {
@@ -81,12 +66,10 @@ async function loadStories() {
 
         const storyData = await storyResponse.json()
 
-
         const slug = entry.path
           .replace(".json", "")
           .split("/")
           .pop()
-
 
         return {
           ...storyData,
@@ -97,7 +80,6 @@ async function loadStories() {
       })
 
     )
-
 
     buildTagFilterUI()
 
@@ -128,35 +110,24 @@ async function loadStories() {
 
 }
 
-
-/* =========================================================
-   URL STATE
-========================================================= */
-
 function getUrlState() {
 
   const params =
     new URLSearchParams(window.location.search)
 
-
   const search =
     params.get("search") || ""
-
 
   const sort =
     params.get("sort") || "name-asc"
 
-
   const mode =
     params.get("mode") || "and"
 
-
   const tags = []
-
 
   const tagsParam =
     params.get("tags") || ""
-
 
   if (tagsParam.trim()) {
 
@@ -165,19 +136,15 @@ function getUrlState() {
       const separatorIndex =
         part.indexOf("|")
 
-
       if (separatorIndex === -1) {
         continue
       }
 
-
       const category =
         part.slice(0, separatorIndex)
 
-
       const value =
         part.slice(separatorIndex + 1)
-
 
       if (category && value) {
 
@@ -192,7 +159,6 @@ function getUrlState() {
 
   }
 
-
   return {
     search,
     sort,
@@ -202,73 +168,55 @@ function getUrlState() {
 
 }
 
-
-/* =========================================================
-   UPDATE URL
-========================================================= */
-
 function updateUrlStateInHistory(replace = false) {
 
   const params =
     new URLSearchParams()
 
-
   const searchInput =
     document.getElementById("search-input")
-
 
   const sortSelect =
     document.getElementById("sort-select")
 
-
   const search =
     searchInput.value.trim()
 
-
   const sort =
     sortSelect.value
-
 
   if (search) {
     params.set("search", search)
   }
 
-
   if (sort && sort !== "name-asc") {
     params.set("sort", sort)
   }
-
 
   if (matchMode && matchMode !== "and") {
     params.set("mode", matchMode)
   }
 
-
   const tags = []
-
 
   const checked =
     document.querySelectorAll(
       "#tag-filters input[type=checkbox]:checked"
     )
 
-
   checked.forEach(input => {
 
     const category =
       input.dataset.category
 
-
     const value =
       input.value
-
 
     tags.push(
       `${category}|${value}`
     )
 
   })
-
 
   if (tags.length) {
 
@@ -279,16 +227,13 @@ function updateUrlStateInHistory(replace = false) {
 
   }
 
-
   const query =
     params.toString()
-
 
   const newUrl =
     query
       ? `${window.location.pathname}?${query}`
       : window.location.pathname
-
 
   if (replace) {
 
@@ -310,11 +255,6 @@ function updateUrlStateInHistory(replace = false) {
 
 }
 
-
-/* =========================================================
-   APPLY URL STATE
-========================================================= */
-
 function applyUrlStateToUI() {
 
   const {
@@ -324,24 +264,19 @@ function applyUrlStateToUI() {
     tags
   } = getUrlState()
 
-
   document.getElementById(
     "search-input"
   ).value = search
-
 
   document.getElementById(
     "sort-select"
   ).value = sort
 
-
   document.getElementById(
     "match-mode"
   ).value = mode
 
-
   matchMode = mode
-
 
   tags.forEach(({ category, value }) => {
 
@@ -355,22 +290,15 @@ function applyUrlStateToUI() {
         input.value === value
       )
 
-
     if (checkbox) {
       checkbox.checked = true
     }
 
   })
 
-
   updateSelectedTags()
 
 }
-
-
-/* =========================================================
-   RESET FILTERS
-========================================================= */
 
 function resetFilters() {
 
@@ -378,19 +306,15 @@ function resetFilters() {
     "search-input"
   ).value = ""
 
-
   document.getElementById(
     "sort-select"
   ).value = "name-asc"
-
 
   document.getElementById(
     "match-mode"
   ).value = "and"
 
-
   matchMode = "and"
-
 
   document
     .querySelectorAll(
@@ -400,33 +324,23 @@ function resetFilters() {
       checkbox.checked = false
     })
 
-
   selectedTags = {}
 
 }
-
-
-/* =========================================================
-   CONTROLS
-========================================================= */
 
 function setupControls() {
 
   const searchInput =
     document.getElementById("search-input")
 
-
   const sortSelect =
     document.getElementById("sort-select")
-
 
   const clearButton =
     document.getElementById("clear-filters")
 
-
   const matchModeSelect =
     document.getElementById("match-mode")
-
 
   searchInput.addEventListener(
     "input",
@@ -439,7 +353,6 @@ function setupControls() {
     }
   )
 
-
   sortSelect.addEventListener(
     "change",
     () => {
@@ -451,7 +364,6 @@ function setupControls() {
     }
   )
 
-
   matchModeSelect.addEventListener(
     "change",
     () => {
@@ -459,14 +371,12 @@ function setupControls() {
       matchMode =
         matchModeSelect.value
 
-
       renderStories()
 
       updateUrlStateInHistory(true)
 
     }
   )
-
 
   clearButton.addEventListener(
     "click",
@@ -483,48 +393,35 @@ function setupControls() {
 
 }
 
-
-/* =========================================================
-   TAG FILTER UI
-========================================================= */
-
 function buildTagFilterUI() {
 
   const container =
     document.getElementById("tag-filters")
 
-
   container.innerHTML = ""
-
 
   const hasTags =
     Object.values(tagCategories)
       .some(list => list.length)
-
 
   if (!hasTags) {
 
     const placeholder =
       document.createElement("div")
 
-
     placeholder.className =
       "tag-placeholder"
 
-
     placeholder.textContent =
       "Tag filters will appear once tags are added to stories."
-
 
     container.appendChild(
       placeholder
     )
 
-
     return
 
   }
-
 
   Object.entries(tagCategories)
     .forEach(([category, tagList]) => {
@@ -532,49 +429,38 @@ function buildTagFilterUI() {
       const section =
         document.createElement("details")
 
-
       section.className =
         "tag-category"
-
 
       const summary =
         document.createElement("summary")
 
-
       summary.textContent =
         category
-
 
       section.appendChild(
         summary
       )
 
-
       const list =
         document.createElement("div")
 
-
       list.className =
         "tag-list"
-
 
       tagList.forEach(tag => {
 
         const id =
           `tag-${slugify(category)}-${slugify(tag)}`
 
-
         const wrapper =
           document.createElement("label")
-
 
         wrapper.className =
           "tag-option"
 
-
         const checkbox =
           document.createElement("input")
-
 
         checkbox.type = "checkbox"
 
@@ -586,10 +472,8 @@ function buildTagFilterUI() {
         checkbox.value =
           tag
 
-
         const text =
           document.createTextNode(tag)
-
 
         wrapper.appendChild(
           checkbox
@@ -598,7 +482,6 @@ function buildTagFilterUI() {
         wrapper.appendChild(
           text
         )
-
 
         checkbox.addEventListener(
           "change",
@@ -613,18 +496,15 @@ function buildTagFilterUI() {
           }
         )
 
-
         list.appendChild(
           wrapper
         )
 
       })
 
-
       section.appendChild(
         list
       )
-
 
       container.appendChild(
         section
@@ -632,16 +512,10 @@ function buildTagFilterUI() {
 
     })
 
-
-  /* -------------------------------------------------------
-     Accordion behaviour
-  ------------------------------------------------------- */
-
   const details =
     container.querySelectorAll(
       "details"
     )
-
 
   details.forEach(detail => {
 
@@ -652,7 +526,6 @@ function buildTagFilterUI() {
         if (!detail.open) {
           return
         }
-
 
         details.forEach(other => {
 
@@ -669,11 +542,6 @@ function buildTagFilterUI() {
 
 }
 
-
-/* =========================================================
-   SLUGIFY
-========================================================= */
-
 function slugify(value) {
 
   return value
@@ -683,27 +551,19 @@ function slugify(value) {
 
 }
 
-
-/* =========================================================
-   SELECTED TAGS
-========================================================= */
-
 function updateSelectedTags() {
 
   selectedTags = {}
-
 
   const checked =
     document.querySelectorAll(
       "#tag-filters input[type=checkbox]:checked"
     )
 
-
   checked.forEach(input => {
 
     const category =
       input.dataset.category
-
 
     if (!selectedTags[category]) {
 
@@ -712,7 +572,6 @@ function updateSelectedTags() {
 
     }
 
-
     selectedTags[category]
       .add(input.value)
 
@@ -720,24 +579,17 @@ function updateSelectedTags() {
 
 }
 
-
-/* =========================================================
-   TAG MATCHING
-========================================================= */
-
 function matchesTags(story) {
 
   if (!Object.keys(selectedTags).length) {
     return true
   }
 
-
   const categoryMatcher =
     (category, tags) => {
 
       const storyTags =
         story.tags?.[category] || []
-
 
       if (matchMode === "and") {
 
@@ -748,14 +600,12 @@ function matchesTags(story) {
 
       }
 
-
       return storyTags
         .some(tag =>
           tags.has(tag)
         )
 
     }
-
 
   if (matchMode === "or") {
 
@@ -769,7 +619,6 @@ function matchesTags(story) {
 
   }
 
-
   return Object.entries(selectedTags)
     .every(([category, tags]) =>
       categoryMatcher(
@@ -780,10 +629,6 @@ function matchesTags(story) {
 
 }
 
-/* =========================================================
-   SEARCH
-========================================================= */
-
 function matchesSearch(story) {
 
   const query =
@@ -793,23 +638,19 @@ function matchesSearch(story) {
       .trim()
       .toLowerCase()
 
-
   if (!query) {
     return true
   }
-
 
   const descriptions =
     Array.isArray(story.description)
       ? story.description
       : [story.description]
 
-
   const storyTags =
     Object.values(
       story.tags || {}
     ).flat()
-
 
   const haystack = [
 
@@ -826,15 +667,9 @@ function matchesSearch(story) {
     .join(" ")
     .toLowerCase()
 
-
   return haystack.includes(query)
 
 }
-
-
-/* =========================================================
-   SORT STORIES
-========================================================= */
 
 function sortStories(stories) {
 
@@ -843,10 +678,8 @@ function sortStories(stories) {
       .getElementById("sort-select")
       .value
 
-
   const sorted =
     [...stories]
-
 
   if (sortKey === "name-desc") {
 
@@ -866,15 +699,9 @@ function sortStories(stories) {
 
   }
 
-
   return sorted
 
 }
-
-
-/* =========================================================
-   ESCAPE HTML / IMAGE FALLBACK
-========================================================= */
 
 function escapeHtml(value) {
 
@@ -919,10 +746,6 @@ function addImageFallback(element, fallbackUrl) {
 
 }
 
-/* =========================================================
-   TAG SEPARATORS
-========================================================= */
-
 function updateTagSeparators(card) {
 
   const groups =
@@ -955,26 +778,15 @@ function updateTagSeparators(card) {
 
 }
 
-/* =========================================================
-   CREATE STORY CARD
-========================================================= */
-
 function createStoryCard(story) {
 
   const card =
     document.createElement("article")
 
-
   card.className =
     "story-card"
 
-
-  /* -------------------------------------------------------
-     Story tags
-  ------------------------------------------------------- */
-
   const storyTagGroups = []
-
 
   Object.entries(
     story.tags || {}
@@ -984,14 +796,12 @@ function createStoryCard(story) {
       return
     }
 
-
     storyTagGroups.push({
       category,
       tags
     })
 
   })
-
 
   const tagsHtml =
     storyTagGroups.length
@@ -1014,16 +824,10 @@ function createStoryCard(story) {
           .join("")
       : ""
 
-
-  /* -------------------------------------------------------
-     Story description
-  ------------------------------------------------------- */
-
   const descriptions =
     Array.isArray(story.description)
       ? story.description
       : [story.description]
-
 
   const descriptionHtml =
     descriptions
@@ -1035,26 +839,15 @@ function createStoryCard(story) {
       `)
       .join("")
 
+  const storySlug =
+    story.url
+      ?.replace(/^stories\//, "")
+      .replace(/\.html$/, "")
 
-  /* -------------------------------------------------------
-     Story profile URL
-  ------------------------------------------------------- */
-
-const storySlug =
-  story.url
-    ?.replace(/^stories\//, "")
-    .replace(/\.html$/, "")
-
-
-const storyProfileUrl =
-  storySlug
-    ? `story_profile.html?story=${encodeURIComponent(storySlug)}`
-    : "#"
-    
-
-  /* -------------------------------------------------------
-     Card HTML
-  ------------------------------------------------------- */
+  const storyProfileUrl =
+    storySlug
+      ? `story_profile.html?story=${encodeURIComponent(storySlug)}`
+      : "#"
 
   card.innerHTML = `
 
@@ -1067,11 +860,9 @@ const storyProfileUrl =
         aria-label="${escapeHtml(story.name)} avatar"
       ></div>
 
-
       <h2 class="story-title">
         ${escapeHtml(story.name)}
       </h2>
-
 
       ${
         story.tagline
@@ -1083,7 +874,6 @@ const storyProfileUrl =
           : ""
       }
 
-
       ${
         tagsHtml
           ? `
@@ -1094,7 +884,6 @@ const storyProfileUrl =
           : ""
       }
 
-
       <a
         class="story-read-button"
         href="${storyProfileUrl}"
@@ -1104,7 +893,6 @@ const storyProfileUrl =
 
     </div>
 
-
     <div class="story-card-right">
 
       <div
@@ -1113,7 +901,6 @@ const storyProfileUrl =
         role="img"
         aria-label="${escapeHtml(story.name)} banner"
       ></div>
-
 
       <div class="story-content">
 
@@ -1127,14 +914,8 @@ const storyProfileUrl =
 
   `
 
-
-  /* -------------------------------------------------------
-     Avatar fallback
-  ------------------------------------------------------- */
-
   const avatar =
     card.querySelector(".story-avatar")
-
 
   if (avatar) {
 
@@ -1145,14 +926,8 @@ const storyProfileUrl =
 
   }
 
-
-  /* -------------------------------------------------------
-     Banner fallback
-  ------------------------------------------------------- */
-
   const banner =
     card.querySelector(".story-banner")
-
 
   if (banner) {
 
@@ -1163,14 +938,9 @@ const storyProfileUrl =
 
   }
 
-
   return card
 
 }
-
-/* =========================================================
-   RENDER STORIES
-========================================================= */
 
 function renderStories() {
 
@@ -1179,43 +949,34 @@ function renderStories() {
       "story-grid"
     )
 
-
   grid.innerHTML = ""
-
 
   const filtered =
     allStories
       .filter(matchesSearch)
       .filter(matchesTags)
 
-
   const sorted =
     sortStories(filtered)
-
 
   if (!sorted.length) {
 
     const empty =
       document.createElement("p")
 
-
     empty.className =
       "story-no-results"
 
-
     empty.textContent =
       "No stories match your filters."
-
 
     grid.appendChild(
       empty
     )
 
-
     return
 
   }
-
 
   sorted.forEach(story => {
 
@@ -1230,11 +991,6 @@ function renderStories() {
     .forEach(updateTagSeparators)
 
 }
-
-
-/* =========================================================
-   EVENT LISTENERS
-========================================================= */
 
 window.addEventListener(
   "popstate",
@@ -1252,10 +1008,5 @@ window.addEventListener("resize", () => {
     .querySelectorAll(".story-card")
     .forEach(updateTagSeparators)
 })
-
-
-/* =========================================================
-   START
-========================================================= */
 
 loadStories()

@@ -1,12 +1,3 @@
-/* =========================================================
-   MORTAL CONCEPT PROFILE LOADER
-   ========================================================= */
-
-
-/* =========================================================
-   HELPERS
-   ========================================================= */
-
 function text(value){
 
   if(
@@ -23,7 +14,6 @@ function text(value){
 
 }
 
-
 function getSpecies(){
 
   const params =
@@ -34,11 +24,6 @@ function getSpecies(){
   return params.get("species")
 
 }
-
-
-/* =========================================================
-   DOM HELPERS
-   ========================================================= */
 
 function setText(id, value){
 
@@ -54,7 +39,6 @@ function setText(id, value){
 
 }
 
-
 function hasValue(value){
 
   return (
@@ -64,7 +48,6 @@ function hasValue(value){
   )
 
 }
-
 
 function setOptionalElement(
   element,
@@ -93,7 +76,6 @@ function setOptionalElement(
 
 }
 
-
 function setSectionVisibility(
   element,
   visible
@@ -105,11 +87,6 @@ function setSectionVisibility(
     !visible
 
 }
-
-
-/* =========================================================
-   IMAGE HELPERS
-   ========================================================= */
 
 function setImage(
   element,
@@ -165,11 +142,6 @@ function setImage(
 
 }
 
-
-/* =========================================================
-   SLUG HELPERS
-   ========================================================= */
-
 function slugify(value){
 
   return String(
@@ -185,11 +157,6 @@ function slugify(value){
       "")
 
 }
-
-
-/* =========================================================
-   FETCH
-   ========================================================= */
 
 async function fetchSpecies(
   path
@@ -211,11 +178,6 @@ async function fetchSpecies(
   return await response.json()
 
 }
-
-
-/* =========================================================
-   LOAD SPECIES
-   ========================================================= */
 
 async function loadMortalConcept(){
 
@@ -275,12 +237,6 @@ async function loadMortalConcept(){
 
 }
 
-
-
-/* =========================================================
-   ERROR DISPLAY
-   ========================================================= */
-
 function showSpeciesError(
   title,
   message
@@ -300,11 +256,6 @@ function showSpeciesError(
 
 }
 
-
-/* =========================================================
-   DISPLAY SPECIES
-   ========================================================= */
-
 function displayMortalConcept(
   species
 ){
@@ -315,16 +266,10 @@ function displayMortalConcept(
 
   }
 
-
   const name =
     text(
       species.name
     )
-
-
-  /* =========================
-     PAGE TITLE
-     ========================= */
 
   const pageTitle =
     document.getElementById(
@@ -340,11 +285,6 @@ function displayMortalConcept(
 
   document.title =
     "Mortal Concepts | " + name
-
-
-  /* =========================
-     HEADER / BREADCRUMB
-     ========================= */
 
   const headerLogoText =
     document.querySelector(
@@ -370,64 +310,29 @@ function displayMortalConcept(
 
   }
 
-
-  /* =========================
-     MAIN INFORMATION
-     ========================= */
-
   populateBasicInformation(
     species
   )
-
-
-  /* =========================
-     QUICK FACTS
-     ========================= */
 
   populateQuickFacts(
     species.quick_facts
   )
 
-
-  /* =========================
-     BEHAVIOUR
-     ========================= */
-
   populateBehaviour(
     species.behaviour
   )
-
-
-  /* =========================
-     ABILITIES
-     ========================= */
 
   populateAbilities(
     species.abilities
   )
 
-
-  /* =========================
-     FIELD NOTES
-     ========================= */
-
   populateFieldNotes(
     species["field notes"]
   )
 
-
-  /* =========================
-     EXTRA INFORMATION
-     ========================= */
-
   populateExtraInformation(
     species["extra information"]
   )
-
-
-  /* =========================
-     SUBSPECIES
-     ========================= */
 
   populateSubspecies(
     species.subspecies
@@ -435,18 +340,9 @@ function displayMortalConcept(
 
 }
 
-
-/* =========================================================
-   BASIC INFORMATION
-   ========================================================= */
-
 function populateBasicInformation(
   species
 ){
-
-  /* =========================
-     NAME
-     ========================= */
 
   const nameElement =
     document.getElementById(
@@ -466,11 +362,6 @@ function populateBasicInformation(
       )
 
   }
-
-
-  /* =========================
-     OTHER NAMES
-     ========================= */
 
   const akaElement =
     document.getElementById(
@@ -509,11 +400,6 @@ function populateBasicInformation(
     }
 
   }
-
-
-  /* =========================
-     LATIN NAME
-     ========================= */
 
   const latinElement =
     document.getElementById(
@@ -560,11 +446,6 @@ function populateBasicInformation(
 
   }
 
-
-  /* =========================
-     DESCRIPTION
-     ========================= */
-
   const description =
     document.getElementById(
       "description"
@@ -596,11 +477,6 @@ function populateBasicInformation(
 
   }
 
-
-  /* =========================
-     IMAGE
-     ========================= */
-
   const image =
     document.getElementById(
       "species-image"
@@ -629,11 +505,6 @@ function populateBasicInformation(
 
 }
 
-
-/* =========================================================
-   QUICK FACTS
-   ========================================================= */
-
 function populateQuickFacts(
   facts
 ){
@@ -648,7 +519,6 @@ function populateQuickFacts(
     return
 
   }
-
 
   const mappings = {
 
@@ -681,10 +551,8 @@ function populateQuickFacts(
 
   }
 
-
   let visibleFacts =
     0
-
 
   Object.entries(
     mappings
@@ -702,7 +570,6 @@ function populateQuickFacts(
 
       }
 
-
       const row =
         element.closest(
           ".info-row"
@@ -711,10 +578,8 @@ function populateQuickFacts(
       const separator =
         row?.nextElementSibling
 
-
       const value =
         facts?.[key]
-
 
       if(
         hasValue(
@@ -797,11 +662,6 @@ function populateQuickFacts(
 
 }
 
-
-/* =========================================================
-   TEXT SECTION HELPER
-   ========================================================= */
-
 function populateTextSection(
   sectionId,
   data,
@@ -819,10 +679,8 @@ function populateTextSection(
 
   }
 
-
   let visibleItems =
     0
-
 
   Object.entries(
     mappings
@@ -840,14 +698,11 @@ function populateTextSection(
 
       }
 
-
       const value =
         data?.[key]
 
-
       const heading =
         element.previousElementSibling
-
 
       if(
         hasValue(
@@ -900,16 +755,10 @@ function populateTextSection(
     }
   )
 
-
   section.hidden =
     visibleItems === 0
 
 }
-
-
-/* =========================================================
-   BEHAVIOUR
-   ========================================================= */
 
 function populateBehaviour(
   behaviour
@@ -934,11 +783,6 @@ function populateBehaviour(
 
 }
 
-
-/* =========================================================
-   ABILITIES
-   ========================================================= */
-
 function populateAbilities(
   abilities
 ){
@@ -961,11 +805,6 @@ function populateAbilities(
   )
 
 }
-
-
-/* =========================================================
-   FIELD NOTES
-   ========================================================= */
 
 function populateFieldNotes(
   fieldNotes
@@ -990,11 +829,6 @@ function populateFieldNotes(
 
 }
 
-
-/* =========================================================
-   EXTRA INFORMATION
-   ========================================================= */
-
 function populateExtraInformation(
   information
 ){
@@ -1018,10 +852,8 @@ function populateExtraInformation(
 
   }
 
-
   container.innerHTML =
     ""
-
 
   const validInformation =
     Array.isArray(
@@ -1032,7 +864,6 @@ function populateExtraInformation(
         )
       : []
 
-
   if(!validInformation.length){
 
     section.hidden =
@@ -1041,7 +872,6 @@ function populateExtraInformation(
     return
 
   }
-
 
   validInformation.forEach(
     paragraph => {
@@ -1064,16 +894,10 @@ function populateExtraInformation(
     }
   )
 
-
   section.hidden =
     false
 
 }
-
-
-/* =========================================================
-   SUBSPECIES
-   ========================================================= */
 
 function populateSubspecies(
   subspecies
@@ -1098,10 +922,8 @@ function populateSubspecies(
 
   }
 
-
   container.innerHTML =
     ""
-
 
   const validSubspecies =
     Array.isArray(
@@ -1136,7 +958,6 @@ function populateSubspecies(
         )
       : []
 
-
   if(!validSubspecies.length){
 
     section.hidden =
@@ -1145,7 +966,6 @@ function populateSubspecies(
     return
 
   }
-
 
   validSubspecies.forEach(
     subspeciesEntry => {
@@ -1157,11 +977,6 @@ function populateSubspecies(
 
       wrapper.className =
         "subspecies-entry"
-
-
-      /* =========================
-         NAME
-         ========================= */
 
       if(
         hasValue(
@@ -1186,11 +1001,6 @@ function populateSubspecies(
 
       }
 
-
-      /* =========================
-         LATIN NAME
-         ========================= */
-
       if(
         hasValue(
           subspeciesEntry["latin name"]
@@ -1205,7 +1015,6 @@ function populateSubspecies(
         latin.className =
           "text-box__text"
 
-
         const italic =
           document.createElement(
             "i"
@@ -1216,7 +1025,6 @@ function populateSubspecies(
             "latin name"
           ]
 
-
         latin.appendChild(
           italic
         )
@@ -1226,11 +1034,6 @@ function populateSubspecies(
         )
 
       }
-
-
-      /* =========================
-         DESCRIPTION
-         ========================= */
 
       if(
         hasValue(
@@ -1255,7 +1058,6 @@ function populateSubspecies(
 
       }
 
-
       container.appendChild(
         wrapper
       )
@@ -1263,16 +1065,10 @@ function populateSubspecies(
     }
   )
 
-
   section.hidden =
     false
 
 }
-
-
-/* =========================================================
-   START
-   ========================================================= */
 
 document.addEventListener(
   "DOMContentLoaded",
