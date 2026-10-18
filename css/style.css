@@ -1,15 +1,23 @@
+/* =========================================================
+   1. ROOT VARIABLES
+========================================================= */
+
 :root {
+  /* -------------------------------------------------------
+     General colors
+  ------------------------------------------------------- */
+
   --color-primary: #b99b78;
   --color-primary-dark: #7a5d3c;
   --color-primary-darker: #6b5032;
   --color-accent: #a27d5f;
   --color-accent-light: #f7f3e8;
 
-  --color-box-1: #f6ead8;
-  --color-box-2: #f8efe1;
+  --color-box-1: #f6ead8; /*Originally #e9dac8*/
+  --color-box-2: #f8efe1; /*Originally #ece2d6*/
 
   --color-light: #f4efe6;
-  --color-bg-light: #fff8e7;
+  --color-bg-light: #fff8e7; /*Originally #f3f1ec*/
 
   --color-text-dark: #2b2b2b;
   --color-text-muted: #5a432e;
@@ -19,6 +27,11 @@
   --color-border: #8b6a4d;
   --color-input-bg: #e8e2d7;
   --color-white: #ffffff;
+
+
+  /* -------------------------------------------------------
+     Typography
+  ------------------------------------------------------- */
 
   --font-display: "Castoro Titling", serif;
   --font-body: "IM Fell English", serif;
@@ -30,6 +43,11 @@
   --font-size-lg: 22px;
   --font-size-xl: 34px;
 
+
+  /* -------------------------------------------------------
+     Spacing
+  ------------------------------------------------------- */
+
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -39,6 +57,11 @@
   --space-10: 40px;
   --space-12: 60px;
   --space-20: 80px;
+
+
+  /* -------------------------------------------------------
+     Components
+  ------------------------------------------------------- */
 
   --card-width: 140px;
   --gen-image-width: 400px;
@@ -50,12 +73,30 @@
   --border-radius-lg: 6px;
   --border-radius-full: 999px;
 
+
+  /* -------------------------------------------------------
+     Transitions
+  ------------------------------------------------------- */
+
   --transition-fast: 0.2s ease;
+
+
+  /* -------------------------------------------------------
+     Character grid / dot background
+  ------------------------------------------------------- */
 
   --dot-size: 1px;
   --dot-gap: 8px;
   --dot-offset: 4px;
   --dot-color: rgba(0, 0, 0, 0.03);
+
+
+  /* -------------------------------------------------------
+     Character theme defaults
+
+     These are fallbacks only.
+     The JS/theme system can override them.
+  ------------------------------------------------------- */
 
   --char-primary: #b99b78;
   --char-secondary: #a27d5f;
@@ -82,10 +123,20 @@
       var(--char-secondary)
     );
 
+
+  /* -------------------------------------------------------
+     Character particles
+  ------------------------------------------------------- */
+
   --char-particle-color: #b99b78;
   --char-particle-opacity: 0.18;
   --char-particle-blur: 0px;
 }
+
+
+/* =========================================================
+   2. GLOBAL
+========================================================= */
 
 html {
   scroll-behavior: smooth;
@@ -109,10 +160,13 @@ h6 {
   font-family: var(--font-display);
 }
 
+
 body.character-profile-page {
   background: var(--char-page-bg);
   color: var(--char-secondary);
 }
+
+/* Breadcrumb Nav */
 
 .breadcrumb-container {
   padding: var(--space-3);
@@ -145,6 +199,10 @@ body.character-profile-page {
 .breadcrumb-current {
   font-style: italic;
 }
+
+/* GENERAL STYLES */
+
+/* Text */
 
 .text-box {
   width: 100%;
@@ -200,6 +258,8 @@ body.character-profile-page {
   margin-top: var(--space-3);
 }
 
+/* Buttons */
+
 .basic-button {
   display: inline-block;
 
@@ -234,11 +294,13 @@ body.character-profile-page {
     transform var(--transition-fast);
 }
 
+
 .basic-button:hover {
   background: var(--color-primary-darker);
 
   transform: translateY(-1px);
 }
+
 
 .basic-button:focus-visible {
   outline:
@@ -254,6 +316,8 @@ body.character-profile-page {
   gap: var(--space-2);
 }
 
+/* Image Banner */
+
 .image-banner {
   width: 100%;
   height: clamp(200px, 30vw, 400px);
@@ -267,6 +331,9 @@ body.character-profile-page {
   object-position: center;
   display: block;
 }
+
+
+/* Contents Dropdown */
 
 .contents {
   width: 100%;
@@ -303,6 +370,9 @@ body.character-profile-page {
   text-decoration: underline;
 }
 
+
+/* Section Headers */
+
 .text-box__title a {
   color: inherit;
   text-decoration: none;
@@ -329,6 +399,8 @@ body.character-profile-page {
 .text-box__title_small a:hover {
   color: var(--color-primary-dark);
 }
+
+/* Boxes */
 
 .box {
   display: flex;
@@ -390,6 +462,9 @@ body.character-profile-page {
   color: var(--color-text-dark);
 }
 
+
+/* Plain Image Box */
+
 .box--image {
   display: block;
 }
@@ -399,10 +474,16 @@ body.character-profile-page {
   margin: 0 auto;
 }
 
+
+/* Image Left, Text Right */
+
 .box--image-left {
   flex-direction: row;
   align-items: flex-start;
 }
+
+
+/* Text Left, Image Right */
 
 .box--image-right {
   flex-direction: row;
@@ -417,6 +498,9 @@ body.character-profile-page {
   order: 2;
 }
 
+
+/* Image Above, Text Below */
+
 .box--image-top {
   flex-direction: column;
   align-items: center;
@@ -425,6 +509,9 @@ body.character-profile-page {
 .box--image-top .box__content {
   width: 100%;
 }
+
+
+/* Double Image Box (two ways) */
 
 .box--double-image {
   align-items: flex-start;
@@ -454,6 +541,9 @@ body.character-profile-page {
   display: block;
 }
 
+
+/* General HR line */
+
 .line {
   width: 100%;
   margin: var(--space-4) 0;
@@ -469,6 +559,11 @@ body.character-profile-page {
   border-top: 1px solid var(--color-border);
   height: 0;
 }
+
+
+/* =========================================================
+   3. PAGE BACKGROUNDS
+========================================================= */
 
 .page-characters {
   background-color: var(--color-bg-light);
@@ -495,6 +590,11 @@ body.character-profile-page {
 .page-paper {
   background: var(--color-light);
 }
+
+
+/* =========================================================
+   4. CHARACTER ANIMATED BACKGROUND
+========================================================= */
 
 .character-profile-page {
   position: relative;
@@ -524,11 +624,19 @@ body.character-profile-page
   background: var(--char-page-bg-gradient);
 }
 
+
+/* Particle container */
+
 .character-particles {
   position: absolute;
   inset: 0;
   overflow: hidden;
 }
+
+
+/* ---------------------------------------------------------
+   Individual particles
+--------------------------------------------------------- */
 
 .character-particle {
   position: absolute;
@@ -562,6 +670,11 @@ body.character-profile-page
     var(--particle-delay)
     infinite;
 }
+
+
+/* ---------------------------------------------------------
+   Particle shapes
+--------------------------------------------------------- */
 
 .character-particle[data-shape="square"] {
   border-radius: 0;
@@ -724,6 +837,11 @@ body.character-profile-page
   );
 }
 
+
+/* ---------------------------------------------------------
+   Particle animation
+--------------------------------------------------------- */
+
 @keyframes character-particle-float {
   from {
     transform:
@@ -738,16 +856,29 @@ body.character-profile-page
   }
 }
 
+
+/* Reduced motion */
+
 @media (prefers-reduced-motion: reduce) {
   .character-particle {
     animation-play-state: paused;
   }
 }
 
+
+/* =========================================================
+   5. CHARACTER PAGE STACKING
+========================================================= */
+
 .character-profile-page > .page-container {
   position: relative;
   z-index: 1;
 }
+
+
+/* =========================================================
+   6. CHARACTER TEXT GRADIENT
+========================================================= */
 
 body.character-profile-page
 .character-gradient-text {
@@ -766,6 +897,7 @@ body.character-profile-page
   -webkit-text-fill-color: transparent;
 }
 
+
 html:not(.has-text-gradient)
 body.character-profile-page
 .character-gradient-text {
@@ -775,6 +907,7 @@ body.character-profile-page
   color: inherit;
   -webkit-text-fill-color: currentColor;
 }
+
 
 body.character-profile-page
 button.character-gradient-text {
@@ -790,6 +923,12 @@ button.character-gradient-text {
   -webkit-text-fill-color: var(--char-primary);
 }
 
+
+/* =========================================================
+   7. CHARACTER PAGE BODY BACKGROUND
+========================================================= */
+
+
 body.character-profile-page {
   background: var(--char-page-bg);
 }
@@ -798,6 +937,11 @@ html.has-page-bg-gradient
 body.character-profile-page {
   background: var(--char-page-bg-gradient);
 }
+
+
+/* =========================================================
+   8. SITE HEADER/FOOTER
+========================================================= */
 
 .site-header {
   position: relative;
@@ -847,8 +991,3715 @@ body.character-profile-page {
   color: var(--color-light);
 }
 
+/* Footer */
+
 .site-footer {
   width: 100%;
   margin-top: auto;
   background: var(--color-primary);
+}
+
+.site-footer-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.site-footer-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  color: var(--color-white);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.site-footer-nav a:hover {
+  text-decoration: underline;
+}
+
+.footer-text {
+  color: var(--color-white);
+}
+
+.footer-spacer {
+  color: var(--color-white);
+}
+
+#site-footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Character header/footer */
+
+body.character-profile-page .site-header {
+  background: var(--char-bg-1);
+}
+
+body.character-profile-page .site-logo,
+body.character-profile-page .site-logo-text {
+  color: var(--char-primary);
+}
+
+body.character-profile-page #header-page-title {
+  color: var(--char-primary);
+}
+
+body.character-profile-page .site-footer {
+  background: var(--char-bg-1);
+  color: var(--char-primary);
+}
+
+body.character-profile-page .footer-text {
+  color: var(--char-primary);
+}
+
+body.character-profile-page .site-footer-nav a {
+  color: var(--char-primary);
+}
+
+body.character-profile-page .footer-spacer {
+  color: var(--char-primary);
+}
+
+/* =========================================================
+   9. NAVIGATION
+========================================================= */
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  color: var(--color-light);
+  background: var(--color-primary-dark);
+
+  border-radius: var(--border-radius-sm);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+
+/* Navigation icons */
+
+.nav-icon {
+  display: inline-block;
+  flex-shrink: 0;
+
+  width: 1.1em;
+  height: 1.1em;
+
+  fill: currentColor;
+}
+
+.svg-sprite {
+  position: absolute;
+
+  width: 0;
+  height: 0;
+
+  overflow: hidden;
+}
+
+/* Navigation states */
+
+.site-nav a:hover,
+.nav-dropdown-toggle:hover {
+  background: var(--color-primary-darker);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.site-nav a:active,
+.nav-dropdown-toggle:active {
+  transform: translateY(1px);
+}
+
+.site-nav a:focus-visible,
+.nav-dropdown-toggle:focus-visible {
+  outline: 2px solid var(--color-light);
+  outline-offset: 2px;
+}
+
+
+/* Navigation dropdowns */
+
+.nav-dropdown {
+  position: relative;
+  z-index: 1000;
+}
+
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  color: var(--color-light);
+  background: var(--color-primary-dark);
+
+  border: none;
+  border-radius: var(--border-radius-sm);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+
+/* Dropdown menu */
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + var(--space-1));
+  left: 0;
+
+  display: none;
+  min-width: 180px;
+  max-width: min(300px, calc(100vw - var(--space-6)));
+
+  padding: var(--space-1);
+
+  background: var(--color-primary-dark);
+
+  border-radius: var(--border-radius-sm);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.2);
+
+  z-index: 9999;
+}
+
+.nav-dropdown.open .nav-dropdown-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-nav .nav-dropdown:last-child .nav-dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+/* Dropdown links */
+
+.nav-dropdown-menu a {
+  display: flex;
+  align-items: center;
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  color: var(--color-light);
+  background: transparent;
+
+  border-radius: var(--border-radius-sm);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+
+  text-decoration: none;
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.nav-dropdown-menu a:hover {
+  color: var(--color-light);
+  background: var(--color-primary-darker);
+}
+
+.nav-dropdown-menu a:focus-visible {
+  outline: 2px solid var(--color-light);
+  outline-offset: -2px;
+}
+
+
+/* Profile page navigation */
+
+body.character-profile-page .site-nav a,
+body.character-profile-page .nav-dropdown-toggle,
+body.story-profile-page .site-nav a,
+body.story-profile-page .nav-dropdown-toggle,
+body.faction-profile-page .site-nav a,
+body.faction-profile-page .nav-dropdown-toggle {
+  color: var(--char-secondary);
+  background: var(--char-bg-2);
+}
+
+body.character-profile-page .site-nav a:hover,
+body.character-profile-page .nav-dropdown-toggle:hover,
+body.story-profile-page .site-nav a:hover,
+body.story-profile-page .nav-dropdown-toggle:hover,
+body.faction-profile-page .site-nav a:hover,
+body.faction-profile-page .nav-dropdown-toggle:hover {
+  background-color:
+    color-mix(
+      in srgb,
+      var(--char-bg-2) 80%,
+      black 20%
+    );
+
+  color: var(--char-secondary);
+}
+
+body.character-profile-page .site-nav a:focus-visible,
+body.character-profile-page .nav-dropdown-toggle:focus-visible,
+body.story-profile-page .site-nav a:focus-visible,
+body.story-profile-page .nav-dropdown-toggle:focus-visible,
+body.faction-profile-page .site-nav a:focus-visible,
+body.faction-profile-page .nav-dropdown-toggle:focus-visible {
+  outline-color: var(--char-secondary);
+}
+
+
+/* Profile page dropdown */
+
+body.character-profile-page .nav-dropdown-menu,
+body.story-profile-page .nav-dropdown-menu,
+body.faction-profile-page .nav-dropdown-menu {
+  background: var(--char-bg-2);
+}
+
+body.character-profile-page .nav-dropdown-menu a,
+body.story-profile-page .nav-dropdown-menu a,
+body.faction-profile-page .nav-dropdown-menu a {
+  color: var(--char-secondary);
+}
+
+body.character-profile-page .nav-dropdown-menu a:hover,
+body.story-profile-page .nav-dropdown-menu a:hover,
+body.faction-profile-page .nav-dropdown-menu a:hover {
+  color: var(--char-secondary);
+
+  background-color:
+    color-mix(
+      in srgb,
+      var(--char-bg-2) 80%,
+      black 20%
+    );
+}
+
+body.character-profile-page .nav-dropdown-menu a:focus-visible,
+body.story-profile-page .nav-dropdown-menu a:focus-visible,
+body.faction-profile-page .nav-dropdown-menu a:focus-visible {
+  outline-color: var(--char-secondary);
+}
+
+/* =========================================================
+   10. PAGE TITLE
+========================================================= */
+
+#page-title {
+  margin-bottom: var(--space-6);
+
+  font-family: var(--font-display);
+  font-size: var(--font-size-xl);
+}
+
+
+/* =========================================================
+   11. CHARACTER LIST PAGE LAYOUT
+========================================================= */
+
+.characters-layout {
+  display: flex;
+  align-items: flex-start;
+
+  gap: var(--space-20);
+
+  max-width: 1600px;
+  margin: auto;
+
+  padding:
+    clamp(
+      var(--space-10),
+      5vw,
+      var(--space-20)
+    );
+
+  padding-top:
+    clamp(
+      var(--space-5),
+      3vw,
+      var(--space-10)
+    );
+}
+
+
+/* =========================================================
+   12. CHARACTER SIDEBAR
+========================================================= */
+
+.characters-sidebar {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+
+  width: var(--sidebar-width);
+
+  gap: var(--space-5);
+
+  padding: var(--space-3);
+
+  background: var(--color-primary);
+  border-radius: var(--border-radius-lg);
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.sidebar-label {
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+}
+
+
+/* Sidebar controls */
+
+.characters-sidebar input:not([type="checkbox"]),
+.characters-sidebar select {
+  box-sizing: border-box;
+
+  width: 100%;
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  border: none;
+  border-radius: var(--border-radius-md);
+
+  background: var(--color-input-bg);
+  color: var(--color-text-dark);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+
+  transition: background var(--transition-fast);
+}
+
+.characters-sidebar input:focus-visible,
+.characters-sidebar select:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
+
+/* Sidebar button */
+
+.sidebar-button {
+  padding: var(--space-2);
+
+  border: none;
+  border-radius: var(--border-radius-md);
+
+  background: var(--color-primary-dark);
+  color: var(--color-white);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+
+  cursor: pointer;
+}
+
+.sidebar-button:hover {
+  background: var(--color-primary-darker);
+}
+
+.sidebar-button:focus-visible {
+  outline: 2px solid var(--color-light);
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   13. CHARACTER GRID
+========================================================= */
+
+.characters-board {
+  flex: 1;
+}
+
+#character-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, var(--card-width));
+
+  gap: var(--card-gap);
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   14. POLAROID CHARACTER CARDS
+========================================================= */
+
+.char-card {
+  position: relative;
+
+  box-sizing: border-box;
+  width: var(--card-width);
+
+  padding: var(--space-2);
+
+  background: var(--color-white);
+  color: var(--color-text-dark);
+
+  text-align: center;
+  text-decoration: none;
+
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform var(--transition-fast);
+}
+
+
+/* Corkboard randomness */
+
+.char-card:nth-child(1n) {
+  transform:
+    rotate(-2deg)
+    translateY(1px);
+}
+
+.char-card:nth-child(2n) {
+  transform:
+    rotate(3deg)
+    translateY(-1px);
+}
+
+.char-card:nth-child(3n) {
+  transform:
+    rotate(-1deg)
+    translateY(2px);
+}
+
+.char-card:nth-child(4n) {
+  transform:
+    rotate(2deg)
+    translateY(-2px);
+}
+
+.char-card:nth-child(5n) {
+  transform:
+    rotate(-4deg)
+    translateY(3px);
+}
+
+.char-card:nth-child(6n) {
+  transform:
+    rotate(1deg)
+    translateY(-3px);
+}
+
+.char-card:nth-child(7n) {
+  transform:
+    rotate(4deg)
+    translateY(0);
+}
+
+.char-card:nth-child(8n) {
+  transform:
+    rotate(-3deg)
+    translateY(2px);
+}
+
+.char-card:nth-child(9n) {
+  transform:
+    rotate(2deg)
+    translateY(-1px);
+}
+
+.char-card:nth-child(10n) {
+  transform:
+    rotate(-1deg)
+    translateY(1px);
+}
+
+
+/* Card interaction */
+
+.char-card:hover {
+  z-index: 10;
+
+  transform:
+    rotate(0deg)
+    scale(1.08);
+}
+
+.char-card:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
+
+/* Push pin */
+
+.char-card::before {
+  content: "";
+
+  position: absolute;
+  top: -8px;
+  left: 50%;
+
+  width: 16px;
+  height: 16px;
+
+  transform: translateX(-50%);
+
+  background: var(--color-pin);
+  border-radius: 50%;
+
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Card image */
+
+.char-card img {
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+
+  background: black;
+}
+
+
+/* Card name */
+
+.card-name {
+  margin: 0;
+  padding: var(--space-2);
+
+  font-size: var(--font-size-md);
+}
+
+
+/* =========================================================
+   15. TAG FILTERS
+========================================================= */
+
+.tag-filters {
+  margin-top: var(--space-2);
+
+  font-size: var(--font-size-base);
+}
+
+.tag-category {
+  overflow: hidden;
+
+  margin-bottom: var(--space-2);
+
+  background: var(--color-accent-light);
+  border-radius: var(--border-radius-lg);
+}
+
+.tag-category summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  background: var(--color-accent);
+  color: var(--color-white);
+
+  cursor: pointer;
+  list-style: none;
+
+  transition:
+    background var(--transition-fast);
+}
+
+.tag-category summary:hover {
+  background: var(--color-primary-dark);
+}
+
+.tag-category summary:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: -2px;
+}
+
+.tag-category summary::-webkit-details-marker {
+  display: none;
+}
+
+.tag-category summary::after {
+  content: "▾";
+
+  font-size: 0.8rem;
+
+  transition:
+    transform var(--transition-fast);
+}
+
+.tag-category[open] summary::after {
+  transform: rotate(180deg);
+}
+
+
+/* Tag list */
+
+.tag-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-1);
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  background: var(--color-white);
+
+  text-align: left;
+}
+
+.tag-option {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: var(--space-2);
+
+  padding:
+    var(--space-1)
+    var(--space-2);
+
+  border-radius: var(--border-radius-md);
+
+  font-size: var(--font-size-base);
+
+  cursor: pointer;
+  text-align: left;
+
+  transition:
+    background var(--transition-fast);
+}
+
+.tag-option:hover,
+.tag-option:focus-within {
+  background: var(--color-accent-light);
+}
+
+.tag-option input[type="checkbox"] {
+  flex: 0 0 auto;
+
+  margin: 0;
+
+  accent-color: var(--color-primary-dark);
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   16. TAG DISPLAY
+========================================================= */
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  gap: var(--space-1);
+
+  margin-top: var(--space-1);
+}
+
+.tag {
+  padding:
+    var(--space-1)
+    var(--space-1);
+
+  background: #fdfcf6;
+
+  border:
+    1px solid
+    var(--color-border);
+
+  border-radius: var(--border-radius-full);
+
+  font-size: var(--font-size-xs);
+}
+
+
+/* =========================================================
+   17. PROFILE TAG GROUPS
+========================================================= */
+
+.tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: var(--space-1);
+
+  margin-top: var(--space-1);
+}
+
+.tag-group-title {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.tag-group-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: var(--space-1);
+}
+
+.profile-tags {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-1);
+}
+
+
+/* =========================================================
+   18. MISC
+========================================================= */
+
+.no-results {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.tag-placeholder {
+  padding: var(--space-1);
+
+  color: var(--color-text-muted-light);
+
+  font-size: var(--font-size-sm);
+  font-style: italic;
+}
+
+
+/* =========================================================
+   19. CHARACTER PROFILE CONTAINER
+========================================================= */
+
+.page-container {
+  max-width: 980px;
+
+  margin: 0 auto;
+
+  padding:
+    clamp(
+      var(--space-10),
+      5vw,
+      var(--space-12)
+    );
+
+  padding-top:
+    clamp(
+      var(--space-5),
+      3vw,
+      var(--space-10)
+    );
+}
+
+
+/* =========================================================
+   20. PROFILE NAVIGATION
+========================================================= */
+
+.profile-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  margin-bottom: var(--space-4);
+}
+
+.profile-navigation a {
+  display: inline-flex;
+  align-items: center;
+
+  gap: var(--space-2);
+
+  color: var(--char-primary);
+
+  text-decoration: none;
+}
+
+.profile-navigation #character-navigation {
+  color: var(--char-primary);
+}
+
+.profile-navigation-species {
+  align-items: left;
+
+  width: 100%;
+
+  margin-bottom: var(--space-4);
+}
+
+.profile-navigation-species a {
+  display: inline-flex;
+  align-items: center;
+
+  gap: var(--space-2);
+
+  color: var(--color-text-muted-light);
+
+  text-decoration: none;
+}
+
+/* =========================================================
+   21. MAIN CHARACTER PROFILE CARD
+========================================================= */
+
+.character-profile-card {
+  display: grid;
+
+  grid-template-columns: 1fr 2fr;
+
+  gap: 0;
+
+  overflow: hidden;
+
+  margin-bottom: var(--space-12);
+}
+
+
+/* ---------------------------------------------------------
+   Left panel
+--------------------------------------------------------- */
+
+.profile-card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: var(--space-6);
+
+  background: var(--char-bg-1);
+
+  text-align: center;
+}
+
+
+/* Avatar */
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+
+  margin-bottom: var(--space-5);
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* Name */
+
+.profile-name {
+  margin: 0 0 var(--space-5);
+
+  color: var(--char-primary);
+
+  font-size: var(--font-size-lg);
+}
+
+
+/* Information */
+
+.profile-info-section {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 0;
+
+  font-size: var(--font-size-sm);
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+
+  padding: var(--space-2) 0;
+
+  text-align: left;
+}
+
+
+/* Left-panel text */
+
+.profile-card-left .info-label,
+.profile-card-left .info-value {
+  color: var(--char-primary);
+}
+
+.profile-card-left .info-value {
+  max-width: 50%;
+
+  text-align: right;
+
+  word-break: break-word;
+}
+
+
+/* ---------------------------------------------------------
+   Right panel
+--------------------------------------------------------- */
+
+.profile-card-right {
+  display: flex;
+  flex-direction: column;
+
+  background: var(--char-bg-2);
+}
+
+.profile-card-right .info-label,
+.profile-card-right .info-value {
+  color: var(--char-secondary);
+}
+
+.profile-card-right .info-value {
+  max-width: 50%;
+
+  text-align: right;
+
+  word-break: break-word;
+}
+
+
+/* Banner */
+
+.profile-banner {
+  height: 200px;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-faction-banner {
+  height: 100px;
+
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* Content */
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  padding: var(--space-6);
+
+  color: var(--char-secondary);
+
+  font-size: var(--font-size-sm);
+}
+
+
+/* Traits */
+
+.profile-traits {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-1);
+
+  margin: 0;
+  padding: 0 0 0 var(--space-5);
+
+  list-style: disc;
+
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  line-height: 1.2;
+}
+
+.profile-traits li {
+  margin: 0;
+  padding: 0;
+
+  line-height: 1.2;
+}
+
+.profile-card-right .profile-traits li {
+  color: var(--char-secondary);
+}
+
+#profile-notes {
+  margin-top: var(--space-3);
+}
+
+/* =========================================================
+   22. DIVIDERS
+========================================================= */
+
+.info-divider {
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  border-top:
+    1px solid
+    var(--char-accent);
+}
+
+
+/* =========================================================
+   23. CHARACTER DETAILS
+========================================================= */
+
+.character-details {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-4);
+
+  color: var(--char-secondary);
+}
+
+.character-details h2 {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-3);
+
+  color: var(--char-primary);
+
+  font-size: var(--font-size-lg);
+
+  letter-spacing: 0.02em;
+}
+
+.character-details p,
+.character-details ul {
+  margin: 0 0 var(--space-3);
+}
+
+.character-details p {
+  display: grid;
+
+  grid-template-columns:
+    max-content
+    minmax(0, 1fr);
+
+  gap: var(--space-4);
+
+  color: var(--char-secondary);
+
+  line-height: 1.8;
+}
+
+.character-details p strong {
+  color: var(--char-primary);
+}
+
+.character-details ul {
+  padding-left: var(--space-6);
+
+  color: var(--char-secondary);
+
+  list-style: disc;
+}
+
+.character-details ul li {
+  margin-bottom: var(--space-2);
+
+  color: var(--char-secondary);
+}
+
+
+/* =========================================================
+   24. CHARACTER DETAIL BOXES
+========================================================= */
+
+.character-detail-card {
+  width: 100%;
+
+  margin-bottom: var(--space-12);
+
+  overflow: hidden;
+}
+
+/* Backstory box format */
+
+#backstory {
+  white-space: pre-line;
+}
+
+/* =========================================================
+   25. 50 / 50 DETAIL BOX
+========================================================= */
+
+.character-detail-split {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+}
+
+
+/* =========================================================
+   26. DESIGN DETAILS LAYOUTS
+========================================================= */
+
+.design-details-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 400px);
+
+  align-items: stretch;
+
+  gap: var(--space-6);
+
+  margin-bottom: var(--space-12);
+}
+
+.design-details-layout-pet {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 500px);
+
+  align-items: stretch;
+
+  gap: var(--space-6);
+
+  margin-bottom: var(--space-12);
+}
+
+
+/* Left side */
+
+.design-details-left {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 0;
+
+  gap: var(--space-6);
+}
+
+
+/* Information box */
+
+.design-info-box {
+  flex-shrink: 0;
+
+  margin-bottom: 0;
+}
+
+
+/* Notes box */
+
+.design-notes-box {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+
+  min-height: 0;
+
+  margin-bottom: 0;
+}
+
+.design-notes-box .detail-banner-content {
+  flex: 1;
+
+  min-height: 0;
+
+  overflow-y: auto;
+}
+
+
+/* Design image */
+
+.design-image-box {
+  width: 100%;
+
+  min-height: 0;
+
+  aspect-ratio: 2 / 3;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.design-image-box-pet {
+  width: 100%;
+
+  min-height: 0;
+
+  aspect-ratio: 1 / 1;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+/* =========================================================
+   27. DETAIL SPLIT — LEFT
+========================================================= */
+
+.detail-split-left {
+  padding: var(--space-6);
+
+  background: var(--char-bg-1);
+
+  color: var(--char-primary);
+
+  font-size: var(--font-size-sm);
+}
+
+.detail-split-left h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+
+  color: var(--char-primary);
+
+  font-size: var(--font-size-lg);
+}
+
+.detail-split-left .info-label,
+.detail-split-left .info-value {
+  color: var(--char-primary);
+}
+
+.detail-split-left .info-value {
+  max-width: 50%;
+
+  text-align: right;
+
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   28. DETAIL SPLIT — RIGHT
+========================================================= */
+
+.detail-split-right {
+  padding: var(--space-6);
+
+  background: var(--char-bg-2);
+
+  color: var(--char-secondary);
+
+  font-size: var(--font-size-sm);
+}
+
+.detail-split-right h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+
+  color: var(--char-secondary);
+
+  font-size: var(--font-size-lg);
+}
+
+.detail-split-right .profile-traits {
+  margin: 0;
+}
+
+.detail-split-left .profile-traits li {
+  color: var(--char-primary);
+}
+
+.detail-split-right .profile-traits li {
+  color: var(--char-secondary);
+}
+
+
+/* =========================================================
+   29. BANNER DETAIL BOX
+========================================================= */
+
+.character-detail-banner {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Header */
+
+.detail-banner-header {
+  padding:
+    var(--space-5)
+    var(--space-6);
+
+  background: var(--char-bg-1);
+  color: var(--char-primary);
+}
+
+.detail-banner-header h2 {
+  margin: 0;
+
+  color: var(--char-primary);
+
+  font-size: var(--font-size-lg);
+}
+
+
+/* Content */
+
+.detail-banner-content {
+  padding: var(--space-6);
+
+  background: var(--char-bg-2);
+  color: var(--char-secondary);
+
+  font-size: var(--font-size-sm);
+}
+
+.detail-banner-content p {
+  margin: 0 0 var(--space-4);
+
+  color: var(--char-secondary);
+
+  line-height: 1.8;
+}
+
+.detail-banner-content ul {
+  color: var(--char-secondary);
+}
+
+/* =========================================================
+   30. DETAIL SWITCHER
+========================================================= */
+
+.character-detail-switcher {
+  width: 100%;
+}
+
+
+.detail-switcher-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+
+.detail-switcher-tab {
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  border: none;
+  border-radius: var(--border-radius-md);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+
+  cursor: pointer;
+
+  color: var(--char-primary);
+
+  background-image: none;
+  background-color: var(--char-bg-1);
+
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+
+.detail-switcher-tab:hover {
+
+  background-image: none;
+
+  background-color:
+    color-mix(
+      in srgb,
+      var(--char-bg-1) 80%,
+      black 20%
+    );
+
+  color: var(--char-secondary);
+}
+
+
+.detail-switcher-tab.active {
+
+  background-image: none;
+
+  background-color: var(--char-bg-2);
+
+  color: var(--char-secondary);
+}
+
+
+.detail-switcher-tab:focus-visible {
+
+  outline:
+    2px solid
+    var(--char-secondary);
+
+  outline-offset: 2px;
+}
+
+
+.detail-switcher-tab .nav-icon {
+  flex-shrink: 0;
+}
+
+
+.detail-switcher-panel[hidden] {
+  display: none;
+}
+
+.extras-layout {
+  display: grid;
+
+  grid-template-columns:
+    600px
+    minmax(0, 1fr);
+
+  gap: var(--space-4);
+
+  width: 100%;
+}
+
+
+.extras-image-box {
+  width: 600px;
+  height: 380px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: transparent;
+}
+
+
+.extras-image-box img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+
+.extras-palette-box {
+  width: 100%;
+  min-width: 0;
+
+  box-sizing: border-box;
+
+  padding: var(--space-4);
+
+  background-color: var(--char-bg-1);
+  color: var(--char-primary);
+}
+
+
+.extras-palette {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: var(--space-2);
+}
+
+
+.extras-palette-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  gap: var(--space-4);
+
+  font-size: var(--font-size-sm);
+}
+
+
+.extras-palette-label {
+  color: var(--char-primary);
+}
+
+
+.extras-palette-colour {
+  display: flex;
+  align-items: center;
+
+  gap: var(--space-2);
+
+  color: var(--char-primary);
+}
+
+
+.extras-palette-swatch {
+  display: inline-block;
+
+  width: 18px;
+  height: 18px;
+
+  flex: 0 0 18px;
+
+  box-sizing: border-box;
+}
+
+
+.extras-palette-value {
+  color: var(--char-primary);
+}
+
+/* =========================================================
+   32. PARTNER PROFILE
+========================================================= */
+
+.partner-card {
+  grid-template-columns: 2fr 1fr;
+}
+
+.partner-card .profile-card-right h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+
+  color: var(--char-secondary);
+
+  font-size: var(--font-size-lg);
+}
+
+.partner-card .profile-card-right .info-label,
+.partner-card .profile-card-right .info-value {
+  color: var(--char-secondary);
+}
+
+.partner-card .profile-card-right .info-value {
+  max-width: 50%;
+
+  text-align: right;
+
+  word-break: break-word;
+}
+
+.partner-avatar-link {
+  display: block;
+
+  color: inherit;
+
+  text-decoration: none;
+}
+
+.partner-card .partner-name {
+  margin: 0 0 var(--space-5);
+
+  color: var(--char-primary);
+
+  font-size: var(--font-size-lg);
+}
+
+.partner-card .profile-card-left .info-label,
+.partner-card .profile-card-left .info-value {
+  color: var(--char-primary);
+}
+
+.partner-card .profile-card-left .info-value {
+  max-width: 50%;
+
+  text-align: right;
+
+  word-break: break-word;
+}
+
+.partner-card .partner-notes {
+  margin: var(--space-3);
+
+  color: var(--char-secondary);
+}
+
+
+/* =========================================================
+   33. RELATIONSHIPS
+========================================================= */
+
+.relationships-section {
+  width: 100%;
+
+  margin-bottom: var(--space-12);
+}
+
+
+/* Header */
+
+.relationships-header {
+  padding:
+    var(--space-5)
+    var(--space-6);
+
+  background: var(--char-bg-1);
+  color: var(--char-primary);
+}
+
+.relationships-header h2 {
+  margin: 0;
+
+  color: var(--char-primary);
+
+  font-size: var(--font-size-lg);
+}
+
+
+/* Relationship grid */
+
+.relationships-container {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(150px, 1fr)
+    );
+
+  gap: var(--space-4);
+
+  padding: var(--space-5);
+
+  background: var(--char-bg-2);
+}
+
+
+/* Relationship card */
+
+.relationship-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: var(--space-4);
+
+  background: var(--char-bg-1);
+  color: var(--char-primary);
+
+  text-align: center;
+}
+
+
+/* Avatar */
+
+.relationship-avatar-link {
+  display: block;
+
+  width: 120px;
+  height: 120px;
+
+  margin-bottom: var(--space-3);
+}
+
+.relationship-avatar {
+  width: 120px;
+  height: 120px;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  background-color: var(--char-bg-2);
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.relationship-avatar-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+
+/* Name */
+
+.relationship-name {
+  margin: 0 0 var(--space-1);
+
+  color: var(--char-primary);
+
+  font-family: var(--font-display);
+  font-size: var(--font-size-md);
+}
+
+
+/* Relationship type */
+
+.relationship-type {
+  margin: 0;
+
+  color: var(--char-primary);
+
+  font-size: var(--font-size-sm);
+}
+
+
+/* =========================================================
+   34. PET PROFILE
+========================================================= */
+
+.pets-section {
+  width: 100%;
+
+  margin-bottom: var(--space-12);
+}
+
+.pet-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    300px;
+
+  align-items: stretch;
+
+  gap: var(--space-6);
+
+  margin-bottom: var(--space-12);
+}
+
+
+/* Pet information card */
+
+.pet-card {
+  grid-template-columns: 1fr 2fr;
+
+  min-width: 0;
+
+  margin-bottom: 0;
+}
+
+
+/* Pet avatar link */
+
+.pet-avatar-link {
+  display: block;
+
+  color: inherit;
+
+  text-decoration: none;
+}
+
+
+/* Pet name */
+
+.pet-card .pet-name {
+  margin: 0 0 var(--space-5);
+
+  color: var(--char-primary);
+
+  font-size: var(--font-size-lg);
+}
+
+
+/* Pet information */
+
+.pet-card .profile-card-left .info-label,
+.pet-card .profile-card-left .info-value {
+  color: var(--char-primary);
+}
+
+.pet-card .profile-card-left .info-value {
+  max-width: 50%;
+
+  text-align: right;
+
+  word-break: break-word;
+}
+
+
+/* Right-side title */
+
+.pet-card .profile-card-right h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+
+  color: var(--char-secondary);
+
+  font-size: var(--font-size-lg);
+}
+
+
+/* Pet notes */
+
+.pet-card .pet-notes {
+  margin: var(--space-2) 0 0;
+}
+
+.pet-card .profile-card-right .pet-notes li {
+  color: var(--char-secondary);
+}
+
+
+/* Pet full-body image */
+
+.pet-image-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 300px;
+  height: 300px;
+
+  overflow: hidden;
+}
+
+.pet-image-link {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+.pet-fullbody {
+  width: 100%;
+  height: 100%;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+/* =========================================================
+   35. DECOR IMAGE
+========================================================= */
+
+.decor-image-box {
+  width: 100%;
+  height: 100px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  margin-bottom: var(--space-12);
+}
+
+/* =========================================================
+   34. LINKS
+========================================================= */
+
+.links-section {
+  width: 100%;
+  margin-bottom: var(--space-12);
+}
+
+
+/* Header */
+
+.links-header {
+  padding:
+    var(--space-5)
+    var(--space-6);
+
+  background: var(--char-bg-1);
+  color: var(--char-primary);
+}
+
+.links-header h2 {
+  margin: 0;
+
+  color: var(--char-primary);
+
+  font-size: var(--font-size-lg);
+}
+
+
+/* Link grid */
+
+.links-container {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: var(--space-3);
+
+  padding: var(--space-4);
+
+  background: var(--char-bg-2);
+}
+
+/* Link card */
+
+.link-card {
+  display: flex;
+  align-items: center;
+
+  min-width: 0;
+
+  padding:
+    var(--space-3)
+    var(--space-4);
+
+  background: var(--char-bg-1);
+  color: var(--char-primary);
+
+  text-decoration: none;
+
+  box-sizing: border-box;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* Hover */
+
+.link-card:hover {
+  transform: translateY(-2px);
+}
+
+
+/* Icon */
+
+.link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 36px;
+
+  width: 36px;
+  height: 36px;
+
+  margin-right: var(--space-3);
+
+  color: var(--char-accent);
+
+  box-sizing: border-box;
+}
+
+
+/* Actual SVG */
+
+.link-icon svg {
+  display: block;
+  width: 36px;
+  height: 36px;
+  fill: currentColor;
+}
+
+
+/* Related character avatar */
+
+.link-icon-image {
+  border-radius: 50%;
+
+  background-color: var(--char-bg-2);
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+/* Text + arrow */
+
+.link-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  flex: 1;
+
+  min-width: 0;
+
+  min-height: 36px;
+}
+
+
+/* Label */
+
+.link-label {
+  min-width: 0;
+
+  color: var(--char-primary);
+
+  font-family: var(--font-display);
+
+  font-size: var(--font-size-md);
+
+  overflow-wrap: anywhere;
+}
+
+
+/* Arrow */
+
+.link-arrow {
+  flex: 0 0 auto;
+
+  margin-left: var(--space-3);
+
+  color: var(--char-primary);
+
+  font-size: var(--font-size-md);
+
+  transition:
+    transform 0.2s ease;
+}
+
+
+.link-card:hover .link-arrow {
+  transform: translateX(4px);
+}
+
+
+/* Placeholder icon*/
+
+.link-icon-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: var(--font-size-lg);
+  line-height: 1;
+}
+
+/* Related character label */
+
+.link-label-related {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  gap: 2px;
+}
+
+
+.link-label-prefix {
+  color: var(--char-primary);
+
+  font-family: var(--font-body);
+  font-size: 0.7em;
+
+  line-height: 1.1;
+
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+
+.link-label-name {
+  color: var(--char-primary);
+
+  font-family: var(--font-display);
+  font-size: 1em;
+
+  line-height: 1.25;
+}
+
+/* =========================================================
+   36. STORY INDEX
+========================================================= */
+
+.story-board {
+  flex: 1;
+  min-width: 0;
+}
+
+
+#story-grid {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-10);
+
+  width: 100%;
+}
+
+
+
+.story-card {
+  display: grid;
+
+  grid-template-columns:
+    minmax(220px, 1fr)
+    minmax(0, 2fr);
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background: var(--color-box-2);
+  color: var(--color-text-dark);
+}
+
+
+
+.story-card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: var(--space-6);
+
+  background: var(--color-box-1);
+  color: var(--color-text-muted);
+
+  text-align: center;
+}
+
+
+/* Story avatar */
+
+.story-avatar {
+  width: 120px;
+  height: 120px;
+
+  margin-bottom: var(--space-5);
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  background-color: var(--color-input-bg);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* Story title */
+
+.story-title {
+  margin: 0 0 var(--space-2);
+
+  color: var(--color-text-dark);
+
+  font-family: var(--font-display);
+  font-size: var(--font-size-lg);
+
+  line-height: 1.2;
+}
+
+
+/* Story tagline */
+
+.story-tagline {
+  margin: 0 0 var(--space-5);
+
+  color: var(--color-text-muted-light);
+
+  font-size: var(--font-size-sm);
+
+  font-style: italic;
+
+  line-height: 1.5;
+}
+
+body.character-profile-page .story-tagline {
+  color: var(--char-primary)
+}
+
+
+/* Story tags */
+
+.story-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  width: 100%;
+  margin-bottom: var(--space-5);
+}
+
+.story-tag-group {
+  display: inline-block;
+  white-space: nowrap;
+
+  padding: 0 var(--space-2);
+  margin-bottom: var(--space-1);
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-xs);
+  line-height: 1.2;
+}
+
+.story-tag-group:not(:first-child)::before {
+  content: "|";
+  margin-right: var(--space-2);
+}
+
+.story-tag {
+  display: inline;
+}
+
+.story-tag-group.no-separator::before {
+  display: none;
+}
+
+
+
+.story-read-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 300px;
+
+  margin-top: auto;
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  box-sizing: border-box;
+
+  background: var(--color-primary-dark);
+
+  border: none;
+  border-radius: var(--border-radius-md);
+
+  color: var(--color-white);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+
+.story-read-button:hover {
+  background: var(--color-primary-darker);
+
+  transform: translateY(-1px);
+}
+
+
+.story-read-button:focus-visible {
+  outline:
+    2px solid
+    var(--color-primary-dark);
+
+  outline-offset: 2px;
+}
+
+
+.story-card-right {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  background: var(--color-box-2);
+
+  color: var(--color-text-muted);
+}
+
+
+/* Banner */
+
+.story-banner {
+  width: 100%;
+  height: 180px;
+
+  background-color: var(--color-box-1);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* Story content */
+
+.story-content {
+  padding: var(--space-6);
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-sm);
+
+  line-height: 1.8;
+}
+
+
+/* Description */
+
+.story-description {
+  margin: 0;
+}
+
+.story-description p {
+  margin: 0 0 var(--space-4);
+
+  color: var(--color-text-muted);
+
+  line-height: 1.8;
+}
+
+.story-description p:last-child {
+  margin-bottom: 0;
+}
+
+
+.story-no-results {
+  padding: var(--space-6);
+
+  color: var(--color-text-muted);
+
+  font-style: italic;
+}
+
+/* =========================================================
+   37. STORY PAGE
+========================================================= */
+
+/* Story background */
+
+body.story-profile-page .story-background {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+body.story-profile-page .page-container {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Story tagline */
+
+body.story-profile-page .story-page-tagline {
+  margin:
+    calc(var(--space-5) * -1)
+    0
+    var(--space-5);
+
+  color: var(--char-accent);
+
+  font-size: var(--font-size-md);
+
+  font-style: italic;
+
+  line-height: 1.5;
+}
+
+
+/* Story profile card */
+
+body.story-profile-page .character-profile-card {
+  grid-template-columns: 1fr 2fr;
+}
+
+
+/* Story profile left panel */
+
+body.story-profile-page .story-profile-card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-width: 0;
+
+  padding: var(--space-6);
+
+  background: var(--char-bg-1);
+  color: var(--char-primary);
+
+  text-align: center;
+}
+
+
+/* Story profile right panel */
+
+body.story-profile-page .story-profile-card-right {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  background: var(--char-bg-2);
+  color: var(--char-secondary);
+}
+
+
+/* Story profile text */
+
+body.story-profile-page .story-profile-card-left .info-label,
+body.story-profile-page .story-profile-card-left .info-value {
+  color: var(--char-primary);
+}
+
+body.story-profile-page .story-profile-card-left .info-value {
+  max-width: 50%;
+
+  text-align: right;
+
+  word-break: break-word;
+}
+
+
+/* Story profile title */
+
+body.story-profile-page .story-profile-card-left .profile-name {
+  color: var(--char-primary);
+}
+
+
+/* Story profile description */
+
+body.story-profile-page .story-profile-description {
+  flex-grow: 1;
+
+  min-width: 0;
+
+  padding: var(--space-6);
+
+  color: var(--char-secondary);
+
+  font-size: var(--font-size-sm);
+  line-height: 1.8;
+}
+
+body.story-profile-page .story-profile-description p {
+  margin: 0 0 var(--space-4);
+
+  color: var(--char-secondary);
+
+  line-height: 1.8;
+}
+
+body.story-profile-page .story-profile-description p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Story characters */
+
+body.story-profile-page .relationships-section {
+  width: 100%;
+  max-width: 100%;
+
+  box-sizing: border-box;
+
+  margin-bottom: var(--space-12);
+}
+
+
+/* Story character grid */
+
+body.story-profile-page .relationships-container {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* Story character cards */
+
+body.story-profile-page .relationship-card {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+
+/* Story detail box */
+
+body.story-profile-page .character-detail-card {
+  width: 100%;
+  max-width: 100%;
+
+  box-sizing: border-box;
+
+  margin-bottom: var(--space-12);
+}
+
+
+/* Story detail content */
+
+body.story-profile-page .detail-banner-content {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Nav*/
+
+.profile-navigation #story-navigation {
+  color: var(--char-primary);
+}
+
+.profile-navigation #story-navigation a {
+  color: var(--char-primary);
+}
+
+/* =========================================================
+   38. FACTION INDEX
+========================================================= */
+
+.faction-board {
+  flex: 1;
+  min-width: 0;
+}
+
+
+#faction-grid {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-10);
+
+  width: 100%;
+}
+
+
+
+.faction-card {
+  display: grid;
+
+  grid-template-columns:
+    minmax(220px, 1fr)
+    minmax(0, 2fr);
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background: var(--color-box-2);
+  color: var(--color-text-dark);
+}
+
+
+
+.faction-card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: var(--space-6);
+
+  background: var(--color-box-1);
+  color: var(--color-text-muted);
+
+  text-align: center;
+}
+
+
+/* Faction avatar */
+
+.faction-avatar {
+  width: 120px;
+  height: 120px;
+
+  margin-bottom: var(--space-5);
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  background-color: var(--color-input-bg);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* Faction title */
+
+.faction-title {
+  margin: 0 0 var(--space-2);
+
+  color: var(--color-text-dark);
+
+  font-family: var(--font-display);
+  font-size: var(--font-size-lg);
+
+  line-height: 1.2;
+}
+
+
+/* Faction tags */
+
+.faction-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  width: 100%;
+  margin-bottom: var(--space-5);
+}
+
+.faction-tag-group {
+  display: inline-block;
+  white-space: nowrap;
+
+  padding: 0 var(--space-2);
+  margin-bottom: var(--space-1);
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-xs);
+  line-height: 1.2;
+}
+
+.faction-tag-group:not(:first-child)::before {
+  content: "|";
+  margin-right: var(--space-2);
+}
+
+.faction-tag {
+  display: inline;
+}
+
+.faction-tag-group.no-separator::before {
+  display: none;
+}
+
+
+
+.faction-read-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 300px;
+
+  margin-top: auto;
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  box-sizing: border-box;
+
+  background: var(--color-primary-dark);
+
+  border: none;
+  border-radius: var(--border-radius-md);
+
+  color: var(--color-white);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+
+.faction-read-button:hover {
+  background: var(--color-primary-darker);
+
+  transform: translateY(-1px);
+}
+
+
+.faction-read-button:focus-visible {
+  outline:
+    2px solid
+    var(--color-primary-dark);
+
+  outline-offset: 2px;
+}
+
+
+.faction-card-right {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  background: var(--color-box-2);
+
+  color: var(--color-text-muted);
+}
+
+
+/* Banner */
+
+.faction-banner {
+  width: 100%;
+  height: 180px;
+
+  background-color: var(--color-box-1);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* Faction content */
+
+.faction-content {
+  padding: var(--space-6);
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-sm);
+
+  line-height: 1.8;
+}
+
+
+/* Description */
+
+.faction-description {
+  margin: 0;
+}
+
+.faction-description p {
+  margin: 0 0 var(--space-4);
+
+  color: var(--color-text-muted);
+
+  line-height: 1.8;
+}
+
+.faction-description p:last-child {
+  margin-bottom: 0;
+}
+
+
+.faction-no-results {
+  padding: var(--space-6);
+
+  color: var(--color-text-muted);
+
+  font-style: italic;
+}
+
+/* =========================================================
+   39. FACTION PAGE
+========================================================= */
+
+
+/* Faction background */
+
+body.faction-profile-page .faction-background {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+/* Faction page stacking */
+
+body.faction-profile-page .page-container {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Faction container */
+
+body.faction-profile-page .page-container {
+  max-width: 980px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  box-sizing: border-box;
+}
+
+
+/* Faction profile card */
+
+body.faction-profile-page .character-profile-card {
+  grid-template-columns: 1fr 1fr;
+
+  width: 100%;
+
+  box-sizing: border-box;
+}
+
+
+/* Faction profile — left */
+
+body.faction-profile-page .faction-profile-card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-width: 0;
+
+  padding: var(--space-6);
+
+  background: var(--char-bg-1);
+  color: var(--char-primary);
+
+  text-align: center;
+}
+
+body.faction-profile-page .faction-profile-card-left .info-label,
+body.faction-profile-page .faction-profile-card-left .info-value {
+  color: var(--char-primary);
+}
+
+body.faction-profile-page .faction-profile-card-left .info-value {
+  max-width: 50%;
+
+  text-align: right;
+
+  word-break: break-word;
+}
+
+body.faction-profile-page .faction-profile-card-left .profile-name {
+  color: var(--char-primary);
+}
+
+
+/* Faction profile — right */
+
+body.faction-profile-page .faction-profile-card-right {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  background: var(--char-bg-2);
+  color: var(--char-secondary);
+}
+
+
+/* Faction description */
+
+body.faction-profile-page .faction-profile-description {
+  flex-grow: 1;
+
+  padding: var(--space-6);
+
+  color: var(--char-secondary);
+
+  font-size: var(--font-size-sm);
+
+  line-height: 1.8;
+}
+
+body.faction-profile-page .faction-profile-description p {
+  margin: 0 0 var(--space-4);
+
+  color: var(--char-secondary);
+
+  line-height: 1.8;
+}
+
+body.faction-profile-page .faction-profile-description p:last-child {
+  margin-bottom: var(--space-3);
+}
+
+
+/* Faction — Characters */
+
+body.faction-profile-page .relationships-section {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+
+  box-sizing: border-box;
+}
+
+body.faction-profile-page .relationships-container {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(200px, 1fr)
+    );
+
+  gap: var(--space-4);
+
+  padding: var(--space-5);
+
+  background: var(--char-bg-2);
+}
+
+body.faction-profile-page .relationship-type {
+  margin-bottom: var(--space-3);
+}
+
+/* Breadcrumb Nav */
+
+.breadcrumb-container {
+  padding: var(--space-3);
+  margin: var(--space-5);
+  padding-bottom: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+
+  color: var(--color-text-muted, #5a432e);
+  font-size: 0.9rem;
+
+  position: relative;
+  z-index: 9999;
+}
+
+.breadcrumb-container a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.breadcrumb-container a:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  margin: 0 8px;
+  color: inherit;
+}
+
+.breadcrumb-current {
+  font-style: italic;
+}
+
+/* Profile colours */
+
+body.character-profile-page .breadcrumb-container,
+body.story-profile-page .breadcrumb-container,
+body.faction-profile-page .breadcrumb-container {
+  color: var(--char-primary);
+}
+
+/* =========================================================
+    40. STORY/FACTION ON CHAR PAGE
+========================================================= */
+
+.character-page-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 300px;
+
+  margin-top: var(--space-3);
+
+  padding:
+    var(--space-2)
+    var(--space-3);
+
+  box-sizing: border-box;
+
+  background: var(--char-bg-2);
+
+  border: none;
+  border-radius: var(--border-radius-md);
+
+  color: var(--char-secondary);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+
+.character-page-button:hover {
+
+  background-image: none;
+
+  background-color:
+    color-mix(
+      in srgb,
+      var(--char-bg-2) 80%,
+      black 20%
+    );
+
+  color: var(--char-primary);
+}
+
+
+.faction-read-button:focus-visible {
+
+  outline:
+    2px solid
+    var(--char-primary);
+
+  outline-offset: 2px;
+}
+
+.profile-description {
+  margin-top: var(--space-3)
+}
+
+/* =========================================================
+   41. SPECIES CARD
+========================================================= */
+
+.species-card {
+  display: flex;
+  flex-direction: column;
+
+  flex: 0 0 calc(
+    (100% - (var(--space-5) * 2)) / 3
+  );
+
+  width: calc(
+    (100% - (var(--space-5) * 2)) / 3
+  );
+
+  height: 100%;
+
+  overflow: hidden;
+
+  background: var(--color-box-1);
+  color: var(--color-text-muted);
+
+  border-radius: var(--border-radius-lg);
+
+  box-sizing: border-box;
+}
+
+
+/* Banner */
+
+.species-card__banner {
+  position: relative;
+
+  width: 100%;
+  height: 150px;
+
+  overflow: hidden;
+
+  background-color: var(--color-box-2);
+
+  background-image:
+    url("../assets/site_images/Newspaper_Background.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  text-align: center;
+
+  flex-shrink: 0;
+}
+
+
+/* Banner overlay */
+
+.species-card__banner-overlay {
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  width: 100%;
+  height: 60px;
+
+  transform: translateY(-50%);
+
+  background: var(--color-white);
+
+  opacity: 0.5;
+
+  z-index: 1;
+}
+
+
+/* Headshot */
+
+.species-card__image {
+  position: absolute;
+
+  z-index: 2;
+
+  display: block;
+
+  width: 100%;
+  height: 150px;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  margin: 0;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+
+/* Content */
+
+.species-card__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  min-height: 0;
+
+  padding: var(--space-5);
+
+  color: var(--color-text-muted);
+
+  text-align: center;
+}
+
+
+/* Title */
+
+.species-card__title {
+  margin: 0;
+
+  color: var(--color-text-dark);
+
+  font-family: var(--font-display);
+  font-size: var(--font-size-lg);
+
+  text-transform: uppercase;
+}
+
+
+/* Subtitle */
+
+.species-card__subtitle {
+  margin: 0;
+
+  color: var(--color-text-muted-light);
+
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+
+  text-transform: uppercase;
+}
+
+
+/* Information */
+
+.species-card__info {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+
+.species-card__info .info-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: var(--space-1);
+
+  width: 100%;
+
+  padding: var(--space-1) 0;
+
+  text-align: left;
+}
+
+
+/* Labels */
+
+.species-card__info .info-label {
+  flex: 0 0 auto;
+
+  color: var(--color-text-muted);
+
+  text-transform: uppercase;
+}
+
+
+/* Values */
+
+.species-card__info .info-value {
+  max-width: 55%;
+
+  color: var(--color-text-muted);
+
+  text-align: right;
+
+  word-break: break-word;
+}
+
+
+/* Description */
+
+.species-card__description {
+  flex: 1;
+
+  min-height: 0;
+
+  padding:
+    0
+    var(--space-2);
+
+  overflow-y: auto;
+
+  color: var(--color-text-muted);
+
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+
+  line-height: 1.8;
+
+  text-align: left;
+}
+
+
+.species-card__description p {
+  margin: 0;
+
+  color: var(--color-text-muted);
+}
+
+
+/* Species grid */
+
+#species-grid {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: stretch;
+
+  gap: var(--space-5);
+
+  width: 100%;
+}
+
+
+/* Species button */
+
+.species-view-button {
+  display: block;
+
+  margin-top: var(--space-5);
+
+  flex-shrink: 0;
+
+  text-decoration: none;
+}
+
+/* =========================================================
+   42. PANTHEON
+========================================================= */
+
+.pantheons-section {
+  width: 100%;
+
+  margin-bottom: var(--space-4);
+}
+
+/* Pantheon grid */
+
+.pantheons-container {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(150px, 1fr)
+    );
+
+  gap: var(--space-4);
+
+  padding: var(--space-5);
+}
+
+/* Pantheon group */
+
+.pantheon-group{
+  padding: var(--space-2);
+}
+
+.pantheon-group-title{
+  margin: 0 0 var(--space-2);
+
+  font-family: var(--font-display);
+  font-size: var(--font-size-md);
+  font-weight: normal;
+  line-height: 1.15;
+  color: var(--color-primary-dark);
+}
+
+
+/* Pantheon card */
+
+.pantheon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: var(--space-4);
+
+  background: var(--color-box-1);
+  color: var(--color-text-dark);
+
+  text-align: center;
+}
+
+
+/* Avatar */
+
+.pantheon-avatar-link {
+  display: block;
+
+  width: 120px;
+  height: 120px;
+
+  margin-bottom: var(--space-3);
+}
+
+.pantheon-avatar {
+  width: 120px;
+  height: 120px;
+
+  overflow: hidden;
+  border-radius: 50%;
+
+  background-color: var(--color-box-2);
+}
+
+.pantheon-avatar img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  display: block;
+}
+
+
+/* Name */
+
+.pantheon-name {
+  margin: 0 0 var(--space-1);
+
+  color: var(--color-text-muted);
+
+  font-family: var(--font-display);
+  font-size: var(--font-size-md);
+}
+
+
+/* Pantheon type */
+
+.god-title {
+  margin: 0;
+
+  color: var(--color-text-dark);
+
+  font-size: var(--font-size-sm);
+}
+
+/* =========================================================
+    43. RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  /* -------------------------------------------------------
+     Detail split
+  ------------------------------------------------------- */
+
+  .character-detail-split {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* -------------------------------------------------------
+     Design layout
+  ------------------------------------------------------- */
+
+  .design-details-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .design-image-box {
+    width: 100%;
+
+    aspect-ratio: 2 / 3;
+  }
+
+
+  /* -------------------------------------------------------
+     Detail padding
+  ------------------------------------------------------- */
+
+  .detail-split-left,
+  .detail-split-right,
+  .detail-banner-content {
+    padding: var(--space-4);
+  }
+
+  .detail-banner-header {
+    padding: var(--space-4);
+  }
+
+
+  /* -------------------------------------------------------
+     Profile container
+  ------------------------------------------------------- */
+
+  .page-container {
+    padding: var(--space-5);
+  }
+
+
+  /* -------------------------------------------------------
+     Main profile card
+  ------------------------------------------------------- */
+
+  .character-profile-card {
+    grid-template-columns: 1fr;
+
+    padding: 0;
+  }
+
+  .profile-card-left {
+    padding: var(--space-4);
+  }
+
+  .profile-content {
+    padding: var(--space-4);
+  }
+
+
+  /* -------------------------------------------------------
+     Character details
+  ------------------------------------------------------- */
+
+  .character-details p {
+    grid-template-columns: 1fr;
+  }
+
+  .character-details h2 {
+    margin-top: var(--space-6);
+  }
+
+
+  /* -------------------------------------------------------
+     Switcher
+  ------------------------------------------------------- */
+
+  .detail-switcher-tabs {
+    gap: var(--space-1);
+  }
+
+  .detail-switcher-tab {
+    flex: 1 1 auto;
+
+    text-align: center;
+  }
+
+  .extras-layout {
+    grid-template-columns: 1fr;
+  }
+
+
+  .extras-image-box {
+
+    width: 100%;
+    max-width: 600px;
+
+    height: auto;
+
+    aspect-ratio: 600 / 380;
+  }
+
+
+  /* -------------------------------------------------------
+     Pets
+  ------------------------------------------------------- */
+
+  .pet-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pet-image-box {
+    width: 100%;
+    height: 300px;
+  }
+
+
+  /* -------------------------------------------------------
+     Links
+  ------------------------------------------------------- */
+
+  .links-container {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* -------------------------------------------------------
+     Story page
+  ------------------------------------------------------- */
+
+  .story-card {
+    grid-template-columns: 1fr;
+  }
+
+  .story-card-left {
+    padding: var(--space-5);
+  }
+
+  .story-avatar {
+    width: 110px;
+    height: 110px;
+  }
+
+  .story-read-button {
+    margin-top: var(--space-3);
+  }
+
+  .story-banner {
+    height: 160px;
+  }
+
+  .story-content {
+    padding: var(--space-4);
+  }
+
+  body.story-profile-page .character-profile-card {
+    grid-template-columns: 1fr;
+  }
+
+  /* -------------------------------------------------------
+     Species page
+  ------------------------------------------------------- */
+
+  .species-card__banner {
+    height: 180px;
+  }
+
+  .species-card__image {
+    height: 160px;
+  }
+
+  .species-card__content {
+    padding: var(--space-4);
+  }
+
+  .species-card__info .info-row {
+    gap: var(--space-3);
+  }
+
+  .species-card__info .info-value {
+    max-width: 50%;
+  }
+
+  #species-grid {
+    grid-template-columns:
+      1fr;
+  }
+
 }
