@@ -1,12 +1,3 @@
-/* =========================================================
-   STORY PROFILE LOADER
-   ========================================================= */
-
-
-/* =========================================================
-   HELPERS
-   ========================================================= */
-
 function text(value){
 
   if(
@@ -22,7 +13,6 @@ function text(value){
   return value
 
 }
-
 
 function list(value){
 
@@ -40,7 +30,6 @@ function list(value){
 
 }
 
-
 function getStory(){
 
   const params =
@@ -51,7 +40,6 @@ function getStory(){
   return params.get("story")
 
 }
-
 
 function setPageTitle(name){
 
@@ -75,7 +63,6 @@ function setPageTitle(name){
 
 }
 
-
 function setText(id, value){
 
   const element =
@@ -89,24 +76,6 @@ function setText(id, value){
     text(value)
 
 }
-
-
-/* =========================================================
-   CHARACTER-STYLE COLOURS
-   =========================================================
-   Stories use the same colour format as characters.
-
-   Supported:
-   - colors.primary
-   - colors.secondary
-   - colors.accent
-   - colors.bg_1
-   - colors.bg_2
-   - colors.page_bg
-
-   No particle, text-gradient, or page-gradient rules are
-   applied here.
-   ========================================================= */
 
 function applyStoryColors(story){
 
@@ -166,11 +135,6 @@ function applyStoryColors(story){
 
 }
 
-
-/* =========================================================
-   IMAGE HELPERS
-   ========================================================= */
-
 function setBackgroundImage(
   element,
   imageUrl,
@@ -219,11 +183,6 @@ function setBackgroundImage(
 
 }
 
-
-/* =========================================================
-   TAG HELPERS
-   ========================================================= */
-
 function getTagValue(
   tags,
   category
@@ -244,11 +203,6 @@ function getTagValue(
 
 }
 
-
-/* =========================================================
-   SLUG HELPERS
-   ========================================================= */
-
 function slugify(value){
 
   return String(value ?? "")
@@ -257,7 +211,6 @@ function slugify(value){
     .replace(/^-+|-+$/g, "")
 
 }
-
 
 function getStorySlug(file){
 
@@ -268,7 +221,6 @@ function getStorySlug(file){
     .pop()
 
 }
-
 
 function getStoryProfileUrl(file){
 
@@ -282,7 +234,6 @@ function getStoryProfileUrl(file){
   )
 
 }
-
 
 function getCharacterProfileUrl(file){
 
@@ -299,11 +250,6 @@ function getCharacterProfileUrl(file){
     filename
       .replace(/\.json$/i, "")
 
-  /* =========================
-     PETS
-     characters/pets/*.json
-     ========================= */
-
   if(
     path.startsWith("characters/pets/")
   ){
@@ -313,11 +259,6 @@ function getCharacterProfileUrl(file){
     )
 
   }
-
-  /* =========================
-     OTHERLY OWNED
-     characters/otherly_owned/*.json
-     ========================= */
 
   if(
     path.startsWith("characters/otherly_owned/")
@@ -329,22 +270,11 @@ function getCharacterProfileUrl(file){
 
   }
 
-  /* =========================
-     NORMAL CHARACTERS
-     characters/*.json
-     ========================= */
-
   return (
     `character_profile.html?char=${encodeURIComponent(slug)}`
   )
 
 }
-
-
-
-/* =========================================================
-   FETCH HELPERS
-   ========================================================= */
 
 async function fetchStory(
   path,
@@ -368,7 +298,6 @@ async function fetchStory(
 
 }
 
-
 async function fetchStoryCharacter(
   path
 ){
@@ -389,11 +318,6 @@ async function fetchStoryCharacter(
   return await response.json()
 
 }
-
-
-/* =========================================================
-   LOAD STORY
-   ========================================================= */
 
 async function loadStory(){
 
@@ -446,11 +370,6 @@ async function loadStory(){
 
 }
 
-
-/* =========================================================
-   ERROR DISPLAY
-   ========================================================= */
-
 function showStoryError(
   title,
   message
@@ -470,33 +389,18 @@ function showStoryError(
 
 }
 
-
-/* =========================================================
-   DISPLAY STORY
-   ========================================================= */
-
 async function displayStory(
   story
 ){
-
-  /* =========================
-     COLOURS
-     ========================= */
 
   applyStoryColors(
     story
   )
 
-
   const name =
     text(
       story.name
     )
-
-
-  /* =========================
-     HEADER
-     ========================= */
 
   const headerLogoText =
     document.querySelector(
@@ -515,7 +419,7 @@ async function displayStory(
   )
 
   document.body.dataset.page =
-  name
+    name
 
   document.body.dataset.breadcrumbParent =
     "Pets"
@@ -524,20 +428,10 @@ async function displayStory(
     updateBreadcrumb()
   }
 
-
-  /* =========================
-     NAME
-     ========================= */
-
   setText(
     "name",
     name
   )
-
-
-  /* =========================
-     STORY BANNER TITLE
-     ========================= */
 
   const storyTitle =
     document.querySelector(
@@ -550,11 +444,6 @@ async function displayStory(
       name
 
   }
-
-
-  /* =========================
-     TAGLINE
-     ========================= */
 
   const tagline =
     document.querySelector(
@@ -588,19 +477,9 @@ async function displayStory(
 
   }
 
-
-  /* =========================
-     IMAGES
-     ========================= */
-
   populateStoryImages(
     story
   )
-
-
-  /* =========================
-     TAGS
-     ========================= */
 
   const tags =
     story.tags || {}
@@ -637,28 +516,13 @@ async function displayStory(
     )
   )
 
-
-  /* =========================
-     DESCRIPTION
-     ========================= */
-
   populateDescription(
     story.description
   )
 
-
-  /* =========================
-     CHARACTERS
-     ========================= */
-
   await populateCharacters(
     story.characters
   )
-
-
-  /* =========================
-     STORY CONTENT
-     ========================= */
 
   populateStoryContent(
     story.story
@@ -666,18 +530,9 @@ async function displayStory(
 
 }
 
-
-/* =========================================================
-   STORY IMAGES
-   ========================================================= */
-
 function populateStoryImages(
   story
 ){
-
-  /* =========================
-     AVATAR
-     ========================= */
 
   const avatar =
     document.getElementById(
@@ -694,11 +549,6 @@ function populateStoryImages(
 
   }
 
-
-  /* =========================
-     BANNER
-     ========================= */
-
   const banner =
     document.getElementById(
       "banner-image"
@@ -713,11 +563,6 @@ function populateStoryImages(
     )
 
   }
-
-
-  /* =========================
-     STORY BACKGROUND
-     ========================= */
 
   const storyBackground =
     document.getElementById(
@@ -734,11 +579,6 @@ function populateStoryImages(
   }
 
 }
-
-
-/* =========================================================
-   STORY NAVIGATION
-   ========================================================= */
 
 async function setupStoryNavigation(
   indexPath
@@ -843,12 +683,10 @@ async function setupStoryNavigation(
   previousLink.textContent =
     "← Previous"
 
-
   const separator =
     document.createTextNode(
       " | "
     )
-
 
   const nextLink =
     document.createElement(
@@ -863,7 +701,6 @@ async function setupStoryNavigation(
   nextLink.textContent =
     "Next →"
 
-
   navigation.appendChild(
     previousLink
   )
@@ -877,11 +714,6 @@ async function setupStoryNavigation(
   )
 
 }
-
-
-/* =========================================================
-   DESCRIPTION
-   ========================================================= */
 
 function populateDescription(
   description
@@ -928,11 +760,6 @@ function populateDescription(
     )
 
 }
-
-
-/* =========================================================
-   CHARACTERS
-   ========================================================= */
 
 async function populateCharacters(
   characters
@@ -981,7 +808,6 @@ async function populateCharacters(
   let loadedCharacters =
     0
 
-
   for(
     const character of characters
   ){
@@ -1002,16 +828,10 @@ async function populateCharacters(
           character.url
         )
 
-
       const characterCard =
         template.content.cloneNode(
           true
         )
-
-
-      /* =========================
-         PROFILE LINK
-         ========================= */
 
       const link =
         characterCard.querySelector(
@@ -1026,11 +846,6 @@ async function populateCharacters(
           )
 
       }
-
-
-      /* =========================
-         AVATAR
-         ========================= */
 
       const avatar =
         characterCard.querySelector(
@@ -1047,11 +862,6 @@ async function populateCharacters(
 
       }
 
-
-      /* =========================
-         NAME
-         ========================= */
-
       const name =
         characterCard.querySelector(
           ".relationship-name"
@@ -1065,11 +875,6 @@ async function populateCharacters(
           )
 
       }
-
-
-      /* =========================
-         RELATIONSHIP LABEL
-         ========================= */
 
       const type =
         characterCard.querySelector(
@@ -1085,13 +890,11 @@ async function populateCharacters(
 
       }
 
-
       container.appendChild(
         characterCard
       )
 
       loadedCharacters++
-
 
     }catch(error){
 
@@ -1104,16 +907,10 @@ async function populateCharacters(
 
   }
 
-
   section.hidden =
     loadedCharacters === 0
 
 }
-
-
-/* =========================================================
-   STORY CONTENT
-   ========================================================= */
 
 function populateStoryContent(storyContent) {
   const container = document.getElementById("backstory");
@@ -1126,11 +923,6 @@ function populateStoryContent(storyContent) {
     .filter(Boolean)
     .join("");
 }
-
-
-/* =========================================================
-   DETAIL TABS
-   ========================================================= */
 
 function setupDetailTabs(){
 
@@ -1153,7 +945,6 @@ function setupDetailTabs(){
 
   }
 
-
   detailTabs.forEach(
     tab => {
 
@@ -1173,7 +964,6 @@ function setupDetailTabs(){
 
           if(!targetPanel) return
 
-
           detailTabs.forEach(
             button => {
 
@@ -1189,7 +979,6 @@ function setupDetailTabs(){
             }
           )
 
-
           detailPanels.forEach(
             panel => {
 
@@ -1199,7 +988,6 @@ function setupDetailTabs(){
             }
           )
 
-
           tab.classList.add(
             "active"
           )
@@ -1208,7 +996,6 @@ function setupDetailTabs(){
             "aria-selected",
             "true"
           )
-
 
           targetPanel.hidden =
             false
@@ -1220,11 +1007,6 @@ function setupDetailTabs(){
   )
 
 }
-
-
-/* =========================================================
-   START
-   ========================================================= */
 
 document.addEventListener(
   "DOMContentLoaded",
