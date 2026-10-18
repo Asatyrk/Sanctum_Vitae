@@ -1,11 +1,6 @@
-/* =========================================================
-   1. ROOT VARIABLES
-========================================================= */
-
 :root {
-  /* -------------------------------------------------------
-     General colors
-  ------------------------------------------------------- */
+
+    /* Basic colour stuff */
 
   --color-primary: #b99b78;
   --color-primary-dark: #7a5d3c;
@@ -13,11 +8,11 @@
   --color-accent: #a27d5f;
   --color-accent-light: #f7f3e8;
 
-  --color-box-1: #f6ead8; /*Originally #e9dac8*/
-  --color-box-2: #f8efe1; /*Originally #ece2d6*/
+  --color-box-1: #f6ead8; 
+  --color-box-2: #f8efe1; 
 
   --color-light: #f4efe6;
-  --color-bg-light: #fff8e7; /*Originally #f3f1ec*/
+  --color-bg-light: #fff8e7; 
 
   --color-text-dark: #2b2b2b;
   --color-text-muted: #5a432e;
@@ -29,9 +24,7 @@
   --color-white: #ffffff;
 
 
-  /* -------------------------------------------------------
-     Typography
-  ------------------------------------------------------- */
+  /* Text */
 
   --font-display: "Castoro Titling", serif;
   --font-body: "IM Fell English", serif;
@@ -44,9 +37,7 @@
   --font-size-xl: 34px;
 
 
-  /* -------------------------------------------------------
-     Spacing
-  ------------------------------------------------------- */
+  /* Spacing */
 
   --space-1: 4px;
   --space-2: 8px;
@@ -59,9 +50,7 @@
   --space-20: 80px;
 
 
-  /* -------------------------------------------------------
-     Components
-  ------------------------------------------------------- */
+  /* Other junk */
 
   --card-width: 140px;
   --gen-image-width: 400px;
@@ -73,17 +62,10 @@
   --border-radius-lg: 6px;
   --border-radius-full: 999px;
 
-
-  /* -------------------------------------------------------
-     Transitions
-  ------------------------------------------------------- */
-
   --transition-fast: 0.2s ease;
 
 
-  /* -------------------------------------------------------
-     Character grid / dot background
-  ------------------------------------------------------- */
+  /* Char grid dots (might change) */
 
   --dot-size: 1px;
   --dot-gap: 8px;
@@ -91,12 +73,7 @@
   --dot-color: rgba(0, 0, 0, 0.03);
 
 
-  /* -------------------------------------------------------
-     Character theme defaults
-
-     These are fallbacks only.
-     The JS/theme system can override them.
-  ------------------------------------------------------- */
+  /* Char defaults */
 
   --char-primary: #b99b78;
   --char-secondary: #a27d5f;
@@ -124,9 +101,7 @@
     );
 
 
-  /* -------------------------------------------------------
-     Character particles
-  ------------------------------------------------------- */
+  /* Char particles */
 
   --char-particle-color: #b99b78;
   --char-particle-opacity: 0.18;
@@ -134,9 +109,7 @@
 }
 
 
-/* =========================================================
-   2. GLOBAL
-========================================================= */
+/* Global stuff */
 
 html {
   scroll-behavior: smooth;
@@ -561,9 +534,7 @@ body.character-profile-page {
 }
 
 
-/* =========================================================
-   3. PAGE BACKGROUNDS
-========================================================= */
+/* page bgs */
 
 .page-characters {
   background-color: var(--color-bg-light);
@@ -592,9 +563,7 @@ body.character-profile-page {
 }
 
 
-/* =========================================================
-   4. CHARACTER ANIMATED BACKGROUND
-========================================================= */
+/* char anim bgs */
 
 .character-profile-page {
   position: relative;
@@ -634,9 +603,7 @@ body.character-profile-page
 }
 
 
-/* ---------------------------------------------------------
-   Individual particles
---------------------------------------------------------- */
+/* particles */
 
 .character-particle {
   position: absolute;
@@ -670,11 +637,6 @@ body.character-profile-page
     var(--particle-delay)
     infinite;
 }
-
-
-/* ---------------------------------------------------------
-   Particle shapes
---------------------------------------------------------- */
 
 .character-particle[data-shape="square"] {
   border-radius: 0;
@@ -837,11 +799,6 @@ body.character-profile-page
   );
 }
 
-
-/* ---------------------------------------------------------
-   Particle animation
---------------------------------------------------------- */
-
 @keyframes character-particle-float {
   from {
     transform:
@@ -856,9 +813,6 @@ body.character-profile-page
   }
 }
 
-
-/* Reduced motion */
-
 @media (prefers-reduced-motion: reduce) {
   .character-particle {
     animation-play-state: paused;
@@ -866,9 +820,7 @@ body.character-profile-page
 }
 
 
-/* =========================================================
-   5. CHARACTER PAGE STACKING
-========================================================= */
+/* char page stacking */
 
 .character-profile-page > .page-container {
   position: relative;
@@ -876,9 +828,7 @@ body.character-profile-page
 }
 
 
-/* =========================================================
-   6. CHARACTER TEXT GRADIENT
-========================================================= */
+/* char text gradient (optional) */
 
 body.character-profile-page
 .character-gradient-text {
@@ -924,9 +874,7 @@ button.character-gradient-text {
 }
 
 
-/* =========================================================
-   7. CHARACTER PAGE BODY BACKGROUND
-========================================================= */
+/* char page body bg */
 
 
 body.character-profile-page {
@@ -939,9 +887,7 @@ body.character-profile-page {
 }
 
 
-/* =========================================================
-   8. SITE HEADER/FOOTER
-========================================================= */
+/* site header n footer */
 
 .site-header {
   position: relative;
@@ -1072,9 +1018,7 @@ body.character-profile-page .footer-spacer {
   color: var(--char-primary);
 }
 
-/* =========================================================
-   9. NAVIGATION
-========================================================= */
+/* nav */
 
 .site-nav {
   display: flex;
@@ -1324,9 +1268,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
   outline-color: var(--char-secondary);
 }
 
-/* =========================================================
-   10. PAGE TITLE
-========================================================= */
+/* pg title */
 
 #page-title {
   margin-bottom: var(--space-6);
@@ -1336,9 +1278,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   11. CHARACTER LIST PAGE LAYOUT
-========================================================= */
+/* char list page layout */
 
 .characters-layout {
   display: flex;
@@ -1365,9 +1305,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   12. CHARACTER SIDEBAR
-========================================================= */
+/* char sidebar */
 
 .characters-sidebar {
   display: flex;
@@ -1454,9 +1392,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   13. CHARACTER GRID
-========================================================= */
+/* char grid */
 
 .characters-board {
   flex: 1;
@@ -1474,9 +1410,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   14. POLAROID CHARACTER CARDS
-========================================================= */
+/* char polaroids */
 
 .char-card {
   position: relative;
@@ -1624,9 +1558,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   15. TAG FILTERS
-========================================================= */
+/* tag filters */
 
 .tag-filters {
   margin-top: var(--space-2);
@@ -1744,9 +1676,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   16. TAG DISPLAY
-========================================================= */
+/* tag other stuff */
 
 .card-tags {
   display: flex;
@@ -1773,11 +1703,6 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 
   font-size: var(--font-size-xs);
 }
-
-
-/* =========================================================
-   17. PROFILE TAG GROUPS
-========================================================= */
 
 .tag-group {
   display: flex;
@@ -1808,11 +1733,6 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
   gap: var(--space-1);
 }
 
-
-/* =========================================================
-   18. MISC
-========================================================= */
-
 .no-results {
   color: var(--color-text-muted);
   font-style: italic;
@@ -1828,9 +1748,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   19. CHARACTER PROFILE CONTAINER
-========================================================= */
+/* char profile container */
 
 .page-container {
   max-width: 980px;
@@ -1853,9 +1771,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   20. PROFILE NAVIGATION
-========================================================= */
+/* profile nav */
 
 .profile-navigation {
   display: flex;
@@ -1901,9 +1817,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
   text-decoration: none;
 }
 
-/* =========================================================
-   21. MAIN CHARACTER PROFILE CARD
-========================================================= */
+/* char profile card */
 
 .character-profile-card {
   display: grid;
@@ -1916,11 +1830,6 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 
   margin-bottom: var(--space-12);
 }
-
-
-/* ---------------------------------------------------------
-   Left panel
---------------------------------------------------------- */
 
 .profile-card-left {
   display: flex;
@@ -2002,11 +1911,6 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 
   word-break: break-word;
 }
-
-
-/* ---------------------------------------------------------
-   Right panel
---------------------------------------------------------- */
 
 .profile-card-right {
   display: flex;
@@ -2094,9 +1998,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
   margin-top: var(--space-3);
 }
 
-/* =========================================================
-   22. DIVIDERS
-========================================================= */
+/* dividers */
 
 .info-divider {
   margin: 0;
@@ -2109,9 +2011,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   23. CHARACTER DETAILS
-========================================================= */
+/* char deets */
 
 .character-details {
   display: flex;
@@ -2171,9 +2071,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   24. CHARACTER DETAIL BOXES
-========================================================= */
+/* char deet boxes */
 
 .character-detail-card {
   width: 100%;
@@ -2189,9 +2087,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
   white-space: pre-line;
 }
 
-/* =========================================================
-   25. 50 / 50 DETAIL BOX
-========================================================= */
+/* 50/50 box */
 
 .character-detail-split {
   display: grid;
@@ -2200,9 +2096,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   26. DESIGN DETAILS LAYOUTS
-========================================================= */
+/* design details layout */
 
 .design-details-layout {
   display: grid;
@@ -2303,9 +2197,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   27. DETAIL SPLIT — LEFT
-========================================================= */
+/* detail L */
 
 .detail-split-left {
   padding: var(--space-6);
@@ -2340,9 +2232,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   28. DETAIL SPLIT — RIGHT
-========================================================= */
+/* Detail R */
 
 .detail-split-right {
   padding: var(--space-6);
@@ -2376,9 +2266,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   29. BANNER DETAIL BOX
-========================================================= */
+/* banner */
 
 .character-detail-banner {
   display: flex;
@@ -2429,9 +2317,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
   color: var(--char-secondary);
 }
 
-/* =========================================================
-   30. DETAIL SWITCHER
-========================================================= */
+/* detail switcher */
 
 .character-detail-switcher {
   width: 100%;
@@ -2623,9 +2509,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
   color: var(--char-primary);
 }
 
-/* =========================================================
-   32. PARTNER PROFILE
-========================================================= */
+/* partner profile char */
 
 .partner-card {
   grid-template-columns: 2fr 1fr;
@@ -2689,9 +2573,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   33. RELATIONSHIPS
-========================================================= */
+/* char relationships */
 
 .relationships-section {
   width: 100%;
@@ -2814,9 +2696,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   34. PET PROFILE
-========================================================= */
+/* Char Pet Profile */
 
 .pets-section {
   width: 100%;
@@ -2941,9 +2821,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
 }
 
 
-/* =========================================================
-   35. DECOR IMAGE
-========================================================= */
+/* decor img */
 
 .decor-image-box {
   width: 100%;
@@ -2956,9 +2834,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
   margin-bottom: var(--space-12);
 }
 
-/* =========================================================
-   34. LINKS
-========================================================= */
+/* links */
 
 .links-section {
   width: 100%;
@@ -3172,9 +3048,7 @@ body.faction-profile-page .nav-dropdown-menu a:focus-visible {
   line-height: 1.25;
 }
 
-/* =========================================================
-   36. STORY INDEX
-========================================================= */
+/* index story */
 
 .story-board {
   flex: 1;
@@ -3434,9 +3308,7 @@ body.character-profile-page .story-tagline {
   font-style: italic;
 }
 
-/* =========================================================
-   37. STORY PAGE
-========================================================= */
+/* story page */
 
 /* Story background */
 
@@ -3625,9 +3497,7 @@ body.story-profile-page .detail-banner-content {
   color: var(--char-primary);
 }
 
-/* =========================================================
-   38. FACTION INDEX
-========================================================= */
+/* factions index */
 
 .faction-board {
   flex: 1;
@@ -3868,9 +3738,7 @@ body.story-profile-page .detail-banner-content {
   font-style: italic;
 }
 
-/* =========================================================
-   39. FACTION PAGE
-========================================================= */
+/* faction page */
 
 
 /* Faction background */
@@ -4071,9 +3939,7 @@ body.faction-profile-page .breadcrumb-container {
   color: var(--char-primary);
 }
 
-/* =========================================================
-    40. STORY/FACTION ON CHAR PAGE
-========================================================= */
+/* char page - story+faction boxes */
 
 .character-page-button {
   display: inline-flex;
@@ -4135,9 +4001,7 @@ body.faction-profile-page .breadcrumb-container {
   margin-top: var(--space-3)
 }
 
-/* =========================================================
-   41. SPECIES CARD
-========================================================= */
+/* species */
 
 .species-card {
   display: flex;
@@ -4388,9 +4252,7 @@ body.faction-profile-page .breadcrumb-container {
   text-decoration: none;
 }
 
-/* =========================================================
-   42. PANTHEON
-========================================================= */
+/* pantheon */
 
 .pantheons-section {
   width: 100%;
@@ -4501,24 +4363,18 @@ body.faction-profile-page .breadcrumb-container {
   font-size: var(--font-size-sm);
 }
 
-/* =========================================================
-    43. RESPONSIVE
-========================================================= */
+/* media */
 
 @media (max-width: 768px) {
 
-  /* -------------------------------------------------------
-     Detail split
-  ------------------------------------------------------- */
+  /* detail split */
 
   .character-detail-split {
     grid-template-columns: 1fr;
   }
 
 
-  /* -------------------------------------------------------
-     Design layout
-  ------------------------------------------------------- */
+  /* design layout */
 
   .design-details-layout {
     grid-template-columns: 1fr;
@@ -4531,9 +4387,7 @@ body.faction-profile-page .breadcrumb-container {
   }
 
 
-  /* -------------------------------------------------------
-     Detail padding
-  ------------------------------------------------------- */
+  /* padding */
 
   .detail-split-left,
   .detail-split-right,
@@ -4546,18 +4400,14 @@ body.faction-profile-page .breadcrumb-container {
   }
 
 
-  /* -------------------------------------------------------
-     Profile container
-  ------------------------------------------------------- */
+  /* profile cont */
 
   .page-container {
     padding: var(--space-5);
   }
 
 
-  /* -------------------------------------------------------
-     Main profile card
-  ------------------------------------------------------- */
+  /* main prof card */
 
   .character-profile-card {
     grid-template-columns: 1fr;
@@ -4574,9 +4424,7 @@ body.faction-profile-page .breadcrumb-container {
   }
 
 
-  /* -------------------------------------------------------
-     Character details
-  ------------------------------------------------------- */
+  /* char deets */
 
   .character-details p {
     grid-template-columns: 1fr;
@@ -4587,9 +4435,7 @@ body.faction-profile-page .breadcrumb-container {
   }
 
 
-  /* -------------------------------------------------------
-     Switcher
-  ------------------------------------------------------- */
+  /* switcher */
 
   .detail-switcher-tabs {
     gap: var(--space-1);
@@ -4617,9 +4463,7 @@ body.faction-profile-page .breadcrumb-container {
   }
 
 
-  /* -------------------------------------------------------
-     Pets
-  ------------------------------------------------------- */
+  /* pets */
 
   .pet-layout {
     grid-template-columns: 1fr;
@@ -4631,18 +4475,14 @@ body.faction-profile-page .breadcrumb-container {
   }
 
 
-  /* -------------------------------------------------------
-     Links
-  ------------------------------------------------------- */
+  /* links */
 
   .links-container {
     grid-template-columns: 1fr;
   }
 
 
-  /* -------------------------------------------------------
-     Story page
-  ------------------------------------------------------- */
+  /* story page */
 
   .story-card {
     grid-template-columns: 1fr;
@@ -4673,9 +4513,7 @@ body.faction-profile-page .breadcrumb-container {
     grid-template-columns: 1fr;
   }
 
-  /* -------------------------------------------------------
-     Species page
-  ------------------------------------------------------- */
+  /* species page */
 
   .species-card__banner {
     height: 180px;
