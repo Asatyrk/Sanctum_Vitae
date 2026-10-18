@@ -29,6 +29,9 @@ Species (mortal concept/monstrous compendium)
 Page:
 - Make sure to add to header.html and navigation.html.
 
+Lore:
+- If adding any lore page or adding to Ora's guide, add a link into the lore hub.
+
 ---
 
 Other Notes:
@@ -61,12 +64,9 @@ Particle shapes:
 ---
 
 To do:
-- Change favicon/icon (easy though, just replace files in assets folder)
 - Code: 
     - main page
     - lore_hub
-    - ora's guide.
-- Other pages, but maybe just that for now
 
 ---
 
