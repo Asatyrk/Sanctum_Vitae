@@ -40,6 +40,7 @@ Avatar [1:1] = circle image
 Banner [3:1] = splash image 
 Fullbody [2:1] = body ref (1:1 for pets)
 Decor [~10:1] = other splash images
+ID image [See File] = Crowler/Other ID image
 
 Particle shapes:
 - square
