@@ -18,6 +18,7 @@ Stories/Factions/Short Reads:
 - Tags can be found in stories.js/factions.js/short_reads.js.
 - Add to index.json so it shows up in layout. 
 - Try to keep index in alphabetical order (not as needed).
+- Add to tag list in characters.js.
 
 Species (mortal concept/monstrous compendium)
 - Create new .json in mortal concept/monstrous compendium folder with profile info (use base).
@@ -66,6 +67,15 @@ Particle shapes:
 To do:
 - Code: 
     - main page
+
+Other Ideas:
+- Minigames? 
+    - OC-rdle? 
+    - 6 degress of Crowley? Oracle of, ham idk Oracle's Guide to Bacon
+- Daily fact on the front pge (write like 500 or somthn)
+- OC of the day also? or random oc since static page.
+- Primary/Seconday/Tertiary/Background tags.
+
 
 ---
 
