@@ -65,8 +65,11 @@ Particle shapes:
 ---
 
 To do:
+- Change layout of stories and short reads (cover image left)
+- Fix mortal concepts and monstrous compendium (make sure the things wrap correctly)
 - Code: 
     - main page
+- Mobile (?)
 
 Other Ideas:
 - Minigames? 
